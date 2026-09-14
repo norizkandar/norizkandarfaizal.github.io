@@ -1,32 +1,597 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Norizkandar | Developer Portfolio</title>
+
+    <meta name="description" content="Norizkandar - Developer, programmer and creator of Smart Academy.">
+
+    <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A" />
 
-    <title>Norizkandar | App Developer</title>
-    <meta name="description" content="Norizkandar - App Developer and creator of Smart Academy.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050b12;
+            color: white;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 11, 18, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00e5ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b8c4cc;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00e5ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #00e5ff;
+            opacity: 0.08;
+            filter: blur(120px);
+            border-radius: 50%;
+            top: 10%;
+            right: 5%;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .small-title {
+            color: #22e68a;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(50px, 8vw, 95px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #00e5ff, #22e68a);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #aab6bf;
+            font-size: 19px;
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 24px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid #00e5ff;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #00bcd4, #22c982);
+            color: #031016;
+        }
+
+        .btn-secondary {
+            color: white;
+            border-color: #263842;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: #00e5ff;
+        }
+
+        .section-subtitle {
+            color: #8f9ba4;
+            margin-bottom: 45px;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .about-card {
+            background: #0b151d;
+            border: 1px solid #182b35;
+            border-radius: 18px;
+            padding: 30px;
+        }
+
+        .about-card p {
+            color: #aab6bf;
+        }
+
+        /* TECH */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 18px;
+        }
+
+        .tech-card {
+            padding: 25px;
+            background: #0b151d;
+            border: 1px solid #182b35;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: #00e5ff;
+        }
+
+        .tech-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .tech-card p {
+            color: #7f8c94;
+            font-size: 14px;
+        }
+
+        /* PROJECT */
+        .project {
+            background: linear-gradient(135deg, #0b151d, #071a1a);
+            border: 1px solid #19333a;
+            border-radius: 25px;
+            padding: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::after {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: #22e68a;
+            opacity: 0.08;
+            filter: blur(80px);
+            right: -50px;
+            bottom: -50px;
+        }
+
+        .project h3 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .project p {
+            color: #aab6bf;
+            max-width: 700px;
+            margin-bottom: 25px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 7px 13px;
+            border-radius: 20px;
+            background: #10252c;
+            color: #22e68a;
+            font-size: 13px;
+        }
+
+        /* FEATURES */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .feature {
+            background: #0b151d;
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid #182b35;
+        }
+
+        .feature-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #8f9ba4;
+            font-size: 14px;
+        }
+
+        /* JOURNEY */
+        .timeline {
+            border-left: 2px solid #1d3942;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 35px;
+        }
+
+        .timeline-item h3 {
+            color: #22e68a;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            color: #9ca8b0;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: #071118;
+        }
+
+        .contact p {
+            color: #9ca8b0;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64727b;
+            border-top: 1px solid #14232b;
+            font-size: 14px;
+        }
+
+        footer span {
+            color: #22e68a;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 150px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+
+            .project {
+                padding: 30px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Norizkandar</h1>
 
-    <h2>App Developer</h2>
+    <nav>
+        <div class="logo">Noriz<span>kandar</span></div>
 
-    <p>
-        Welcome to my personal portfolio.
-        I enjoy creating mobile applications and learning programming.
-    </p>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#tech">Tech</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <h2>My Project</h2>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="small-title">APP DEVELOPER • PROGRAMMER</div>
 
-    <h3>Smart Academy</h3>
-    <p>
-        Smart Academy is an educational tuition application
-        designed to make learning smarter and more interactive.
-    </p>
+            <h1>
+                Building ideas<br>
+                into <span>digital experiences.</span>
+            </h1>
 
-    <h2>Technology</h2>
+            <p>
+                I'm Norizkandar, a young developer who enjoys
+                building mobile applications, experimenting with technology,
+                and turning ideas into real projects.
+            </p>
 
-    <p>JavaScript · React Native · Expo · VS Code · Supabase</p>
+            <div class="buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#about" class="btn btn-secondary">Explore More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <p class="section-subtitle">A little introduction.</p>
+
+        <div class="about">
+            <div class="about-card">
+                <p>
+                    I'm a programmer and app developer who enjoys learning
+                    by building real projects. My main interest is creating
+                    useful and interactive applications.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <p>
+                    My development journey started with learning how to code.
+                    Since then, I have been exploring mobile development,
+                    UI design, databases, and modern digital experiences.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGY -->
+    <section id="tech">
+        <h2 class="section-title">My <span>Tech Stack</span></h2>
+        <p class="section-subtitle">Tools and technologies I use.</p>
+
+        <div class="tech-grid">
+
+            <div class="tech-card">
+                <h3>JavaScript</h3>
+                <p>Programming language</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>React Native</h3>
+                <p>Mobile application development</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>Expo</h3>
+                <p>React Native development platform</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>VS Code</h3>
+                <p>Development environment</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>Supabase</h3>
+                <p>Backend and database platform</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECT -->
+    <section id="projects">
+        <h2 class="section-title">Featured <span>Project</span></h2>
+        <p class="section-subtitle">Something I built.</p>
+
+        <div class="project">
+            <h3>Smart Academy</h3>
+
+            <p>
+                Smart Academy is an educational tuition application designed
+                to make learning smarter, more interactive, and more engaging.
+                The platform includes student and teacher experiences,
+                live learning features, an AI assistant concept,
+                whiteboard tools, and student achievements.
+            </p>
+
+            <div class="tags">
+                <div class="tag">JavaScript</div>
+                <div class="tag">React Native</div>
+                <div class="tag">Expo</div>
+                <div class="tag">Supabase</div>
+                <div class="tag">Education</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section>
+        <h2 class="section-title">Project <span>Features</span></h2>
+        <p class="section-subtitle">Some of the ideas behind Smart Academy.</p>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Assistant</h3>
+                <p>
+                    An AI learning assistant concept designed to support
+                    students during their learning journey.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">📝</div>
+                <h3>Digital Whiteboard</h3>
+                <p>
+                    A collaborative space for explaining ideas and
+                    visualising lessons.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🎥</div>
+                <h3>Student Live</h3>
+                <p>
+                    A live presentation concept where students can
+                    present using video.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🏆</div>
+                <h3>Achievements</h3>
+                <p>
+                    A system designed to highlight student progress
+                    and achievements.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section id="journey">
+        <h2 class="section-title">My <span>Journey</span></h2>
+        <p class="section-subtitle">Learning, building and improving.</p>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <h3>Started Learning Programming</h3>
+                <p>
+                    Started exploring programming and learning how
+                    applications are built.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Started Building Apps</h3>
+                <p>
+                    Began experimenting with React Native, Expo,
+                    JavaScript and mobile application development.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Built Smart Academy</h3>
+                <p>
+                    Turned an education idea into a mobile application
+                    project with multiple learning features.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Still Learning</h3>
+                <p>
+                    Continuing to improve my programming skills and
+                    explore new technologies.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Let's <span>Connect</span></h2>
+
+        <p>
+            I'm always interested in learning, building new projects,
+            and exploring new ideas in technology.
+        </p>
+
+        <div class="buttons" style="justify-content:center;">
+            <a href="https://github.com/norizkandar" class="btn btn-primary">
+                GitHub
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Norizkandar · Built with <span>code & creativity</span>.
+    </footer>
+
 </body>
 </html>

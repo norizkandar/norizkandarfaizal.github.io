@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Norizkandar | Developer Portfolio</title>
-
-    <meta name="description" content="Norizkandar - Developer, programmer and creator of Smart Academy.">
+    <title>Norizkandar | App Developer</title>
+    <meta name="description" content="Norizkandar — App Developer and Programmer building modern digital experiences.">
 
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A" />
-    
-    </style>
+
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -21,8 +20,8 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #050b12;
-            color: white;
+            background: #05070d;
+            color: #ffffff;
             line-height: 1.6;
         }
 
@@ -35,20 +34,22 @@
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            z-index: 1000;
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(5, 11, 18, 0.85);
-            backdrop-filter: blur(12px);
+            background: rgba(5, 7, 13, 0.85);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
+            z-index: 1000;
         }
 
         .logo {
             font-size: 22px;
-            font-weight: bold;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
         .logo span {
@@ -57,12 +58,13 @@
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 30px;
             list-style: none;
         }
 
         .nav-links a {
-            color: #b8c4cc;
+            color: #b9c0cc;
+            font-size: 14px;
             transition: 0.3s;
         }
 
@@ -70,83 +72,65 @@
             color: #00e5ff;
         }
 
+        /* GENERAL */
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: #00e5ff;
+        }
+
+        .section-description {
+            color: #9da5b4;
+            max-width: 650px;
+            margin-bottom: 45px;
+        }
+
         /* HERO */
         .hero {
             min-height: 100vh;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            padding: 120px 8% 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: #00e5ff;
-            opacity: 0.08;
-            filter: blur(120px);
-            border-radius: 50%;
-            top: 10%;
-            right: 5%;
+            gap: 60px;
+            padding-top: 140px;
         }
 
         .hero-content {
-            <section class="hero">
-    <div class="hero-wrapper">
-
-        <div class="hero-content">
-            <div class="small-title">APP DEVELOPER • PROGRAMMER</div>
-
-            <h1>
-                Building ideas<br>
-                into <span>digital experiences.</span>
-            </h1>
-
-            <p>
-                I'm Norizkandar, a young developer who enjoys
-                building mobile applications, experimenting with technology,
-                and turning ideas into real projects.
-            </p>
-
-            <div class="buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#about" class="btn btn-secondary">Explore More</a>
-            </div>
-        </div>
-
-        <img src="profile.jpg" alt="Norizkandar" class="hero-image">
-
-    </div>
-</section>
+            max-width: 700px;
         }
 
-        .small-title {
-            color: #22e68a;
+        .hero-small {
+            color: #00e5ff;
+            font-size: 14px;
             font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
         }
 
-        h1 {
-            font-size: clamp(50px, 8vw, 95px);
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 90px);
             line-height: 1;
             margin-bottom: 25px;
         }
 
-        h1 span {
-            background: linear-gradient(90deg, #00e5ff, #22e68a);
+        .hero h1 span {
+            background: linear-gradient(90deg, #00e5ff, #00ff88);
             -webkit-background-clip: text;
             color: transparent;
         }
 
         .hero p {
-            color: #aab6bf;
-            font-size: 19px;
-            max-width: 650px;
-            margin-bottom: 35px;
+            color: #9da5b4;
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 30px;
         }
 
         .buttons {
@@ -156,7 +140,7 @@
         }
 
         .btn {
-            padding: 13px 24px;
+            padding: 13px 22px;
             border-radius: 10px;
             font-weight: bold;
             transition: 0.3s;
@@ -164,149 +148,124 @@
         }
 
         .btn-primary {
-            background: linear-gradient(90deg, #00bcd4, #22c982);
-            color: #031016;
+            background: #00e5ff;
+            color: #05070d;
         }
 
-        .btn-secondary {
-            color: white;
-            border-color: #263842;
-        }
-
-        .btn:hover {
+        .btn-primary:hover {
             transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0,229,255,0.35);
         }
 
-        /* SECTIONS */
-        section {
-            padding: 100px 8%;
-        }
-
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .section-title span {
+        .btn-outline {
             color: #00e5ff;
         }
 
-        .section-subtitle {
-            color: #8f9ba4;
-            margin-bottom: 45px;
+        .btn-outline:hover {
+            background: #00e5ff;
+            color: #05070d;
+        }
+
+        /* PROFILE IMAGE */
+        .hero-image {
+            width: 350px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 25px;
+            border: 2px solid #00e5ff;
+            box-shadow: 0 0 60px rgba(0,229,255,0.15);
         }
 
         /* ABOUT */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+        .about-box {
+            max-width: 900px;
+            padding: 35px;
+            background: #0a0e18;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
         }
 
-        .about-card {
-            background: #0b151d;
-            border: 1px solid #182b35;
-            border-radius: 18px;
-            padding: 30px;
+        .about-box p {
+            color: #aeb6c4;
+            margin-bottom: 15px;
         }
 
-        .about-card p {
-            color: #aab6bf;
-        }
-
-        /* TECH */
+        /* TECH STACK */
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 18px;
         }
 
         .tech-card {
             padding: 25px;
-            background: #0b151d;
-            border: 1px solid #182b35;
-            border-radius: 15px;
+            background: #0a0e18;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
             transition: 0.3s;
         }
 
         .tech-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             border-color: #00e5ff;
         }
 
         .tech-card h3 {
             margin-bottom: 8px;
+            color: #ffffff;
         }
 
         .tech-card p {
-            color: #7f8c94;
+            color: #8f98a8;
             font-size: 14px;
         }
 
         /* PROJECT */
-        .project {
-            background: linear-gradient(135deg, #0b151d, #071a1a);
-            border: 1px solid #19333a;
-            border-radius: 25px;
-            padding: 45px;
-            position: relative;
-            overflow: hidden;
+        .project-card {
+            background: #0a0e18;
+            border-radius: 22px;
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,0.08);
+            max-width: 950px;
         }
 
-        .project::after {
-            content: "";
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            background: #22e68a;
-            opacity: 0.08;
-            filter: blur(80px);
-            right: -50px;
-            bottom: -50px;
+        .project-card h3 {
+            font-size: 30px;
+            margin-bottom: 12px;
         }
 
-        .project h3 {
-            font-size: 35px;
-            margin-bottom: 15px;
+        .project-card h3 span {
+            color: #00e5ff;
         }
 
-        .project p {
-            color: #aab6bf;
-            max-width: 700px;
+        .project-card p {
+            color: #9da5b4;
             margin-bottom: 25px;
         }
 
-        .tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
+        .project-tag {
+            display: inline-block;
             padding: 7px 13px;
+            margin: 4px;
             border-radius: 20px;
-            background: #10252c;
-            color: #22e68a;
+            background: rgba(0,229,255,0.08);
+            color: #00e5ff;
             font-size: 13px;
+            border: 1px solid rgba(0,229,255,0.2);
         }
 
         /* FEATURES */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            gap: 18px;
         }
 
         .feature {
-            background: #0b151d;
-            padding: 28px;
-            border-radius: 18px;
-            border: 1px solid #182b35;
-        }
-
-        .feature-icon {
-            font-size: 30px;
-            margin-bottom: 15px;
+            padding: 25px;
+            background: #0a0e18;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
         .feature h3 {
@@ -314,13 +273,14 @@
         }
 
         .feature p {
-            color: #8f9ba4;
+            color: #8f98a8;
             font-size: 14px;
         }
 
         /* JOURNEY */
         .timeline {
-            border-left: 2px solid #1d3942;
+            max-width: 800px;
+            border-left: 2px solid #00e5ff;
             padding-left: 30px;
         }
 
@@ -329,59 +289,101 @@
         }
 
         .timeline-item h3 {
-            color: #22e68a;
+            color: #ffffff;
             margin-bottom: 5px;
         }
 
+        .timeline-item span {
+            color: #00e5ff;
+            font-size: 13px;
+        }
+
         .timeline-item p {
-            color: #9ca8b0;
+            color: #929aaa;
+            margin-top: 8px;
         }
 
         /* CONTACT */
-        .contact {
+        .contact-box {
             text-align: center;
-            background: #071118;
+            padding: 60px 20px;
+            background: linear-gradient(
+                135deg,
+                rgba(0,229,255,0.08),
+                rgba(0,255,136,0.05)
+            );
+            border: 1px solid rgba(0,229,255,0.15);
+            border-radius: 25px;
         }
 
-        .contact p {
-            color: #9ca8b0;
-            max-width: 600px;
-            margin: 0 auto 30px;
+        .contact-box h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #9da5b4;
+            margin-bottom: 25px;
         }
 
         /* FOOTER */
         footer {
             text-align: center;
             padding: 30px;
-            color: #64727b;
-            border-top: 1px solid #14232b;
-            font-size: 14px;
-        }
-
-        footer span {
-            color: #22e68a;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #707887;
+            font-size: 13px;
         }
 
         /* MOBILE */
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
             .nav-links {
-                display: none;
+                gap: 14px;
             }
 
-            .hero {
-                padding-top: 150px;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
+            .nav-links a {
+                font-size: 12px;
             }
 
             section {
-                padding: 80px 6%;
+                padding: 90px 6%;
             }
 
-            .project {
-                padding: 30px;
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 130px;
+            }
+
+            .hero-content {
+                order: 1;
+            }
+
+            .hero-image {
+                order: 2;
+                width: 280px;
+                height: 360px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .contact-box h2 {
+                font-size: 30px;
             }
         }
     </style>
@@ -389,8 +391,11 @@
 
 <body>
 
+    <!-- NAVBAR -->
     <nav>
-        <div class="logo">Noriz<span>kandar</span></div>
+        <div class="logo">
+            <span>N</span>orizkandar
+        </div>
 
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
@@ -401,220 +406,300 @@
         </ul>
     </nav>
 
+
     <!-- HERO -->
     <section class="hero">
+
         <div class="hero-content">
-            <div class="small-title">APP DEVELOPER • PROGRAMMER</div>
+
+            <div class="hero-small">
+                APP DEVELOPER • PROGRAMMER
+            </div>
 
             <h1>
-                Building ideas<br>
-                into <span>digital experiences.</span>
+                Hi, I'm <span>Norizkandar.</span>
             </h1>
 
             <p>
-                I'm Norizkandar, a young developer who enjoys
-                building mobile applications, experimenting with technology,
-                and turning ideas into real projects.
+                I build mobile apps, experiment with new technologies,
+                and turn ideas into digital experiences.
             </p>
 
             <div class="buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#about" class="btn btn-secondary">Explore More</a>
+                <a href="#projects" class="btn btn-primary">
+                    View My Work
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Contact Me
+                </a>
             </div>
+
         </div>
+
+        <img
+            src="profile.jpg"
+            alt="Norizkandar"
+            class="hero-image"
+        >
+
     </section>
+
 
     <!-- ABOUT -->
     <section id="about">
-        <h2 class="section-title">About <span>Me</span></h2>
-        <p class="section-subtitle">A little introduction.</p>
 
-        <div class="about">
-            <div class="about-card">
-                <p>
-                    I'm a programmer and app developer who enjoys learning
-                    by building real projects. My main interest is creating
-                    useful and interactive applications.
-                </p>
-            </div>
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
 
-            <div class="about-card">
-                <p>
-                    My development journey started with learning how to code.
-                    Since then, I have been exploring mobile development,
-                    UI design, databases, and modern digital experiences.
-                </p>
-            </div>
+        <p class="section-description">
+            A young developer who enjoys learning, building apps,
+            and exploring the world of technology.
+        </p>
+
+        <div class="about-box">
+
+            <p>
+                I'm Norizkandar, an app developer and programmer
+                passionate about creating useful and modern digital products.
+            </p>
+
+            <p>
+                My journey started with learning how to code,
+                and I continue to improve by building real projects
+                and experimenting with different technologies.
+            </p>
+
+            <p>
+                One of my main projects is Smart Academy,
+                a tuition application designed to create a more
+                interactive learning experience.
+            </p>
+
         </div>
+
     </section>
 
-    <!-- TECHNOLOGY -->
+
+    <!-- TECH STACK -->
     <section id="tech">
-        <h2 class="section-title">My <span>Tech Stack</span></h2>
-        <p class="section-subtitle">Tools and technologies I use.</p>
+
+        <h2 class="section-title">
+            My <span>Tech Stack</span>
+        </h2>
+
+        <p class="section-description">
+            Technologies and tools I use to build my projects.
+        </p>
 
         <div class="tech-grid">
 
             <div class="tech-card">
                 <h3>JavaScript</h3>
-                <p>Programming language</p>
+                <p>Programming language used to build my applications.</p>
             </div>
 
             <div class="tech-card">
                 <h3>React Native</h3>
-                <p>Mobile application development</p>
+                <p>Framework for creating cross-platform mobile apps.</p>
             </div>
 
             <div class="tech-card">
                 <h3>Expo</h3>
-                <p>React Native development platform</p>
+                <p>Development platform that helps me build React Native apps.</p>
             </div>
 
             <div class="tech-card">
                 <h3>VS Code</h3>
-                <p>Development environment</p>
+                <p>My main code editor for developing projects.</p>
             </div>
 
             <div class="tech-card">
                 <h3>Supabase</h3>
-                <p>Backend and database platform</p>
+                <p>Backend platform used for database and application services.</p>
             </div>
 
         </div>
+
     </section>
 
-    <!-- PROJECT -->
-    <section id="projects">
-        <h2 class="section-title">Featured <span>Project</span></h2>
-        <p class="section-subtitle">Something I built.</p>
 
-        <div class="project">
-            <h3>Smart Academy</h3>
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <h2 class="section-title">
+            Featured <span>Project</span>
+        </h2>
+
+        <p class="section-description">
+            A project that represents my journey as an app developer.
+        </p>
+
+        <div class="project-card">
+
+            <h3>
+                Smart <span>Academy</span>
+            </h3>
 
             <p>
-                Smart Academy is an educational tuition application designed
-                to make learning smarter, more interactive, and more engaging.
-                The platform includes student and teacher experiences,
-                live learning features, an AI assistant concept,
-                whiteboard tools, and student achievements.
+                Smart Academy is a modern tuition app designed to
+                provide students and teachers with a more interactive
+                learning experience.
             </p>
 
-            <div class="tags">
-                <div class="tag">JavaScript</div>
-                <div class="tag">React Native</div>
-                <div class="tag">Expo</div>
-                <div class="tag">Supabase</div>
-                <div class="tag">Education</div>
-            </div>
+            <span class="project-tag">Mobile App</span>
+            <span class="project-tag">Education</span>
+            <span class="project-tag">React Native</span>
+            <span class="project-tag">Expo</span>
+            <span class="project-tag">Supabase</span>
+
         </div>
+
     </section>
+
 
     <!-- FEATURES -->
     <section>
-        <h2 class="section-title">Project <span>Features</span></h2>
-        <p class="section-subtitle">Some of the ideas behind Smart Academy.</p>
+
+        <h2 class="section-title">
+            Project <span>Features</span>
+        </h2>
+
+        <p class="section-description">
+            Some of the ideas and features included in Smart Academy.
+        </p>
 
         <div class="feature-grid">
 
             <div class="feature">
-                <div class="feature-icon">🤖</div>
-                <h3>AI Assistant</h3>
+                <h3>🤖 AI Assistant</h3>
                 <p>
-                    An AI learning assistant concept designed to support
-                    students during their learning journey.
+                    An AI-based assistant concept designed to support students.
                 </p>
             </div>
 
             <div class="feature">
-                <div class="feature-icon">📝</div>
-                <h3>Digital Whiteboard</h3>
+                <h3>📝 Interactive Whiteboard</h3>
                 <p>
-                    A collaborative space for explaining ideas and
-                    visualising lessons.
+                    A digital whiteboard concept for teaching and learning.
                 </p>
             </div>
 
             <div class="feature">
-                <div class="feature-icon">🎥</div>
-                <h3>Student Live</h3>
+                <h3>📹 Student Live</h3>
                 <p>
-                    A live presentation concept where students can
-                    present using video.
+                    Students can present using video in an interactive live session.
                 </p>
             </div>
 
             <div class="feature">
-                <div class="feature-icon">🏆</div>
-                <h3>Achievements</h3>
+                <h3>🏆 Student Achievement</h3>
                 <p>
-                    A system designed to highlight student progress
-                    and achievements.
+                    A feature designed to showcase student progress and achievements.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>⭐ Teacher Rating</h3>
+                <p>
+                    Students can rate teachers based on their learning experience.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>👨‍🏫 Student & Teacher</h3>
+                <p>
+                    Separate experiences for students and teachers.
                 </p>
             </div>
 
         </div>
+
     </section>
+
 
     <!-- JOURNEY -->
     <section id="journey">
-        <h2 class="section-title">My <span>Journey</span></h2>
-        <p class="section-subtitle">Learning, building and improving.</p>
+
+        <h2 class="section-title">
+            My <span>Journey</span>
+        </h2>
+
+        <p class="section-description">
+            From learning the basics to building my own mobile applications.
+        </p>
 
         <div class="timeline">
 
             <div class="timeline-item">
-                <h3>Started Learning Programming</h3>
+                <span>START</span>
+                <h3>Started Learning Coding</h3>
                 <p>
-                    Started exploring programming and learning how
-                    applications are built.
+                    I started learning programming and exploring
+                    how applications are built.
                 </p>
             </div>
 
             <div class="timeline-item">
-                <h3>Started Building Apps</h3>
+                <span>LEARNING</span>
+                <h3>Exploring App Development</h3>
                 <p>
-                    Began experimenting with React Native, Expo,
-                    JavaScript and mobile application development.
+                    I began working with JavaScript, React Native,
+                    Expo and VS Code.
                 </p>
             </div>
 
             <div class="timeline-item">
+                <span>PROJECT</span>
                 <h3>Built Smart Academy</h3>
                 <p>
-                    Turned an education idea into a mobile application
-                    project with multiple learning features.
+                    I started turning my ideas into a real tuition
+                    application with multiple interactive features.
                 </p>
             </div>
 
             <div class="timeline-item">
-                <h3>Still Learning</h3>
+                <span>NEXT</span>
+                <h3>Keep Building</h3>
                 <p>
-                    Continuing to improve my programming skills and
-                    explore new technologies.
+                    My goal is to keep learning, improve my coding skills,
+                    and build even better projects.
                 </p>
             </div>
 
         </div>
+
     </section>
+
 
     <!-- CONTACT -->
-    <section id="contact" class="contact">
-        <h2 class="section-title">Let's <span>Connect</span></h2>
+    <section id="contact">
 
-        <p>
-            I'm always interested in learning, building new projects,
-            and exploring new ideas in technology.
-        </p>
+        <div class="contact-box">
 
-        <div class="buttons" style="justify-content:center;">
-            <a href="https://github.com/norizkandar" class="btn btn-primary">
+            <h2>Let's <span>Connect.</span></h2>
+
+            <p>
+                Interested in my projects or want to see what I'm building?
+            </p>
+
+            <a
+                href="https://github.com/norizkandar"
+                target="_blank"
+                class="btn btn-primary"
+            >
                 GitHub
             </a>
+
         </div>
+
     </section>
 
+
+    <!-- FOOTER -->
     <footer>
-        © 2026 Norizkandar · Built with <span>code & creativity</span>.
+        © 2026 Norizkandar. Built with code and curiosity.
     </footer>
 
 </body>

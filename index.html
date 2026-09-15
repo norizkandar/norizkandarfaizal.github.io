@@ -3,15 +3,18 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- GOOGLE SEARCH CONSOLE VERIFICATION - DO NOT DELETE -->
+<!-- GOOGLE SEARCH CONSOLE VERIFICATION -->
 <meta name="google-site-verification" content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Mohamad Norizkandar — Creative App Developer building modern mobile applications and digital experiences.">
+
+<meta name="description"
+content="Mohamad Norizkandar — 14-year-old creative app developer from Taiping, Perak, building modern mobile applications and digital experiences.">
 
 <title>Mohamad Norizkandar | Creative App Developer</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -20,12 +23,14 @@
 }
 
 :root{
-    --bg:#03060a;
-    --card:rgba(13,20,30,.72);
+    --bg:#02050a;
+    --card:rgba(10,16,25,.72);
+    --card2:rgba(15,23,35,.65);
     --blue:#00c8ff;
+    --cyan:#00eaff;
     --green:#00ff9d;
     --white:#f5f7fa;
-    --gray:#98a5b5;
+    --gray:#91a0b2;
     --border:rgba(255,255,255,.09);
 }
 
@@ -36,20 +41,20 @@ body{
     overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* ================= BACKGROUND ================= */
 
 body::before{
     content:"";
     position:fixed;
     width:500px;
     height:500px;
-    background:var(--blue);
-    filter:blur(180px);
-    opacity:.09;
-    top:-180px;
+    top:-200px;
     left:-180px;
+    background:var(--blue);
+    filter:blur(190px);
+    opacity:.10;
+    z-index:-5;
     pointer-events:none;
-    z-index:-2;
 }
 
 body::after{
@@ -57,50 +62,48 @@ body::after{
     position:fixed;
     width:500px;
     height:500px;
-    background:var(--green);
-    filter:blur(180px);
-    opacity:.07;
     right:-180px;
     bottom:-180px;
+    background:var(--green);
+    filter:blur(190px);
+    opacity:.08;
+    z-index:-5;
     pointer-events:none;
-    z-index:-2;
 }
-
-/* GRID BACKGROUND */
 
 .grid-bg{
     position:fixed;
     inset:0;
     background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
     background-size:55px 55px;
     mask-image:linear-gradient(to bottom,black,transparent);
+    z-index:-4;
     pointer-events:none;
-    z-index:-3;
 }
 
-/* NAV */
+/* ================= NAVBAR ================= */
 
 nav{
     position:fixed;
     top:18px;
     left:50%;
     transform:translateX(-50%);
-    width:min(1120px,92%);
+    width:min(1150px,92%);
     padding:14px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(4,8,13,.72);
+    background:rgba(3,7,12,.72);
     backdrop-filter:blur(20px);
     border:1px solid var(--border);
     border-radius:20px;
-    z-index:1000;
+    z-index:999;
 }
 
 .logo{
-    font-size:22px;
+    font-size:23px;
     font-weight:900;
 }
 
@@ -109,37 +112,37 @@ nav{
 }
 
 nav ul{
-    display:flex;
     list-style:none;
-    gap:26px;
+    display:flex;
+    gap:24px;
 }
 
 nav a{
     color:var(--gray);
     text-decoration:none;
-    font-size:14px;
+    font-size:13px;
     transition:.3s;
 }
 
 nav a:hover{
-    color:var(--white);
+    color:var(--blue);
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
     min-height:100vh;
-    width:min(1120px,92%);
+    width:min(1150px,92%);
     margin:auto;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:60px;
-    padding-top:100px;
+    gap:70px;
+    padding-top:110px;
 }
 
 .hero-content{
-    max-width:700px;
+    max-width:720px;
 }
 
 .eyebrow{
@@ -150,8 +153,8 @@ nav a:hover{
     border:1px solid rgba(0,200,255,.3);
     border-radius:50px;
     color:var(--blue);
-    font-size:12px;
-    letter-spacing:2px;
+    font-size:11px;
+    letter-spacing:3px;
     margin-bottom:25px;
     background:rgba(0,200,255,.04);
 }
@@ -161,13 +164,13 @@ nav a:hover{
     height:7px;
     border-radius:50%;
     background:var(--green);
-    box-shadow:0 0 14px var(--green);
+    box-shadow:0 0 15px var(--green);
 }
 
 h1{
-    font-size:clamp(52px,8vw,94px);
-    line-height:.92;
-    letter-spacing:-5px;
+    font-size:clamp(55px,8vw,100px);
+    line-height:.9;
+    letter-spacing:-6px;
     margin-bottom:28px;
 }
 
@@ -177,10 +180,10 @@ h1{
     color:transparent;
 }
 
-.typing{
+.hero-description{
     color:var(--gray);
-    font-size:20px;
-    line-height:1.7;
+    font-size:19px;
+    line-height:1.8;
     min-height:70px;
 }
 
@@ -195,7 +198,7 @@ h1{
 
 .buttons{
     display:flex;
-    gap:14px;
+    gap:13px;
     flex-wrap:wrap;
     margin-top:30px;
 }
@@ -211,83 +214,83 @@ h1{
 
 .primary{
     background:linear-gradient(90deg,var(--blue),var(--green));
-    color:#00110c;
-    box-shadow:0 0 30px rgba(0,200,255,.12);
+    color:#00120c;
+    box-shadow:0 0 35px rgba(0,200,255,.12);
 }
 
 .secondary{
     color:var(--white);
-    border:1px solid var(--border);
     background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
 }
 
 .btn:hover{
     transform:translateY(-5px);
 }
 
-/* PROFILE */
+/* ================= PROFILE ================= */
 
-.profile-wrap{
+.profile-area{
     position:relative;
     flex-shrink:0;
-    animation:float 5s ease-in-out infinite;
+    animation:floating 5s ease-in-out infinite;
 }
 
-@keyframes float{
+@keyframes floating{
     0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-12px)}
+    50%{transform:translateY(-13px)}
 }
 
-.profile-wrap::before{
+.profile-area::before{
     content:"";
     position:absolute;
-    inset:-22px;
-    border-radius:38px;
+    inset:-25px;
+    border-radius:40px;
     background:linear-gradient(135deg,var(--blue),var(--green));
-    filter:blur(35px);
-    opacity:.24;
+    filter:blur(38px);
+    opacity:.25;
     z-index:-1;
 }
 
 .profile{
-    width:330px;
-    height:420px;
+    width:340px;
+    height:430px;
     object-fit:cover;
-    border-radius:32px;
+    border-radius:35px;
     border:1px solid rgba(0,200,255,.55);
-    box-shadow:0 0 80px rgba(0,200,255,.13);
+    box-shadow:0 0 90px rgba(0,200,255,.14);
 }
 
-.status{
+.profile-badge{
     position:absolute;
     bottom:20px;
     left:20px;
-    padding:11px 16px;
+    padding:11px 15px;
     border-radius:13px;
-    background:rgba(3,6,10,.85);
+    background:rgba(3,7,12,.86);
     backdrop-filter:blur(15px);
     border:1px solid var(--border);
     font-size:12px;
 }
 
-/* SECTIONS */
+/* ================= GENERAL ================= */
 
 section{
-    width:min(1120px,92%);
+    width:min(1150px,92%);
     margin:auto;
-    padding:110px 0;
+    padding:115px 0;
 }
 
-.section-label{
+.label{
     color:var(--blue);
-    font-size:12px;
+    font-size:11px;
     letter-spacing:3px;
     font-weight:bold;
-    margin-bottom:10px;
+    margin-bottom:11px;
 }
 
 .section-title{
-    font-size:45px;
+    font-size:46px;
     margin-bottom:15px;
 }
 
@@ -297,11 +300,12 @@ section{
 
 .subtitle{
     color:var(--gray);
+    line-height:1.8;
+    max-width:750px;
     margin-bottom:45px;
-    line-height:1.7;
 }
 
-/* CARDS */
+/* ================= CARDS ================= */
 
 .grid{
     display:grid;
@@ -312,32 +316,33 @@ section{
 .card{
     position:relative;
     padding:30px;
-    border:1px solid var(--border);
     background:var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;
     backdrop-filter:blur(15px);
-    border-radius:23px;
     overflow:hidden;
-    transition:.4s;
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    width:100px;
-    height:100px;
-    background:var(--blue);
-    filter:blur(70px);
-    opacity:0;
     transition:.4s;
 }
 
 .card:hover{
     transform:translateY(-9px);
-    border-color:rgba(0,200,255,.35);
+    border-color:rgba(0,200,255,.4);
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    background:var(--blue);
+    filter:blur(80px);
+    opacity:0;
+    transition:.4s;
 }
 
 .card:hover::before{
-    opacity:.18;
+    opacity:.16;
 }
 
 .icon{
@@ -346,34 +351,59 @@ section{
 }
 
 .card h3{
-    margin-bottom:11px;
     font-size:20px;
+    margin-bottom:10px;
 }
 
 .card p{
     color:var(--gray);
     font-size:14px;
-    line-height:1.75;
+    line-height:1.8;
 }
 
-/* STATS */
+/* ================= PERSONAL INFO ================= */
 
-.stats{
+.info-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:30px;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
-.stat{
-    text-align:center;
-    padding:28px;
+.info{
+    padding:25px;
     border:1px solid var(--border);
     border-radius:20px;
     background:rgba(255,255,255,.025);
 }
 
-.stat-number{
+.info small{
+    display:block;
+    color:var(--gray);
+    margin-bottom:8px;
+}
+
+.info strong{
+    font-size:17px;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-top:30px;
+}
+
+.stat{
+    text-align:center;
+    padding:30px 15px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:rgba(255,255,255,.025);
+}
+
+.number{
     font-size:40px;
     font-weight:900;
     background:linear-gradient(90deg,var(--blue),var(--green));
@@ -383,42 +413,40 @@ section{
 
 .stat p{
     color:var(--gray);
-    margin-top:5px;
     font-size:13px;
+    margin-top:5px;
 }
 
-/* TECH */
+/* ================= SKILLS ================= */
 
-.tech{
+.skills{
     display:flex;
     flex-wrap:wrap;
     gap:12px;
 }
 
-.tech span{
-    padding:13px 18px;
+.skill{
+    padding:13px 19px;
     border-radius:50px;
     border:1px solid var(--border);
     background:rgba(255,255,255,.035);
-    color:#dbe4ed;
     transition:.3s;
 }
 
-.tech span:hover{
-    transform:translateY(-4px);
+.skill:hover{
+    transform:translateY(-5px);
     border-color:var(--blue);
-    box-shadow:0 0 25px rgba(0,200,255,.08);
 }
 
-/* PROJECT */
+/* ================= PROJECT ================= */
 
 .project{
-    padding:45px;
-    border-radius:30px;
+    padding:48px;
+    border-radius:32px;
     border:1px solid var(--border);
     background:
-        linear-gradient(135deg,rgba(0,200,255,.08),rgba(0,255,157,.05)),
-        var(--card);
+    linear-gradient(135deg,rgba(0,200,255,.08),rgba(0,255,157,.05)),
+    var(--card);
     position:relative;
     overflow:hidden;
 }
@@ -427,40 +455,40 @@ section{
     content:"SMART ACADEMY";
     position:absolute;
     right:-30px;
-    bottom:-15px;
-    font-size:70px;
+    bottom:-10px;
+    font-size:75px;
     font-weight:900;
     color:rgba(255,255,255,.025);
     pointer-events:none;
 }
 
 .project h3{
-    font-size:38px;
+    font-size:40px;
     margin-bottom:15px;
 }
 
 .project p{
-    max-width:800px;
     color:var(--gray);
-    line-height:1.8;
+    max-width:820px;
+    line-height:1.9;
 }
 
 .tags{
     display:flex;
     flex-wrap:wrap;
     gap:9px;
-    margin-top:25px;
+    margin-top:27px;
 }
 
 .tags span{
     padding:8px 12px;
-    border-radius:8px;
     background:rgba(0,0,0,.3);
     color:var(--green);
+    border-radius:8px;
     font-size:12px;
 }
 
-/* TIMELINE */
+/* ================= TIMELINE ================= */
 
 .timeline{
     border-left:1px solid rgba(0,200,255,.3);
@@ -469,7 +497,7 @@ section{
 
 .timeline-item{
     position:relative;
-    margin-bottom:42px;
+    margin-bottom:45px;
 }
 
 .timeline-item::before{
@@ -490,23 +518,36 @@ section{
 
 .timeline-item p{
     color:var(--gray);
-    line-height:1.7;
+    line-height:1.8;
 }
 
-/* SOCIAL */
+/* ================= ACHIEVEMENTS ================= */
+
+.achievement{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.achievement-icon{
+    font-size:40px;
+}
+
+/* ================= SOCIAL ================= */
 
 .socials{
     display:flex;
-    gap:14px;
     flex-wrap:wrap;
+    gap:14px;
 }
 
 .social{
-    padding:15px 20px;
+    padding:16px 21px;
     border:1px solid var(--border);
-    border-radius:13px;
+    border-radius:14px;
     background:rgba(255,255,255,.035);
-    transition:.3s;
+    text-decoration:none;
+    transition:.35s;
 }
 
 .social:hover{
@@ -514,42 +555,42 @@ section{
     border-color:var(--blue);
 }
 
-/* CONTACT */
+/* ================= CONTACT ================= */
 
 .contact{
     text-align:center;
-    padding:90px 30px;
-    border-radius:32px;
+    padding:95px 30px;
     border:1px solid var(--border);
+    border-radius:35px;
     background:
-        radial-gradient(circle at center,rgba(0,200,255,.09),transparent 55%),
-        rgba(255,255,255,.02);
+    radial-gradient(circle at center,rgba(0,200,255,.10),transparent 60%),
+    rgba(255,255,255,.02);
 }
 
 .contact h2{
-    font-size:clamp(36px,6vw,58px);
+    font-size:clamp(38px,6vw,62px);
     margin-bottom:15px;
 }
 
 .contact p{
     color:var(--gray);
-    margin-bottom:28px;
+    margin-bottom:30px;
 }
 
-/* BACK TO TOP */
+/* ================= TOP BUTTON ================= */
 
 .top{
     position:fixed;
     right:25px;
     bottom:25px;
-    width:45px;
-    height:45px;
-    border-radius:50%;
+    width:46px;
+    height:46px;
     display:flex;
     align-items:center;
     justify-content:center;
+    border-radius:50%;
     background:linear-gradient(135deg,var(--blue),var(--green));
-    color:#00110c;
+    color:#00120c;
     font-weight:bold;
     text-decoration:none;
     opacity:0;
@@ -563,7 +604,7 @@ section{
     pointer-events:auto;
 }
 
-/* REVEAL */
+/* ================= REVEAL ================= */
 
 .reveal{
     opacity:0;
@@ -576,13 +617,13 @@ section{
     transform:translateY(0);
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
     text-align:center;
-    padding:45px 20px;
-    border-top:1px solid var(--border);
+    padding:50px 20px;
     color:var(--gray);
+    border-top:1px solid var(--border);
     font-size:13px;
 }
 
@@ -590,9 +631,9 @@ footer strong{
     color:var(--white);
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
-@media(max-width:850px){
+@media(max-width:900px){
 
     nav ul{
         display:none;
@@ -601,15 +642,11 @@ footer strong{
     .hero{
         flex-direction:column;
         text-align:center;
-        padding-top:140px;
+        padding-top:145px;
     }
 
     .hero-content{
         max-width:100%;
-    }
-
-    .typing{
-        font-size:17px;
     }
 
     .buttons{
@@ -617,16 +654,20 @@ footer strong{
     }
 
     .profile{
-        width:280px;
-        height:355px;
+        width:285px;
+        height:360px;
     }
 
     .grid{
         grid-template-columns:1fr;
     }
 
+    .info-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
     .stats{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
     }
 
     .section-title{
@@ -638,9 +679,27 @@ footer strong{
     }
 
     .project h3{
-        font-size:30px;
+        font-size:31px;
     }
 }
+
+@media(max-width:520px){
+
+    h1{
+        font-size:55px;
+        letter-spacing:-4px;
+    }
+
+    .info-grid,
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:90px 0;
+    }
+}
+
 </style>
 </head>
 
@@ -648,21 +707,28 @@ footer strong{
 
 <div class="grid-bg"></div>
 
-<!-- NAVIGATION -->
+
+<!-- ================= NAVIGATION ================= -->
+
 <nav>
-    <div class="logo">N<span>.</span></div>
+
+    <div class="logo">
+        N<span>.</span>
+    </div>
 
     <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#tech">Tech</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#journey">Journey</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#connect">Connect</a></li>
     </ul>
+
 </nav>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
+
 <section class="hero">
 
     <div class="hero-content reveal">
@@ -677,11 +743,13 @@ footer strong{
             <span class="gradient">Norizkandar.</span>
         </h1>
 
-        <div class="typing">
-            <span id="typing"></span><span class="cursor">|</span>
+        <div class="hero-description">
+            <span id="typing"></span>
+            <span class="cursor">|</span>
         </div>
 
         <div class="buttons">
+
             <a href="#projects" class="btn primary">
                 Explore My Work →
             </a>
@@ -691,17 +759,19 @@ footer strong{
                class="btn secondary">
                 GitHub ↗
             </a>
+
         </div>
 
     </div>
 
-    <div class="profile-wrap reveal">
+
+    <div class="profile-area reveal">
 
         <img src="profile.jpg"
              alt="Mohamad Norizkandar"
              class="profile">
 
-        <div class="status">
+        <div class="profile-badge">
             ⚡ Building ideas
         </div>
 
@@ -710,66 +780,43 @@ footer strong{
 </section>
 
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
+
 <section id="about" class="reveal">
 
-    <div class="section-label">01 — ABOUT</div>
+    <div class="label">01 — ABOUT ME</div>
 
     <h2 class="section-title">
-        More Than Just <span>Code.</span>
+        Nice To <span>Meet You.</span>
     </h2>
 
     <p class="subtitle">
-        I'm a creative developer who enjoys turning ideas into
-        useful and modern digital experiences.
+        I'm Mohamad Norizkandar, a young creative developer who
+        enjoys programming, building applications and turning
+        ideas into real digital experiences.
     </p>
 
-    <div class="grid">
 
-        <div class="card">
-            <div class="icon">🚀</div>
-            <h3>Creative Thinking</h3>
-            <p>
-                I enjoy experimenting with new ideas and finding
-                creative ways to solve problems.
-            </p>
+    <div class="info-grid">
+
+        <div class="info">
+            <small>Name</small>
+            <strong>Mohamad Norizkandar</strong>
         </div>
 
-        <div class="card">
-            <div class="icon">💻</div>
-            <h3>App Development</h3>
-            <p>
-                I build mobile application concepts using modern
-                development tools and technologies.
-            </p>
+        <div class="info">
+            <small>Age</small>
+            <strong>14 Years Old</strong>
         </div>
 
-        <div class="card">
-            <div class="icon">🔥</div>
-            <h3>Always Learning</h3>
-            <p>
-                Every project is an opportunity to learn something
-                new and improve my skills.
-            </p>
+        <div class="info">
+            <small>Based In</small>
+            <strong>Taiping, Perak</strong>
         </div>
 
-    </div>
-
-    <div class="stats">
-
-        <div class="stat">
-            <div class="stat-number">1+</div>
-            <p>Major Project</p>
-        </div>
-
-        <div class="stat">
-            <div class="stat-number">5+</div>
-            <p>Technologies</p>
-        </div>
-
-        <div class="stat">
-            <div class="stat-number">∞</div>
-            <p>Ideas To Build</p>
+        <div class="info">
+            <small>Focus</small>
+            <strong>App Development</strong>
         </div>
 
     </div>
@@ -777,55 +824,151 @@ footer strong{
 </section>
 
 
-<!-- TECH -->
-<section id="tech" class="reveal">
+<!-- ================= WHAT I DO ================= -->
 
-    <div class="section-label">02 — TECHNOLOGY</div>
+<section class="reveal">
+
+    <div class="label">02 — WHAT I DO</div>
+
+    <h2 class="section-title">
+        I Build <span>Digital Ideas.</span>
+    </h2>
+
+    <p class="subtitle">
+        My main focus is creating useful, modern and interactive
+        application experiences.
+    </p>
+
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">📱</div>
+            <h3>Mobile Apps</h3>
+            <p>
+                Designing and developing mobile application concepts
+                with modern user experiences.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎨</div>
+            <h3>UI & UX</h3>
+            <p>
+                Creating clean interfaces that are simple,
+                modern and enjoyable to use.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💡</div>
+            <h3>Ideas</h3>
+            <p>
+                Turning simple ideas into projects that can become
+                useful digital products.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="reveal">
+
+    <div class="label">03 — DEVELOPER STATS</div>
+
+    <h2 class="section-title">
+        My <span>Numbers.</span>
+    </h2>
+
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="number">14</div>
+            <p>Years Old</p>
+        </div>
+
+        <div class="stat">
+            <div class="number">1+</div>
+            <p>Major Project</p>
+        </div>
+
+        <div class="stat">
+            <div class="number">5+</div>
+            <p>Technologies</p>
+        </div>
+
+        <div class="stat">
+            <div class="number">∞</div>
+            <p>Ideas</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills" class="reveal">
+
+    <div class="label">04 — TECHNOLOGY</div>
 
     <h2 class="section-title">
         My <span>Tech Stack.</span>
     </h2>
 
     <p class="subtitle">
-        Tools and technologies I use to bring ideas to life.
+        Technologies and tools I use while learning and building projects.
     </p>
 
-    <div class="tech">
-        <span>JavaScript</span>
-        <span>React Native</span>
-        <span>Expo</span>
-        <span>Supabase</span>
-        <span>VS Code</span>
-        <span>GitHub</span>
-        <span>HTML</span>
-        <span>CSS</span>
+
+    <div class="skills">
+
+        <div class="skill">JavaScript</div>
+        <div class="skill">React Native</div>
+        <div class="skill">Expo</div>
+        <div class="skill">Supabase</div>
+        <div class="skill">VS Code</div>
+        <div class="skill">GitHub</div>
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+
     </div>
 
 </section>
 
 
-<!-- PROJECT -->
+<!-- ================= PROJECT ================= -->
+
 <section id="projects" class="reveal">
 
-    <div class="section-label">03 — FEATURED PROJECT</div>
+    <div class="label">05 — FEATURED PROJECT</div>
 
     <h2 class="section-title">
         Something I <span>Built.</span>
     </h2>
+
 
     <div class="project">
 
         <h3>Smart Academy 📱</h3>
 
         <p>
-            A modern tuition platform concept designed to create
-            a more interactive learning experience for students
-            and teachers. Smart Academy combines online learning,
-            live interaction, student achievements, teacher ratings
-            and smart learning features in one experience.
+            Smart Academy is a modern tuition platform concept
+            designed to create a more interactive learning experience
+            for students and teachers. The project combines online
+            learning, live interaction, achievements, teacher ratings
+            and smart learning features.
         </p>
 
+
         <div class="tags">
+
             <span>AI Assistant</span>
             <span>Whiteboard</span>
             <span>Student Live</span>
@@ -834,6 +977,7 @@ footer strong{
             <span>React Native</span>
             <span>Expo</span>
             <span>Supabase</span>
+
         </div>
 
     </div>
@@ -841,18 +985,15 @@ footer strong{
 </section>
 
 
-<!-- FEATURES -->
+<!-- ================= FEATURES ================= -->
+
 <section class="reveal">
 
-    <div class="section-label">04 — FEATURES</div>
+    <div class="label">06 — SMART ACADEMY</div>
 
     <h2 class="section-title">
-        What Makes It <span>Different.</span>
+        Built For <span>Learning.</span>
     </h2>
-
-    <p class="subtitle">
-        Some of the concepts I explored while developing Smart Academy.
-    </p>
 
     <div class="grid">
 
@@ -861,7 +1002,7 @@ footer strong{
             <h3>AI Assistant</h3>
             <p>
                 A smart learning concept designed to support students
-                during their learning journey.
+                during their learning experience.
             </p>
         </div>
 
@@ -869,17 +1010,17 @@ footer strong{
             <div class="icon">🎥</div>
             <h3>Student Live</h3>
             <p>
-                An interactive live experience where students can
-                present and communicate through video.
+                Students can present and communicate through an
+                interactive live video experience.
             </p>
         </div>
 
         <div class="card">
             <div class="icon">🏆</div>
-            <h3>Student Achievement</h3>
+            <h3>Achievement</h3>
             <p>
-                A system designed to make learning more engaging
-                through visible student progress.
+                A feature designed to make progress more visible
+                and learning more motivating.
             </p>
         </div>
 
@@ -887,7 +1028,7 @@ footer strong{
             <div class="icon">🧑‍🏫</div>
             <h3>Teacher Rating</h3>
             <p>
-                Students can provide ratings to help create a more
+                Students can rate teachers as part of a more
                 transparent learning experience.
             </p>
         </div>
@@ -897,7 +1038,7 @@ footer strong{
             <h3>Whiteboard</h3>
             <p>
                 An interactive whiteboard concept for explaining
-                ideas during online learning.
+                ideas during online lessons.
             </p>
         </div>
 
@@ -905,8 +1046,8 @@ footer strong{
             <div class="icon">👥</div>
             <h3>Student & Teacher</h3>
             <p>
-                Separate experiences designed around the needs of
-                students and teachers.
+                Separate experiences designed around the needs
+                of students and teachers.
             </p>
         </div>
 
@@ -915,50 +1056,175 @@ footer strong{
 </section>
 
 
-<!-- JOURNEY -->
+<!-- ================= JOURNEY ================= -->
+
 <section id="journey" class="reveal">
 
-    <div class="section-label">05 — JOURNEY</div>
+    <div class="label">07 — MY JOURNEY</div>
 
     <h2 class="section-title">
-        My Coding <span>Journey.</span>
+        From Learning To <span>Building.</span>
     </h2>
 
     <p class="subtitle">
-        From learning the basics to building my own application.
+        Every project is another step forward.
     </p>
+
 
     <div class="timeline">
 
         <div class="timeline-item">
-            <h3>Started Learning Programming</h3>
+
+            <h3>Started Learning Code</h3>
+
             <p>
-                Began exploring programming and learning how
-                applications are designed and developed.
+                Started exploring programming and learning how
+                applications are created.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <h3>Discovered App Development</h3>
+
+            <p>
+                Started learning JavaScript, React Native and Expo
+                to build mobile application ideas.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <h3>Built Smart Academy</h3>
+
+            <p>
+                Turned a tuition app idea into a real project with
+                multiple interactive features.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <h3>Keep Learning 🚀</h3>
+
+            <p>
+                Continuing to explore new technologies, improve
+                programming skills and build bigger ideas.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ACHIEVEMENTS ================= -->
+
+<section class="reveal">
+
+    <div class="label">08 — ACHIEVEMENTS</div>
+
+    <h2 class="section-title">
+        Things I'm <span>Proud Of.</span>
+    </h2>
+
+    <div class="grid">
+
+        <div class="card achievement">
+
+            <div class="achievement-icon">🚀</div>
+
+            <div>
+                <h3>First Mobile App</h3>
+                <p>
+                    Built my first major mobile application project.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="card achievement">
+
+            <div class="achievement-icon">💻</div>
+
+            <div>
+                <h3>Learning Through Projects</h3>
+                <p>
+                    Turning programming knowledge into real projects.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="card achievement">
+
+            <div class="achievement-icon">🔥</div>
+
+            <div>
+                <h3>Never Stop Building</h3>
+                <p>
+                    Continuously learning and experimenting with new ideas.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GOALS ================= -->
+
+<section class="reveal">
+
+    <div class="label">09 — FUTURE</div>
+
+    <h2 class="section-title">
+        What's <span>Next?</span>
+    </h2>
+
+    <p class="subtitle">
+        This is only the beginning. There are still many things
+        I want to learn and build.
+    </p>
+
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">🧠</div>
+            <h3>Learn More</h3>
+            <p>
+                Explore more programming languages, frameworks
+                and development techniques.
             </p>
         </div>
 
-        <div class="timeline-item">
-            <h3>Started Building Smart Academy</h3>
+        <div class="card">
+            <div class="icon">🚀</div>
+            <h3>Build Bigger</h3>
             <p>
-                Turned an idea for a tuition platform into a real
-                mobile application project.
+                Create larger applications and turn more ideas
+                into real products.
             </p>
         </div>
 
-        <div class="timeline-item">
-            <h3>Explored New Features</h3>
+        <div class="card">
+            <div class="icon">🌎</div>
+            <h3>Go Further</h3>
             <p>
-                Added concepts such as AI Assistant, Whiteboard,
-                Student Live and Achievement.
-            </p>
-        </div>
-
-        <div class="timeline-item">
-            <h3>Still Building 🚀</h3>
-            <p>
-                Continuing to learn, experiment and create better
-                digital experiences.
+                Keep improving and eventually create projects
+                that can help people around the world.
             </p>
         </div>
 
@@ -967,31 +1233,34 @@ footer strong{
 </section>
 
 
-<!-- SOCIAL -->
-<section class="reveal">
+<!-- ================= CONNECT ================= -->
 
-    <div class="section-label">06 — CONNECT</div>
+<section id="connect" class="reveal">
+
+    <div class="label">10 — SOCIAL</div>
 
     <h2 class="section-title">
         Find Me <span>Online.</span>
     </h2>
 
     <p class="subtitle">
-        Follow the journey and see what I'm building.
+        Follow my coding journey, projects and future builds.
     </p>
+
 
     <div class="socials">
 
         <a class="social"
            href="https://github.com/norizkandar"
            target="_blank">
-            💻 GitHub
+            💻 GitHub · @norizkandar
         </a>
+
 
         <a class="social"
            href="https://www.tiktok.com/@iz_andar"
            target="_blank">
-            🎵 TikTok
+            🎵 TikTok · @iz_andar
         </a>
 
     </div>
@@ -999,12 +1268,13 @@ footer strong{
 </section>
 
 
-<!-- CONTACT -->
-<section id="contact" class="reveal">
+<!-- ================= CONTACT ================= -->
+
+<section class="reveal">
 
     <div class="contact">
 
-        <div class="section-label">07 — CONTACT</div>
+        <div class="label">11 — CONTACT</div>
 
         <h2>Let's Build Something.</h2>
 
@@ -1023,58 +1293,65 @@ footer strong{
 </section>
 
 
-<!-- BACK TO TOP -->
+<!-- ================= TOP ================= -->
+
 <a href="#" class="top" id="top">↑</a>
 
 
 <footer>
+
     © 2026 <strong>Mohamad Norizkandar</strong>
     · Creative App Developer
+    <br><br>
+    Built with curiosity, code & lots of ideas. 🚀
+
 </footer>
 
 
 <script>
 
-/* TYPING EFFECT */
+/* ================= TYPING ================= */
 
 const text =
 "I turn creative ideas into modern mobile applications and digital experiences.";
 
-const typing = document.getElementById("typing");
+const typing =
+document.getElementById("typing");
 
-let index = 0;
+let i = 0;
 
-function typeEffect(){
+function typeText(){
 
-    if(index < text.length){
+    if(i < text.length){
 
-        typing.textContent += text.charAt(index);
+        typing.textContent += text.charAt(i);
 
-        index++;
+        i++;
 
-        setTimeout(typeEffect,35);
+        setTimeout(typeText,32);
 
     }
 
 }
 
-typeEffect();
+typeText();
 
 
-/* SCROLL REVEAL */
+/* ================= SCROLL REVEAL ================= */
 
-const reveals = document.querySelectorAll(".reveal");
+const reveals =
+document.querySelectorAll(".reveal");
 
-function revealOnScroll(){
+function reveal(){
 
-    reveals.forEach(element => {
+    reveals.forEach(item => {
 
         const position =
-        element.getBoundingClientRect().top;
+        item.getBoundingClientRect().top;
 
-        if(position < window.innerHeight - 100){
+        if(position < window.innerHeight - 80){
 
-            element.classList.add("active");
+            item.classList.add("active");
 
         }
 
@@ -1082,16 +1359,17 @@ function revealOnScroll(){
 
 }
 
-window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("scroll",reveal);
 
-revealOnScroll();
+reveal();
 
 
-/* BACK TO TOP */
+/* ================= TOP BUTTON ================= */
 
-const topButton = document.getElementById("top");
+const topButton =
+document.getElementById("top");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
 
     if(window.scrollY > 500){
 

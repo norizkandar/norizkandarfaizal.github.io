@@ -1,443 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="google-site-verification" content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mohamad Norizkandar — Creative App Developer building modern mobile applications and digital experiences.">
-
-    <title>Mohamad Norizkandar | Creative App Developer</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        :root {
-            --bg: #05070b;
-            --card: rgba(15, 20, 30, 0.72);
-            --blue: #00c8ff;
-            --green: #00ff9d;
-            --white: #f5f7fa;
-            --gray: #9aa4b2;
-            --border: rgba(255,255,255,0.08);
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background:
-                radial-gradient(circle at 15% 20%, rgba(0,200,255,.12), transparent 30%),
-                radial-gradient(circle at 85% 70%, rgba(0,255,157,.10), transparent 30%),
-                var(--bg);
-            color: var(--white);
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* NAVBAR */
-
-        nav {
-            position: fixed;
-            top: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(1100px, 92%);
-            padding: 14px 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5,7,11,.72);
-            backdrop-filter: blur(18px);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--blue);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            color: var(--gray);
-            font-size: 14px;
-            transition: .3s;
-        }
-
-        nav a:hover {
-            color: var(--blue);
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 100vh;
-            width: min(1100px, 92%);
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 60px;
-            padding-top: 100px;
-        }
-
-        .hero-content {
-            max-width: 650px;
-        }
-
-        .tag {
-            display: inline-block;
-            padding: 8px 14px;
-            border: 1px solid rgba(0,200,255,.3);
-            border-radius: 50px;
-            color: var(--blue);
-            font-size: 12px;
-            letter-spacing: 2px;
-            margin-bottom: 22px;
-            background: rgba(0,200,255,.05);
-        }
-
-        h1 {
-            font-size: clamp(48px, 8vw, 88px);
-            line-height: .95;
-            letter-spacing: -4px;
-            margin-bottom: 25px;
-        }
-
-        h1 span {
-            background: linear-gradient(90deg, var(--blue), var(--green));
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            color: var(--gray);
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 580px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 14px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 22px;
-            border-radius: 12px;
-            font-weight: 700;
-            border: 1px solid var(--border);
-            transition: .3s;
-        }
-
-        .btn-primary {
-            background: linear-gradient(90deg, var(--blue), var(--green));
-            color: #00110b;
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,.04);
-        }
-
-        .btn:hover {
-            transform: translateY(-4px);
-        }
-
-        /* PROFILE */
-
-        .profile-wrap {
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .profile-wrap::before {
-            content: "";
-            position: absolute;
-            inset: -15px;
-            border-radius: 35px;
-            background: linear-gradient(135deg, var(--blue), var(--green));
-            filter: blur(28px);
-            opacity: .25;
-            z-index: -1;
-        }
-
-        .profile {
-            width: 310px;
-            height: 390px;
-            object-fit: cover;
-            border-radius: 30px;
-            border: 1px solid rgba(0,200,255,.5);
-            box-shadow: 0 0 70px rgba(0,200,255,.15);
-        }
-
-        .badge {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            padding: 10px 15px;
-            border-radius: 12px;
-            background: rgba(5,7,11,.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            font-size: 12px;
-        }
-
-        /* GENERAL */
-
-        section {
-            width: min(1100px, 92%);
-            margin: auto;
-            padding: 110px 0;
-        }
-
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 12px;
-        }
-
-        .section-title span {
-            color: var(--blue);
-        }
-
-        .section-subtitle {
-            color: var(--gray);
-            margin-bottom: 45px;
-        }
-
-        /* CARDS */
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .card {
-            padding: 28px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            backdrop-filter: blur(12px);
-            transition: .35s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0,200,255,.4);
-            box-shadow: 0 15px 50px rgba(0,0,0,.3);
-        }
-
-        .icon {
-            font-size: 30px;
-            margin-bottom: 18px;
-        }
-
-        .card h3 {
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: var(--gray);
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        /* TECH */
-
-        .tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .tech span {
-            padding: 12px 18px;
-            border-radius: 50px;
-            background: rgba(255,255,255,.04);
-            border: 1px solid var(--border);
-            color: #dce3eb;
-            transition: .3s;
-        }
-
-        .tech span:hover {
-            border-color: var(--blue);
-            transform: translateY(-3px);
-        }
-
-        /* PROJECT */
-
-        .project {
-            padding: 45px;
-            border-radius: 30px;
-            background:
-                linear-gradient(135deg, rgba(0,200,255,.08), rgba(0,255,157,.05)),
-                var(--card);
-            border: 1px solid var(--border);
-        }
-
-        .project h3 {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .project p {
-            color: var(--gray);
-            line-height: 1.8;
-            max-width: 800px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 25px;
-        }
-
-        .project-tags span {
-            padding: 8px 12px;
-            border-radius: 8px;
-            background: rgba(0,0,0,.3);
-            color: var(--green);
-            font-size: 12px;
-        }
-
-        /* JOURNEY */
-
-        .timeline {
-            border-left: 1px solid rgba(0,200,255,.3);
-            padding-left: 30px;
-        }
-
-        .timeline-item {
-            margin-bottom: 35px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: var(--blue);
-            border-radius: 50%;
-            left: -36px;
-            top: 6px;
-            box-shadow: 0 0 15px var(--blue);
-        }
-
-        .timeline-item h3 {
-            margin-bottom: 7px;
-        }
-
-        .timeline-item p {
-            color: var(--gray);
-            line-height: 1.7;
-        }
-
-        /* CONTACT */
-
-        .contact {
-            text-align: center;
-            padding: 80px 30px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, rgba(0,200,255,.08), rgba(0,255,157,.08));
-            border: 1px solid var(--border);
-        }
-
-        .contact h2 {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .contact p {
-            color: var(--gray);
-            margin-bottom: 25px;
-        }
-
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--gray);
-            border-top: 1px solid var(--border);
-            font-size: 13px;
-        }
-
-        footer strong {
-            color: var(--white);
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 800px) {
-
-            nav ul {
-                display: none;
-            }
-
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                justify-content: center;
-            }
-
-            .hero p {
-                margin: auto;
-            }
-
-            .buttons {
-                justify-content: center;
-            }
-
-            .profile {
-                width: 270px;
-                height: 340px;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 34px;
-            }
-
-            .project {
-                padding: 28px;
-            }
-
-            .contact h2 {
-                font-size: 34px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+
+<!-- GOOGLE SEARCH CONSOLE VERIFICATION - DO NOT DELETE -->
+<meta name="google-site-verification" content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mohamad Norizkandar — Creative App Developer building modern mobile applications and digital experiences.">
+
+<title>Mohamad Norizkandar | Creative App Developer</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --bg:#03060a;
+    --card:rgba(13,20,30,.72);
+    --blue:#00c8ff;
+    --green:#00ff9d;
+    --white:#f5f7fa;
+    --gray:#98a5b5;
+    --border:rgba(255,255,255,.09);
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--white);
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:var(--blue);
+    filter:blur(180px);
+    opacity:.09;
+    top:-180px;
+    left:-180px;
+    pointer-events:none;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:var(--green);
+    filter:blur(180px);
+    opacity:.07;
+    right:-180px;
+    bottom:-180px;
+    pointer-events:none;
+    z-index:-2;
+}
+
+/* GRID BACKGROUND */
+
+.grid-bg{
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent);
+    pointer-events:none;
+    z-index:-3;
+}
+
+/* NAV */
+
+nav{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1120px,92%);
+    padding:14px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(4,8,13,.72);
+    backdrop-filter:blur(20px);
+    border:1px solid var(--border);
+    border-radius:20px;
+    z-index:1000;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+}
+
+.logo span{
+    color:var(--blue);
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:26px;
+}
+
+nav a{
+    color:var(--gray);
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--white);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    width:min(1120px,92%);
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+    padding-top:100px;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:9px 15px;
+    border:1px solid rgba(0,200,255,.3);
+    border-radius:50px;
+    color:var(--blue);
+    font-size:12px;
+    letter-spacing:2px;
+    margin-bottom:25px;
+    background:rgba(0,200,255,.04);
+}
+
+.dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 14px var(--green);
+}
+
+h1{
+    font-size:clamp(52px,8vw,94px);
+    line-height:.92;
+    letter-spacing:-5px;
+    margin-bottom:28px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.typing{
+    color:var(--gray);
+    font-size:20px;
+    line-height:1.7;
+    min-height:70px;
+}
+
+.cursor{
+    color:var(--blue);
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0}
+}
+
+.buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 23px;
+    border-radius:13px;
+    text-decoration:none;
+    font-weight:800;
+    transition:.35s;
+}
+
+.primary{
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    color:#00110c;
+    box-shadow:0 0 30px rgba(0,200,255,.12);
+}
+
+.secondary{
+    color:var(--white);
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* PROFILE */
+
+.profile-wrap{
+    position:relative;
+    flex-shrink:0;
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+}
+
+.profile-wrap::before{
+    content:"";
+    position:absolute;
+    inset:-22px;
+    border-radius:38px;
+    background:linear-gradient(135deg,var(--blue),var(--green));
+    filter:blur(35px);
+    opacity:.24;
+    z-index:-1;
+}
+
+.profile{
+    width:330px;
+    height:420px;
+    object-fit:cover;
+    border-radius:32px;
+    border:1px solid rgba(0,200,255,.55);
+    box-shadow:0 0 80px rgba(0,200,255,.13);
+}
+
+.status{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    padding:11px 16px;
+    border-radius:13px;
+    background:rgba(3,6,10,.85);
+    backdrop-filter:blur(15px);
+    border:1px solid var(--border);
+    font-size:12px;
+}
+
+/* SECTIONS */
+
+section{
+    width:min(1120px,92%);
+    margin:auto;
+    padding:110px 0;
+}
+
+.section-label{
+    color:var(--blue);
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.section-title{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.section-title span{
+    color:var(--blue);
+}
+
+.subtitle{
+    color:var(--gray);
+    margin-bottom:45px;
+    line-height:1.7;
+}
+
+/* CARDS */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    position:relative;
+    padding:30px;
+    border:1px solid var(--border);
+    background:var(--card);
+    backdrop-filter:blur(15px);
+    border-radius:23px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:var(--blue);
+    filter:blur(70px);
+    opacity:0;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-9px);
+    border-color:rgba(0,200,255,.35);
+}
+
+.card:hover::before{
+    opacity:.18;
+}
+
+.icon{
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    margin-bottom:11px;
+    font-size:20px;
+}
+
+.card p{
+    color:var(--gray);
+    font-size:14px;
+    line-height:1.75;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:30px;
+}
+
+.stat{
+    text-align:center;
+    padding:28px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:rgba(255,255,255,.025);
+}
+
+.stat-number{
+    font-size:40px;
+    font-weight:900;
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.stat p{
+    color:var(--gray);
+    margin-top:5px;
+    font-size:13px;
+}
+
+/* TECH */
+
+.tech{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.tech span{
+    padding:13px 18px;
+    border-radius:50px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.035);
+    color:#dbe4ed;
+    transition:.3s;
+}
+
+.tech span:hover{
+    transform:translateY(-4px);
+    border-color:var(--blue);
+    box-shadow:0 0 25px rgba(0,200,255,.08);
+}
+
+/* PROJECT */
+
+.project{
+    padding:45px;
+    border-radius:30px;
+    border:1px solid var(--border);
+    background:
+        linear-gradient(135deg,rgba(0,200,255,.08),rgba(0,255,157,.05)),
+        var(--card);
+    position:relative;
+    overflow:hidden;
+}
+
+.project::after{
+    content:"SMART ACADEMY";
+    position:absolute;
+    right:-30px;
+    bottom:-15px;
+    font-size:70px;
+    font-weight:900;
+    color:rgba(255,255,255,.025);
+    pointer-events:none;
+}
+
+.project h3{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.project p{
+    max-width:800px;
+    color:var(--gray);
+    line-height:1.8;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:25px;
+}
+
+.tags span{
+    padding:8px 12px;
+    border-radius:8px;
+    background:rgba(0,0,0,.3);
+    color:var(--green);
+    font-size:12px;
+}
+
+/* TIMELINE */
+
+.timeline{
+    border-left:1px solid rgba(0,200,255,.3);
+    padding-left:32px;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:42px;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--blue);
+    left:-38px;
+    top:5px;
+    box-shadow:0 0 18px var(--blue);
+}
+
+.timeline-item h3{
+    margin-bottom:8px;
+}
+
+.timeline-item p{
+    color:var(--gray);
+    line-height:1.7;
+}
+
+/* SOCIAL */
+
+.socials{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.social{
+    padding:15px 20px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:rgba(255,255,255,.035);
+    transition:.3s;
+}
+
+.social:hover{
+    transform:translateY(-5px);
+    border-color:var(--blue);
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+    padding:90px 30px;
+    border-radius:32px;
+    border:1px solid var(--border);
+    background:
+        radial-gradient(circle at center,rgba(0,200,255,.09),transparent 55%),
+        rgba(255,255,255,.02);
+}
+
+.contact h2{
+    font-size:clamp(36px,6vw,58px);
+    margin-bottom:15px;
+}
+
+.contact p{
+    color:var(--gray);
+    margin-bottom:28px;
+}
+
+/* BACK TO TOP */
+
+.top{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,var(--blue),var(--green));
+    color:#00110c;
+    font-weight:bold;
+    text-decoration:none;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:900;
+}
+
+.top.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:45px 20px;
+    border-top:1px solid var(--border);
+    color:var(--gray);
+    font-size:13px;
+}
+
+footer strong{
+    color:var(--white);
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding-top:140px;
+    }
+
+    .hero-content{
+        max-width:100%;
+    }
+
+    .typing{
+        font-size:17px;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .profile{
+        width:280px;
+        height:355px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:36px;
+    }
+
+    .project{
+        padding:30px;
+    }
+
+    .project h3{
+        font-size:30px;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<div class="grid-bg"></div>
+
+<!-- NAVIGATION -->
 <nav>
     <div class="logo">N<span>.</span></div>
 
@@ -450,63 +661,86 @@
     </ul>
 </nav>
 
+
+<!-- HERO -->
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="hero-content reveal">
 
-        <div class="tag">CREATIVE APP DEVELOPER</div>
+        <div class="eyebrow">
+            <span class="dot"></span>
+            CREATIVE APP DEVELOPER
+        </div>
 
         <h1>
             Mohamad<br>
-            <span>Norizkandar.</span>
+            <span class="gradient">Norizkandar.</span>
         </h1>
 
-        <p>
-            I turn creative ideas into modern mobile applications
-            and digital experiences.
-        </p>
+        <div class="typing">
+            <span id="typing"></span><span class="cursor">|</span>
+        </div>
 
         <div class="buttons">
-            <a href="#projects" class="btn btn-primary">View My Work</a>
-            <a href="https://github.com/norizkandar" target="_blank" class="btn btn-secondary">
+            <a href="#projects" class="btn primary">
+                Explore My Work →
+            </a>
+
+            <a href="https://github.com/norizkandar"
+               target="_blank"
+               class="btn secondary">
                 GitHub ↗
             </a>
         </div>
 
     </div>
 
-    <div class="profile-wrap">
-        <img src="profile.jpg" alt="Mohamad Norizkandar" class="profile">
+    <div class="profile-wrap reveal">
 
-        <div class="badge">
+        <img src="profile.jpg"
+             alt="Mohamad Norizkandar"
+             class="profile">
+
+        <div class="status">
             ⚡ Building ideas
         </div>
+
     </div>
 
 </section>
 
-<section id="about">
 
-    <h2 class="section-title">About <span>Me</span></h2>
-    <p class="section-subtitle">A young developer who loves turning ideas into real projects.</p>
+<!-- ABOUT -->
+<section id="about" class="reveal">
+
+    <div class="section-label">01 — ABOUT</div>
+
+    <h2 class="section-title">
+        More Than Just <span>Code.</span>
+    </h2>
+
+    <p class="subtitle">
+        I'm a creative developer who enjoys turning ideas into
+        useful and modern digital experiences.
+    </p>
 
     <div class="grid">
 
         <div class="card">
             <div class="icon">🚀</div>
-            <h3>Creative</h3>
+            <h3>Creative Thinking</h3>
             <p>
-                I enjoy creating unique ideas and transforming them
-                into modern digital experiences.
+                I enjoy experimenting with new ideas and finding
+                creative ways to solve problems.
             </p>
         </div>
 
         <div class="card">
             <div class="icon">💻</div>
-            <h3>Developer</h3>
+            <h3>App Development</h3>
             <p>
-                I build mobile applications using modern development
-                tools and technologies.
+                I build mobile application concepts using modern
+                development tools and technologies.
             </p>
         </div>
 
@@ -514,26 +748,54 @@
             <div class="icon">🔥</div>
             <h3>Always Learning</h3>
             <p>
-                I continuously learn new technologies and improve
-                my programming skills through real projects.
+                Every project is an opportunity to learn something
+                new and improve my skills.
             </p>
+        </div>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-number">1+</div>
+            <p>Major Project</p>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">5+</div>
+            <p>Technologies</p>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">∞</div>
+            <p>Ideas To Build</p>
         </div>
 
     </div>
 
 </section>
 
-<section id="tech">
 
-    <h2 class="section-title">Tech <span>Stack</span></h2>
-    <p class="section-subtitle">Technologies I use to build my projects.</p>
+<!-- TECH -->
+<section id="tech" class="reveal">
+
+    <div class="section-label">02 — TECHNOLOGY</div>
+
+    <h2 class="section-title">
+        My <span>Tech Stack.</span>
+    </h2>
+
+    <p class="subtitle">
+        Tools and technologies I use to bring ideas to life.
+    </p>
 
     <div class="tech">
         <span>JavaScript</span>
         <span>React Native</span>
         <span>Expo</span>
-        <span>VS Code</span>
         <span>Supabase</span>
+        <span>VS Code</span>
         <span>GitHub</span>
         <span>HTML</span>
         <span>CSS</span>
@@ -541,30 +803,36 @@
 
 </section>
 
-<section id="projects">
 
-    <h2 class="section-title">Featured <span>Project</span></h2>
-    <p class="section-subtitle">The project I'm most proud of.</p>
+<!-- PROJECT -->
+<section id="projects" class="reveal">
+
+    <div class="section-label">03 — FEATURED PROJECT</div>
+
+    <h2 class="section-title">
+        Something I <span>Built.</span>
+    </h2>
 
     <div class="project">
 
         <h3>Smart Academy 📱</h3>
 
         <p>
-            Smart Academy is a modern tuition platform designed to
-            create a more interactive learning experience for students
-            and teachers. The concept combines online classes,
-            student achievements, teacher ratings, live interaction
-            and smart learning features.
+            A modern tuition platform concept designed to create
+            a more interactive learning experience for students
+            and teachers. Smart Academy combines online learning,
+            live interaction, student achievements, teacher ratings
+            and smart learning features in one experience.
         </p>
 
-        <div class="project-tags">
+        <div class="tags">
             <span>AI Assistant</span>
             <span>Whiteboard</span>
             <span>Student Live</span>
             <span>Achievement</span>
             <span>Teacher Rating</span>
             <span>React Native</span>
+            <span>Expo</span>
             <span>Supabase</span>
         </div>
 
@@ -572,10 +840,19 @@
 
 </section>
 
-<section>
 
-    <h2 class="section-title">What I <span>Build</span></h2>
-    <p class="section-subtitle">Ideas transformed into digital experiences.</p>
+<!-- FEATURES -->
+<section class="reveal">
+
+    <div class="section-label">04 — FEATURES</div>
+
+    <h2 class="section-title">
+        What Makes It <span>Different.</span>
+    </h2>
+
+    <p class="subtitle">
+        Some of the concepts I explored while developing Smart Academy.
+    </p>
 
     <div class="grid">
 
@@ -599,10 +876,37 @@
 
         <div class="card">
             <div class="icon">🏆</div>
-            <h3>Achievement</h3>
+            <h3>Student Achievement</h3>
             <p>
-                A student achievement system designed to make learning
-                more engaging and motivating.
+                A system designed to make learning more engaging
+                through visible student progress.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧑‍🏫</div>
+            <h3>Teacher Rating</h3>
+            <p>
+                Students can provide ratings to help create a more
+                transparent learning experience.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h3>Whiteboard</h3>
+            <p>
+                An interactive whiteboard concept for explaining
+                ideas during online learning.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Student & Teacher</h3>
+            <p>
+                Separate experiences designed around the needs of
+                students and teachers.
             </p>
         </div>
 
@@ -610,34 +914,51 @@
 
 </section>
 
-<section id="journey">
 
-    <h2 class="section-title">My <span>Journey</span></h2>
-    <p class="section-subtitle">From learning the basics to building my own application.</p>
+<!-- JOURNEY -->
+<section id="journey" class="reveal">
+
+    <div class="section-label">05 — JOURNEY</div>
+
+    <h2 class="section-title">
+        My Coding <span>Journey.</span>
+    </h2>
+
+    <p class="subtitle">
+        From learning the basics to building my own application.
+    </p>
 
     <div class="timeline">
 
         <div class="timeline-item">
-            <h3>Started Learning Code</h3>
+            <h3>Started Learning Programming</h3>
             <p>
-                Started exploring programming and learning how
-                applications are created.
+                Began exploring programming and learning how
+                applications are designed and developed.
             </p>
         </div>
 
         <div class="timeline-item">
-            <h3>Built My First App</h3>
+            <h3>Started Building Smart Academy</h3>
             <p>
-                Started developing Smart Academy and turned an idea
-                into a real mobile application project.
+                Turned an idea for a tuition platform into a real
+                mobile application project.
             </p>
         </div>
 
         <div class="timeline-item">
-            <h3>Keep Building</h3>
+            <h3>Explored New Features</h3>
             <p>
-                Continuing to experiment, learn new technologies
-                and create better digital experiences.
+                Added concepts such as AI Assistant, Whiteboard,
+                Student Live and Achievement.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Still Building 🚀</h3>
+            <p>
+                Continuing to learn, experiment and create better
+                digital experiences.
             </p>
         </div>
 
@@ -645,19 +966,55 @@
 
 </section>
 
-<section id="contact">
+
+<!-- SOCIAL -->
+<section class="reveal">
+
+    <div class="section-label">06 — CONNECT</div>
+
+    <h2 class="section-title">
+        Find Me <span>Online.</span>
+    </h2>
+
+    <p class="subtitle">
+        Follow the journey and see what I'm building.
+    </p>
+
+    <div class="socials">
+
+        <a class="social"
+           href="https://github.com/norizkandar"
+           target="_blank">
+            💻 GitHub
+        </a>
+
+        <a class="social"
+           href="https://www.tiktok.com/@iz_andar"
+           target="_blank">
+            🎵 TikTok
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
 
     <div class="contact">
+
+        <div class="section-label">07 — CONTACT</div>
 
         <h2>Let's Build Something.</h2>
 
         <p>
-            Have an idea? Let's turn it into something real.
+            Ideas start small. Great projects don't.
         </p>
 
         <a href="https://github.com/norizkandar"
            target="_blank"
-           class="btn btn-primary">
+           class="btn primary">
             Visit My GitHub ↗
         </a>
 
@@ -665,9 +1022,90 @@
 
 </section>
 
+
+<!-- BACK TO TOP -->
+<a href="#" class="top" id="top">↑</a>
+
+
 <footer>
-    © 2026 <strong>Mohamad Norizkandar</strong> · Creative App Developer
+    © 2026 <strong>Mohamad Norizkandar</strong>
+    · Creative App Developer
 </footer>
+
+
+<script>
+
+/* TYPING EFFECT */
+
+const text =
+"I turn creative ideas into modern mobile applications and digital experiences.";
+
+const typing = document.getElementById("typing");
+
+let index = 0;
+
+function typeEffect(){
+
+    if(index < text.length){
+
+        typing.textContent += text.charAt(index);
+
+        index++;
+
+        setTimeout(typeEffect,35);
+
+    }
+
+}
+
+typeEffect();
+
+
+/* SCROLL REVEAL */
+
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+
+    reveals.forEach(element => {
+
+        const position =
+        element.getBoundingClientRect().top;
+
+        if(position < window.innerHeight - 100){
+
+            element.classList.add("active");
+
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+revealOnScroll();
+
+
+/* BACK TO TOP */
+
+const topButton = document.getElementById("top");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 500){
+
+        topButton.classList.add("show");
+
+    }else{
+
+        topButton.classList.remove("show");
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>

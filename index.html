@@ -17,33 +17,205 @@
 }
 
 :root{
-    --bg:#03050a;
-    --panel:rgba(10,15,25,.72);
+    --bg:#02030a;
+    --panel:rgba(7,10,22,.68);
     --blue:#00e5ff;
     --green:#00ff9d;
     --white:#f5f7fa;
-    --muted:#8993a4;
+    --muted:#8d96a8;
+}
+
+html{
+    background:#02030a;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:var(--bg);
+    background:
+        radial-gradient(circle at 20% 20%,rgba(0,100,255,.08),transparent 28%),
+        radial-gradient(circle at 80% 70%,rgba(0,255,157,.06),transparent 30%),
+        #02030a;
     color:var(--white);
     overflow-x:hidden;
 }
 
-/* ================= LOADING ================= */
+/* =================================================
+   GALAXY BACKGROUND
+================================================= */
+
+#galaxy{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-10;
+    pointer-events:none;
+}
+
+.space{
+    position:fixed;
+    inset:0;
+    z-index:-9;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+/* stars */
+
+.stars,
+.stars2,
+.stars3{
+    position:absolute;
+    inset:-100%;
+    width:300%;
+    height:300%;
+    background-repeat:repeat;
+    opacity:.7;
+}
+
+.stars{
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(0,229,255,.7) 1px,transparent 1.5px);
+    background-size:120px 120px,190px 190px;
+    animation:starsMove 100s linear infinite;
+}
+
+.stars2{
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.65) 1px,transparent 2px),
+        radial-gradient(circle,rgba(0,255,157,.55) 1px,transparent 2px);
+    background-size:230px 230px,310px 310px;
+    animation:starsMove2 160s linear infinite;
+    opacity:.5;
+}
+
+.stars3{
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 2px);
+    background-size:370px 370px;
+    animation:starsMove3 220s linear infinite;
+    opacity:.4;
+}
+
+@keyframes starsMove{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(-300px,-500px);
+    }
+}
+
+@keyframes starsMove2{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(400px,-350px);
+    }
+}
+
+@keyframes starsMove3{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(-200px,300px);
+    }
+}
+
+/* nebula */
+
+.nebula{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.17;
+    mix-blend-mode:screen;
+}
+
+.nebula.one{
+    width:650px;
+    height:400px;
+    background:#004cff;
+    top:-150px;
+    left:-200px;
+    transform:rotate(-25deg);
+    animation:nebulaFloat 15s ease-in-out infinite alternate;
+}
+
+.nebula.two{
+    width:600px;
+    height:420px;
+    background:#00e5ff;
+    right:-250px;
+    top:25%;
+    transform:rotate(30deg);
+    animation:nebulaFloat2 18s ease-in-out infinite alternate;
+}
+
+.nebula.three{
+    width:700px;
+    height:400px;
+    background:#00ff9d;
+    bottom:-220px;
+    left:25%;
+    animation:nebulaFloat3 20s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaFloat{
+    from{transform:translate(0,0) rotate(-25deg)}
+    to{transform:translate(80px,50px) rotate(-10deg)}
+}
+
+@keyframes nebulaFloat2{
+    from{transform:translate(0,0) rotate(30deg)}
+    to{transform:translate(-80px,40px) rotate(15deg)}
+}
+
+@keyframes nebulaFloat3{
+    from{transform:translate(0,0)}
+    to{transform:translate(50px,-60px)}
+}
+
+/* galaxy glow */
+
+.galaxy-core{
+    position:absolute;
+    width:800px;
+    height:260px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-20deg);
+    border-radius:50%;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,.12) 0%,
+            rgba(0,229,255,.08) 25%,
+            rgba(0,100,255,.04) 45%,
+            transparent 70%
+        );
+    filter:blur(35px);
+    opacity:.5;
+}
+
+/* =================================================
+   LOADER
+================================================= */
 
 #loader{
     position:fixed;
     inset:0;
-    background:#020409;
+    background:#010208;
     z-index:99999;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction:column;
-    transition:opacity 1s ease, visibility 1s ease;
+    transition:opacity 1s ease,visibility 1s ease;
+    overflow:hidden;
 }
 
 #loader.hide{
@@ -51,61 +223,71 @@ body{
     visibility:hidden;
 }
 
-.loader-grid{
+.loader-space{
     position:absolute;
     inset:0;
     background:
-        linear-gradient(rgba(0,229,255,.05) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,229,255,.05) 1px,transparent 1px);
-    background-size:50px 50px;
-    animation:gridMove 8s linear infinite;
+        radial-gradient(circle at 50% 50%,rgba(0,229,255,.08),transparent 35%),
+        #010208;
 }
 
-@keyframes gridMove{
-    from{transform:translateY(0)}
-    to{transform:translateY(50px)}
+.loader-stars{
+    position:absolute;
+    inset:-50%;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 2px),
+        radial-gradient(circle,rgba(0,229,255,.6) 1px,transparent 2px);
+    background-size:100px 100px,170px 170px;
+    animation:loaderStars 50s linear infinite;
+}
+
+@keyframes loaderStars{
+    to{
+        transform:translate(-250px,-400px);
+    }
 }
 
 .loader-content{
     position:relative;
     text-align:center;
-    width:min(500px,85%);
+    width:min(520px,85%);
 }
 
 .loader-logo{
-    font-size:12px;
+    font-size:11px;
     letter-spacing:5px;
     color:var(--blue);
     margin-bottom:25px;
 }
 
 .loader-title{
-    font-size:clamp(35px,8vw,75px);
+    font-size:clamp(40px,8vw,78px);
     font-weight:900;
-    letter-spacing:-3px;
+    letter-spacing:-4px;
+    text-shadow:0 0 35px rgba(0,229,255,.25);
 }
 
 .loader-status{
     margin-top:18px;
     color:var(--muted);
-    font-size:13px;
+    font-size:11px;
     letter-spacing:3px;
 }
 
 .loader-bar{
     width:100%;
     height:4px;
-    background:#111827;
+    background:#111725;
     margin-top:35px;
     overflow:hidden;
     border-radius:20px;
 }
 
 .loader-fill{
-    width:0%;
+    width:0;
     height:100%;
     background:linear-gradient(90deg,var(--blue),var(--green));
-    box-shadow:0 0 20px var(--blue);
+    box-shadow:0 0 25px var(--blue);
 }
 
 .loader-percent{
@@ -115,53 +297,20 @@ body{
     letter-spacing:3px;
 }
 
-/* ================= BACKGROUND ================= */
-
-.bg-grid{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-    background:
-        linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
-    background-size:55px 55px;
-}
-
-.orb{
-    position:fixed;
-    width:350px;
-    height:350px;
-    border-radius:50%;
-    filter:blur(100px);
-    opacity:.13;
-    z-index:-4;
-}
-
-.orb.one{
-    background:var(--blue);
-    top:10%;
-    left:-150px;
-}
-
-.orb.two{
-    background:var(--green);
-    bottom:0;
-    right:-150px;
-}
-
-/* ================= CURSOR ================= */
+/* =================================================
+   CURSOR
+================================================= */
 
 .cursor{
     position:fixed;
-    width:20px;
-    height:20px;
+    width:22px;
+    height:22px;
     border:1px solid var(--blue);
     border-radius:50%;
     pointer-events:none;
     z-index:10000;
     transform:translate(-50%,-50%);
-    transition:width .2s,height .2s;
-    box-shadow:0 0 20px rgba(0,229,255,.4);
+    box-shadow:0 0 20px rgba(0,229,255,.45);
 }
 
 .cursor-dot{
@@ -173,9 +322,12 @@ body{
     pointer-events:none;
     z-index:10001;
     transform:translate(-50%,-50%);
+    box-shadow:0 0 10px var(--green);
 }
 
-/* ================= NAV ================= */
+/* =================================================
+   NAV
+================================================= */
 
 nav{
     position:fixed;
@@ -187,11 +339,12 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(4,8,15,.72);
-    border:1px solid rgba(255,255,255,.08);
+    background:rgba(3,6,14,.65);
+    border:1px solid rgba(255,255,255,.09);
     backdrop-filter:blur(20px);
     border-radius:18px;
     z-index:1000;
+    box-shadow:0 10px 40px rgba(0,0,0,.2);
 }
 
 .logo{
@@ -212,7 +365,7 @@ nav ul{
 nav a{
     color:#9ca3af;
     text-decoration:none;
-    font-size:12px;
+    font-size:11px;
     transition:.3s;
 }
 
@@ -226,10 +379,18 @@ nav a:hover{
     border-radius:10px;
     color:var(--blue);
     cursor:pointer;
-    font-size:11px;
+    font-size:10px;
+    transition:.3s;
 }
 
-/* ================= GENERAL ================= */
+.dev-btn:hover{
+    background:rgba(0,229,255,.08);
+    box-shadow:0 0 20px rgba(0,229,255,.15);
+}
+
+/* =================================================
+   GENERAL
+================================================= */
 
 section{
     width:min(1150px,90%);
@@ -239,24 +400,27 @@ section{
 
 .section-label{
     color:var(--blue);
-    font-size:11px;
+    font-size:10px;
     letter-spacing:4px;
     margin-bottom:15px;
 }
 
 .section-title{
     font-size:clamp(32px,6vw,65px);
+    letter-spacing:-3px;
     margin-bottom:35px;
 }
 
 .glass{
-    background:var(--panel);
+    background:rgba(6,10,22,.58);
     border:1px solid rgba(255,255,255,.08);
     backdrop-filter:blur(18px);
     border-radius:25px;
 }
 
-/* ================= HERO ================= */
+/* =================================================
+   HERO
+================================================= */
 
 .hero{
     min-height:100vh;
@@ -275,7 +439,7 @@ section{
     border:1px solid rgba(0,255,157,.25);
     background:rgba(0,255,157,.04);
     border-radius:30px;
-    font-size:11px;
+    font-size:10px;
     color:var(--green);
     margin-bottom:25px;
 }
@@ -286,6 +450,11 @@ section{
     border-radius:50%;
     background:var(--green);
     box-shadow:0 0 12px var(--green);
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{opacity:.3}
 }
 
 .hero h1{
@@ -297,6 +466,7 @@ section{
 .hero h1 span{
     color:transparent;
     -webkit-text-stroke:1px var(--blue);
+    text-shadow:0 0 35px rgba(0,229,255,.12);
 }
 
 .hero-sub{
@@ -304,13 +474,14 @@ section{
     max-width:600px;
     color:var(--muted);
     line-height:1.8;
-    font-size:17px;
+    font-size:16px;
 }
 
 .typing{
     color:var(--green);
     margin-top:20px;
     font-family:monospace;
+    font-size:13px;
 }
 
 .hero-buttons{
@@ -327,7 +498,7 @@ section{
     border:1px solid rgba(255,255,255,.12);
     color:white;
     transition:.3s;
-    font-size:13px;
+    font-size:12px;
 }
 
 .btn.primary{
@@ -352,7 +523,16 @@ section{
     border-radius:30px;
     background:linear-gradient(135deg,var(--blue),transparent,var(--green));
     transform:rotateY(-8deg) rotateX(4deg);
-    box-shadow:0 0 70px rgba(0,229,255,.15);
+    box-shadow:
+        0 0 60px rgba(0,229,255,.16),
+        0 0 100px rgba(0,255,157,.05);
+    animation:profileFloat 5s ease-in-out infinite;
+}
+
+@keyframes profileFloat{
+    50%{
+        transform:rotateY(5deg) rotateX(-3deg) translateY(-10px);
+    }
 }
 
 .profile-card img{
@@ -363,7 +543,9 @@ section{
     border-radius:22px;
 }
 
-/* ================= STATS ================= */
+/* =================================================
+   STATS
+================================================= */
 
 .stats{
     display:grid;
@@ -379,15 +561,19 @@ section{
 .stat h3{
     font-size:38px;
     color:var(--blue);
+    text-shadow:0 0 20px rgba(0,229,255,.2);
 }
 
 .stat p{
     color:var(--muted);
-    font-size:12px;
+    font-size:10px;
     margin-top:8px;
+    letter-spacing:2px;
 }
 
-/* ================= ABOUT ================= */
+/* =================================================
+   ABOUT
+================================================= */
 
 .about-grid{
     display:grid;
@@ -397,6 +583,12 @@ section{
 
 .about-card{
     padding:30px;
+    transition:.4s;
+}
+
+.about-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(0,229,255,.25);
 }
 
 .about-card h3{
@@ -406,9 +598,12 @@ section{
 .about-card p{
     color:var(--muted);
     line-height:1.8;
+    font-size:14px;
 }
 
-/* ================= SKILLS ================= */
+/* =================================================
+   SKILLS
+================================================= */
 
 .skills{
     display:grid;
@@ -424,6 +619,7 @@ section{
     display:flex;
     justify-content:space-between;
     margin-bottom:12px;
+    font-size:13px;
 }
 
 .skill-top span:last-child{
@@ -441,18 +637,21 @@ section{
     height:100%;
     width:0;
     background:linear-gradient(90deg,var(--blue),var(--green));
+    box-shadow:0 0 12px rgba(0,229,255,.25);
     transition:2s ease;
 }
 
-/* ================= TERMINAL ================= */
+/* =================================================
+   TERMINAL
+================================================= */
 
 .terminal{
     padding:25px;
     font-family:monospace;
-    background:#02060b;
+    background:rgba(0,3,9,.82);
     border:1px solid rgba(0,229,255,.15);
     border-radius:20px;
-    box-shadow:0 0 40px rgba(0,229,255,.05);
+    box-shadow:0 0 50px rgba(0,229,255,.05);
 }
 
 .terminal-head{
@@ -471,6 +670,7 @@ section{
 .terminal-line{
     color:#8be9fd;
     line-height:2;
+    font-size:13px;
 }
 
 .green{
@@ -481,7 +681,9 @@ section{
     color:#657084;
 }
 
-/* ================= PROJECT ================= */
+/* =================================================
+   PROJECT
+================================================= */
 
 .project{
     display:grid;
@@ -489,6 +691,7 @@ section{
     gap:30px;
     padding:30px;
     align-items:center;
+    transition:.2s;
 }
 
 .project-info h3{
@@ -499,6 +702,7 @@ section{
 .project-info p{
     color:var(--muted);
     line-height:1.8;
+    font-size:14px;
 }
 
 .tags{
@@ -513,7 +717,8 @@ section{
     color:var(--blue);
     padding:7px 10px;
     border-radius:8px;
-    font-size:10px;
+    font-size:9px;
+    background:rgba(0,229,255,.025);
 }
 
 .phone{
@@ -524,8 +729,16 @@ section{
     border-radius:35px;
     padding:10px;
     background:#050a12;
-    box-shadow:0 0 50px rgba(0,229,255,.15);
+    box-shadow:
+        0 0 50px rgba(0,229,255,.15),
+        inset 0 0 20px rgba(0,229,255,.05);
     overflow:hidden;
+    transform:rotateY(-5deg);
+    transition:.5s;
+}
+
+.project:hover .phone{
+    transform:rotateY(5deg) translateY(-8px);
 }
 
 .phone-screen{
@@ -560,6 +773,7 @@ section{
 .fake-card strong{
     display:block;
     margin-bottom:8px;
+    font-size:12px;
 }
 
 .fake-line{
@@ -569,7 +783,9 @@ section{
     border-radius:10px;
 }
 
-/* ================= FEATURES ================= */
+/* =================================================
+   FEATURES
+================================================= */
 
 .features{
     display:grid;
@@ -604,7 +820,9 @@ section{
     line-height:1.7;
 }
 
-/* ================= JOURNEY ================= */
+/* =================================================
+   JOURNEY
+================================================= */
 
 .timeline{
     position:relative;
@@ -630,8 +848,9 @@ section{
 }
 
 .timeline-item span{
-    font-size:11px;
+    font-size:10px;
     color:var(--green);
+    letter-spacing:2px;
 }
 
 .timeline-item h3{
@@ -640,9 +859,13 @@ section{
 
 .timeline-item p{
     color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
 }
 
-/* ================= LAB ================= */
+/* =================================================
+   LAB
+================================================= */
 
 .lab{
     display:grid;
@@ -679,7 +902,9 @@ section{
     line-height:1.7;
 }
 
-/* ================= ROADMAP ================= */
+/* =================================================
+   ROADMAP
+================================================= */
 
 .roadmap{
     display:grid;
@@ -689,6 +914,11 @@ section{
 
 .road{
     padding:30px;
+    transition:.4s;
+}
+
+.road:hover{
+    transform:translateY(-8px);
 }
 
 .road-number{
@@ -704,9 +934,12 @@ section{
 .road p{
     color:var(--muted);
     line-height:1.7;
+    font-size:13px;
 }
 
-/* ================= SOCIAL ================= */
+/* =================================================
+   SOCIAL
+================================================= */
 
 .social{
     display:grid;
@@ -728,14 +961,17 @@ section{
 
 .social-card span{
     color:var(--blue);
-    font-size:12px;
+    font-size:10px;
+    letter-spacing:3px;
 }
 
 .social-card h3{
     margin-top:10px;
 }
 
-/* ================= FINAL ================= */
+/* =================================================
+   FINAL
+================================================= */
 
 .final{
     min-height:70vh;
@@ -754,6 +990,7 @@ section{
 
 .final h2 span{
     color:var(--blue);
+    text-shadow:0 0 35px rgba(0,229,255,.2);
 }
 
 .final p{
@@ -769,22 +1006,14 @@ footer{
     border-top:1px solid rgba(255,255,255,.05);
 }
 
-/* ================= DEV MODE ================= */
-
-body.dev-mode{
-    background:#000;
-}
-
-body.dev-mode section,
-body.dev-mode nav,
-body.dev-mode .glass{
-    filter:hue-rotate(70deg);
-}
+/* =================================================
+   DEV MODE
+================================================= */
 
 #devPanel{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.96);
+    background:rgba(0,0,0,.97);
     z-index:5000;
     display:none;
     padding:100px 8%;
@@ -804,7 +1033,9 @@ body.dev-mode .glass{
     color:var(--blue);
 }
 
-/* ================= REVEAL ================= */
+/* =================================================
+   REVEAL
+================================================= */
 
 .reveal{
     opacity:0;
@@ -817,7 +1048,9 @@ body.dev-mode .glass{
     transform:none;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =================================================
+   RESPONSIVE
+================================================= */
 
 @media(max-width:850px){
 
@@ -869,20 +1102,38 @@ body.dev-mode .glass{
     .cursor-dot{
         display:none;
     }
+
+    .galaxy-core{
+        width:500px;
+    }
+
+    .nebula{
+        opacity:.1;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADING -->
+<!-- =================================================
+     AUTO LOADING SCREEN
+================================================= -->
+
 <div id="loader">
-    <div class="loader-grid"></div>
+
+    <div class="loader-space"></div>
+    <div class="loader-stars"></div>
 
     <div class="loader-content">
-        <div class="loader-logo">NORIZKANDAR // SYSTEM</div>
 
-        <div class="loader-title">LOADING</div>
+        <div class="loader-logo">
+            NORIZKANDAR // DIGITAL UNIVERSE
+        </div>
+
+        <div class="loader-title">
+            LOADING
+        </div>
 
         <div class="loader-status" id="loaderStatus">
             INITIALIZING DIGITAL UNIVERSE...
@@ -892,20 +1143,44 @@ body.dev-mode .glass{
             <div class="loader-fill" id="loaderFill"></div>
         </div>
 
-        <div class="loader-percent" id="loaderPercent">0%</div>
+        <div class="loader-percent" id="loaderPercent">
+            0%
+        </div>
+
     </div>
+
+</div>
+
+<!-- =================================================
+     GALAXY
+================================================= -->
+
+<div class="space">
+
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <div class="nebula one"></div>
+    <div class="nebula two"></div>
+    <div class="nebula three"></div>
+
+    <div class="galaxy-core"></div>
+
 </div>
 
 <div class="cursor"></div>
 <div class="cursor-dot"></div>
 
-<div class="bg-grid"></div>
-<div class="orb one"></div>
-<div class="orb two"></div>
+<!-- =================================================
+     NAV
+================================================= -->
 
-<!-- NAV -->
 <nav>
-    <div class="logo">NORI<span>.</span>DEV</div>
+
+    <div class="logo">
+        NORI<span>.</span>DEV
+    </div>
 
     <ul>
         <li><a href="#about">ABOUT</a></li>
@@ -915,10 +1190,16 @@ body.dev-mode .glass{
         <li><a href="#lab">LAB</a></li>
     </ul>
 
-    <div class="dev-btn" onclick="openDev()">DEV MODE</div>
+    <div class="dev-btn" onclick="openDev()">
+        DEV MODE
+    </div>
+
 </nav>
 
-<!-- HERO -->
+<!-- =================================================
+     HERO
+================================================= -->
+
 <section class="hero">
 
     <div class="hero-content reveal">
@@ -943,26 +1224,40 @@ body.dev-mode .glass{
         </div>
 
         <div class="hero-buttons">
-            <a href="#project" class="btn primary">EXPLORE PROJECT</a>
+
+            <a href="#project" class="btn primary">
+                EXPLORE PROJECT
+            </a>
+
             <a href="https://github.com/norizkandar"
                target="_blank"
                class="btn">
                 GITHUB ↗
             </a>
+
         </div>
 
     </div>
 
     <div class="profile-wrap reveal">
+
         <div class="profile-card">
-            <img src="profile.jpg" alt="Mohamad Norizkandar">
+
+            <img src="profile.jpg"
+                 alt="Mohamad Norizkandar">
+
         </div>
+
     </div>
 
 </section>
 
-<!-- STATS -->
+<!-- =================================================
+     STATS
+================================================= -->
+
 <section>
+
     <div class="stats">
 
         <div class="stat glass reveal">
@@ -986,48 +1281,71 @@ body.dev-mode .glass{
         </div>
 
     </div>
+
 </section>
 
-<!-- ABOUT -->
+<!-- =================================================
+     ABOUT
+================================================= -->
+
 <section id="about">
 
-    <div class="section-label reveal">01 // ABOUT</div>
+    <div class="section-label reveal">
+        01 // ABOUT
+    </div>
 
     <h2 class="section-title reveal">
-        Building from <span style="color:var(--blue)">curiosity.</span>
+        Building from
+        <span style="color:var(--blue)">
+            curiosity.
+        </span>
     </h2>
 
     <div class="about-grid">
 
         <div class="about-card glass reveal">
+
             <h3>Who I Am</h3>
+
             <p>
                 I'm Mohamad Norizkandar, a young developer from
                 Taiping, Perak, Malaysia. I enjoy learning how
                 technology works and turning ideas into real projects.
             </p>
+
         </div>
 
         <div class="about-card glass reveal">
+
             <h3>My Focus</h3>
+
             <p>
                 My current focus is mobile app development,
                 UI design, programming and experimenting with
                 new digital ideas.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- SKILLS -->
+<!-- =================================================
+     SKILLS
+================================================= -->
+
 <section id="skills">
 
-    <div class="section-label reveal">02 // TECH STACK</div>
+    <div class="section-label reveal">
+        02 // TECH STACK
+    </div>
 
     <h2 class="section-title reveal">
-        Tools I <span style="color:var(--green)">build with.</span>
+        Tools I
+        <span style="color:var(--green)">
+            build with.
+        </span>
     </h2>
 
     <div class="skills">
@@ -1037,8 +1355,11 @@ body.dev-mode .glass{
                 <span>JavaScript</span>
                 <span>90%</span>
             </div>
+
             <div class="skill-bar">
-                <div class="skill-fill" data-width="90%"></div>
+                <div class="skill-fill"
+                     data-width="90%">
+                </div>
             </div>
         </div>
 
@@ -1047,8 +1368,11 @@ body.dev-mode .glass{
                 <span>React Native</span>
                 <span>85%</span>
             </div>
+
             <div class="skill-bar">
-                <div class="skill-fill" data-width="85%"></div>
+                <div class="skill-fill"
+                     data-width="85%">
+                </div>
             </div>
         </div>
 
@@ -1057,8 +1381,11 @@ body.dev-mode .glass{
                 <span>Expo</span>
                 <span>85%</span>
             </div>
+
             <div class="skill-bar">
-                <div class="skill-fill" data-width="85%"></div>
+                <div class="skill-fill"
+                     data-width="85%">
+                </div>
             </div>
         </div>
 
@@ -1067,8 +1394,11 @@ body.dev-mode .glass{
                 <span>Supabase</span>
                 <span>75%</span>
             </div>
+
             <div class="skill-bar">
-                <div class="skill-fill" data-width="75%"></div>
+                <div class="skill-fill"
+                     data-width="75%">
+                </div>
             </div>
         </div>
 
@@ -1077,8 +1407,11 @@ body.dev-mode .glass{
                 <span>VS Code</span>
                 <span>95%</span>
             </div>
+
             <div class="skill-bar">
-                <div class="skill-fill" data-width="95%"></div>
+                <div class="skill-fill"
+                     data-width="95%">
+                </div>
             </div>
         </div>
 
@@ -1087,8 +1420,11 @@ body.dev-mode .glass{
                 <span>Creative UI</span>
                 <span>90%</span>
             </div>
+
             <div class="skill-bar">
-                <div class="skill-fill" data-width="90%"></div>
+                <div class="skill-fill"
+                     data-width="90%">
+                </div>
             </div>
         </div>
 
@@ -1096,23 +1432,35 @@ body.dev-mode .glass{
 
 </section>
 
-<!-- TERMINAL -->
+<!-- =================================================
+     TERMINAL
+================================================= -->
+
 <section>
 
-    <div class="section-label reveal">03 // SYSTEM</div>
+    <div class="section-label reveal">
+        03 // SYSTEM
+    </div>
 
     <h2 class="section-title reveal">
-        Developer <span style="color:var(--blue)">terminal.</span>
+        Developer
+        <span style="color:var(--blue)">
+            terminal.
+        </span>
     </h2>
 
     <div class="terminal reveal">
 
         <div class="terminal-head">
-            <i></i><i></i><i></i>
+            <i></i>
+            <i></i>
+            <i></i>
         </div>
 
         <div class="terminal-line">
-            <span class="green">norizkandar@dev</span>:~$ whoami
+            <span class="green">
+                norizkandar@dev
+            </span>:~$ whoami
         </div>
 
         <div class="terminal-line muted">
@@ -1120,7 +1468,9 @@ body.dev-mode .glass{
         </div>
 
         <div class="terminal-line">
-            <span class="green">norizkandar@dev</span>:~$ load project
+            <span class="green">
+                norizkandar@dev
+            </span>:~$ load project
         </div>
 
         <div class="terminal-line muted">
@@ -1128,7 +1478,9 @@ body.dev-mode .glass{
         </div>
 
         <div class="terminal-line">
-            <span class="green">norizkandar@dev</span>:~$ status
+            <span class="green">
+                norizkandar@dev
+            </span>:~$ status
         </div>
 
         <div class="terminal-line green">
@@ -1139,13 +1491,21 @@ body.dev-mode .glass{
 
 </section>
 
-<!-- PROJECT -->
+<!-- =================================================
+     SMART ACADEMY
+================================================= -->
+
 <section id="project">
 
-    <div class="section-label reveal">04 // FEATURED PROJECT</div>
+    <div class="section-label reveal">
+        04 // FEATURED PROJECT
+    </div>
 
     <h2 class="section-title reveal">
-        Smart <span style="color:var(--green)">Academy.</span>
+        Smart
+        <span style="color:var(--green)">
+            Academy.
+        </span>
     </h2>
 
     <div class="project glass reveal">
@@ -1161,11 +1521,14 @@ body.dev-mode .glass{
             </p>
 
             <div class="tags">
+
                 <div class="tag">AI ASSISTANT</div>
                 <div class="tag">WHITEBOARD</div>
                 <div class="tag">STUDENT LIVE</div>
                 <div class="tag">ACHIEVEMENT</div>
                 <div class="tag">TEACHER RATING</div>
+                <div class="tag">STUDENT & TEACHER</div>
+
             </div>
 
         </div>
@@ -1183,20 +1546,29 @@ body.dev-mode .glass{
                 </div>
 
                 <div class="fake-card">
-                    <strong>Welcome back 👋</strong>
+                    <strong>
+                        Welcome back 👋
+                    </strong>
+
                     <div class="fake-line"></div>
                     <div class="fake-line"></div>
                 </div>
 
                 <div class="fake-card">
-                    <strong>Live Class</strong>
+                    <strong>
+                        Live Class
+                    </strong>
+
                     <div class="fake-line"></div>
                     <div class="fake-line"></div>
                     <div class="fake-line"></div>
                 </div>
 
                 <div class="fake-card">
-                    <strong>Achievement 🏆</strong>
+                    <strong>
+                        Achievement 🏆
+                    </strong>
+
                     <div class="fake-line"></div>
                 </div>
 
@@ -1208,13 +1580,21 @@ body.dev-mode .glass{
 
 </section>
 
-<!-- FEATURES -->
+<!-- =================================================
+     FEATURES
+================================================= -->
+
 <section>
 
-    <div class="section-label reveal">05 // FEATURES</div>
+    <div class="section-label reveal">
+        05 // FEATURES
+    </div>
 
     <h2 class="section-title reveal">
-        Inside the <span style="color:var(--blue)">system.</span>
+        Inside the
+        <span style="color:var(--blue)">
+            system.
+        </span>
     </h2>
 
     <div class="features">
@@ -1277,145 +1657,240 @@ body.dev-mode .glass{
 
 </section>
 
-<!-- JOURNEY -->
+<!-- =================================================
+     JOURNEY
+================================================= -->
+
 <section id="journey">
 
-    <div class="section-label reveal">06 // JOURNEY</div>
+    <div class="section-label reveal">
+        06 // JOURNEY
+    </div>
 
     <h2 class="section-title reveal">
-        From learning to <span style="color:var(--green)">building.</span>
+        From learning to
+        <span style="color:var(--green)">
+            building.
+        </span>
     </h2>
 
     <div class="timeline">
 
         <div class="timeline-item reveal">
+
             <span>START</span>
-            <h3>Started Learning Code</h3>
+
+            <h3>
+                Started Learning Code
+            </h3>
+
             <p>
                 Began exploring programming and discovering
                 how software is built.
             </p>
+
         </div>
 
         <div class="timeline-item reveal">
+
             <span>BUILD</span>
-            <h3>Started Building Apps</h3>
+
+            <h3>
+                Started Building Apps
+            </h3>
+
             <p>
                 Started experimenting with JavaScript,
                 React Native and Expo.
             </p>
+
         </div>
 
         <div class="timeline-item reveal">
+
             <span>CREATE</span>
-            <h3>Smart Academy</h3>
+
+            <h3>
+                Smart Academy
+            </h3>
+
             <p>
                 Turned a tuition app idea into a working
                 project concept.
             </p>
+
         </div>
 
         <div class="timeline-item reveal">
+
             <span>NEXT</span>
-            <h3>Keep Building</h3>
+
+            <h3>
+                Keep Building
+            </h3>
+
             <p>
                 Continue learning, experimenting and
                 creating better digital experiences.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- LAB -->
+<!-- =================================================
+     EXPERIMENTAL LAB
+================================================= -->
+
 <section id="lab">
 
-    <div class="section-label reveal">07 // EXPERIMENTAL LAB</div>
+    <div class="section-label reveal">
+        07 // EXPERIMENTAL LAB
+    </div>
 
     <h2 class="section-title reveal">
-        Ideas under <span style="color:var(--blue)">construction.</span>
+        Ideas under
+        <span style="color:var(--blue)">
+            construction.
+        </span>
     </h2>
 
     <div class="lab">
 
         <div class="lab-card glass reveal">
-            <h3>AI Experiments</h3>
+
+            <h3>
+                AI Experiments
+            </h3>
+
             <p>
                 Exploring how AI can become part of future
                 applications and learning experiences.
             </p>
+
         </div>
 
         <div class="lab-card glass reveal">
-            <h3>UI Experiments</h3>
+
+            <h3>
+                UI Experiments
+            </h3>
+
             <p>
                 Creating futuristic interfaces, animations
                 and interactive experiences.
             </p>
+
         </div>
 
         <div class="lab-card glass reveal">
-            <h3>Future Apps</h3>
+
+            <h3>
+                Future Apps
+            </h3>
+
             <p>
                 New application ideas waiting to be turned
                 into real prototypes.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- ROADMAP -->
+<!-- =================================================
+     ROADMAP
+================================================= -->
+
 <section>
 
-    <div class="section-label reveal">08 // ROADMAP</div>
+    <div class="section-label reveal">
+        08 // ROADMAP
+    </div>
 
     <h2 class="section-title reveal">
-        What's <span style="color:var(--green)">next?</span>
+        What's
+        <span style="color:var(--green)">
+            next?
+        </span>
     </h2>
 
     <div class="roadmap">
 
         <div class="road glass reveal">
-            <div class="road-number">01</div>
-            <h3>Learn</h3>
+
+            <div class="road-number">
+                01
+            </div>
+
+            <h3>
+                Learn
+            </h3>
+
             <p>
                 Improve programming knowledge and explore
                 new technologies.
             </p>
+
         </div>
 
         <div class="road glass reveal">
-            <div class="road-number">02</div>
-            <h3>Build</h3>
+
+            <div class="road-number">
+                02
+            </div>
+
+            <h3>
+                Build
+            </h3>
+
             <p>
                 Turn more ideas into functional applications
                 and prototypes.
             </p>
+
         </div>
 
         <div class="road glass reveal">
-            <div class="road-number">03</div>
-            <h3>Launch</h3>
+
+            <div class="road-number">
+                03
+            </div>
+
+            <h3>
+                Launch
+            </h3>
+
             <p>
                 Share projects with more people and continue
                 improving them.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- SOCIAL -->
+<!-- =================================================
+     SOCIAL
+================================================= -->
+
 <section>
 
-    <div class="section-label reveal">09 // CONNECT</div>
+    <div class="section-label reveal">
+        09 // CONNECT
+    </div>
 
     <h2 class="section-title reveal">
-        Find me <span style="color:var(--blue)">online.</span>
+        Find me
+        <span style="color:var(--blue)">
+            online.
+        </span>
     </h2>
 
     <div class="social">
@@ -1424,8 +1899,13 @@ body.dev-mode .glass{
            href="https://github.com/norizkandar"
            target="_blank">
 
-            <span>GITHUB</span>
-            <h3>@norizkandar ↗</h3>
+            <span>
+                GITHUB
+            </span>
+
+            <h3>
+                @norizkandar ↗
+            </h3>
 
         </a>
 
@@ -1433,8 +1913,13 @@ body.dev-mode .glass{
            href="https://www.tiktok.com/@iz_andar"
            target="_blank">
 
-            <span>TIKTOK</span>
-            <h3>@iz_andar ↗</h3>
+            <span>
+                TIKTOK
+            </span>
+
+            <h3>
+                @iz_andar ↗
+            </h3>
 
         </a>
 
@@ -1442,7 +1927,10 @@ body.dev-mode .glass{
 
 </section>
 
-<!-- FINAL -->
+<!-- =================================================
+     FINAL
+================================================= -->
+
 <section class="final">
 
     <div class="section-label reveal">
@@ -1451,7 +1939,9 @@ body.dev-mode .glass{
 
     <h2 class="reveal">
         KEEP<br>
-        <span>BUILDING.</span>
+        <span>
+            BUILDING.
+        </span>
     </h2>
 
     <p class="reveal">
@@ -1464,65 +1954,122 @@ body.dev-mode .glass{
     © 2026 Mohamad Norizkandar • Built with code & curiosity.
 </footer>
 
-<!-- DEV PANEL -->
+<!-- =================================================
+     DEV MODE
+================================================= -->
+
 <div id="devPanel">
 
-    <div class="close-dev" onclick="closeDev()">
+    <div class="close-dev"
+         onclick="closeDev()">
         [ CLOSE ]
     </div>
 
-    <h2> NORIZKANDAR // DEV MODE</h2>
+    <h2>
+        NORIZKANDAR // DEV MODE
+    </h2>
 
     <br>
 
-    <p>> booting developer interface...</p>
-    <p>> loading JavaScript...</p>
-    <p>> loading React Native...</p>
-    <p>> loading Expo...</p>
-    <p>> loading Supabase...</p>
-    <p>> checking Smart Academy...</p>
-    <p class="green">> ALL SYSTEMS OPERATIONAL ✓</p>
+    <p>
+        > booting developer interface...
+    </p>
+
+    <p>
+        > loading JavaScript...
+    </p>
+
+    <p>
+        > loading React Native...
+    </p>
+
+    <p>
+        > loading Expo...
+    </p>
+
+    <p>
+        > loading Supabase...
+    </p>
+
+    <p>
+        > checking Smart Academy...
+    </p>
+
+    <p class="green">
+        > ALL SYSTEMS OPERATIONAL ✓
+    </p>
 
 </div>
 
 <script>
 
-/* ================= LOADING ================= */
+/* =================================================
+   AUTO LOADING
+================================================= */
 
 let progress = 0;
 
-const fill = document.getElementById("loaderFill");
-const percent = document.getElementById("loaderPercent");
-const status = document.getElementById("loaderStatus");
+const fill =
+    document.getElementById("loaderFill");
+
+const percent =
+    document.getElementById("loaderPercent");
+
+const status =
+    document.getElementById("loaderStatus");
 
 const statuses = [
+
     "INITIALIZING DIGITAL UNIVERSE...",
     "LOADING CORE SYSTEM...",
     "CONNECTING PROJECT DATABASE...",
     "LOADING SMART ACADEMY...",
-    "CALIBRATING INTERFACE...",
+    "CALIBRATING GALAXY INTERFACE...",
     "SYSTEM READY..."
+
 ];
 
-const loaderInterval = setInterval(() => {
+const loaderInterval =
+setInterval(() => {
 
     progress++;
 
-    fill.style.width = progress + "%";
-    percent.textContent = progress + "%";
+    fill.style.width =
+        progress + "%";
+
+    percent.textContent =
+        progress + "%";
 
     if(progress < 20){
-        status.textContent = statuses[0];
+
+        status.textContent =
+            statuses[0];
+
     }else if(progress < 40){
-        status.textContent = statuses[1];
+
+        status.textContent =
+            statuses[1];
+
     }else if(progress < 60){
-        status.textContent = statuses[2];
+
+        status.textContent =
+            statuses[2];
+
     }else if(progress < 75){
-        status.textContent = statuses[3];
+
+        status.textContent =
+            statuses[3];
+
     }else if(progress < 95){
-        status.textContent = statuses[4];
+
+        status.textContent =
+            statuses[4];
+
     }else{
-        status.textContent = statuses[5];
+
+        status.textContent =
+            statuses[5];
+
     }
 
     if(progress >= 100){
@@ -1530,7 +2077,11 @@ const loaderInterval = setInterval(() => {
         clearInterval(loaderInterval);
 
         setTimeout(() => {
-            document.getElementById("loader").classList.add("hide");
+
+            document
+                .getElementById("loader")
+                .classList.add("hide");
+
         },700);
 
     }
@@ -1538,13 +2089,18 @@ const loaderInterval = setInterval(() => {
 },35);
 
 
-/* ================= TYPING ================= */
+/* =================================================
+   TYPING EFFECT
+================================================= */
 
 const phrases = [
+
     "building mobile apps...",
     "designing digital experiences...",
     "experimenting with AI...",
-    "turning ideas into code..."
+    "turning ideas into code...",
+    "exploring the digital universe..."
+
 ];
 
 let phraseIndex = 0;
@@ -1553,196 +2109,366 @@ let deleting = false;
 
 function type(){
 
-    const text = phrases[phraseIndex];
-    const element = document.getElementById("typingText");
+    const text =
+        phrases[phraseIndex];
+
+    const element =
+        document.getElementById("typingText");
 
     if(!deleting){
-        element.textContent = text.substring(0,charIndex++);
+
+        element.textContent =
+            text.substring(0,charIndex++);
+
     }else{
-        element.textContent = text.substring(0,charIndex--);
+
+        element.textContent =
+            text.substring(0,charIndex--);
+
     }
 
-    if(!deleting && charIndex > text.length){
+    if(
+        !deleting &&
+        charIndex > text.length
+    ){
+
         deleting = true;
+
         setTimeout(type,1200);
+
         return;
     }
 
-    if(deleting && charIndex < 0){
+    if(
+        deleting &&
+        charIndex < 0
+    ){
+
         deleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
+
+        phraseIndex =
+            (phraseIndex + 1)
+            % phrases.length;
+
         charIndex = 0;
+
     }
 
-    setTimeout(type,deleting ? 35 : 70);
+    setTimeout(
+        type,
+        deleting ? 35 : 70
+    );
 }
 
 type();
 
 
-/* ================= CURSOR ================= */
+/* =================================================
+   CURSOR
+================================================= */
 
-const cursor = document.querySelector(".cursor");
-const dot = document.querySelector(".cursor-dot");
+const cursor =
+    document.querySelector(".cursor");
 
-document.addEventListener("mousemove",e=>{
+const dot =
+    document.querySelector(".cursor-dot");
 
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+document.addEventListener(
+    "mousemove",
+    e => {
 
-    dot.style.left = e.clientX + "px";
-    dot.style.top = e.clientY + "px";
+        cursor.style.left =
+            e.clientX + "px";
 
-});
+        cursor.style.top =
+            e.clientY + "px";
+
+        dot.style.left =
+            e.clientX + "px";
+
+        dot.style.top =
+            e.clientY + "px";
+
+        /* galaxy parallax */
+
+        const x =
+            (e.clientX / window.innerWidth - .5);
+
+        const y =
+            (e.clientY / window.innerHeight - .5);
+
+        document.querySelector(".stars").style.transform =
+            `translate(${x * -25}px,${y * -25}px)`;
+
+        document.querySelector(".stars2").style.transform =
+            `translate(${x * 45}px,${y * 45}px)`;
+
+        document.querySelector(".stars3").style.transform =
+            `translate(${x * -70}px,${y * -70}px)`;
+
+    }
+);
 
 
-/* ================= REVEAL ================= */
+/* =================================================
+   REVEAL
+================================================= */
 
-const observer = new IntersectionObserver(entries=>{
+const observer =
+new IntersectionObserver(
+    entries => {
 
-    entries.forEach(entry=>{
+        entries.forEach(entry => {
 
-        if(entry.isIntersecting){
+            if(entry.isIntersecting){
 
-            entry.target.classList.add("show");
+                entry.target
+                    .classList
+                    .add("show");
 
-            const bar = entry.target.querySelector(".skill-fill");
+                const bar =
+                    entry.target
+                    .querySelector(".skill-fill");
 
-            if(bar){
-                bar.style.width = bar.dataset.width;
-            }
+                if(bar){
 
-        }
+                    bar.style.width =
+                        bar.dataset.width;
 
-    });
-
-},{threshold:.15});
-
-document.querySelectorAll(".reveal").forEach(el=>{
-    observer.observe(el);
-});
-
-
-/* ================= COUNTERS ================= */
-
-const counterObserver = new IntersectionObserver(entries=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            const counter = entry.target;
-            const target = Number(counter.dataset.count);
-
-            if(!target) return;
-
-            let current = 0;
-
-            const timer = setInterval(()=>{
-
-                current++;
-
-                counter.textContent = current;
-
-                if(current >= target){
-                    clearInterval(timer);
                 }
 
-            },70);
+            }
 
-            counterObserver.unobserve(counter);
+        });
 
-        }
+    },
+    {
+        threshold:.15
+    }
+);
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(el => {
+
+        observer.observe(el);
 
     });
 
-},{threshold:.7});
 
-document.querySelectorAll("[data-count]").forEach(el=>{
-    counterObserver.observe(el);
-});
+/* =================================================
+   COUNTERS
+================================================= */
+
+const counterObserver =
+new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                const counter =
+                    entry.target;
+
+                const target =
+                    Number(
+                        counter.dataset.count
+                    );
+
+                if(!target) return;
+
+                let current = 0;
+
+                const timer =
+                setInterval(() => {
+
+                    current++;
+
+                    counter.textContent =
+                        current;
+
+                    if(current >= target){
+
+                        clearInterval(timer);
+
+                    }
+
+                },70);
+
+                counterObserver
+                    .unobserve(counter);
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.7
+    }
+);
+
+document
+    .querySelectorAll("[data-count]")
+    .forEach(el => {
+
+        counterObserver.observe(el);
+
+    });
 
 
-/* ================= DEV MODE ================= */
+/* =================================================
+   DEV MODE
+================================================= */
 
 function openDev(){
-    document.getElementById("devPanel").classList.add("active");
+
+    document
+        .getElementById("devPanel")
+        .classList
+        .add("active");
+
 }
 
 function closeDev(){
-    document.getElementById("devPanel").classList.remove("active");
+
+    document
+        .getElementById("devPanel")
+        .classList
+        .remove("active");
+
 }
 
 
-/* ================= MAGNETIC BUTTON ================= */
+/* =================================================
+   MAGNETIC BUTTON
+================================================= */
 
-document.querySelectorAll(".btn,.dev-btn,.social-card").forEach(button=>{
+document
+.querySelectorAll(
+    ".btn,.dev-btn,.social-card"
+)
+.forEach(button => {
 
-    button.addEventListener("mousemove",e=>{
+    button.addEventListener(
+        "mousemove",
+        e => {
 
-        const rect = button.getBoundingClientRect();
+            const rect =
+                button.getBoundingClientRect();
 
-        const x = e.clientX - rect.left - rect.width/2;
-        const y = e.clientY - rect.top - rect.height/2;
+            const x =
+                e.clientX -
+                rect.left -
+                rect.width / 2;
 
-        button.style.transform =
-            `translate(${x*.08}px,${y*.08}px)`;
+            const y =
+                e.clientY -
+                rect.top -
+                rect.height / 2;
 
-    });
+            button.style.transform =
+                `translate(${x*.08}px,${y*.08}px)`;
 
-    button.addEventListener("mouseleave",()=>{
-        button.style.transform = "";
-    });
+        }
+    );
+
+    button.addEventListener(
+        "mouseleave",
+        () => {
+
+            button.style.transform = "";
+
+        }
+    );
 
 });
 
 
-/* ================= PROJECT 3D ================= */
+/* =================================================
+   SMART ACADEMY 3D
+================================================= */
 
-const project = document.querySelector(".project");
+const project =
+    document.querySelector(".project");
 
-project.addEventListener("mousemove",e=>{
+if(project){
 
-    const rect = project.getBoundingClientRect();
+    project.addEventListener(
+        "mousemove",
+        e => {
 
-    const x = (e.clientX - rect.left) / rect.width - .5;
-    const y = (e.clientY - rect.top) / rect.height - .5;
+            const rect =
+                project.getBoundingClientRect();
 
-    project.style.transform =
-        `perspective(1000px) rotateY(${x*4}deg) rotateX(${-y*3}deg)`;
+            const x =
+                (e.clientX -
+                rect.left) /
+                rect.width - .5;
 
-});
+            const y =
+                (e.clientY -
+                rect.top) /
+                rect.height - .5;
 
-project.addEventListener("mouseleave",()=>{
-    project.style.transform="";
-});
+            project.style.transform =
+                `perspective(1000px)
+                 rotateY(${x*4}deg)
+                 rotateX(${-y*3}deg)`;
+
+        }
+    );
+
+    project.addEventListener(
+        "mouseleave",
+        () => {
+
+            project.style.transform = "";
+
+        }
+    );
+
+}
 
 
-/* ================= EASTER EGG ================= */
+/* =================================================
+   EASTER EGG
+================================================= */
 
 let secret = "";
 
-document.addEventListener("keydown",e=>{
+document.addEventListener(
+    "keydown",
+    e => {
 
-    secret += e.key.toLowerCase();
+        secret +=
+            e.key.toLowerCase();
 
-    if(secret.length > 4){
-        secret = secret.slice(-4);
+        if(secret.length > 4){
+
+            secret =
+                secret.slice(-4);
+
+        }
+
+        if(secret === "nori"){
+
+            document.body.style.filter =
+                "hue-rotate(130deg)";
+
+            setTimeout(() => {
+
+                document.body.style.filter = "";
+
+            },2000);
+
+            secret = "";
+
+        }
+
     }
-
-    if(secret === "nori"){
-
-        document.body.style.filter =
-            "hue-rotate(130deg)";
-
-        setTimeout(()=>{
-            document.body.style.filter="";
-        },2000);
-
-        secret="";
-    }
-
-});
+);
 
 </script>
 

@@ -6,7 +6,7 @@
 
 <meta name="google-site-verification" content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A">
 
-<title>Mohamad Norizkandar | Digital Universe</title>
+<title>Mohamad Norizkandar | Digital Universe 3.0</title>
 
 <style>
 *{
@@ -17,97 +17,103 @@
 }
 
 :root{
-    --bg:#02030a;
-    --blue:#00e5ff;
+    --bg:#01030a;
+    --panel:rgba(4,9,22,.68);
+    --blue:#00eaff;
+    --cyan:#36f5ff;
     --green:#00ff9d;
-    --purple:#7657ff;
-    --white:#f5f7ff;
-    --muted:#8c96aa;
-    --glass:rgba(7,11,25,.58);
+    --purple:#775cff;
+    --pink:#ff4fd8;
+    --white:#f5f8ff;
+    --muted:#8791a8;
+    --line:rgba(255,255,255,.09);
+}
+
+html{
+    background:var(--bg);
 }
 
 body{
-    background:#02030a;
+    background:var(--bg);
     color:var(--white);
     font-family:Arial,Helvetica,sans-serif;
     overflow-x:hidden;
 }
 
 /* =====================================================
-   GALAXY CANVAS
+   GLOBAL SPACE
 ===================================================== */
 
-#spaceCanvas{
+#space{
     position:fixed;
     inset:0;
     width:100%;
     height:100%;
-    z-index:-20;
-    pointer-events:none;
+    z-index:-50;
 }
 
-.space-overlay{
+.space-vignette{
     position:fixed;
     inset:0;
-    z-index:-19;
+    z-index:-49;
     pointer-events:none;
     background:
-        radial-gradient(circle at 50% 50%,transparent 0%,rgba(2,3,10,.1) 45%,rgba(2,3,10,.72) 100%);
+        radial-gradient(circle at 50% 45%,
+        transparent 0%,
+        rgba(1,3,10,.12) 40%,
+        rgba(1,3,10,.86) 100%);
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-48;
+    pointer-events:none;
+    opacity:.12;
+    background-image:
+        linear-gradient(rgba(0,234,255,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,234,255,.08) 1px,transparent 1px);
+    background-size:70px 70px;
+    transform:perspective(700px) rotateX(65deg) scale(2);
+    transform-origin:center bottom;
+    mask-image:linear-gradient(to top,black,transparent 70%);
 }
 
 .nebula{
     position:fixed;
     border-radius:50%;
-    filter:blur(100px);
-    opacity:.15;
-    z-index:-18;
+    filter:blur(110px);
     pointer-events:none;
-    mix-blend-mode:screen;
+    z-index:-47;
+    opacity:.13;
 }
 
-.nebula.a{
-    width:600px;
+.nebula.one{
+    width:650px;
     height:300px;
     background:#004cff;
+    left:-250px;
     top:-100px;
-    left:-200px;
-    transform:rotate(-25deg);
-    animation:nebulaA 14s ease-in-out infinite alternate;
 }
 
-.nebula.b{
-    width:650px;
+.nebula.two{
+    width:600px;
     height:350px;
-    background:#00e5ff;
+    background:#00eaff;
     right:-250px;
     top:30%;
-    transform:rotate(25deg);
-    animation:nebulaB 17s ease-in-out infinite alternate;
 }
 
-.nebula.c{
+.nebula.three{
     width:700px;
     height:300px;
     background:#00ff9d;
-    bottom:-180px;
     left:25%;
-    animation:nebulaC 20s ease-in-out infinite alternate;
-}
-
-@keyframes nebulaA{
-    to{transform:translate(90px,60px) rotate(-10deg)}
-}
-
-@keyframes nebulaB{
-    to{transform:translate(-80px,50px) rotate(10deg)}
-}
-
-@keyframes nebulaC{
-    to{transform:translate(60px,-50px)}
+    bottom:-200px;
 }
 
 /* =====================================================
-   LOADING
+   LOADER
 ===================================================== */
 
 #loader{
@@ -118,81 +124,93 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    text-align:center;
-    transition:opacity 1s ease,visibility 1s ease;
+    transition:1s ease;
 }
 
 #loader.hide{
     opacity:0;
     visibility:hidden;
+    pointer-events:none;
 }
 
-.loader-stars{
-    position:absolute;
-    inset:-100%;
-    background-image:
-        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 2px),
-        radial-gradient(circle,rgba(0,229,255,.6) 1px,transparent 2px);
-    background-size:100px 100px,180px 180px;
-    animation:loaderStarMove 45s linear infinite;
+.loader-inner{
+    width:min(600px,86%);
+    text-align:center;
 }
 
-@keyframes loaderStarMove{
-    to{
-        transform:translate(-300px,-450px);
-    }
-}
-
-.loader-content{
-    width:min(560px,86%);
-    position:relative;
-}
-
-.loader-small{
+.loader-kicker{
     color:var(--blue);
     font-family:monospace;
-    font-size:11px;
+    font-size:10px;
     letter-spacing:5px;
     margin-bottom:22px;
 }
 
 .loader-title{
-    font-size:clamp(45px,10vw,90px);
+    font-size:clamp(48px,10vw,100px);
     font-weight:900;
-    letter-spacing:-5px;
-    text-shadow:
-        0 0 20px rgba(0,229,255,.2),
-        0 0 60px rgba(0,229,255,.08);
+    letter-spacing:-7px;
+}
+
+.loader-title span{
+    color:var(--green);
 }
 
 .loader-status{
     color:var(--muted);
-    margin-top:15px;
     font-family:monospace;
     font-size:11px;
     letter-spacing:2px;
+    margin-top:18px;
 }
 
 .loader-bar{
     height:4px;
-    background:#101522;
-    border-radius:10px;
-    margin-top:35px;
+    background:#111827;
+    margin-top:32px;
+    border-radius:20px;
     overflow:hidden;
 }
 
 .loader-fill{
-    width:0%;
     height:100%;
+    width:0;
     background:linear-gradient(90deg,var(--blue),var(--green));
     box-shadow:0 0 25px var(--blue);
 }
 
 .loader-percent{
     color:var(--green);
-    margin-top:13px;
     font-family:monospace;
-    font-size:12px;
+    margin-top:12px;
+}
+
+/* =====================================================
+   WARP
+===================================================== */
+
+#warp{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle,
+        rgba(0,234,255,.8),
+        rgba(0,0,0,.95) 25%,
+        #000 70%);
+    z-index:9998;
+    opacity:0;
+    pointer-events:none;
+    transition:.8s ease;
+}
+
+#warp.active{
+    opacity:1;
+    animation:warpPulse .8s ease;
+}
+
+@keyframes warpPulse{
+    0%{transform:scale(.3)}
+    100%{transform:scale(2)}
 }
 
 /* =====================================================
@@ -200,27 +218,27 @@ body{
 ===================================================== */
 
 .cursor{
-    width:24px;
-    height:24px;
+    position:fixed;
+    width:26px;
+    height:26px;
     border:1px solid var(--blue);
     border-radius:50%;
-    position:fixed;
     pointer-events:none;
-    z-index:9998;
+    z-index:9990;
     transform:translate(-50%,-50%);
-    box-shadow:0 0 20px rgba(0,229,255,.45);
+    box-shadow:0 0 20px rgba(0,234,255,.4);
 }
 
 .cursor-dot{
-    width:4px;
-    height:4px;
-    border-radius:50%;
-    background:var(--green);
     position:fixed;
+    width:5px;
+    height:5px;
+    background:var(--green);
+    border-radius:50%;
     pointer-events:none;
-    z-index:9999;
+    z-index:9991;
     transform:translate(-50%,-50%);
-    box-shadow:0 0 12px var(--green);
+    box-shadow:0 0 15px var(--green);
 }
 
 /* =====================================================
@@ -229,19 +247,19 @@ body{
 
 nav{
     position:fixed;
-    top:18px;
+    top:16px;
     left:50%;
     transform:translateX(-50%);
-    width:min(1120px,92%);
+    width:min(1180px,92%);
+    padding:13px 18px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:14px 20px;
-    background:rgba(2,5,14,.62);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
+    border:1px solid var(--line);
     border-radius:18px;
-    z-index:2000;
+    background:rgba(2,5,14,.64);
+    backdrop-filter:blur(22px);
+    z-index:5000;
 }
 
 .logo{
@@ -255,14 +273,15 @@ nav{
 
 nav ul{
     display:flex;
-    gap:24px;
+    gap:25px;
     list-style:none;
 }
 
 nav a{
     text-decoration:none;
-    color:#8993a7;
-    font-size:10px;
+    color:#8b95aa;
+    font-size:9px;
+    letter-spacing:1px;
     transition:.3s;
 }
 
@@ -270,29 +289,24 @@ nav a:hover{
     color:var(--blue);
 }
 
-.dev-btn{
-    color:var(--blue);
-    border:1px solid rgba(0,229,255,.5);
-    border-radius:9px;
-    padding:8px 12px;
-    font-size:9px;
+.dev-mode{
     cursor:pointer;
-    transition:.3s;
-}
-
-.dev-btn:hover{
-    background:rgba(0,229,255,.08);
-    box-shadow:0 0 20px rgba(0,229,255,.2);
+    color:var(--green);
+    border:1px solid rgba(0,255,157,.25);
+    padding:8px 11px;
+    border-radius:8px;
+    font-size:9px;
+    font-family:monospace;
 }
 
 /* =====================================================
-   GENERAL
+   SECTIONS
 ===================================================== */
 
 section{
     width:min(1150px,90%);
     margin:auto;
-    padding:120px 0;
+    padding:125px 0;
 }
 
 .section-label{
@@ -300,19 +314,20 @@ section{
     font-family:monospace;
     font-size:10px;
     letter-spacing:4px;
-    margin-bottom:15px;
+    margin-bottom:16px;
 }
 
 .section-title{
-    font-size:clamp(35px,6vw,68px);
-    letter-spacing:-4px;
-    margin-bottom:40px;
+    font-size:clamp(38px,6vw,75px);
+    letter-spacing:-5px;
+    line-height:.95;
+    margin-bottom:45px;
 }
 
 .glass{
-    background:var(--glass);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(18px);
+    background:var(--panel);
+    border:1px solid var(--line);
+    backdrop-filter:blur(20px);
     border-radius:25px;
 }
 
@@ -323,189 +338,187 @@ section{
 .hero{
     min-height:100vh;
     display:grid;
-    grid-template-columns:1.15fr .85fr;
+    grid-template-columns:1.1fr .9fr;
     align-items:center;
-    gap:70px;
+    gap:50px;
     padding-top:130px;
 }
 
-.status{
+.online{
     display:inline-flex;
     align-items:center;
     gap:9px;
-    padding:9px 14px;
-    border:1px solid rgba(0,255,157,.25);
-    background:rgba(0,255,157,.035);
-    border-radius:30px;
     color:var(--green);
+    border:1px solid rgba(0,255,157,.25);
+    padding:9px 14px;
+    border-radius:30px;
     font-size:10px;
     margin-bottom:25px;
 }
 
-.status-dot{
+.online i{
     width:7px;
     height:7px;
-    background:var(--green);
     border-radius:50%;
+    background:var(--green);
     box-shadow:0 0 15px var(--green);
-    animation:pulse 1.5s infinite;
+    animation:blink 1.3s infinite;
 }
 
-@keyframes pulse{
-    50%{opacity:.3}
+@keyframes blink{
+    50%{opacity:.2}
 }
 
 .hero h1{
-    font-size:clamp(48px,7vw,92px);
-    line-height:.9;
-    letter-spacing:-6px;
+    font-size:clamp(52px,8vw,100px);
+    line-height:.86;
+    letter-spacing:-7px;
 }
 
 .hero h1 span{
     color:transparent;
     -webkit-text-stroke:1px var(--blue);
-    text-shadow:0 0 35px rgba(0,229,255,.15);
+    text-shadow:0 0 40px rgba(0,234,255,.15);
 }
 
-.hero-description{
-    max-width:600px;
-    margin-top:25px;
+.hero-text{
     color:var(--muted);
     line-height:1.8;
-    font-size:16px;
+    max-width:600px;
+    margin-top:25px;
 }
 
 .typing{
     margin-top:20px;
     color:var(--green);
     font-family:monospace;
-    font-size:13px;
+    font-size:12px;
 }
 
-.hero-buttons{
+.buttons{
     display:flex;
-    gap:13px;
+    gap:12px;
     flex-wrap:wrap;
-    margin-top:35px;
+    margin-top:32px;
 }
 
 .btn{
-    color:white;
     text-decoration:none;
-    padding:14px 22px;
+    color:white;
+    padding:14px 21px;
     border-radius:12px;
-    border:1px solid rgba(255,255,255,.12);
-    font-size:11px;
+    border:1px solid var(--line);
+    font-size:10px;
     transition:.3s;
 }
 
 .btn.primary{
-    color:#00120c;
+    color:#00110b;
     font-weight:bold;
     background:linear-gradient(90deg,var(--blue),var(--green));
 }
 
 .btn:hover{
     transform:translateY(-5px);
-    box-shadow:0 12px 35px rgba(0,229,255,.18);
+    box-shadow:0 15px 40px rgba(0,234,255,.15);
 }
 
 /* =====================================================
-   ORBIT PROFILE
+   PLANET PROFILE
 ===================================================== */
 
 .universe{
+    width:460px;
+    height:460px;
     position:relative;
-    width:440px;
-    height:440px;
-    margin:auto;
     display:flex;
     align-items:center;
     justify-content:center;
+    margin:auto;
 }
 
-.universe::before,
-.universe::after{
-    content:"";
-    position:absolute;
-    border:1px solid rgba(0,229,255,.14);
+.planet{
+    width:290px;
+    height:290px;
     border-radius:50%;
-}
-
-.universe::before{
-    width:440px;
-    height:180px;
-    transform:rotate(-25deg);
-}
-
-.universe::after{
-    width:360px;
-    height:150px;
-    transform:rotate(55deg);
-}
-
-.profile-card{
-    width:270px;
-    height:355px;
-    padding:9px;
-    border-radius:28px;
-    background:linear-gradient(135deg,var(--blue),var(--purple),var(--green));
-    box-shadow:
-        0 0 60px rgba(0,229,255,.2),
-        0 0 100px rgba(118,87,255,.1);
     position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 30% 25%,
+        rgba(255,255,255,.5),
+        transparent 8%),
+        radial-gradient(circle at 65% 60%,
+        #063f72,
+        #020817 65%);
+    box-shadow:
+        inset -40px -30px 70px rgba(0,0,0,.8),
+        0 0 70px rgba(0,234,255,.2);
     z-index:3;
-    animation:floatProfile 5s ease-in-out infinite;
+    animation:planetFloat 5s ease-in-out infinite;
 }
 
-.profile-card img{
+.planet img{
     width:100%;
     height:100%;
     object-fit:cover;
-    border-radius:20px;
-    display:block;
+    opacity:.82;
+    mix-blend-mode:screen;
 }
 
-@keyframes floatProfile{
-    50%{
-        transform:translateY(-12px) rotateY(5deg);
-    }
-}
-
-.orbit{
+.planet-glow{
     position:absolute;
-    border:1px solid rgba(0,229,255,.2);
+    inset:-20px;
     border-radius:50%;
-    animation:orbitSpin 10s linear infinite;
+    border:1px solid rgba(0,234,255,.4);
+    box-shadow:0 0 45px rgba(0,234,255,.18);
 }
 
-.orbit.one{
-    width:390px;
+.ring{
+    position:absolute;
+    width:470px;
     height:160px;
-    transform:rotate(-25deg);
+    border:1px solid rgba(0,234,255,.25);
+    border-radius:50%;
+    transform:rotate(-22deg);
+    animation:ringSpin 10s linear infinite;
 }
 
-.orbit.two{
-    width:340px;
+.ring.two{
+    width:390px;
     height:130px;
     transform:rotate(55deg);
-    animation-duration:14s;
+    border-color:rgba(0,255,157,.18);
+    animation-duration:15s;
     animation-direction:reverse;
 }
 
-.orbit-dot{
-    width:10px;
-    height:10px;
-    background:var(--blue);
+.satellite{
+    width:12px;
+    height:12px;
     border-radius:50%;
+    background:var(--green);
     position:absolute;
-    top:50%;
-    right:-5px;
-    box-shadow:0 0 20px var(--blue);
+    box-shadow:0 0 25px var(--green);
 }
 
-@keyframes orbitSpin{
-    to{transform:rotate(335deg)}
+.satellite.one{
+    top:17%;
+    right:15%;
+}
+
+.satellite.two{
+    bottom:17%;
+    left:12%;
+    background:var(--blue);
+    box-shadow:0 0 25px var(--blue);
+}
+
+@keyframes planetFloat{
+    50%{transform:translateY(-10px) rotateY(8deg)}
+}
+
+@keyframes ringSpin{
+    to{transform:rotate(338deg)}
 }
 
 /* =====================================================
@@ -515,30 +528,30 @@ section{
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:15px;
+    gap:14px;
 }
 
 .stat{
-    padding:30px;
     text-align:center;
+    padding:28px 15px;
     transition:.4s;
 }
 
 .stat:hover{
     transform:translateY(-8px);
-    border-color:rgba(0,229,255,.3);
+    border-color:rgba(0,234,255,.3);
 }
 
 .stat h3{
     color:var(--blue);
-    font-size:38px;
+    font-size:40px;
 }
 
 .stat p{
-    margin-top:8px;
     color:var(--muted);
     font-size:9px;
     letter-spacing:2px;
+    margin-top:7px;
 }
 
 /* =====================================================
@@ -548,7 +561,7 @@ section{
 .about-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:20px;
+    gap:15px;
 }
 
 .about-card{
@@ -557,8 +570,8 @@ section{
 }
 
 .about-card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(0,229,255,.25);
+    transform:translateY(-7px);
+    border-color:rgba(0,234,255,.25);
 }
 
 .about-card h3{
@@ -578,34 +591,34 @@ section{
 .skills{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
+    gap:14px;
 }
 
 .skill{
-    padding:25px;
+    padding:24px;
 }
 
-.skill-top{
+.skill-head{
     display:flex;
     justify-content:space-between;
-    font-size:12px;
     margin-bottom:12px;
+    font-size:12px;
 }
 
-.skill-top span:last-child{
+.skill-head span{
     color:var(--blue);
 }
 
 .skill-bar{
-    height:7px;
-    background:#101722;
+    height:6px;
+    background:#111927;
     border-radius:10px;
     overflow:hidden;
 }
 
 .skill-fill{
-    width:0;
     height:100%;
+    width:0;
     background:linear-gradient(90deg,var(--blue),var(--green));
     transition:2s ease;
 }
@@ -616,77 +629,76 @@ section{
 
 .command{
     padding:30px;
-    position:relative;
     overflow:hidden;
+    position:relative;
 }
 
 .command::before{
-    content:"COMMAND CENTER";
+    content:"NORIZKANDAR OS";
     position:absolute;
-    right:20px;
+    right:-20px;
     top:20px;
-    color:rgba(0,229,255,.08);
-    font-size:35px;
+    font-size:45px;
     font-weight:900;
+    color:rgba(255,255,255,.025);
 }
 
-.command-head{
+.command-top{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid rgba(255,255,255,.07);
-    padding-bottom:15px;
-    margin-bottom:20px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:17px;
+    margin-bottom:18px;
 }
 
-.command-status{
+.command-top span{
     color:var(--green);
+    font-family:monospace;
+    font-size:10px;
+}
+
+.system-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.system{
+    padding:18px;
+    border:1px solid rgba(255,255,255,.06);
+    background:rgba(255,255,255,.025);
+    border-radius:14px;
+}
+
+.system small{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+    margin-bottom:8px;
+}
+
+.system strong{
+    color:var(--blue);
     font-family:monospace;
     font-size:11px;
 }
 
-.command-body{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:12px;
-}
-
-.system-box{
-    padding:18px;
-    background:rgba(255,255,255,.025);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:14px;
-}
-
-.system-box small{
-    display:block;
-    color:var(--muted);
-    font-size:9px;
-    margin-bottom:8px;
-}
-
-.system-box strong{
-    color:var(--blue);
-    font-family:monospace;
-}
-
 /* =====================================================
-   TERMINAL
+   INTERACTIVE TERMINAL
 ===================================================== */
 
 .terminal{
-    background:rgba(0,2,8,.82);
     padding:25px;
+    background:rgba(0,2,7,.85);
+    border:1px solid rgba(0,234,255,.17);
     border-radius:20px;
-    border:1px solid rgba(0,229,255,.15);
     font-family:monospace;
-    box-shadow:0 0 50px rgba(0,229,255,.05);
 }
 
 .terminal-head{
     display:flex;
     gap:7px;
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .terminal-head i{
@@ -696,22 +708,37 @@ section{
     border-radius:50%;
 }
 
-.terminal-line{
-    line-height:2;
-    color:#8be9fd;
-    font-size:12px;
+.terminal-output{
+    min-height:210px;
+    max-height:300px;
+    overflow:auto;
 }
 
-.green{
+.terminal-line{
+    line-height:1.9;
+    font-size:12px;
+    color:#9cecff;
+}
+
+.terminal-line.green{
     color:var(--green);
 }
 
-.muted{
-    color:#687286;
+.command-input{
+    width:100%;
+    margin-top:18px;
+    border:0;
+    outline:0;
+    border-top:1px solid rgba(255,255,255,.08);
+    background:transparent;
+    padding:15px 0 5px;
+    color:var(--green);
+    font-family:monospace;
+    font-size:12px;
 }
 
 /* =====================================================
-   PROJECT
+   SMART ACADEMY
 ===================================================== */
 
 .project{
@@ -720,11 +747,10 @@ section{
     gap:35px;
     padding:32px;
     align-items:center;
-    transition:.25s;
 }
 
 .project-info h3{
-    font-size:38px;
+    font-size:40px;
     margin-bottom:15px;
 }
 
@@ -736,74 +762,96 @@ section{
 
 .tags{
     display:flex;
-    gap:8px;
     flex-wrap:wrap;
+    gap:7px;
     margin-top:20px;
 }
 
 .tag{
     color:var(--blue);
-    border:1px solid rgba(0,229,255,.2);
+    border:1px solid rgba(0,234,255,.2);
     border-radius:8px;
     padding:7px 10px;
-    font-size:9px;
+    font-size:8px;
+}
+
+.holo{
+    position:relative;
+    min-height:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.holo-ring{
+    position:absolute;
+    width:370px;
+    height:370px;
+    border:1px dashed rgba(0,234,255,.2);
+    border-radius:50%;
+    animation:ringSpin 13s linear infinite;
 }
 
 .phone{
-    width:250px;
-    height:480px;
-    margin:auto;
-    border:7px solid #151b25;
-    border-radius:36px;
-    padding:10px;
-    background:#040810;
-    box-shadow:0 0 60px rgba(0,229,255,.15);
-    transform:rotateY(-7deg);
+    width:240px;
+    height:470px;
+    border:7px solid #141b27;
+    border-radius:35px;
+    padding:9px;
+    background:#03070d;
+    box-shadow:
+        0 0 60px rgba(0,234,255,.15),
+        inset 0 0 20px rgba(0,234,255,.05);
+    position:relative;
+    z-index:3;
+    transform:rotateY(-10deg);
     transition:.5s;
 }
 
-.project:hover .phone{
-    transform:rotateY(8deg) translateY(-8px);
+.phone:hover{
+    transform:rotateY(10deg) translateY(-8px);
 }
 
-.phone-screen{
+.screen{
     height:100%;
-    padding:20px 14px;
     border-radius:25px;
+    padding:18px 13px;
     background:
-        radial-gradient(circle at top right,rgba(0,229,255,.2),transparent 40%),
-        #070c14;
+        radial-gradient(circle at top right,
+        rgba(0,234,255,.16),
+        transparent 45%),
+        #060c15;
 }
 
-.phone-logo{
+.app-name{
     color:var(--blue);
+    font-size:17px;
     font-weight:bold;
-    font-size:18px;
 }
 
-.phone-small{
-    color:#758094;
-    font-size:9px;
-    margin-top:5px;
+.app-created{
+    color:#6e788d;
+    font-size:8px;
+    margin-top:4px;
 }
 
-.fake-card{
-    padding:15px;
-    margin-top:18px;
-    border-radius:15px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.07);
+.app-card{
+    padding:14px;
+    border-radius:14px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.06);
+    margin-top:15px;
 }
 
-.fake-card strong{
-    font-size:12px;
+.app-card strong{
+    font-size:11px;
 }
 
 .fake-line{
-    height:7px;
-    background:#1b2634;
+    height:6px;
     border-radius:10px;
-    margin-top:9px;
+    background:#1c2938;
+    margin-top:8px;
 }
 
 /* =====================================================
@@ -813,7 +861,7 @@ section{
 .features{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:15px;
+    gap:14px;
 }
 
 .feature{
@@ -822,15 +870,15 @@ section{
 }
 
 .feature:hover{
-    transform:translateY(-10px) rotateX(3deg);
-    border-color:rgba(0,229,255,.35);
-    box-shadow:0 20px 50px rgba(0,229,255,.08);
+    transform:translateY(-9px) rotateX(3deg);
+    border-color:rgba(0,234,255,.3);
 }
 
-.feature-number{
+.feature-num{
     color:var(--blue);
     font-family:monospace;
-    margin-bottom:20px;
+    font-size:11px;
+    margin-bottom:18px;
 }
 
 .feature h3{
@@ -844,70 +892,93 @@ section{
 }
 
 /* =====================================================
-   NEURAL NETWORK
+   NEURAL
 ===================================================== */
 
 .neural{
+    height:380px;
     position:relative;
-    height:360px;
-    border-radius:25px;
     overflow:hidden;
-    background:rgba(2,5,13,.5);
-    border:1px solid rgba(255,255,255,.07);
+    border-radius:25px;
+    border:1px solid var(--line);
+    background:rgba(2,5,14,.55);
+}
+
+.neural svg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+.neural-line{
+    stroke:rgba(0,234,255,.2);
+    stroke-width:1;
+    stroke-dasharray:6 8;
+    animation:dash 4s linear infinite;
+}
+
+@keyframes dash{
+    to{stroke-dashoffset:-100}
 }
 
 .node{
-    position:absolute;
-    width:12px;
-    height:12px;
-    background:var(--blue);
-    border-radius:50%;
-    box-shadow:0 0 20px var(--blue);
-    animation:nodePulse 2s infinite alternate;
+    fill:var(--blue);
+    filter:drop-shadow(0 0 7px var(--blue));
 }
 
-.node::after{
-    content:"";
-    position:absolute;
-    width:100px;
-    height:1px;
-    background:linear-gradient(90deg,var(--blue),transparent);
-    transform-origin:left;
-    opacity:.35;
-}
-
-.node:nth-child(1){left:15%;top:25%}
-.node:nth-child(2){left:40%;top:45%}
-.node:nth-child(3){left:70%;top:22%}
-.node:nth-child(4){left:82%;top:65%}
-.node:nth-child(5){left:30%;top:78%}
-.node:nth-child(6){left:58%;top:72%}
-
-@keyframes nodePulse{
-    to{
-        transform:scale(1.6);
-        opacity:.5;
-    }
-}
-
-.neural-title{
+.neural-center{
     position:absolute;
     inset:0;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
-    pointer-events:none;
 }
 
-.neural-title h3{
+.neural-center h3{
     font-size:35px;
 }
 
-.neural-title p{
+.neural-center p{
     color:var(--muted);
     margin-top:8px;
     font-size:12px;
+}
+
+/* =====================================================
+   ACHIEVEMENTS
+===================================================== */
+
+.achievements{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.achievement{
+    padding:25px;
+    text-align:center;
+    transition:.4s;
+}
+
+.achievement:hover{
+    transform:translateY(-8px) scale(1.02);
+}
+
+.achievement-icon{
+    font-size:35px;
+    margin-bottom:14px;
+}
+
+.achievement h3{
+    font-size:14px;
+}
+
+.achievement p{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:8px;
 }
 
 /* =====================================================
@@ -915,31 +986,31 @@ section{
 ===================================================== */
 
 .timeline{
-    border-left:1px solid rgba(0,229,255,.25);
-    margin-left:15px;
+    border-left:1px solid rgba(0,234,255,.25);
+    margin-left:12px;
 }
 
 .timeline-item{
+    padding:0 0 45px 32px;
     position:relative;
-    padding:0 0 45px 35px;
 }
 
 .timeline-item::before{
     content:"";
     position:absolute;
-    left:-5px;
-    top:5px;
     width:9px;
     height:9px;
     border-radius:50%;
+    left:-5px;
+    top:5px;
     background:var(--blue);
-    box-shadow:0 0 15px var(--blue);
+    box-shadow:0 0 18px var(--blue);
 }
 
 .timeline-item span{
     color:var(--green);
     font-family:monospace;
-    font-size:10px;
+    font-size:9px;
 }
 
 .timeline-item h3{
@@ -948,8 +1019,8 @@ section{
 
 .timeline-item p{
     color:var(--muted);
-    font-size:13px;
     line-height:1.7;
+    font-size:13px;
 }
 
 /* =====================================================
@@ -959,7 +1030,7 @@ section{
 .lab{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:15px;
+    gap:14px;
 }
 
 .lab-card{
@@ -976,19 +1047,8 @@ section{
 
 .lab-card p{
     color:var(--muted);
-    line-height:1.7;
     font-size:13px;
-}
-
-.lab-card::after{
-    content:"EXPERIMENT";
-    position:absolute;
-    right:-30px;
-    bottom:15px;
-    transform:rotate(-20deg);
-    color:rgba(255,255,255,.025);
-    font-size:34px;
-    font-weight:900;
+    line-height:1.7;
 }
 
 /* =====================================================
@@ -998,26 +1058,21 @@ section{
 .roadmap{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:15px;
+    gap:14px;
 }
 
 .road{
-    padding:30px;
-    transition:.4s;
-}
-
-.road:hover{
-    transform:translateY(-8px);
+    padding:28px;
 }
 
 .road-number{
-    color:rgba(0,229,255,.22);
-    font-size:45px;
+    color:rgba(0,234,255,.2);
+    font-size:50px;
     font-weight:900;
 }
 
 .road h3{
-    margin:15px 0;
+    margin:12px 0;
 }
 
 .road p{
@@ -1027,13 +1082,112 @@ section{
 }
 
 /* =====================================================
+   MINI GAME
+===================================================== */
+
+.game{
+    padding:35px;
+    text-align:center;
+    overflow:hidden;
+}
+
+.game-screen{
+    height:260px;
+    margin-top:25px;
+    position:relative;
+    border:1px solid rgba(0,234,255,.15);
+    border-radius:20px;
+    background:
+        linear-gradient(rgba(0,234,255,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,234,255,.04) 1px,transparent 1px);
+    background-size:35px 35px;
+}
+
+.game-player{
+    width:25px;
+    height:25px;
+    background:var(--green);
+    box-shadow:0 0 25px var(--green);
+    border-radius:7px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    transition:.12s;
+}
+
+.game-target{
+    position:absolute;
+    width:15px;
+    height:15px;
+    background:var(--blue);
+    border-radius:50%;
+    box-shadow:0 0 25px var(--blue);
+}
+
+.game-score{
+    margin-top:15px;
+    color:var(--green);
+    font-family:monospace;
+    font-size:12px;
+}
+
+/* =====================================================
+   SECRET ROOM
+===================================================== */
+
+#secretRoom{
+    position:fixed;
+    inset:0;
+    background:rgba(0,2,7,.97);
+    z-index:9500;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+}
+
+#secretRoom.active{
+    display:flex;
+}
+
+.secret-box{
+    max-width:700px;
+    width:100%;
+    padding:50px;
+    border:1px solid rgba(0,255,157,.25);
+    background:rgba(0,255,157,.025);
+    border-radius:25px;
+}
+
+.secret-box h2{
+    font-size:50px;
+    color:var(--green);
+}
+
+.secret-box p{
+    color:var(--muted);
+    margin-top:15px;
+    line-height:1.8;
+}
+
+.secret-close{
+    display:inline-block;
+    margin-top:30px;
+    color:var(--blue);
+    cursor:pointer;
+    font-family:monospace;
+}
+
+/* =====================================================
    SOCIAL
 ===================================================== */
 
 .social{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
+    gap:14px;
 }
 
 .social-card{
@@ -1045,13 +1199,13 @@ section{
 
 .social-card:hover{
     transform:translateY(-8px);
-    border-color:rgba(0,229,255,.4);
+    border-color:rgba(0,234,255,.35);
 }
 
 .social-card span{
     color:var(--blue);
     font-family:monospace;
-    font-size:10px;
+    font-size:9px;
     letter-spacing:3px;
 }
 
@@ -1064,23 +1218,23 @@ section{
 ===================================================== */
 
 .final{
-    min-height:80vh;
+    min-height:85vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
     flex-direction:column;
 }
 
 .final h2{
-    font-size:clamp(50px,10vw,115px);
-    line-height:.85;
-    letter-spacing:-7px;
+    font-size:clamp(55px,11vw,130px);
+    line-height:.82;
+    letter-spacing:-8px;
 }
 
 .final h2 span{
     color:var(--blue);
-    text-shadow:0 0 40px rgba(0,229,255,.25);
+    text-shadow:0 0 50px rgba(0,234,255,.25);
 }
 
 .final p{
@@ -1089,15 +1243,15 @@ section{
 }
 
 footer{
-    text-align:center;
+    border-top:1px solid var(--line);
     padding:30px;
-    color:#4f5a6d;
-    border-top:1px solid rgba(255,255,255,.05);
-    font-size:11px;
+    text-align:center;
+    color:#4e596d;
+    font-size:10px;
 }
 
 /* =====================================================
-   DEV MODE
+   DEV PANEL
 ===================================================== */
 
 #devPanel{
@@ -1107,8 +1261,8 @@ footer{
     z-index:9000;
     display:none;
     padding:100px 8%;
-    color:var(--green);
     font-family:monospace;
+    color:var(--green);
 }
 
 #devPanel.active{
@@ -1139,7 +1293,7 @@ footer{
 }
 
 /* =====================================================
-   RESPONSIVE
+   MOBILE
 ===================================================== */
 
 @media(max-width:850px){
@@ -1157,39 +1311,32 @@ footer{
         text-align:center;
     }
 
-    .hero-description{
+    .hero-text{
         margin-left:auto;
         margin-right:auto;
     }
 
-    .hero-buttons{
+    .buttons{
         justify-content:center;
     }
 
     .universe{
         width:330px;
-        height:380px;
+        height:360px;
     }
 
-    .universe::before{
+    .planet{
+        width:230px;
+        height:230px;
+    }
+
+    .ring{
         width:330px;
+        height:120px;
     }
 
-    .universe::after{
-        width:280px;
-    }
-
-    .orbit.one{
-        width:300px;
-    }
-
-    .orbit.two{
-        width:260px;
-    }
-
-    .profile-card{
-        width:235px;
-        height:315px;
+    .ring.two{
+        width:290px;
     }
 
     .stats{
@@ -1205,12 +1352,17 @@ footer{
 
     .features,
     .lab,
-    .roadmap{
+    .roadmap,
+    .achievements{
         grid-template-columns:1fr;
     }
 
-    .command-body{
-        grid-template-columns:1fr;
+    .system-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .holo{
+        min-height:520px;
     }
 
     .cursor,
@@ -1218,12 +1370,31 @@ footer{
         display:none;
     }
 
-    .neural{
-        height:280px;
+    .final h2{
+        letter-spacing:-5px;
+    }
+}
+
+@media(max-width:500px){
+
+    .system-grid{
+        grid-template-columns:1fr;
     }
 
-    .final h2{
-        letter-spacing:-4px;
+    .command{
+        padding:22px;
+    }
+
+    .game{
+        padding:22px;
+    }
+
+    .secret-box{
+        padding:30px 20px;
+    }
+
+    .secret-box h2{
+        font-size:35px;
     }
 }
 </style>
@@ -1232,25 +1403,23 @@ footer{
 <body>
 
 <!-- =====================================================
-     AUTO LOADER
+     LOADING
 ===================================================== -->
 
 <div id="loader">
 
-    <div class="loader-stars"></div>
+    <div class="loader-inner">
 
-    <div class="loader-content">
-
-        <div class="loader-small">
-            NORIZKANDAR // DIGITAL UNIVERSE
+        <div class="loader-kicker">
+            NORIZKANDAR // DIGITAL UNIVERSE 3.0
         </div>
 
         <div class="loader-title">
-            LOADING
+            SYSTEM <span>BOOT</span>
         </div>
 
         <div class="loader-status" id="loaderStatus">
-            INITIALIZING SYSTEM...
+            INITIALIZING DIGITAL CORE...
         </div>
 
         <div class="loader-bar">
@@ -1265,17 +1434,20 @@ footer{
 
 </div>
 
+<div id="warp"></div>
+
 <!-- =====================================================
-     GALAXY
+     SPACE
 ===================================================== -->
 
-<canvas id="spaceCanvas"></canvas>
+<canvas id="space"></canvas>
 
-<div class="space-overlay"></div>
+<div class="space-vignette"></div>
+<div class="grid"></div>
 
-<div class="nebula a"></div>
-<div class="nebula b"></div>
-<div class="nebula c"></div>
+<div class="nebula one"></div>
+<div class="nebula two"></div>
+<div class="nebula three"></div>
 
 <!-- =====================================================
      CURSOR
@@ -1302,7 +1474,7 @@ footer{
         <li><a href="#lab">LAB</a></li>
     </ul>
 
-    <div class="dev-btn" onclick="openDev()">
+    <div class="dev-mode" onclick="openDev()">
         DEV MODE
     </div>
 
@@ -1316,9 +1488,9 @@ footer{
 
     <div class="reveal">
 
-        <div class="status">
-            <span class="status-dot"></span>
-            ONLINE • BUILDING IDEAS
+        <div class="online">
+            <i></i>
+            SYSTEM ONLINE • BUILDING IDEAS
         </div>
 
         <h1>
@@ -1326,19 +1498,20 @@ footer{
             <span>NORIZKANDAR</span>
         </h1>
 
-        <p class="hero-description">
-            I turn creative ideas into modern mobile applications,
-            digital experiences and futuristic interfaces.
+        <p class="hero-text">
+            Young app developer exploring code, creative UI,
+            mobile applications and futuristic digital experiences.
         </p>
 
         <div class="typing">
             > <span id="typingText"></span>
         </div>
 
-        <div class="hero-buttons">
+        <div class="buttons">
 
-            <a href="#project" class="btn primary">
-                EXPLORE UNIVERSE
+            <a href="#project"
+               class="btn primary warp-link">
+                ENTER UNIVERSE
             </a>
 
             <a href="https://github.com/norizkandar"
@@ -1353,18 +1526,18 @@ footer{
 
     <div class="universe reveal">
 
-        <div class="orbit one">
-            <div class="orbit-dot"></div>
-        </div>
+        <div class="ring"></div>
+        <div class="ring two"></div>
 
-        <div class="orbit two">
-            <div class="orbit-dot"></div>
-        </div>
+        <div class="satellite one"></div>
+        <div class="satellite two"></div>
 
-        <div class="profile-card">
+        <div class="planet">
             <img src="profile.jpg"
                  alt="Mohamad Norizkandar">
         </div>
+
+        <div class="planet-glow"></div>
 
     </div>
 
@@ -1428,19 +1601,19 @@ footer{
             <p>
                 I'm Mohamad Norizkandar, a young developer from
                 Taiping, Perak, Malaysia. I enjoy learning how
-                technology works and turning ideas into real projects.
+                technology works and turning ideas into projects.
             </p>
 
         </div>
 
         <div class="about-card glass reveal">
 
-            <h3>My Focus</h3>
+            <h3>What I Build</h3>
 
             <p>
-                My current focus is mobile app development,
-                UI design, programming and experimenting with
-                new digital ideas.
+                My main focus is mobile app development,
+                programming, creative interfaces and experimenting
+                with new digital concepts.
             </p>
 
         </div>
@@ -1456,21 +1629,21 @@ footer{
 <section id="skills">
 
     <div class="section-label reveal">
-        02 // TECH STACK
+        02 // SKILLS
     </div>
 
     <h2 class="section-title reveal">
-        Tools I
+        My digital
         <span style="color:var(--green)">
-            build with.
+            toolkit.
         </span>
     </h2>
 
     <div class="skills">
 
         <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>JavaScript</span>
+            <div class="skill-head">
+                <b>JavaScript</b>
                 <span>90%</span>
             </div>
             <div class="skill-bar">
@@ -1479,8 +1652,8 @@ footer{
         </div>
 
         <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>React Native</span>
+            <div class="skill-head">
+                <b>React Native</b>
                 <span>85%</span>
             </div>
             <div class="skill-bar">
@@ -1489,8 +1662,8 @@ footer{
         </div>
 
         <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>Expo</span>
+            <div class="skill-head">
+                <b>Expo</b>
                 <span>85%</span>
             </div>
             <div class="skill-bar">
@@ -1499,8 +1672,8 @@ footer{
         </div>
 
         <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>Supabase</span>
+            <div class="skill-head">
+                <b>Supabase</b>
                 <span>75%</span>
             </div>
             <div class="skill-bar">
@@ -1509,8 +1682,8 @@ footer{
         </div>
 
         <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>VS Code</span>
+            <div class="skill-head">
+                <b>VS Code</b>
                 <span>95%</span>
             </div>
             <div class="skill-bar">
@@ -1519,8 +1692,8 @@ footer{
         </div>
 
         <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>Creative UI</span>
+            <div class="skill-head">
+                <b>Creative UI</b>
                 <span>90%</span>
             </div>
             <div class="skill-bar">
@@ -1543,54 +1716,54 @@ footer{
     </div>
 
     <h2 class="section-title reveal">
-        System
+        Developer
         <span style="color:var(--blue)">
-            control.
+            operating system.
         </span>
     </h2>
 
     <div class="command glass reveal">
 
-        <div class="command-head">
+        <div class="command-top">
 
             <strong>
-                NORIZKANDAR OS
+                NORIZKANDAR OS v3.0
             </strong>
 
-            <div class="command-status">
+            <span>
                 ● ALL SYSTEMS ONLINE
-            </div>
+            </span>
 
         </div>
 
-        <div class="command-body">
+        <div class="system-grid">
 
-            <div class="system-box">
+            <div class="system">
                 <small>CORE</small>
                 <strong>ACTIVE</strong>
             </div>
 
-            <div class="system-box">
+            <div class="system">
                 <small>PROJECT</small>
                 <strong>SMART_ACADEMY</strong>
             </div>
 
-            <div class="system-box">
+            <div class="system">
                 <small>MODE</small>
                 <strong>BUILDING</strong>
             </div>
 
-            <div class="system-box">
+            <div class="system">
                 <small>ENGINE</small>
                 <strong>JAVASCRIPT</strong>
             </div>
 
-            <div class="system-box">
+            <div class="system">
                 <small>INTERFACE</small>
-                <strong>FUTURISTIC</strong>
+                <strong>ONLINE</strong>
             </div>
 
-            <div class="system-box">
+            <div class="system">
                 <small>STATUS</small>
                 <strong>READY ✓</strong>
             </div>
@@ -1602,19 +1775,19 @@ footer{
 </section>
 
 <!-- =====================================================
-     TERMINAL
+     INTERACTIVE TERMINAL
 ===================================================== -->
 
 <section>
 
     <div class="section-label reveal">
-        04 // TERMINAL
+        04 // COMMAND TERMINAL
     </div>
 
     <h2 class="section-title reveal">
-        Developer
+        Type a
         <span style="color:var(--green)">
-            console.
+            command.
         </span>
     </h2>
 
@@ -1626,35 +1799,24 @@ footer{
             <i></i>
         </div>
 
-        <div class="terminal-line">
-            <span class="green">
-                norizkandar@universe
-            </span>:~$ whoami
+        <div class="terminal-output"
+             id="terminalOutput">
+
+            <div class="terminal-line green">
+                NORIZKANDAR OS TERMINAL v3.0
+            </div>
+
+            <div class="terminal-line">
+                Type: help
+            </div>
+
         </div>
 
-        <div class="terminal-line muted">
-            Mohamad Norizkandar — App Developer
-        </div>
-
-        <div class="terminal-line">
-            <span class="green">
-                norizkandar@universe
-            </span>:~$ scan projects
-        </div>
-
-        <div class="terminal-line muted">
-            Smart Academy detected...
-        </div>
-
-        <div class="terminal-line">
-            <span class="green">
-                norizkandar@universe
-            </span>:~$ system status
-        </div>
-
-        <div class="terminal-line green">
-            ALL SYSTEMS OPERATIONAL ✓
-        </div>
+        <input
+            id="commandInput"
+            class="command-input"
+            placeholder="norizkandar@universe:~$ type command..."
+            autocomplete="off">
 
     </div>
 
@@ -1685,8 +1847,8 @@ footer{
 
             <p>
                 A modern tuition platform concept designed to
-                connect students and teachers through interactive
-                digital learning experiences.
+                create an interactive digital learning experience
+                for students and teachers.
             </p>
 
             <div class="tags">
@@ -1702,40 +1864,57 @@ footer{
 
         </div>
 
-        <div class="phone">
+        <div class="holo">
 
-            <div class="phone-screen">
+            <div class="holo-ring"></div>
 
-                <div class="phone-logo">
-                    Smart Academy
-                </div>
+            <div class="phone">
 
-                <div class="phone-small">
-                    created by norizkandar
-                </div>
+                <div class="screen">
 
-                <div class="fake-card">
-                    <strong>
-                        Welcome back 👋
-                    </strong>
-                    <div class="fake-line"></div>
-                    <div class="fake-line"></div>
-                </div>
+                    <div class="app-name">
+                        Smart Academy
+                    </div>
 
-                <div class="fake-card">
-                    <strong>
-                        Live Class
-                    </strong>
-                    <div class="fake-line"></div>
-                    <div class="fake-line"></div>
-                    <div class="fake-line"></div>
-                </div>
+                    <div class="app-created">
+                        created by norizkandar
+                    </div>
 
-                <div class="fake-card">
-                    <strong>
-                        Achievement 🏆
-                    </strong>
-                    <div class="fake-line"></div>
+                    <div class="app-card">
+                        <strong>
+                            Welcome back 👋
+                        </strong>
+
+                        <div class="fake-line"></div>
+                        <div class="fake-line"></div>
+                    </div>
+
+                    <div class="app-card">
+                        <strong>
+                            🔴 Live Class
+                        </strong>
+
+                        <div class="fake-line"></div>
+                        <div class="fake-line"></div>
+                        <div class="fake-line"></div>
+                    </div>
+
+                    <div class="app-card">
+                        <strong>
+                            🏆 Achievement
+                        </strong>
+
+                        <div class="fake-line"></div>
+                    </div>
+
+                    <div class="app-card">
+                        <strong>
+                            🤖 AI Assistant
+                        </strong>
+
+                        <div class="fake-line"></div>
+                    </div>
+
                 </div>
 
             </div>
@@ -1753,69 +1932,69 @@ footer{
 <section>
 
     <div class="section-label reveal">
-        06 // FEATURES
+        06 // SMART ACADEMY SYSTEM
     </div>
 
     <h2 class="section-title reveal">
-        Inside the
+        Built for
         <span style="color:var(--blue)">
-            system.
+            learning.
         </span>
     </h2>
 
     <div class="features">
 
         <div class="feature glass reveal">
-            <div class="feature-number">01</div>
+            <div class="feature-num">01</div>
             <h3>AI Assistant</h3>
             <p>
-                A dedicated AI concept designed to support
-                students while learning.
+                AI concept designed to support students
+                during learning.
             </p>
         </div>
 
         <div class="feature glass reveal">
-            <div class="feature-number">02</div>
+            <div class="feature-num">02</div>
             <h3>Whiteboard</h3>
             <p>
-                Interactive digital space for explaining
-                and presenting ideas.
+                Digital space for explaining and presenting
+                ideas.
             </p>
         </div>
 
         <div class="feature glass reveal">
-            <div class="feature-number">03</div>
+            <div class="feature-num">03</div>
             <h3>Student Live</h3>
             <p>
-                Students can present using video in an
-                interactive live experience.
+                Interactive video presentation experience
+                for students.
             </p>
         </div>
 
         <div class="feature glass reveal">
-            <div class="feature-number">04</div>
+            <div class="feature-num">04</div>
             <h3>Achievement</h3>
             <p>
-                A system concept for tracking student
-                achievements and progress.
+                Concept for tracking student progress and
+                achievements.
             </p>
         </div>
 
         <div class="feature glass reveal">
-            <div class="feature-number">05</div>
+            <div class="feature-num">05</div>
             <h3>Teacher Rating</h3>
             <p>
-                Students can provide ratings for teachers
-                and learning experiences.
+                Students can rate teachers and their
+                learning experience.
             </p>
         </div>
 
         <div class="feature glass reveal">
-            <div class="feature-number">06</div>
+            <div class="feature-num">06</div>
             <h3>Student & Teacher</h3>
             <p>
-                Separate experiences designed for both
-                students and teachers.
+                Separate experiences for students and
+                teachers.
             </p>
         </div>
 
@@ -1830,32 +2009,120 @@ footer{
 <section>
 
     <div class="section-label reveal">
-        07 // DEVELOPER MINDSET
+        07 // DEVELOPER DNA
     </div>
 
     <h2 class="section-title reveal">
-        Connected
+        Ideas become
         <span style="color:var(--green)">
-            ideas.
+            connections.
         </span>
     </h2>
 
     <div class="neural reveal">
 
-        <div class="node"></div>
-        <div class="node"></div>
-        <div class="node"></div>
-        <div class="node"></div>
-        <div class="node"></div>
-        <div class="node"></div>
+        <svg viewBox="0 0 1000 400">
 
-        <div class="neural-title">
+            <line class="neural-line"
+                  x1="120" y1="90"
+                  x2="400" y2="190"/>
+
+            <line class="neural-line"
+                  x1="400" y1="190"
+                  x2="680" y2="80"/>
+
+            <line class="neural-line"
+                  x1="400" y1="190"
+                  x2="700" y2="300"/>
+
+            <line class="neural-line"
+                  x1="400" y1="190"
+                  x2="180" y2="310"/>
+
+            <line class="neural-line"
+                  x1="680" y1="80"
+                  x2="870" y2="200"/>
+
+            <line class="neural-line"
+                  x1="700" y1="300"
+                  x2="870" y2="200"/>
+
+            <circle class="node"
+                    cx="120" cy="90" r="8"/>
+
+            <circle class="node"
+                    cx="400" cy="190" r="12"/>
+
+            <circle class="node"
+                    cx="680" cy="80" r="8"/>
+
+            <circle class="node"
+                    cx="700" cy="300" r="8"/>
+
+            <circle class="node"
+                    cx="180" cy="310" r="8"/>
+
+            <circle class="node"
+                    cx="870" cy="200" r="10"/>
+
+        </svg>
+
+        <div class="neural-center">
+
             <div>
                 <h3>CREATE → BUILD → IMPROVE</h3>
                 <p>
-                    Every idea is another connection.
+                    Every project starts as an idea.
                 </p>
             </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     ACHIEVEMENTS
+===================================================== -->
+
+<section>
+
+    <div class="section-label reveal">
+        08 // ACHIEVEMENTS
+    </div>
+
+    <h2 class="section-title reveal">
+        Progress
+        <span style="color:var(--blue)">
+            unlocked.
+        </span>
+    </h2>
+
+    <div class="achievements">
+
+        <div class="achievement glass reveal">
+            <div class="achievement-icon">💻</div>
+            <h3>Started Coding</h3>
+            <p>First steps into programming.</p>
+        </div>
+
+        <div class="achievement glass reveal">
+            <div class="achievement-icon">📱</div>
+            <h3>Built an App</h3>
+            <p>Turned an idea into a mobile project.</p>
+        </div>
+
+        <div class="achievement glass reveal">
+            <div class="achievement-icon">🚀</div>
+            <h3>Smart Academy</h3>
+            <p>Created a larger app concept.</p>
+        </div>
+
+        <div class="achievement glass reveal">
+            <div class="achievement-icon">🌌</div>
+            <h3>Digital Universe</h3>
+            <p>Built this futuristic portfolio.</p>
         </div>
 
     </div>
@@ -1869,52 +2136,69 @@ footer{
 <section id="journey">
 
     <div class="section-label reveal">
-        08 // CODING JOURNEY
+        09 // JOURNEY
     </div>
 
     <h2 class="section-title reveal">
-        From learning to
-        <span style="color:var(--blue)">
-            building.
+        From
+        <span style="color:var(--green)">
+            zero
         </span>
+        to building.
     </h2>
 
     <div class="timeline">
 
         <div class="timeline-item reveal">
+
             <span>START</span>
-            <h3>Started Learning Code</h3>
+
+            <h3>Learning Code</h3>
+
             <p>
-                Began exploring programming and discovering
-                how software is built.
+                Started exploring programming and learning
+                how software is created.
             </p>
+
         </div>
 
         <div class="timeline-item reveal">
+
             <span>BUILD</span>
-            <h3>Started Building Apps</h3>
+
+            <h3>Mobile Development</h3>
+
             <p>
-                Started experimenting with JavaScript,
-                React Native and Expo.
+                Started building mobile apps using
+                JavaScript, React Native and Expo.
             </p>
+
         </div>
 
         <div class="timeline-item reveal">
+
             <span>CREATE</span>
+
             <h3>Smart Academy</h3>
+
             <p>
-                Turned a tuition app idea into a working
-                project concept.
+                Developed a tuition application concept
+                with multiple learning features.
             </p>
+
         </div>
 
         <div class="timeline-item reveal">
+
             <span>NEXT</span>
-            <h3>Keep Building</h3>
+
+            <h3>More Ideas</h3>
+
             <p>
-                Continue learning, experimenting and
-                creating better digital experiences.
+                Keep learning, experimenting and turning
+                ideas into real projects.
             </p>
+
         </div>
 
     </div>
@@ -1922,17 +2206,17 @@ footer{
 </section>
 
 <!-- =====================================================
-     EXPERIMENTAL LAB
+     LAB
 ===================================================== -->
 
 <section id="lab">
 
     <div class="section-label reveal">
-        09 // EXPERIMENTAL LAB
+        10 // EXPERIMENTAL LAB
     </div>
 
     <h2 class="section-title reveal">
-        Ideas under
+        Under
         <span style="color:var(--green)">
             construction.
         </span>
@@ -1941,27 +2225,36 @@ footer{
     <div class="lab">
 
         <div class="lab-card glass reveal">
+
             <h3>AI Experiments</h3>
+
             <p>
-                Exploring how AI can become part of future
-                applications and learning experiences.
+                Exploring ways AI could become part of
+                future applications.
             </p>
+
         </div>
 
         <div class="lab-card glass reveal">
+
             <h3>UI Experiments</h3>
+
             <p>
-                Creating futuristic interfaces, animations
-                and interactive experiences.
+                Testing futuristic interfaces, animations
+                and interaction concepts.
             </p>
+
         </div>
 
         <div class="lab-card glass reveal">
+
             <h3>Future Apps</h3>
+
             <p>
-                New application ideas waiting to be turned
-                into real prototypes.
+                New application ideas waiting to become
+                real prototypes.
             </p>
+
         </div>
 
     </div>
@@ -1975,43 +2268,97 @@ footer{
 <section>
 
     <div class="section-label reveal">
-        10 // ROADMAP
+        11 // ROADMAP
     </div>
 
     <h2 class="section-title reveal">
-        What's
+        The next
         <span style="color:var(--blue)">
-            next?
+            mission.
         </span>
     </h2>
 
     <div class="roadmap">
 
         <div class="road glass reveal">
+
             <div class="road-number">01</div>
-            <h3>Learn</h3>
+
+            <h3>LEARN</h3>
+
             <p>
                 Improve programming knowledge and explore
                 new technologies.
             </p>
+
         </div>
 
         <div class="road glass reveal">
+
             <div class="road-number">02</div>
-            <h3>Build</h3>
+
+            <h3>BUILD</h3>
+
             <p>
                 Turn more ideas into functional applications
                 and prototypes.
             </p>
+
         </div>
 
         <div class="road glass reveal">
+
             <div class="road-number">03</div>
-            <h3>Launch</h3>
+
+            <h3>LAUNCH</h3>
+
             <p>
-                Share projects with more people and continue
-                improving them.
+                Share projects, collect feedback and
+                continue improving.
             </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     MINI GAME
+===================================================== -->
+
+<section>
+
+    <div class="section-label reveal">
+        12 // SECRET MINI GAME
+    </div>
+
+    <h2 class="section-title reveal">
+        Developer
+        <span style="color:var(--green)">
+            challenge.
+        </span>
+    </h2>
+
+    <div class="game glass reveal">
+
+        <p style="color:var(--muted)">
+            Use your keyboard arrow keys to catch the blue target.
+        </p>
+
+        <div class="game-screen"
+             id="gameScreen">
+
+            <div class="game-player"
+                 id="player"></div>
+
+            <div class="game-target"
+                 id="target"></div>
+
+        </div>
+
+        <div class="game-score">
+            SCORE: <span id="score">0</span>
         </div>
 
     </div>
@@ -2025,12 +2372,12 @@ footer{
 <section>
 
     <div class="section-label reveal">
-        11 // TRANSMISSION
+        13 // TRANSMISSION
     </div>
 
     <h2 class="section-title reveal">
         Find me
-        <span style="color:var(--green)">
+        <span style="color:var(--blue)">
             online.
         </span>
     </h2>
@@ -2072,7 +2419,7 @@ footer{
 <section class="final">
 
     <div class="section-label reveal">
-        12 // END OF TRANSMISSION
+        14 // END OF TRANSMISSION
     </div>
 
     <h2 class="reveal">
@@ -2091,7 +2438,7 @@ footer{
 </footer>
 
 <!-- =====================================================
-     DEV PANEL
+     DEV MODE
 ===================================================== -->
 
 <div id="devPanel">
@@ -2101,7 +2448,7 @@ footer{
         [ CLOSE ]
     </div>
 
-    <h2>NORIZKANDAR // DEV MODE</h2>
+    <h2>NORIZKANDAR // DEVELOPER MODE</h2>
 
     <br>
 
@@ -2111,20 +2458,54 @@ footer{
     <p>> loading Expo...</p>
     <p>> loading Supabase...</p>
     <p>> scanning Smart Academy...</p>
-    <p>> connecting digital universe...</p>
-    <p class="green">
+    <p>> scanning digital universe...</p>
+
+    <br>
+
+    <p style="color:#00ff9d">
         > ALL SYSTEMS OPERATIONAL ✓
     </p>
+
+</div>
+
+<!-- =====================================================
+     SECRET ROOM
+===================================================== -->
+
+<div id="secretRoom">
+
+    <div class="secret-box">
+
+        <h2>SECRET DEVELOPER ROOM</h2>
+
+        <p>
+            You found the hidden layer of the universe.
+            Not every visitor gets here.
+        </p>
+
+        <p style="color:var(--green);font-family:monospace">
+            STATUS: DEVELOPER ACCESS GRANTED ✓
+        </p>
+
+        <div class="secret-close"
+             onclick="closeSecret()">
+            [ RETURN TO UNIVERSE ]
+        </div>
+
+    </div>
 
 </div>
 
 <script>
 
 /* =====================================================
-   AUTO LOADING
+   LOADER
 ===================================================== */
 
 let progress = 0;
+
+const loader =
+    document.getElementById("loader");
 
 const fill =
     document.getElementById("loaderFill");
@@ -2132,22 +2513,23 @@ const fill =
 const percent =
     document.getElementById("loaderPercent");
 
-const loaderStatus =
+const status =
     document.getElementById("loaderStatus");
 
-const loaderMessages = [
+const messages = [
 
-    "INITIALIZING SYSTEM...",
-    "LOADING DIGITAL CORE...",
+    "INITIALIZING DIGITAL CORE...",
+    "LOADING DEVELOPER OS...",
     "SCANNING PROJECTS...",
     "LOADING SMART ACADEMY...",
     "CALIBRATING GALAXY...",
-    "CONNECTING INTERFACE...",
-    "SYSTEM READY..."
+    "CONNECTING NEURAL NETWORK...",
+    "PREPARING UNIVERSE...",
+    "SYSTEM ONLINE ✓"
 
 ];
 
-const loading =
+const boot =
 setInterval(() => {
 
     progress++;
@@ -2159,49 +2541,42 @@ setInterval(() => {
         progress + "%";
 
     if(progress < 15)
-        loaderStatus.textContent =
-            loaderMessages[0];
+        status.textContent = messages[0];
 
     else if(progress < 30)
-        loaderStatus.textContent =
-            loaderMessages[1];
+        status.textContent = messages[1];
 
-    else if(progress < 45)
-        loaderStatus.textContent =
-            loaderMessages[2];
+    else if(progress < 43)
+        status.textContent = messages[2];
 
-    else if(progress < 60)
-        loaderStatus.textContent =
-            loaderMessages[3];
+    else if(progress < 56)
+        status.textContent = messages[3];
 
-    else if(progress < 75)
-        loaderStatus.textContent =
-            loaderMessages[4];
+    else if(progress < 68)
+        status.textContent = messages[4];
+
+    else if(progress < 82)
+        status.textContent = messages[5];
 
     else if(progress < 95)
-        loaderStatus.textContent =
-            loaderMessages[5];
+        status.textContent = messages[6];
 
     else
-        loaderStatus.textContent =
-            loaderMessages[6];
+        status.textContent = messages[7];
 
     if(progress >= 100){
 
-        clearInterval(loading);
+        clearInterval(boot);
 
         setTimeout(() => {
 
-            document
-                .getElementById("loader")
-                .classList
-                .add("hide");
+            loader.classList.add("hide");
 
         },700);
 
     }
 
-},32);
+},30);
 
 
 /* =====================================================
@@ -2211,94 +2586,100 @@ setInterval(() => {
 const phrases = [
 
     "building mobile apps...",
-    "designing digital experiences...",
+    "designing futuristic interfaces...",
     "experimenting with AI...",
     "turning ideas into code...",
     "exploring the digital universe..."
 
 ];
 
-let p = 0;
-let c = 0;
+let phraseIndex = 0;
+let charIndex = 0;
 let deleting = false;
 
-function typing(){
+function typeWriter(){
 
     const current =
-        phrases[p];
+        phrases[phraseIndex];
 
-    const element =
+    const text =
         document.getElementById("typingText");
 
     if(!deleting){
 
-        element.textContent =
-            current.substring(0,c++);
+        text.textContent =
+            current.substring(0,charIndex++);
 
     }else{
 
-        element.textContent =
-            current.substring(0,c--);
+        text.textContent =
+            current.substring(0,charIndex--);
 
     }
 
-    if(!deleting && c > current.length){
+    if(!deleting &&
+       charIndex > current.length){
 
         deleting = true;
 
-        setTimeout(typing,1200);
+        setTimeout(typeWriter,1100);
 
         return;
     }
 
-    if(deleting && c < 0){
+    if(deleting &&
+       charIndex < 0){
 
         deleting = false;
-        p = (p + 1) % phrases.length;
-        c = 0;
+
+        phraseIndex =
+            (phraseIndex + 1) %
+            phrases.length;
+
+        charIndex = 0;
 
     }
 
     setTimeout(
-        typing,
-        deleting ? 35 : 70
+        typeWriter,
+        deleting ? 35 : 65
     );
 }
 
-typing();
+typeWriter();
 
 
 /* =====================================================
-   CURSOR + GALAXY PARALLAX
+   CURSOR
 ===================================================== */
 
 const cursor =
     document.querySelector(".cursor");
 
-const dot =
+const cursorDot =
     document.querySelector(".cursor-dot");
+
+let mouseX = 0;
+let mouseY = 0;
 
 document.addEventListener(
     "mousemove",
     e => {
 
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
         cursor.style.left =
-            e.clientX + "px";
+            mouseX + "px";
 
         cursor.style.top =
-            e.clientY + "px";
+            mouseY + "px";
 
-        dot.style.left =
-            e.clientX + "px";
+        cursorDot.style.left =
+            mouseX + "px";
 
-        dot.style.top =
-            e.clientY + "px";
-
-        mouseX =
-            e.clientX;
-
-        mouseY =
-            e.clientY;
+        cursorDot.style.top =
+            mouseY + "px";
 
     }
 );
@@ -2309,43 +2690,41 @@ document.addEventListener(
 ===================================================== */
 
 const revealObserver =
-new IntersectionObserver(
-    entries => {
+    new IntersectionObserver(
+        entries => {
 
-        entries.forEach(entry => {
+            entries.forEach(entry => {
 
-            if(entry.isIntersecting){
+                if(!entry.isIntersecting)
+                    return;
 
-                entry.target
-                    .classList
-                    .add("show");
+                entry.target.classList.add("show");
 
-                const fill =
-                    entry.target
-                    .querySelector(".skill-fill");
+                const skill =
+                    entry.target.querySelector(
+                        ".skill-fill"
+                    );
 
-                if(fill){
+                if(skill){
 
-                    fill.style.width =
-                        fill.dataset.width;
+                    skill.style.width =
+                        skill.dataset.width;
 
                 }
 
-            }
+            });
 
-        });
-
-    },
-    {
-        threshold:.15
-    }
-);
+        },
+        {
+            threshold:.15
+        }
+    );
 
 document
-    .querySelectorAll(".reveal")
-    .forEach(el =>
-        revealObserver.observe(el)
-    );
+.querySelectorAll(".reveal")
+.forEach(el =>
+    revealObserver.observe(el)
+);
 
 
 /* =====================================================
@@ -2353,51 +2732,50 @@ document
 ===================================================== */
 
 const counterObserver =
-new IntersectionObserver(
-    entries => {
+    new IntersectionObserver(
+        entries => {
 
-        entries.forEach(entry => {
+            entries.forEach(entry => {
 
-            if(!entry.isIntersecting)
-                return;
+                if(!entry.isIntersecting)
+                    return;
 
-            const counter =
-                entry.target;
+                const el =
+                    entry.target;
 
-            const target =
-                Number(counter.dataset.count);
+                const target =
+                    Number(el.dataset.count);
 
-            let value = 0;
+                let current = 0;
 
-            const timer =
-                setInterval(() => {
+                const timer =
+                    setInterval(() => {
 
-                    value++;
+                        current++;
 
-                    counter.textContent =
-                        value;
+                        el.textContent =
+                            current;
 
-                    if(value >= target)
-                        clearInterval(timer);
+                        if(current >= target)
+                            clearInterval(timer);
 
-                },70);
+                    },65);
 
-            counterObserver
-                .unobserve(counter);
+                counterObserver.unobserve(el);
 
-        });
+            });
 
-    },
-    {
-        threshold:.7
-    }
-);
+        },
+        {
+            threshold:.7
+        }
+    );
 
 document
-    .querySelectorAll("[data-count]")
-    .forEach(el =>
-        counterObserver.observe(el)
-    );
+.querySelectorAll("[data-count]")
+.forEach(el =>
+    counterObserver.observe(el)
+);
 
 
 /* =====================================================
@@ -2424,87 +2802,36 @@ function closeDev(){
 
 
 /* =====================================================
-   PROJECT 3D
-===================================================== */
-
-const project =
-    document.querySelector(".project");
-
-if(project){
-
-    project.addEventListener(
-        "mousemove",
-        e => {
-
-            const rect =
-                project.getBoundingClientRect();
-
-            const x =
-                (e.clientX - rect.left)
-                / rect.width - .5;
-
-            const y =
-                (e.clientY - rect.top)
-                / rect.height - .5;
-
-            project.style.transform =
-                `perspective(1000px)
-                 rotateY(${x*5}deg)
-                 rotateX(${-y*4}deg)`;
-
-        }
-    );
-
-    project.addEventListener(
-        "mouseleave",
-        () => {
-
-            project.style.transform = "";
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   MAGNETIC BUTTONS
+   WARP LINKS
 ===================================================== */
 
 document
-.querySelectorAll(
-    ".btn,.dev-btn,.social-card"
-)
-.forEach(button => {
+.querySelectorAll(".warp-link")
+.forEach(link => {
 
-    button.addEventListener(
-        "mousemove",
+    link.addEventListener(
+        "click",
         e => {
 
-            const rect =
-                button.getBoundingClientRect();
+            e.preventDefault();
 
-            const x =
-                e.clientX -
-                rect.left -
-                rect.width/2;
+            const destination =
+                link.getAttribute("href");
 
-            const y =
-                e.clientY -
-                rect.top -
-                rect.height/2;
+            const warp =
+                document.getElementById("warp");
 
-            button.style.transform =
-                `translate(${x*.08}px,${y*.08}px)`;
+            warp.classList.add("active");
 
-        }
-    );
+            setTimeout(() => {
 
-    button.addEventListener(
-        "mouseleave",
-        () => {
+                document
+                    .querySelector(destination)
+                    .scrollIntoView();
 
-            button.style.transform = "";
+                warp.classList.remove("active");
+
+            },500);
 
         }
     );
@@ -2513,40 +2840,180 @@ document
 
 
 /* =====================================================
-   GALAXY PARTICLE ENGINE
+   INTERACTIVE TERMINAL
+===================================================== */
+
+const input =
+    document.getElementById("commandInput");
+
+const output =
+    document.getElementById("terminalOutput");
+
+function terminalPrint(text,green=false){
+
+    const line =
+        document.createElement("div");
+
+    line.className =
+        "terminal-line" +
+        (green ? " green" : "");
+
+    line.textContent =
+        text;
+
+    output.appendChild(line);
+
+    output.scrollTop =
+        output.scrollHeight;
+
+}
+
+input.addEventListener(
+    "keydown",
+    e => {
+
+        if(e.key !== "Enter")
+            return;
+
+        const command =
+            input.value
+                .trim()
+                .toLowerCase();
+
+        if(!command)
+            return;
+
+        terminalPrint(
+            "> " + command
+        );
+
+        if(command === "help"){
+
+            terminalPrint(
+                "commands: help, about, skills, project, status, secret, clear"
+            );
+
+        }
+
+        else if(command === "about"){
+
+            terminalPrint(
+                "Mohamad Norizkandar — young app developer."
+            );
+
+        }
+
+        else if(command === "skills"){
+
+            terminalPrint(
+                "JavaScript | React Native | Expo | Supabase | VS Code"
+            );
+
+        }
+
+        else if(command === "project"){
+
+            terminalPrint(
+                "Smart Academy detected. Status: building."
+            );
+
+        }
+
+        else if(command === "status"){
+
+            terminalPrint(
+                "ALL SYSTEMS OPERATIONAL ✓",
+                true
+            );
+
+        }
+
+        else if(command === "secret"){
+
+            terminalPrint(
+                "ACCESSING SECRET ROOM...",
+                true
+            );
+
+            setTimeout(
+                openSecret,
+                600
+            );
+
+        }
+
+        else if(command === "clear"){
+
+            output.innerHTML = "";
+
+        }
+
+        else{
+
+            terminalPrint(
+                "Unknown command. Type 'help'."
+            );
+
+        }
+
+        input.value = "";
+
+    }
+);
+
+
+/* =====================================================
+   SECRET ROOM
+===================================================== */
+
+function openSecret(){
+
+    document
+        .getElementById("secretRoom")
+        .classList
+        .add("active");
+
+}
+
+function closeSecret(){
+
+    document
+        .getElementById("secretRoom")
+        .classList
+        .remove("active");
+
+}
+
+
+/* =====================================================
+   GALAXY PARTICLES
 ===================================================== */
 
 const canvas =
-    document.getElementById("spaceCanvas");
+    document.getElementById("space");
 
 const ctx =
     canvas.getContext("2d");
 
-let width;
-let height;
-
-let mouseX = 0;
-let mouseY = 0;
-
 let stars = [];
 
-function resize(){
+function resizeCanvas(){
 
-    width =
-        canvas.width =
+    canvas.width =
         window.innerWidth;
 
-    height =
-        canvas.height =
+    canvas.height =
         window.innerHeight;
 
     stars = [];
 
     const amount =
         Math.min(
-            700,
+            850,
             Math.floor(
-                width * height / 1500
+                canvas.width *
+                canvas.height /
+                1300
             )
         );
 
@@ -2554,18 +3021,19 @@ function resize(){
 
         stars.push({
 
-            x:Math.random()*width,
-            y:Math.random()*height,
-
-            z:Math.random(),
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height,
 
             size:
-                Math.random()*1.5+.2,
+                Math.random()*1.5+.15,
 
             speed:
-                Math.random()*.35+.05,
+                Math.random()*.35+.03,
 
-            twinkle:
+            alpha:
+                Math.random()*.7+.2,
+
+            phase:
                 Math.random()*Math.PI*2
 
         });
@@ -2574,103 +3042,200 @@ function resize(){
 
 }
 
-resize();
+resizeCanvas();
 
 window.addEventListener(
     "resize",
-    resize
+    resizeCanvas
 );
 
 
-function animateGalaxy(){
+function drawGalaxy(){
 
     ctx.clearRect(
         0,
         0,
-        width,
-        height
+        canvas.width,
+        canvas.height
     );
-
-    const px =
-        (mouseX / width - .5);
-
-    const py =
-        (mouseY / height - .5);
 
     for(const star of stars){
 
         star.y -= star.speed;
 
-        if(star.y < -10)
-            star.y = height + 10;
+        if(star.y < -5)
+            star.y =
+                canvas.height + 5;
 
-        star.twinkle += .02;
+        star.phase += .02;
 
-        const opacity =
-            .35 +
-            Math.sin(star.twinkle)*.3;
-
-        const depth =
-            star.z * 18;
-
-        const x =
-            star.x +
-            px * depth;
-
-        const y =
-            star.y +
-            py * depth;
+        const twinkle =
+            star.alpha +
+            Math.sin(star.phase)*.2;
 
         ctx.beginPath();
 
         ctx.arc(
-            x,
-            y,
-            star.size * (0.5 + star.z),
+            star.x,
+            star.y,
+            star.size,
             0,
             Math.PI*2
         );
 
         ctx.fillStyle =
-            `rgba(190,235,255,${opacity})`;
+            `rgba(190,240,255,${twinkle})`;
 
         ctx.fill();
 
     }
 
     requestAnimationFrame(
-        animateGalaxy
+        drawGalaxy
     );
 
 }
 
-animateGalaxy();
+drawGalaxy();
 
 
 /* =====================================================
-   SECRET EASTER EGGS
+   GALAXY PARALLAX
 ===================================================== */
 
-let secret = "";
+document.addEventListener(
+    "mousemove",
+    e => {
+
+        const x =
+            (e.clientX /
+            window.innerWidth -
+            .5);
+
+        const y =
+            (e.clientY /
+            window.innerHeight -
+            .5);
+
+        document
+            .querySelector(".grid")
+            .style.transform =
+            `perspective(700px)
+             rotateX(65deg)
+             translate(${x*15}px,${y*15}px)
+             scale(2)`;
+
+    }
+);
+
+
+/* =====================================================
+   MINI GAME
+===================================================== */
+
+const game =
+    document.getElementById("gameScreen");
+
+const player =
+    document.getElementById("player");
+
+const target =
+    document.getElementById("target");
+
+const scoreElement =
+    document.getElementById("score");
+
+let playerX = 50;
+let playerY = 50;
+let score = 0;
+
+function moveTarget(){
+
+    target.style.left =
+        Math.random()*90 + "%";
+
+    target.style.top =
+        Math.random()*85 + "%";
+
+}
+
+moveTarget();
 
 document.addEventListener(
     "keydown",
     e => {
 
-        secret +=
+        const step = 4;
+
+        if(e.key === "ArrowLeft")
+            playerX -= step;
+
+        if(e.key === "ArrowRight")
+            playerX += step;
+
+        if(e.key === "ArrowUp")
+            playerY -= step;
+
+        if(e.key === "ArrowDown")
+            playerY += step;
+
+        playerX =
+            Math.max(3,Math.min(97,playerX));
+
+        playerY =
+            Math.max(5,Math.min(95,playerY));
+
+        player.style.left =
+            playerX + "%";
+
+        player.style.top =
+            playerY + "%";
+
+        const playerRect =
+            player.getBoundingClientRect();
+
+        const targetRect =
+            target.getBoundingClientRect();
+
+        const distance =
+            Math.hypot(
+                playerRect.left-targetRect.left,
+                playerRect.top-targetRect.top
+            );
+
+        if(distance < 30){
+
+            score++;
+
+            scoreElement.textContent =
+                score;
+
+            moveTarget();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   EASTER EGG KEYWORDS
+===================================================== */
+
+let secretText = "";
+
+document.addEventListener(
+    "keydown",
+    e => {
+
+        secretText +=
             e.key.toLowerCase();
 
-        if(secret.length > 8)
-            secret =
-                secret.slice(-8);
+        if(secretText.length > 12)
+            secretText =
+                secretText.slice(-12);
 
-        /* nori */
-
-        if(secret === "nori"){
-
-            document.body.style
-                .transform =
-                "scale(1.015)";
+        if(secretText.includes("nori")){
 
             document.body.style
                 .filter =
@@ -2679,33 +3244,19 @@ document.addEventListener(
             setTimeout(() => {
 
                 document.body.style
-                    .transform = "";
-
-                document.body.style
                     .filter = "";
 
             },1800);
 
-            secret = "";
+            secretText = "";
 
         }
 
-        /* galaxy */
+        if(secretText.includes("galaxy")){
 
-        if(secret === "galaxy"){
+            openSecret();
 
-            document.body.style
-                .filter =
-                "hue-rotate(180deg)";
-
-            setTimeout(() => {
-
-                document.body.style
-                    .filter = "";
-
-            },3000);
-
-            secret = "";
+            secretText = "";
 
         }
 

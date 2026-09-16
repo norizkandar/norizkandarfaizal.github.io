@@ -12,10 +12,6 @@ content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A">
 <title>Mohamad Norizkandar | Creative App Developer</title>
 
 <style>
-/* =========================
-   RESET
-========================= */
-
 *{
     margin:0;
     padding:0;
@@ -24,16 +20,15 @@ content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A">
 }
 
 :root{
-    --bg:#02050a;
-    --bg2:#07101c;
-    --card:rgba(8,18,30,.68);
-    --text:#f5f7fb;
-    --muted:#91a0b5;
+    --bg:#02040a;
+    --panel:rgba(8,14,25,.72);
+    --panel2:#07101c;
+    --text:#f5f8ff;
+    --muted:#8998ad;
     --blue:#00e5ff;
     --green:#00ff9d;
     --purple:#8b5cf6;
-    --line:rgba(255,255,255,.08);
-    --shadow:0 0 50px rgba(0,229,255,.12);
+    --line:rgba(255,255,255,.09);
 }
 
 body{
@@ -43,104 +38,245 @@ body{
     overflow-x:hidden;
 }
 
+a{
+    color:inherit;
+}
+
 /* =========================
-   LOADER
+   CINEMATIC INTRO
 ========================= */
 
-#loader{
+#intro{
     position:fixed;
     inset:0;
-    background:#010308;
     z-index:99999;
+    background:#000;
     display:flex;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
-    transition:1s;
+    overflow:hidden;
+    transition:1s ease;
 }
 
-.loader-logo{
-    font-size:42px;
-    font-weight:900;
-    letter-spacing:5px;
-    background:linear-gradient(90deg,var(--blue),var(--green));
-    -webkit-background-clip:text;
-    color:transparent;
-    animation:pulse 1.5s infinite;
+.intro-grid{
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(0,229,255,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,229,255,.045) 1px,transparent 1px);
+    background-size:45px 45px;
+    transform:perspective(500px) rotateX(55deg) scale(2);
+    transform-origin:center bottom;
+    animation:gridMove 8s linear infinite;
 }
 
-.loader-line{
-    width:220px;
+@keyframes gridMove{
+    from{background-position:0 0}
+    to{background-position:0 45px}
+}
+
+.scan{
+    position:absolute;
+    width:100%;
     height:2px;
-    background:#14202d;
-    margin-top:25px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--blue),
+        transparent
+    );
+    box-shadow:0 0 25px var(--blue);
+    top:-5%;
+    animation:scan 3s linear infinite;
+}
+
+@keyframes scan{
+    to{top:105%}
+}
+
+.intro-center{
+    position:relative;
+    z-index:2;
+    width:min(750px,90%);
+}
+
+.intro-terminal{
+    border:1px solid rgba(0,229,255,.2);
+    background:rgba(2,7,12,.88);
+    box-shadow:0 0 80px rgba(0,229,255,.08);
+    border-radius:18px;
     overflow:hidden;
 }
 
-.loader-line span{
-    display:block;
-    width:0;
-    height:100%;
-    background:linear-gradient(90deg,var(--blue),var(--green));
-    animation:loading 2.2s forwards;
+.term-bar{
+    padding:12px 15px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    gap:7px;
 }
 
-.loader-text{
-    margin-top:15px;
+.term-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#263544;
+}
+
+.intro-content{
+    padding:30px;
+    font-family:monospace;
+    line-height:1.8;
+    color:#a7b5c6;
+}
+
+.green{
+    color:var(--green);
+}
+
+.blue{
+    color:var(--blue);
+}
+
+.purple{
+    color:#a78bfa;
+}
+
+.intro-name{
+    margin-top:25px;
+    text-align:center;
+    font-family:Arial,sans-serif;
+    font-size:clamp(42px,9vw,100px);
+    font-weight:1000;
+    letter-spacing:-5px;
+    background:linear-gradient(
+        90deg,
+        var(--blue),
+        white,
+        var(--green)
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+    opacity:0;
+    transform:scale(.7);
+}
+
+.intro-name.show{
+    animation:nameReveal 1.2s forwards;
+}
+
+@keyframes nameReveal{
+    0%{
+        opacity:0;
+        transform:scale(.7);
+        filter:blur(20px);
+    }
+    70%{
+        opacity:1;
+        transform:scale(1.05);
+        filter:blur(0);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.intro-sub{
+    text-align:center;
+    margin-top:8px;
     color:#718096;
-    font-size:12px;
-    letter-spacing:3px;
+    letter-spacing:5px;
+    font-size:11px;
+    opacity:0;
 }
 
-@keyframes loading{
-    to{width:100%}
+.intro-sub.show{
+    animation:fadeIn 1s forwards;
 }
 
-@keyframes pulse{
-    50%{opacity:.5}
+@keyframes fadeIn{
+    to{opacity:1}
+}
+
+.countdown{
+    text-align:center;
+    font-size:100px;
+    font-weight:900;
+    color:white;
+    text-shadow:
+        0 0 20px var(--blue),
+        0 0 60px var(--blue);
+    margin-top:15px;
+    min-height:110px;
+}
+
+.enter{
+    display:block;
+    margin:20px auto 0;
+    padding:14px 25px;
+    border:1px solid rgba(0,229,255,.4);
+    background:#07121d;
+    color:white;
+    border-radius:12px;
+    cursor:pointer;
+    letter-spacing:2px;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+}
+
+.enter.ready{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.enter:hover{
+    background:var(--blue);
+    color:#001014;
+    box-shadow:0 0 40px rgba(0,229,255,.35);
 }
 
 /* =========================
-   BACKGROUND
+   MAIN BACKGROUND
 ========================= */
 
-.bg-grid{
+.grid-bg{
     position:fixed;
     inset:0;
-    z-index:-5;
+    z-index:-10;
     background-image:
-    linear-gradient(rgba(0,229,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,255,.035) 1px,transparent 1px);
-    background-size:45px 45px;
-    mask-image:linear-gradient(to bottom,black,transparent);
+        linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);
+    background-size:50px 50px;
 }
 
-.glow{
+.orb{
     position:fixed;
-    width:500px;
-    height:500px;
+    width:450px;
+    height:450px;
     border-radius:50%;
-    background:rgba(0,229,255,.08);
-    filter:blur(100px);
-    z-index:-4;
+    filter:blur(110px);
+    opacity:.12;
     pointer-events:none;
+    z-index:-8;
 }
 
-.glow.one{
-    top:-150px;
-    left:-150px;
+.orb.one{
+    background:var(--blue);
+    top:-200px;
+    left:-200px;
 }
 
-.glow.two{
-    right:-200px;
+.orb.two{
+    background:var(--green);
+    right:-220px;
     top:40%;
-    background:rgba(0,255,157,.06);
 }
 
 #particles{
     position:fixed;
     inset:0;
-    z-index:-3;
+    z-index:-5;
     pointer-events:none;
 }
 
@@ -150,14 +286,13 @@ body{
 
 .cursor{
     position:fixed;
-    width:25px;
-    height:25px;
+    width:28px;
+    height:28px;
     border:1px solid var(--blue);
     border-radius:50%;
     pointer-events:none;
     transform:translate(-50%,-50%);
-    z-index:9999;
-    transition:.08s;
+    z-index:9998;
 }
 
 .cursor-dot{
@@ -168,34 +303,51 @@ body{
     border-radius:50%;
     pointer-events:none;
     transform:translate(-50%,-50%);
-    z-index:10000;
+    z-index:9999;
 }
 
 /* =========================
-   NAV
+   PROGRESS
+========================= */
+
+.progress{
+    position:fixed;
+    top:0;
+    left:0;
+    height:3px;
+    width:0;
+    background:linear-gradient(
+        90deg,
+        var(--blue),
+        var(--green)
+    );
+    z-index:9997;
+}
+
+/* =========================
+   NAVIGATION
 ========================= */
 
 nav{
     position:fixed;
-    top:20px;
+    top:18px;
     left:50%;
     transform:translateX(-50%);
     width:min(1100px,92%);
-    padding:14px 20px;
+    padding:14px 18px;
     border:1px solid var(--line);
-    border-radius:20px;
     background:rgba(2,5,10,.72);
     backdrop-filter:blur(20px);
-    z-index:5000;
+    border-radius:18px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
+    z-index:5000;
 }
 
 .logo{
     font-weight:900;
     letter-spacing:2px;
-    color:white;
 }
 
 .logo span{
@@ -209,8 +361,8 @@ nav{
 
 .nav-links a{
     text-decoration:none;
-    color:#9caabd;
-    font-size:13px;
+    color:#8998ab;
+    font-size:12px;
     transition:.3s;
 }
 
@@ -218,31 +370,17 @@ nav{
     color:var(--blue);
 }
 
-.nav-btn{
+.nav-button{
+    background:#08121d;
     border:1px solid var(--line);
-    background:#07111d;
     color:white;
-    padding:9px 13px;
-    border-radius:12px;
+    border-radius:10px;
+    padding:9px 12px;
     cursor:pointer;
 }
 
 /* =========================
-   SCROLL BAR
-========================= */
-
-.progress{
-    position:fixed;
-    top:0;
-    left:0;
-    width:0%;
-    height:3px;
-    background:linear-gradient(90deg,var(--blue),var(--green));
-    z-index:99999;
-}
-
-/* =========================
-   SECTIONS
+   GENERAL
 ========================= */
 
 section{
@@ -251,27 +389,35 @@ section{
     padding:120px 0;
 }
 
-.section-title{
-    margin-bottom:50px;
-}
-
-.section-title .small{
+.small-title{
     color:var(--green);
-    font-size:12px;
+    font-size:11px;
     letter-spacing:4px;
-    margin-bottom:12px;
+    margin-bottom:13px;
 }
 
-.section-title h2{
-    font-size:clamp(32px,6vw,58px);
-    line-height:1;
+.section-title{
+    font-size:clamp(38px,7vw,70px);
+    line-height:.95;
+    letter-spacing:-3px;
 }
 
-.section-title p{
-    margin-top:15px;
+.section-description{
     color:var(--muted);
     max-width:650px;
-    line-height:1.7;
+    line-height:1.8;
+    margin-top:20px;
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 /* =========================
@@ -287,219 +433,195 @@ section{
     padding-top:150px;
 }
 
-.hero-content{
-    max-width:650px;
+.hero-left{
+    max-width:670px;
 }
 
-.status{
+.online{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    border:1px solid rgba(0,255,157,.2);
-    padding:8px 13px;
-    border-radius:30px;
     color:var(--green);
-    font-size:11px;
-    letter-spacing:2px;
+    border:1px solid rgba(0,255,157,.2);
     background:rgba(0,255,157,.04);
+    border-radius:30px;
+    padding:8px 13px;
+    font-size:10px;
+    letter-spacing:2px;
     margin-bottom:25px;
 }
 
-.status i{
+.online i{
     width:7px;
     height:7px;
-    background:var(--green);
     border-radius:50%;
+    background:var(--green);
     box-shadow:0 0 15px var(--green);
 }
 
 .hero h1{
-    font-size:clamp(52px,8vw,105px);
-    line-height:.9;
-    letter-spacing:-5px;
-    margin-bottom:25px;
+    font-size:clamp(55px,9vw,110px);
+    line-height:.88;
+    letter-spacing:-6px;
 }
 
-.gradient-text{
-    background:linear-gradient(90deg,var(--blue),white,var(--green));
+.gradient{
+    background:linear-gradient(
+        90deg,
+        var(--blue),
+        white,
+        var(--green)
+    );
     -webkit-background-clip:text;
     color:transparent;
 }
 
-.glitch{
-    position:relative;
-}
-
-.glitch::before,
-.glitch::after{
-    content:attr(data-text);
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    overflow:hidden;
-    opacity:.5;
-}
-
-.glitch::before{
-    color:var(--blue);
-    animation:glitch1 2.5s infinite;
-}
-
-.glitch::after{
-    color:var(--green);
-    animation:glitch2 2.5s infinite;
-}
-
-@keyframes glitch1{
-    0%,90%,100%{clip-path:inset(0 0 100% 0)}
-    92%{clip-path:inset(20% 0 50% 0);transform:translate(-4px)}
-    94%{clip-path:inset(60% 0 10% 0);transform:translate(4px)}
-}
-
-@keyframes glitch2{
-    0%,88%,100%{clip-path:inset(100% 0 0 0)}
-    90%{clip-path:inset(10% 0 60% 0);transform:translate(4px)}
-    93%{clip-path:inset(65% 0 15% 0);transform:translate(-4px)}
-}
-
-.hero p{
+.hero-text{
+    margin-top:28px;
     color:var(--muted);
     font-size:18px;
     line-height:1.7;
-    max-width:620px;
 }
 
-.typing{
+.type-line{
+    margin-top:15px;
     color:var(--blue);
-    margin-top:18px;
-    min-height:25px;
+    font-family:monospace;
+    min-height:22px;
 }
 
 .buttons{
     display:flex;
-    gap:15px;
-    margin-top:30px;
     flex-wrap:wrap;
+    gap:13px;
+    margin-top:30px;
 }
 
 .btn{
+    display:inline-block;
     text-decoration:none;
-    color:white;
-    padding:14px 21px;
-    border-radius:13px;
+    padding:14px 20px;
+    border-radius:12px;
     border:1px solid var(--line);
-    background:#08121f;
+    background:#07111c;
     transition:.3s;
     cursor:pointer;
 }
 
-.btn.primary{
-    background:linear-gradient(90deg,#00b8d4,#00b879);
-    color:#00100b;
-    font-weight:800;
-    border:none;
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(0,229,255,.12);
 }
 
-.btn:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 35px rgba(0,229,255,.15);
+.btn.primary{
+    border:none;
+    color:#00100b;
+    font-weight:900;
+    background:linear-gradient(
+        90deg,
+        var(--blue),
+        var(--green)
+    );
 }
 
 /* =========================
    PROFILE
 ========================= */
 
-.profile-wrap{
+.profile{
     position:relative;
 }
 
 .profile-frame{
     width:350px;
-    height:440px;
+    height:450px;
     padding:3px;
     border-radius:30px;
-    background:linear-gradient(140deg,var(--blue),transparent,var(--green));
-    box-shadow:0 0 70px rgba(0,229,255,.12);
+    background:linear-gradient(
+        135deg,
+        var(--blue),
+        transparent,
+        var(--green)
+    );
     transform:rotate(3deg);
     transition:.5s;
+    box-shadow:0 0 70px rgba(0,229,255,.12);
 }
 
 .profile-frame:hover{
-    transform:rotate(0) scale(1.02);
+    transform:rotate(0) scale(1.03);
 }
 
 .profile-frame img{
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
     border-radius:28px;
-    display:block;
-    background:#07111d;
+    background:#07101a;
 }
 
-.float-card{
+.profile-badge{
     position:absolute;
+    left:-35px;
     bottom:-20px;
-    left:-40px;
     padding:15px 18px;
-    border:1px solid var(--line);
-    background:rgba(5,12,20,.85);
+    border-radius:14px;
+    background:rgba(5,12,20,.9);
     backdrop-filter:blur(20px);
-    border-radius:15px;
-    box-shadow:var(--shadow);
+    border:1px solid var(--line);
 }
 
-.float-card strong{
-    display:block;
+.profile-badge strong{
     color:var(--green);
+    display:block;
 }
 
-.float-card small{
-    color:#8190a5;
+.profile-badge small{
+    color:#7c8ca0;
 }
 
 /* =========================
    CARDS
 ========================= */
 
-.grid{
+.cards{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:18px;
+    margin-top:45px;
 }
 
 .card{
-    background:var(--card);
+    position:relative;
+    padding:28px;
+    background:var(--panel);
     border:1px solid var(--line);
     border-radius:22px;
-    padding:28px;
     backdrop-filter:blur(15px);
-    transition:.4s;
-    position:relative;
     overflow:hidden;
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    width:150px;
-    height:150px;
-    background:var(--blue);
-    filter:blur(90px);
-    opacity:.06;
-    top:-70px;
-    right:-70px;
+    transition:.4s;
 }
 
 .card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-9px);
     border-color:rgba(0,229,255,.3);
-    box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.card::after{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    right:-70px;
+    top:-70px;
+    background:var(--blue);
+    filter:blur(70px);
+    opacity:.08;
 }
 
 .card h3{
-    margin-bottom:10px;
+    margin-bottom:11px;
 }
 
 .card p{
@@ -521,11 +643,11 @@ section{
     padding:25px;
     border:1px solid var(--line);
     border-radius:20px;
-    background:#06101b;
+    background:#06101a;
 }
 
 .stat h3{
-    font-size:40px;
+    font-size:42px;
     background:linear-gradient(90deg,var(--blue),var(--green));
     -webkit-background-clip:text;
     color:transparent;
@@ -533,40 +655,56 @@ section{
 
 .stat p{
     color:var(--muted);
-    margin-top:5px;
+    margin-top:6px;
 }
 
 /* =========================
    SKILLS
 ========================= */
 
-.skill{
-    margin-bottom:24px;
+.skill-box{
+    margin-top:45px;
+    padding:30px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:var(--panel);
 }
 
-.skill-head{
+.skill{
+    margin-bottom:25px;
+}
+
+.skill:last-child{
+    margin-bottom:0;
+}
+
+.skill-top{
     display:flex;
     justify-content:space-between;
     margin-bottom:9px;
 }
 
-.skill-head span:last-child{
+.skill-top span:last-child{
     color:var(--blue);
 }
 
 .bar{
     height:7px;
-    border-radius:10px;
-    background:#101b28;
+    border-radius:20px;
     overflow:hidden;
+    background:#101b27;
 }
 
 .bar span{
     display:block;
-    width:0;
     height:100%;
-    background:linear-gradient(90deg,var(--blue),var(--green));
-    transition:1.5s;
+    width:0;
+    background:linear-gradient(
+        90deg,
+        var(--blue),
+        var(--green)
+    );
+    transition:1.5s ease;
 }
 
 /* =========================
@@ -574,86 +712,80 @@ section{
 ========================= */
 
 .terminal{
-    background:#02070d;
-    border:1px solid #172433;
+    margin-top:45px;
+    border:1px solid #172635;
     border-radius:20px;
     overflow:hidden;
-    box-shadow:0 30px 80px rgba(0,0,0,.4);
+    background:#02060b;
+    box-shadow:0 25px 80px rgba(0,0,0,.4);
 }
 
-.term-top{
+.terminal-head{
     padding:12px 15px;
-    border-bottom:1px solid #172433;
+    border-bottom:1px solid #172635;
     display:flex;
     gap:7px;
 }
 
-.dot{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:#283746;
-}
-
-.term-body{
-    padding:25px;
-    min-height:260px;
+.terminal-body{
+    padding:28px;
     font-family:monospace;
-    color:#b5c5d6;
+    color:#aebdcd;
     line-height:1.9;
 }
 
-.term-green{color:var(--green)}
-.term-blue{color:var(--blue)}
-.term-purple{color:#a78bfa}
-
 /* =========================
-   SMART ACADEMY
+   PROJECT
 ========================= */
 
 .project{
+    margin-top:45px;
     display:grid;
     grid-template-columns:1.1fr .9fr;
     gap:30px;
     align-items:center;
 }
 
-.project-box{
-    border:1px solid var(--line);
-    border-radius:28px;
+.project-info{
     padding:35px;
-    background:linear-gradient(145deg,rgba(0,229,255,.04),rgba(0,255,157,.02));
+    border-radius:27px;
+    border:1px solid var(--line);
+    background:linear-gradient(
+        145deg,
+        rgba(0,229,255,.05),
+        rgba(0,255,157,.02)
+    );
 }
 
 .project-label{
     color:var(--green);
+    font-size:10px;
     letter-spacing:3px;
-    font-size:11px;
 }
 
-.project h3{
-    font-size:45px;
-    margin:15px 0;
+.project-info h3{
+    font-size:48px;
+    margin:14px 0;
 }
 
-.project p{
+.project-info p{
     color:var(--muted);
     line-height:1.8;
 }
 
 .tags{
     display:flex;
-    gap:8px;
     flex-wrap:wrap;
+    gap:8px;
     margin-top:20px;
 }
 
 .tag{
+    font-size:10px;
+    color:#8ea0b4;
     padding:7px 10px;
     border-radius:8px;
-    background:#0b1825;
-    color:#91a5ba;
-    font-size:11px;
+    background:#0b1723;
 }
 
 /* =========================
@@ -661,51 +793,56 @@ section{
 ========================= */
 
 .phone{
-    width:250px;
-    height:500px;
-    border:8px solid #182333;
-    border-radius:38px;
-    background:#03070c;
+    width:255px;
+    height:510px;
     margin:auto;
-    position:relative;
+    border:8px solid #172333;
+    border-radius:40px;
+    background:#02060b;
     box-shadow:
-        0 0 0 1px #314156,
+        0 0 0 1px #314155,
         0 30px 80px rgba(0,0,0,.5);
     overflow:hidden;
+    position:relative;
 }
 
-.phone-notch{
+.notch{
     width:90px;
     height:20px;
-    background:#182333;
+    background:#172333;
+    border-radius:0 0 15px 15px;
     position:absolute;
     top:0;
     left:50%;
     transform:translateX(-50%);
-    border-radius:0 0 14px 14px;
-    z-index:2;
 }
 
-.phone-screen{
-    padding:45px 15px 15px;
+.phone-content{
+    padding:48px 15px 15px;
 }
 
-.app-logo{
+.app-name{
+    font-size:17px;
     font-weight:900;
-    font-size:18px;
     color:var(--blue);
+}
+
+.phone-muted{
+    color:#718196;
+    font-size:10px;
+    margin-top:4px;
 }
 
 .phone-card{
     margin-top:15px;
     padding:15px;
-    border-radius:15px;
-    background:#0a1623;
-    border:1px solid #172536;
+    border-radius:14px;
+    background:#091522;
+    border:1px solid #172738;
 }
 
 .phone-card small{
-    color:#718096;
+    color:#718196;
 }
 
 .phone-card strong{
@@ -713,67 +850,80 @@ section{
     margin-top:5px;
 }
 
-.phone-live{
-    margin-top:15px;
+.live{
     height:90px;
+    margin-top:15px;
     border-radius:15px;
-    background:linear-gradient(135deg,#07343d,#063124);
     display:flex;
     align-items:center;
     justify-content:center;
+    background:linear-gradient(135deg,#07353e,#063325);
     color:var(--green);
-    font-weight:bold;
+    font-weight:900;
 }
 
 /* =========================
    MINDSET
 ========================= */
 
-.mind{
-    min-height:500px;
+.mindset{
+    height:500px;
     position:relative;
+    margin-top:30px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 }
 
 .core{
-    width:130px;
-    height:130px;
+    width:140px;
+    height:140px;
     border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background:linear-gradient(135deg,#052f3a,#073b2b);
     border:1px solid var(--blue);
-    box-shadow:0 0 50px rgba(0,229,255,.18);
+    background:#06232b;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
     font-weight:900;
+    box-shadow:
+        0 0 30px rgba(0,229,255,.2),
+        inset 0 0 40px rgba(0,229,255,.08);
+    animation:corePulse 2.5s infinite;
+}
+
+@keyframes corePulse{
+    50%{
+        transform:scale(1.05);
+        box-shadow:0 0 70px rgba(0,229,255,.25);
+    }
 }
 
 .node{
     position:absolute;
-    padding:12px 18px;
+    padding:12px 17px;
     border:1px solid var(--line);
     background:#07111d;
     border-radius:12px;
-    color:#a9b7c8;
+    color:#a5b3c3;
+    font-size:12px;
+    box-shadow:0 0 30px rgba(0,229,255,.03);
 }
 
-.n1{top:20px;left:20%}
-.n2{top:20px;right:20%}
-.n3{top:45%;left:5%}
-.n4{top:45%;right:5%}
-.n5{bottom:20px;left:20%}
-.n6{bottom:20px;right:20%}
+.node1{top:25px;left:18%}
+.node2{top:25px;right:18%}
+.node3{left:3%;top:45%}
+.node4{right:3%;top:45%}
+.node5{bottom:25px;left:18%}
+.node6{bottom:25px;right:18%}
 
 /* =========================
-   TIMELINE
+   JOURNEY
 ========================= */
 
 .timeline{
-    border-left:1px solid #203040;
-    margin-left:10px;
+    margin-top:45px;
+    border-left:1px solid #223244;
 }
 
 .timeline-item{
@@ -784,27 +934,28 @@ section{
 .timeline-item::before{
     content:"";
     position:absolute;
+    left:-6px;
+    top:4px;
     width:11px;
     height:11px;
     border-radius:50%;
     background:var(--blue);
-    left:-6px;
-    top:5px;
     box-shadow:0 0 20px var(--blue);
 }
 
 .timeline-item span{
     color:var(--green);
-    font-size:12px;
-    letter-spacing:2px;
+    font-size:10px;
+    letter-spacing:3px;
 }
 
 .timeline-item h3{
-    margin:8px 0;
+    margin:9px 0;
 }
 
 .timeline-item p{
     color:var(--muted);
+    line-height:1.7;
 }
 
 /* =========================
@@ -815,20 +966,27 @@ section{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:15px;
+    margin-top:45px;
 }
 
 .road{
+    padding:25px;
     min-height:180px;
     border:1px solid var(--line);
     border-radius:20px;
-    padding:25px;
     background:#06101a;
+    transition:.3s;
+}
+
+.road:hover{
+    transform:translateY(-7px);
+    border-color:rgba(0,255,157,.3);
 }
 
 .road span{
     color:var(--blue);
-    font-size:11px;
-    letter-spacing:2px;
+    font-size:10px;
+    letter-spacing:3px;
 }
 
 .road h3{
@@ -844,21 +1002,21 @@ section{
    DEVELOPER MODE
 ========================= */
 
-.dev-mode{
+.dev-area{
     text-align:center;
 }
 
 #devOutput{
     display:none;
-    margin-top:20px;
     text-align:left;
-    background:#000;
-    border:1px solid #183040;
-    border-radius:18px;
+    margin-top:25px;
     padding:25px;
-    font-family:monospace;
+    border-radius:18px;
+    border:1px solid #173344;
+    background:#000;
     color:var(--green);
-    line-height:1.8;
+    font-family:monospace;
+    line-height:1.9;
 }
 
 /* =========================
@@ -869,11 +1027,11 @@ section{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
+    margin-top:45px;
 }
 
-.social a{
+.social-card{
     text-decoration:none;
-    color:white;
     padding:25px;
     border:1px solid var(--line);
     border-radius:20px;
@@ -881,34 +1039,35 @@ section{
     transition:.3s;
 }
 
-.social a:hover{
-    transform:translateY(-5px);
+.social-card:hover{
+    transform:translateY(-6px);
     border-color:var(--blue);
 }
 
-.social small{
+.social-card small{
     display:block;
-    color:#74859a;
     margin-top:7px;
+    color:#75869b;
 }
 
 /* =========================
-   CONTACT
+   FINAL
 ========================= */
 
-.contact{
+.final{
     text-align:center;
-    padding-bottom:100px;
+    padding-bottom:110px;
 }
 
-.contact h2{
-    font-size:clamp(42px,7vw,80px);
-    line-height:.95;
+.final h2{
+    font-size:clamp(48px,8vw,90px);
+    line-height:.9;
+    letter-spacing:-4px;
 }
 
-.contact p{
+.final p{
     max-width:600px;
-    margin:20px auto;
+    margin:22px auto;
     color:var(--muted);
     line-height:1.7;
 }
@@ -918,57 +1077,46 @@ section{
 ========================= */
 
 footer{
-    border-top:1px solid var(--line);
     padding:30px 5%;
+    border-top:1px solid var(--line);
+    color:#617186;
+    font-size:11px;
     display:flex;
     justify-content:space-between;
-    color:#607084;
-    font-size:12px;
 }
 
 /* =========================
-   REVEAL
-========================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(35px);
-    transition:1s;
-}
-
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* =========================
-   EASTER EGG
+   SECRET
 ========================= */
 
 #secret{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.94);
-    z-index:99998;
+    z-index:99990;
     display:none;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:30px;
+    background:rgba(0,0,0,.96);
 }
 
 .secret-box{
-    max-width:600px;
+    width:min(650px,90%);
+    padding:45px;
+    border:1px solid rgba(0,229,255,.3);
+    border-radius:25px;
+    background:#030911;
+    box-shadow:0 0 100px rgba(0,229,255,.12);
 }
 
 .secret-box h2{
-    font-size:55px;
+    font-size:clamp(45px,8vw,80px);
     color:var(--green);
 }
 
 .secret-box p{
-    color:#8999aa;
-    margin:15px 0 25px;
+    color:var(--muted);
+    margin:18px 0 25px;
 }
 
 /* =========================
@@ -984,30 +1132,26 @@ footer{
     .hero{
         flex-direction:column;
         text-align:center;
-        padding-top:150px;
+        padding-top:145px;
     }
 
-    .hero-content{
+    .hero-left{
         display:flex;
         flex-direction:column;
         align-items:center;
     }
 
-    .hero h1{
-        letter-spacing:-3px;
-    }
-
     .profile-frame{
-        width:280px;
-        height:360px;
+        width:285px;
+        height:365px;
     }
 
-    .grid{
+    .cards{
         grid-template-columns:1fr;
     }
 
     .stats{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr 1fr;
     }
 
     .project{
@@ -1018,16 +1162,9 @@ footer{
         grid-template-columns:1fr 1fr;
     }
 
-    .mind{
-        min-height:430px;
+    .mindset{
+        height:430px;
     }
-
-    .n1{left:3%}
-    .n2{right:3%}
-    .n3{left:0}
-    .n4{right:0}
-    .n5{left:3%}
-    .n6{right:3%}
 }
 
 @media(max-width:550px){
@@ -1037,11 +1174,16 @@ footer{
     }
 
     nav{
-        top:10px;
+        top:9px;
     }
 
     .hero h1{
-        font-size:52px;
+        font-size:54px;
+        letter-spacing:-4px;
+    }
+
+    .hero-text{
+        font-size:16px;
     }
 
     .stats{
@@ -1052,12 +1194,12 @@ footer{
         font-size:30px;
     }
 
-    .project-box{
+    .project-info{
         padding:25px;
     }
 
-    .project h3{
-        font-size:36px;
+    .project-info h3{
+        font-size:38px;
     }
 
     .roadmap{
@@ -1069,8 +1211,20 @@ footer{
     }
 
     .node{
-        font-size:11px;
+        font-size:9px;
         padding:8px 10px;
+    }
+
+    .node1{left:1%}
+    .node2{right:1%}
+    .node3{left:0}
+    .node4{right:0}
+    .node5{left:1%}
+    .node6{right:1%}
+
+    .cursor,
+    .cursor-dot{
+        display:none;
     }
 
     footer{
@@ -1079,9 +1233,13 @@ footer{
         text-align:center;
     }
 
-    .cursor,
-    .cursor-dot{
-        display:none;
+    .intro-content{
+        padding:20px;
+        font-size:11px;
+    }
+
+    .countdown{
+        font-size:75px;
     }
 }
 </style>
@@ -1089,85 +1247,150 @@ footer{
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-    <div class="loader-logo">NORIZKANDAR</div>
-    <div class="loader-line"><span></span></div>
-    <div class="loader-text">INITIALIZING PORTFOLIO...</div>
+<!-- ==================================================
+     CINEMATIC INTRO
+================================================== -->
+
+<div id="intro">
+
+    <div class="intro-grid"></div>
+    <div class="scan"></div>
+
+    <div class="intro-center">
+
+        <div class="intro-terminal">
+
+            <div class="term-bar">
+                <div class="term-dot"></div>
+                <div class="term-dot"></div>
+                <div class="term-dot"></div>
+            </div>
+
+            <div class="intro-content">
+
+                <div>
+                    <span class="green">system@norizkandar</span>:~$
+                    boot
+                </div>
+
+                <div id="boot1"></div>
+                <div id="boot2"></div>
+                <div id="boot3"></div>
+                <div id="boot4"></div>
+
+                <div class="intro-name" id="introName">
+                    NORIZKANDAR
+                </div>
+
+                <div class="intro-sub" id="introSub">
+                    CREATIVE APP DEVELOPER • DIGITAL BUILDER
+                </div>
+
+                <div class="countdown" id="countdown"></div>
+
+                <button class="enter" id="enterBtn">
+                    ENTER PORTFOLIO →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
+<!-- ==================================================
+     MAIN UI
+================================================== -->
 
 <div class="progress"></div>
 
-<div class="bg-grid"></div>
-<div class="glow one"></div>
-<div class="glow two"></div>
+<div class="grid-bg"></div>
+<div class="orb one"></div>
+<div class="orb two"></div>
+
 <canvas id="particles"></canvas>
 
 <div class="cursor"></div>
 <div class="cursor-dot"></div>
 
 <!-- NAV -->
-<nav>
-    <div class="logo">NORI<span>.</span></div>
 
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#project">Project</a>
-        <a href="#journey">Journey</a>
-        <a href="#contact">Contact</a>
+<nav>
+
+    <div class="logo">
+        NORI<span>.</span>
     </div>
 
-    <button class="nav-btn" onclick="toggleDev()">DEV MODE</button>
+    <div class="nav-links">
+        <a href="#about">ABOUT</a>
+        <a href="#skills">SKILLS</a>
+        <a href="#project">PROJECT</a>
+        <a href="#journey">JOURNEY</a>
+        <a href="#contact">CONTACT</a>
+    </div>
+
+    <button class="nav-button" onclick="toggleDev()">
+        DEV MODE
+    </button>
+
 </nav>
 
-<!-- HERO -->
+<!-- ==================================================
+     HERO
+================================================== -->
+
 <section class="hero">
 
-    <div class="hero-content reveal">
+    <div class="hero-left reveal">
 
-        <div class="status">
+        <div class="online">
             <i></i>
             ONLINE — BUILDING SOMETHING NEW
         </div>
 
         <h1>
-            <span class="gradient-text glitch"
-            data-text="Mohamad">
+            <span class="gradient">
                 Mohamad
             </span>
             <br>
             Norizkandar.
         </h1>
 
-        <p>
+        <p class="hero-text">
             I turn creative ideas into modern mobile applications,
             interactive experiences and digital products.
         </p>
 
-        <div class="typing">
+        <div class="type-line">
             <span id="typing"></span>
         </div>
 
         <div class="buttons">
-            <a class="btn primary" href="#project">
-                Explore My Work →
+
+            <a href="#project" class="btn primary">
+                EXPLORE MY WORK →
             </a>
 
-            <a class="btn" href="https://github.com/norizkandar" target="_blank">
-                GitHub ↗
+            <a href="https://github.com/norizkandar"
+               target="_blank"
+               class="btn">
+                GITHUB ↗
             </a>
+
         </div>
 
     </div>
 
-    <div class="profile-wrap reveal">
+    <div class="profile reveal">
 
         <div class="profile-frame">
-            <img src="profile.jpg" alt="Mohamad Norizkandar">
+            <img src="profile.jpg"
+                 alt="Mohamad Norizkandar">
         </div>
 
-        <div class="float-card">
+        <div class="profile-badge">
             <strong>14 YEARS OLD</strong>
             <small>Creative App Developer</small>
         </div>
@@ -1176,31 +1399,44 @@ footer{
 
 </section>
 
-<!-- ABOUT -->
+<!-- ==================================================
+     ABOUT
+================================================== -->
+
 <section id="about">
 
-    <div class="section-title reveal">
-        <div class="small">01 — ABOUT</div>
-        <h2>Building before<br>being ready.</h2>
-        <p>
-            I'm Mohamad Norizkandar, a young developer from Taiping,
-            Perak, Malaysia. I started learning coding and turned
-            my ideas into real digital projects.
+    <div class="reveal">
+
+        <div class="small-title">
+            01 — ABOUT
+        </div>
+
+        <h2 class="section-title">
+            Building before<br>
+            being ready.
+        </h2>
+
+        <p class="section-description">
+            I'm Mohamad Norizkandar, a young developer from
+            Taiping, Perak, Malaysia. I enjoy learning code,
+            experimenting with technology and turning ideas
+            into digital projects.
         </p>
+
     </div>
 
-    <div class="grid">
+    <div class="cards">
 
         <div class="card reveal">
-            <h3>👨‍💻 Who I Am</h3>
+            <h3>👨‍💻 WHO I AM</h3>
             <p>
-                A student developer who enjoys experimenting with
-                code, UI design and new technology.
+                A student developer who enjoys programming,
+                UI design and experimenting with new technology.
             </p>
         </div>
 
         <div class="card reveal">
-            <h3>🚀 What I Build</h3>
+            <h3>🚀 WHAT I BUILD</h3>
             <p>
                 Mobile applications, educational products,
                 interactive interfaces and creative prototypes.
@@ -1208,7 +1444,7 @@ footer{
         </div>
 
         <div class="card reveal">
-            <h3>🧠 My Mindset</h3>
+            <h3>🧠 MY MINDSET</h3>
             <p>
                 Learn → Build → Break → Fix → Improve → Repeat.
             </p>
@@ -1218,7 +1454,10 @@ footer{
 
 </section>
 
-<!-- STATS -->
+<!-- ==================================================
+     STATS
+================================================== -->
+
 <section>
 
     <div class="stats">
@@ -1247,115 +1486,169 @@ footer{
 
 </section>
 
-<!-- SKILLS -->
+<!-- ==================================================
+     SKILLS
+================================================== -->
+
 <section id="skills">
 
-    <div class="section-title reveal">
-        <div class="small">02 — TECH STACK</div>
-        <h2>Tools I use.</h2>
-        <p>
-            The technologies I currently use to turn ideas into
-            working applications.
+    <div class="reveal">
+
+        <div class="small-title">
+            02 — TECH STACK
+        </div>
+
+        <h2 class="section-title">
+            Tools I use.
+        </h2>
+
+        <p class="section-description">
+            Technologies I use to turn ideas into modern
+            applications and digital experiences.
         </p>
+
     </div>
 
-    <div class="card reveal">
+    <div class="skill-box reveal">
 
         <div class="skill">
-            <div class="skill-head">
+
+            <div class="skill-top">
                 <span>JavaScript</span>
                 <span>90%</span>
             </div>
-            <div class="bar"><span data-width="90%"></span></div>
+
+            <div class="bar">
+                <span data-width="90%"></span>
+            </div>
+
         </div>
 
         <div class="skill">
-            <div class="skill-head">
+
+            <div class="skill-top">
                 <span>React Native</span>
                 <span>85%</span>
             </div>
-            <div class="bar"><span data-width="85%"></span></div>
+
+            <div class="bar">
+                <span data-width="85%"></span>
+            </div>
+
         </div>
 
         <div class="skill">
-            <div class="skill-head">
+
+            <div class="skill-top">
                 <span>Expo</span>
                 <span>85%</span>
             </div>
-            <div class="bar"><span data-width="85%"></span></div>
+
+            <div class="bar">
+                <span data-width="85%"></span>
+            </div>
+
         </div>
 
         <div class="skill">
-            <div class="skill-head">
+
+            <div class="skill-top">
                 <span>Supabase</span>
                 <span>75%</span>
             </div>
-            <div class="bar"><span data-width="75%"></span></div>
+
+            <div class="bar">
+                <span data-width="75%"></span>
+            </div>
+
         </div>
 
         <div class="skill">
-            <div class="skill-head">
+
+            <div class="skill-top">
                 <span>HTML / CSS</span>
                 <span>85%</span>
             </div>
-            <div class="bar"><span data-width="85%"></span></div>
+
+            <div class="bar">
+                <span data-width="85%"></span>
+            </div>
+
         </div>
 
         <div class="skill">
-            <div class="skill-head">
+
+            <div class="skill-top">
                 <span>GitHub</span>
                 <span>75%</span>
             </div>
-            <div class="bar"><span data-width="75%"></span></div>
+
+            <div class="bar">
+                <span data-width="75%"></span>
+            </div>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- TERMINAL -->
+<!-- ==================================================
+     TERMINAL
+================================================== -->
+
 <section>
 
-    <div class="section-title reveal">
-        <div class="small">03 — SYSTEM</div>
-        <h2>Inside my terminal.</h2>
+    <div class="reveal">
+
+        <div class="small-title">
+            03 — SYSTEM
+        </div>
+
+        <h2 class="section-title">
+            Inside my terminal.
+        </h2>
+
     </div>
 
     <div class="terminal reveal">
 
-        <div class="term-top">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+        <div class="terminal-head">
+            <div class="term-dot"></div>
+            <div class="term-dot"></div>
+            <div class="term-dot"></div>
         </div>
 
-        <div class="term-body">
+        <div class="terminal-body">
 
             <div>
-                <span class="term-green">norizkandar@portfolio</span>:~$
-                whoami
+                <span class="green">
+                    norizkandar@portfolio
+                </span>:~$ whoami
             </div>
 
-            <div class="term-blue">
+            <div class="blue">
                 Mohamad Norizkandar
             </div>
 
             <br>
 
             <div>
-                <span class="term-green">norizkandar@portfolio</span>:~$
-                current_project
+                <span class="green">
+                    norizkandar@portfolio
+                </span>:~$ current_project
             </div>
 
-            <div class="term-purple">
+            <div class="purple">
                 Smart Academy
             </div>
 
             <br>
 
             <div>
-                <span class="term-green">norizkandar@portfolio</span>:~$
-                stack
+                <span class="green">
+                    norizkandar@portfolio
+                </span>:~$ stack
             </div>
 
             <div>
@@ -1365,11 +1658,12 @@ footer{
             <br>
 
             <div>
-                <span class="term-green">norizkandar@portfolio</span>:~$
-                status
+                <span class="green">
+                    norizkandar@portfolio
+                </span>:~$ status
             </div>
 
-            <div class="term-green">
+            <div class="green">
                 ONLINE — BUILDING SOMETHING NEW █
             </div>
 
@@ -1379,46 +1673,65 @@ footer{
 
 </section>
 
-<!-- PROJECT -->
+<!-- ==================================================
+     SMART ACADEMY
+================================================== -->
+
 <section id="project">
 
-    <div class="section-title reveal">
-        <div class="small">04 — FEATURED PROJECT</div>
-        <h2>Smart Academy.</h2>
-        <p>
-            A modern tuition app concept designed to make learning
-            more interactive, accessible and engaging.
+    <div class="reveal">
+
+        <div class="small-title">
+            04 — FEATURED PROJECT
+        </div>
+
+        <h2 class="section-title">
+            Smart Academy.
+        </h2>
+
+        <p class="section-description">
+            A modern tuition app concept designed to make
+            learning more interactive, accessible and engaging.
         </p>
+
     </div>
 
     <div class="project">
 
-        <div class="project-box reveal">
+        <div class="project-info reveal">
 
             <div class="project-label">
                 EDUCATION • MOBILE APP
             </div>
 
-            <h3>Smart Academy</h3>
+            <h3>
+                Smart Academy
+            </h3>
 
             <p>
-                Smart Academy combines online classes, student
-                interaction, achievements, whiteboard tools,
-                teacher ratings and an AI Assistant concept.
+                Smart Academy combines online classes,
+                student interaction, achievements,
+                whiteboard tools, teacher ratings and
+                an AI Assistant concept.
             </p>
 
             <div class="tags">
+
                 <span class="tag">JavaScript</span>
                 <span class="tag">React Native</span>
                 <span class="tag">Expo</span>
                 <span class="tag">Supabase</span>
-                <span class="tag">AI Concept</span>
+                <span class="tag">AI CONCEPT</span>
+
             </div>
 
             <div class="buttons">
-                <a href="#features" class="btn primary">
-                    View Features →
+
+                <a href="#features"
+                   class="btn primary">
+                    VIEW FEATURES →
                 </a>
+
             </div>
 
         </div>
@@ -1427,38 +1740,63 @@ footer{
 
             <div class="phone">
 
-                <div class="phone-notch"></div>
+                <div class="notch"></div>
 
-                <div class="phone-screen">
+                <div class="phone-content">
 
-                    <div class="app-logo">
+                    <div class="app-name">
                         SMART ACADEMY
                     </div>
 
-                    <div style="color:#78899d;font-size:11px;margin-top:5px;">
+                    <div class="phone-muted">
                         Learn Smart. Achieve More.
                     </div>
 
                     <div class="phone-card">
-                        <small>Today's Class</small>
-                        <strong>Mathematics</strong>
-                        <div style="color:#00e5ff;margin-top:7px;font-size:12px;">
+
+                        <small>
+                            Today's Class
+                        </small>
+
+                        <strong>
+                            Mathematics
+                        </strong>
+
+                        <div style="
+                        color:#00e5ff;
+                        margin-top:7px;
+                        font-size:11px;">
                             8:00 PM
                         </div>
+
                     </div>
 
                     <div class="phone-card">
-                        <small>Achievement</small>
-                        <strong>🏆 New Badge</strong>
+
+                        <small>
+                            Achievement
+                        </small>
+
+                        <strong>
+                            🏆 New Badge
+                        </strong>
+
                     </div>
 
-                    <div class="phone-live">
+                    <div class="live">
                         LIVE SESSION
                     </div>
 
                     <div class="phone-card">
-                        <small>AI Assistant</small>
-                        <strong>Ask AI →</strong>
+
+                        <small>
+                            AI Assistant
+                        </small>
+
+                        <strong>
+                            Ask AI →
+                        </strong>
+
                     </div>
 
                 </div>
@@ -1471,37 +1809,48 @@ footer{
 
 </section>
 
-<!-- FEATURES -->
+<!-- ==================================================
+     FEATURES
+================================================== -->
+
 <section id="features">
 
-    <div class="section-title reveal">
-        <div class="small">05 — FEATURES</div>
-        <h2>More than<br>a tuition app.</h2>
+    <div class="reveal">
+
+        <div class="small-title">
+            05 — FEATURES
+        </div>
+
+        <h2 class="section-title">
+            More than<br>
+            a tuition app.
+        </h2>
+
     </div>
 
-    <div class="grid">
+    <div class="cards">
 
         <div class="card reveal">
             <h3>🤖 AI Assistant</h3>
             <p>
-                An AI learning assistant concept designed to
-                help students interact with educational content.
+                An AI learning assistant concept designed
+                to support students with educational content.
             </p>
         </div>
 
         <div class="card reveal">
             <h3>🎥 Student Live</h3>
             <p>
-                Students can present using video in a live-style
-                learning experience.
+                Students can present using video in a
+                live-style learning experience.
             </p>
         </div>
 
         <div class="card reveal">
             <h3>🏆 Achievement</h3>
             <p>
-                Gamified achievements that encourage students
-                to keep learning.
+                Gamified achievements designed to encourage
+                students to keep learning.
             </p>
         </div>
 
@@ -1516,16 +1865,16 @@ footer{
         <div class="card reveal">
             <h3>⭐ Teacher Rating</h3>
             <p>
-                Students can rate teachers and share their
-                learning experience.
+                Students can rate teachers and share
+                their learning experience.
             </p>
         </div>
 
         <div class="card reveal">
             <h3>👨‍🏫 Student & Teacher</h3>
             <p>
-                Different experiences designed for students
-                and teachers.
+                Different experiences designed for
+                students and teachers.
             </p>
         </div>
 
@@ -1533,183 +1882,261 @@ footer{
 
 </section>
 
-<!-- MINDSET -->
+<!-- ==================================================
+     MINDSET
+================================================== -->
+
 <section>
 
-    <div class="section-title reveal">
-        <div class="small">06 — DEVELOPER MINDSET</div>
-        <h2>How ideas<br>become products.</h2>
-    </div>
+    <div class="reveal">
 
-    <div class="mind reveal">
-
-        <div class="core">
-            BUILD<br>MORE
+        <div class="small-title">
+            06 — DEVELOPER MINDSET
         </div>
 
-        <div class="node n1">IDEA</div>
-        <div class="node n2">DESIGN</div>
-        <div class="node n3">PROBLEM</div>
-        <div class="node n4">CODE</div>
-        <div class="node n5">TEST</div>
-        <div class="node n6">IMPROVE</div>
+        <h2 class="section-title">
+            How ideas<br>
+            become products.
+        </h2>
+
+    </div>
+
+    <div class="mindset reveal">
+
+        <div class="core">
+            BUILD<br>
+            MORE
+        </div>
+
+        <div class="node node1">
+            IDEA
+        </div>
+
+        <div class="node node2">
+            DESIGN
+        </div>
+
+        <div class="node node3">
+            PROBLEM
+        </div>
+
+        <div class="node node4">
+            CODE
+        </div>
+
+        <div class="node node5">
+            TEST
+        </div>
+
+        <div class="node node6">
+            IMPROVE
+        </div>
 
     </div>
 
 </section>
 
-<!-- JOURNEY -->
+<!-- ==================================================
+     JOURNEY
+================================================== -->
+
 <section id="journey">
 
-    <div class="section-title reveal">
-        <div class="small">07 — JOURNEY</div>
-        <h2>The journey<br>so far.</h2>
+    <div class="reveal">
+
+        <div class="small-title">
+            07 — CODING JOURNEY
+        </div>
+
+        <h2 class="section-title">
+            The journey<br>
+            so far.
+        </h2>
+
     </div>
 
     <div class="timeline">
 
         <div class="timeline-item reveal">
+
             <span>START</span>
-            <h3>Started Learning Code</h3>
+
+            <h3>
+                Started Learning Code
+            </h3>
+
             <p>
                 Began exploring programming and discovering
                 how software is created.
             </p>
+
         </div>
 
         <div class="timeline-item reveal">
+
             <span>LEARN</span>
-            <h3>JavaScript & App Development</h3>
+
+            <h3>
+                JavaScript & App Development
+            </h3>
+
             <p>
-                Started working with JavaScript, React Native,
-                Expo and modern development tools.
+                Started working with JavaScript,
+                React Native, Expo and modern development tools.
             </p>
+
         </div>
 
         <div class="timeline-item reveal">
+
             <span>BUILD</span>
-            <h3>Smart Academy</h3>
+
+            <h3>
+                Smart Academy
+            </h3>
+
             <p>
-                Turned a tuition app idea into a real mobile
-                application project.
+                Turned a tuition app idea into a real
+                mobile application project.
             </p>
+
         </div>
 
         <div class="timeline-item reveal">
+
             <span>NEXT</span>
-            <h3>Building The Future</h3>
+
+            <h3>
+                Building The Future
+            </h3>
+
             <p>
-                Continuing to learn, experiment and create
-                bigger ideas.
+                Continuing to learn, experiment and
+                create bigger ideas.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- ACHIEVEMENTS -->
+<!-- ==================================================
+     ROADMAP
+================================================== -->
+
 <section>
 
-    <div class="section-title reveal">
-        <div class="small">08 — ACHIEVEMENTS</div>
-        <h2>Small wins.<br>Big motivation.</h2>
-    </div>
+    <div class="reveal">
 
-    <div class="grid">
-
-        <div class="card reveal">
-            <h3>📱 First Mobile App</h3>
-            <p>
-                Built my first major mobile application project
-                after learning to code.
-            </p>
+        <div class="small-title">
+            08 — ROADMAP
         </div>
 
-        <div class="card reveal">
-            <h3>⚡ Multiple Features</h3>
-            <p>
-                Added AI Assistant, Whiteboard, Student Live
-                and Achievement features.
-            </p>
-        </div>
+        <h2 class="section-title">
+            What's next?
+        </h2>
 
-        <div class="card reveal">
-            <h3>🔥 Keep Building</h3>
-            <p>
-                Every project becomes another reason to learn
-                something new.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ROADMAP -->
-<section>
-
-    <div class="section-title reveal">
-        <div class="small">09 — ROADMAP</div>
-        <h2>What's next?</h2>
     </div>
 
     <div class="roadmap">
 
         <div class="road reveal">
+
             <span>NOW</span>
-            <h3>Keep Learning</h3>
+
+            <h3>
+                Keep Learning
+            </h3>
+
             <p>
-                Improve programming, UI and app development skills.
+                Improve programming, UI and app
+                development skills.
             </p>
+
         </div>
 
         <div class="road reveal">
+
             <span>NEXT</span>
-            <h3>Build More</h3>
+
+            <h3>
+                Build More
+            </h3>
+
             <p>
-                Create new applications and experiment with ideas.
+                Create new applications and experiment
+                with different ideas.
             </p>
+
         </div>
 
         <div class="road reveal">
+
             <span>FUTURE</span>
-            <h3>Bigger Ideas</h3>
+
+            <h3>
+                Bigger Ideas
+            </h3>
+
             <p>
                 Turn ambitious concepts into real products.
             </p>
+
         </div>
 
         <div class="road reveal">
+
             <span>UNKNOWN</span>
-            <h3>???</h3>
+
+            <h3>
+                ???
+            </h3>
+
             <p>
-                The most interesting part hasn't been built yet.
+                The most interesting part hasn't
+                been built yet.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- DEV MODE -->
+<!-- ==================================================
+     DEVELOPER MODE
+================================================== -->
+
 <section>
 
-    <div class="dev-mode reveal">
+    <div class="dev-area reveal">
 
-        <div class="section-title">
-            <div class="small">10 — SECRET SYSTEM</div>
-            <h2>Developer Mode.</h2>
-            <p>
-                There's something hidden inside this website.
-            </p>
+        <div class="small-title">
+            09 — SECRET SYSTEM
         </div>
 
-        <button class="btn primary" onclick="toggleDev()">
-            ⚡ Activate Developer Mode
-        </button>
+        <h2 class="section-title">
+            Developer Mode.
+        </h2>
+
+        <p class="section-description"
+           style="margin-left:auto;margin-right:auto;">
+            There's another layer hidden inside this website.
+        </p>
+
+        <div class="buttons"
+             style="justify-content:center;">
+
+            <button class="btn primary"
+                    onclick="toggleDev()">
+                ⚡ ACTIVATE DEVELOPER MODE
+            </button>
+
+        </div>
 
         <div id="devOutput">
+
             > booting developer_mode...<br>
             > access granted ✓<br><br>
 
@@ -1719,43 +2146,65 @@ footer{
             LOCATION: Taiping, Perak, Malaysia<br><br>
 
             CURRENT PROJECT: Smart Academy<br>
+            STACK: JavaScript / React Native / Expo / Supabase<br>
             STATUS: BUILDING<br>
-            MOTIVATION: 100%<br>
             IDEAS: UNLIMITED<br><br>
 
-            > system message:<br>
+            > system_message:<br>
             > "The journey has just begun."
+
         </div>
 
     </div>
 
 </section>
 
-<!-- SOCIAL -->
+<!-- ==================================================
+     SOCIAL
+================================================== -->
+
 <section>
 
-    <div class="section-title reveal">
-        <div class="small">11 — CONNECT</div>
-        <h2>Find me<br>online.</h2>
+    <div class="reveal">
+
+        <div class="small-title">
+            10 — CONNECT
+        </div>
+
+        <h2 class="section-title">
+            Find me<br>
+            online.
+        </h2>
+
     </div>
 
     <div class="social">
 
-        <a href="https://github.com/norizkandar"
-           target="_blank"
-           class="reveal">
+        <a class="social-card reveal"
+           href="https://github.com/norizkandar"
+           target="_blank">
 
-            <strong>GitHub</strong>
-            <small>@norizkandar</small>
+            <strong>
+                GitHub
+            </strong>
+
+            <small>
+                @norizkandar
+            </small>
 
         </a>
 
-        <a href="https://www.tiktok.com/@iz_andar"
-           target="_blank"
-           class="reveal">
+        <a class="social-card reveal"
+           href="https://www.tiktok.com/@iz_andar"
+           target="_blank">
 
-            <strong>TikTok</strong>
-            <small>@iz_andar</small>
+            <strong>
+                TikTok
+            </strong>
+
+            <small>
+                @iz_andar
+            </small>
 
         </a>
 
@@ -1763,18 +2212,23 @@ footer{
 
 </section>
 
-<!-- CONTACT -->
+<!-- ==================================================
+     FINAL
+================================================== -->
+
 <section id="contact">
 
-    <div class="contact reveal">
+    <div class="final reveal">
 
-        <div class="section-title">
-            <div class="small">12 — FINAL MESSAGE</div>
+        <div class="small-title">
+            11 — FINAL MESSAGE
         </div>
 
         <h2>
             This is only<br>
-            <span class="gradient-text">Version 1.</span>
+            <span class="gradient">
+                Version 1.
+            </span>
         </h2>
 
         <p>
@@ -1782,18 +2236,19 @@ footer{
             This portfolio is only the beginning.
         </p>
 
-        <div class="buttons" style="justify-content:center;">
+        <div class="buttons"
+             style="justify-content:center;">
 
             <a class="btn primary"
                href="https://github.com/norizkandar"
                target="_blank">
-                Visit GitHub →
+                VISIT GITHUB →
             </a>
 
             <a class="btn"
                href="https://www.tiktok.com/@iz_andar"
                target="_blank">
-                TikTok ↗
+                TIKTOK ↗
             </a>
 
         </div>
@@ -1802,20 +2257,26 @@ footer{
 
 </section>
 
-<!-- SECRET -->
+<!-- ==================================================
+     SECRET EASTER EGG
+================================================== -->
+
 <div id="secret">
 
     <div class="secret-box">
 
-        <h2>YOU FOUND IT.</h2>
+        <h2>
+            YOU FOUND IT.
+        </h2>
 
         <p>
             Not every developer discovers the hidden layer.
             Keep building. 🚀
         </p>
 
-        <button class="btn primary" onclick="closeSecret()">
-            Return
+        <button class="btn primary"
+                onclick="closeSecret()">
+            RETURN
         </button>
 
     </div>
@@ -1823,35 +2284,114 @@ footer{
 </div>
 
 <footer>
-    <span>© 2026 Mohamad Norizkandar</span>
-    <span>Creative App Developer · Built with curiosity.</span>
+
+    <span>
+        © 2026 Mohamad Norizkandar
+    </span>
+
+    <span>
+        Creative App Developer · Built with curiosity.
+    </span>
+
 </footer>
 
 <script>
 
-/* =========================
-   LOADER
-========================= */
+/* ==================================================
+   INTRO BOOT SEQUENCE
+================================================== */
 
-window.addEventListener("load",()=>{
+const intro = document.getElementById("intro");
+const boot1 = document.getElementById("boot1");
+const boot2 = document.getElementById("boot2");
+const boot3 = document.getElementById("boot3");
+const boot4 = document.getElementById("boot4");
+
+const introName = document.getElementById("introName");
+const introSub = document.getElementById("introSub");
+const countdown = document.getElementById("countdown");
+const enterBtn = document.getElementById("enterBtn");
+
+setTimeout(()=>{
+    boot1.innerHTML =
+        '<span class="blue">[OK]</span> Loading portfolio engine...';
+},500);
+
+setTimeout(()=>{
+    boot2.innerHTML =
+        '<span class="blue">[OK]</span> Initializing developer profile...';
+},900);
+
+setTimeout(()=>{
+    boot3.innerHTML =
+        '<span class="blue">[OK]</span> Loading creative modules...';
+},1300);
+
+setTimeout(()=>{
+    boot4.innerHTML =
+        '<span class="green">[ONLINE]</span> System ready.';
+},1700);
+
+setTimeout(()=>{
+    introName.classList.add("show");
+},2100);
+
+setTimeout(()=>{
+    introSub.classList.add("show");
+},3000);
+
+/* COUNTDOWN */
+
+let number = 3;
+
+setTimeout(()=>{
+
+    countdown.textContent = number;
+
+    const timer = setInterval(()=>{
+
+        number--;
+
+        if(number > 0){
+
+            countdown.textContent = number;
+
+        }else{
+
+            clearInterval(timer);
+
+            countdown.textContent = "GO";
+
+            setTimeout(()=>{
+                enterBtn.classList.add("ready");
+            },500);
+
+        }
+
+    },900);
+
+},3600);
+
+/* ENTER */
+
+enterBtn.addEventListener("click",()=>{
+
+    intro.style.opacity="0";
+    intro.style.transform="scale(1.08)";
 
     setTimeout(()=>{
 
-        document.getElementById("loader").style.opacity="0";
+        intro.style.display="none";
 
-        setTimeout(()=>{
-            document.getElementById("loader").style.display="none";
-        },1000);
-
-    },2200);
+    },1000);
 
 });
 
-/* =========================
-   TYPING
-========================= */
+/* ==================================================
+   TYPING EFFECT
+================================================== */
 
-const phrases=[
+const phrases = [
     "Building ideas into digital experiences.",
     "Learning. Coding. Creating.",
     "Turning problems into products.",
@@ -1862,68 +2402,98 @@ let phraseIndex=0;
 let charIndex=0;
 let deleting=false;
 
-function typeEffect(){
+function typingEffect(){
 
     const el=document.getElementById("typing");
     const phrase=phrases[phraseIndex];
 
     if(!deleting){
-        el.textContent=phrase.substring(0,charIndex++);
-        if(charIndex>phrase.length){
+
+        el.textContent=phrase.substring(
+            0,
+            charIndex++
+        );
+
+        if(charIndex > phrase.length){
+
             deleting=true;
-            setTimeout(typeEffect,1300);
+
+            setTimeout(typingEffect,1200);
             return;
+
         }
+
     }else{
-        el.textContent=phrase.substring(0,charIndex--);
-        if(charIndex<0){
+
+        el.textContent=phrase.substring(
+            0,
+            charIndex--
+        );
+
+        if(charIndex < 0){
+
             deleting=false;
-            phraseIndex=(phraseIndex+1)%phrases.length;
+
+            phraseIndex=
+                (phraseIndex+1)%phrases.length;
+
         }
+
     }
 
-    setTimeout(typeEffect,deleting?35:60);
+    setTimeout(
+        typingEffect,
+        deleting ? 35 : 55
+    );
 }
 
-typeEffect();
+typingEffect();
 
-/* =========================
+/* ==================================================
    CURSOR
-========================= */
+================================================== */
 
 const cursor=document.querySelector(".cursor");
-const dot=document.querySelector(".cursor-dot");
+const cursorDot=document.querySelector(".cursor-dot");
 
 document.addEventListener("mousemove",(e)=>{
 
     cursor.style.left=e.clientX+"px";
     cursor.style.top=e.clientY+"px";
 
-    dot.style.left=e.clientX+"px";
-    dot.style.top=e.clientY+"px";
+    cursorDot.style.left=e.clientX+"px";
+    cursorDot.style.top=e.clientY+"px";
 
 });
 
-/* =========================
+/* ==================================================
    SCROLL PROGRESS
-========================= */
+================================================== */
 
 window.addEventListener("scroll",()=>{
 
     const scrollTop=window.scrollY;
-    const height=document.body.scrollHeight-window.innerHeight;
 
-    const progress=(scrollTop/height)*100;
+    const height=
+        document.body.scrollHeight -
+        window.innerHeight;
 
-    document.querySelector(".progress").style.width=progress+"%";
+    const percent=
+        height > 0
+        ? (scrollTop/height)*100
+        : 0;
+
+    document.querySelector(".progress")
+        .style.width=percent+"%";
 
 });
 
-/* =========================
-   REVEAL
-========================= */
+/* ==================================================
+   REVEAL + SKILLS
+================================================== */
 
-const observer=new IntersectionObserver((entries)=>{
+const observer =
+new IntersectionObserver((entries)=>{
 
     entries.forEach(entry=>{
 
@@ -1931,47 +2501,39 @@ const observer=new IntersectionObserver((entries)=>{
 
             entry.target.classList.add("show");
 
-            const bars=entry.target.querySelectorAll(".bar span");
+            const bars =
+                entry.target.querySelectorAll(
+                    ".bar span"
+                );
 
             bars.forEach(bar=>{
-                bar.style.width=bar.dataset.width;
+
+                bar.style.width =
+                    bar.dataset.width;
+
             });
 
         }
 
     });
 
-},{threshold:.12});
+},{
+    threshold:.12
+});
 
-document.querySelectorAll(".reveal")
+document
+.querySelectorAll(".reveal")
 .forEach(el=>observer.observe(el));
 
-/* =========================
-   DEV MODE
-========================= */
-
-function toggleDev(){
-
-    const output=document.getElementById("devOutput");
-
-    if(output.style.display==="block"){
-        output.style.display="none";
-    }else{
-        output.style.display="block";
-        output.scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-        });
-    }
-
-}
-
-/* =========================
+/* ==================================================
    PARTICLES
-========================= */
+================================================== */
 
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
+const canvas=
+document.getElementById("particles");
+
+const ctx=
+canvas.getContext("2d");
 
 function resizeCanvas(){
 
@@ -1982,19 +2544,24 @@ function resizeCanvas(){
 
 resizeCanvas();
 
-window.addEventListener("resize",resizeCanvas);
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
 
 const particles=[];
 
-for(let i=0;i<80;i++){
+for(let i=0;i<90;i++){
 
     particles.push({
 
         x:Math.random()*window.innerWidth,
         y:Math.random()*window.innerHeight,
+
         r:Math.random()*1.5+.3,
-        dx:(Math.random()-.5)*.3,
-        dy:(Math.random()-.5)*.3
+
+        dx:(Math.random()-.5)*.25,
+        dy:(Math.random()-.5)*.25
 
     });
 
@@ -2002,86 +2569,164 @@ for(let i=0;i<80;i++){
 
 function animateParticles(){
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
     particles.forEach(p=>{
 
         p.x+=p.dx;
         p.y+=p.dy;
 
-        if(p.x<0)p.x=canvas.width;
-        if(p.x>canvas.width)p.x=0;
+        if(p.x<0)
+            p.x=canvas.width;
 
-        if(p.y<0)p.y=canvas.height;
-        if(p.y>canvas.height)p.y=0;
+        if(p.x>canvas.width)
+            p.x=0;
+
+        if(p.y<0)
+            p.y=canvas.height;
+
+        if(p.y>canvas.height)
+            p.y=0;
 
         ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle="rgba(0,229,255,.5)";
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.r,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle=
+            "rgba(0,229,255,.5)";
+
         ctx.fill();
 
     });
 
-    requestAnimationFrame(animateParticles);
-
+    requestAnimationFrame(
+        animateParticles
+    );
 }
 
 animateParticles();
 
-/* =========================
-   EASTER EGG
-========================= */
+/* ==================================================
+   DEVELOPER MODE
+================================================== */
 
-let secretCode="";
+function toggleDev(){
 
-document.addEventListener("keydown",(e)=>{
+    const output=
+        document.getElementById("devOutput");
 
-    secretCode+=e.key.toLowerCase();
+    if(output.style.display==="block"){
 
-    if(secretCode.length>20){
-        secretCode=secretCode.slice(-20);
+        output.style.display="none";
+
+    }else{
+
+        output.style.display="block";
+
+        output.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
     }
-
-    if(secretCode.includes("nori")){
-
-        document.getElementById("secret").style.display="flex";
-        secretCode="";
-
-    }
-
-});
-
-function closeSecret(){
-
-    document.getElementById("secret").style.display="none";
 
 }
 
-/* =========================
-   MAGNETIC BUTTON EFFECT
-========================= */
+/* ==================================================
+   MAGNETIC BUTTONS
+================================================== */
 
-document.querySelectorAll(".btn").forEach(btn=>{
+document
+.querySelectorAll(".btn")
+.forEach(btn=>{
 
-    btn.addEventListener("mousemove",(e)=>{
+    btn.addEventListener(
+        "mousemove",
+        (e)=>{
 
-        const rect=btn.getBoundingClientRect();
+            const rect=
+                btn.getBoundingClientRect();
 
-        const x=e.clientX-rect.left-rect.width/2;
-        const y=e.clientY-rect.top-rect.height/2;
+            const x=
+                e.clientX -
+                rect.left -
+                rect.width/2;
 
-        btn.style.transform=
-        `translate(${x*.08}px,${y*.08}px)`;
+            const y=
+                e.clientY -
+                rect.top -
+                rect.height/2;
 
-    });
+            btn.style.transform=
+                `translate(${x*.07}px,${y*.07}px)`;
 
-    btn.addEventListener("mouseleave",()=>{
+        }
+    );
 
-        btn.style.transform="translate(0,0)";
+    btn.addEventListener(
+        "mouseleave",
+        ()=>{
 
-    });
+            btn.style.transform=
+                "translate(0,0)";
+
+        }
+    );
 
 });
+
+/* ==================================================
+   EASTER EGG
+   TYPE "NORI"
+================================================== */
+
+let secretCode="";
+
+document.addEventListener(
+    "keydown",
+    (e)=>{
+
+        secretCode +=
+            e.key.toLowerCase();
+
+        if(secretCode.length>20){
+
+            secretCode=
+                secretCode.slice(-20);
+
+        }
+
+        if(secretCode.includes("nori")){
+
+            document.getElementById(
+                "secret"
+            ).style.display="flex";
+
+            secretCode="";
+
+        }
+
+    }
+);
+
+function closeSecret(){
+
+    document.getElementById(
+        "secret"
+    ).style.display="none";
+
+}
 
 </script>
 

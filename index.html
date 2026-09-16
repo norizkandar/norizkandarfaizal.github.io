@@ -7,980 +7,809 @@
 content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description"
-content="Mohamad Norizkandar — Creative App Developer building modern mobile applications and digital experiences.">
+<meta name="description" content="Mohamad Norizkandar — Creative App Developer building modern mobile applications and digital experiences.">
 
 <title>Mohamad Norizkandar | Creative App Developer</title>
 
 <style>
-
-/* =====================================================
+/* =========================
    RESET
-===================================================== */
+========================= */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
-html{
-    scroll-behavior:smooth;
+:root{
+    --bg:#02050a;
+    --bg2:#07101c;
+    --card:rgba(8,18,30,.68);
+    --text:#f5f7fb;
+    --muted:#91a0b5;
+    --blue:#00e5ff;
+    --green:#00ff9d;
+    --purple:#8b5cf6;
+    --line:rgba(255,255,255,.08);
+    --shadow:0 0 50px rgba(0,229,255,.12);
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#02040a;
-    color:#f5f7fa;
+    background:var(--bg);
+    color:var(--text);
     overflow-x:hidden;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
-}
+/* =========================
+   LOADER
+========================= */
 
-button{
-    font-family:inherit;
-}
-
-
-/* =====================================================
-   VARIABLES
-===================================================== */
-
-:root{
-    --blue:#00c8ff;
-    --cyan:#00eaff;
-    --green:#00ff9d;
-    --purple:#7b61ff;
-
-    --bg:#02040a;
-    --card:rgba(12,18,30,.70);
-    --border:rgba(255,255,255,.10);
-
-    --text:#f5f7fa;
-    --muted:#8e9aaa;
-}
-
-
-/* =====================================================
-   CURSOR GLOW
-===================================================== */
-
-.cursor-glow{
+#loader{
     position:fixed;
-    width:280px;
-    height:280px;
-    border-radius:50%;
-    pointer-events:none;
-    background:radial-gradient(
-        circle,
-        rgba(0,200,255,.12),
-        transparent 65%
-    );
-    transform:translate(-50%,-50%);
-    z-index:1;
+    inset:0;
+    background:#010308;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:1s;
 }
 
+.loader-logo{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:5px;
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:pulse 1.5s infinite;
+}
 
-/* =====================================================
+.loader-line{
+    width:220px;
+    height:2px;
+    background:#14202d;
+    margin-top:25px;
+    overflow:hidden;
+}
+
+.loader-line span{
+    display:block;
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    animation:loading 2.2s forwards;
+}
+
+.loader-text{
+    margin-top:15px;
+    color:#718096;
+    font-size:12px;
+    letter-spacing:3px;
+}
+
+@keyframes loading{
+    to{width:100%}
+}
+
+@keyframes pulse{
+    50%{opacity:.5}
+}
+
+/* =========================
    BACKGROUND
-===================================================== */
+========================= */
 
-.grid{
+.bg-grid{
     position:fixed;
     inset:0;
     z-index:-5;
-
     background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-
-    background-size:55px 55px;
-
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        rgba(0,0,0,.7),
-        transparent
-    );
+    linear-gradient(rgba(0,229,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.035) 1px,transparent 1px);
+    background-size:45px 45px;
+    mask-image:linear-gradient(to bottom,black,transparent);
 }
 
-.orb{
+.glow{
     position:fixed;
     width:500px;
     height:500px;
     border-radius:50%;
-    filter:blur(160px);
-    pointer-events:none;
+    background:rgba(0,229,255,.08);
+    filter:blur(100px);
     z-index:-4;
+    pointer-events:none;
 }
 
-.orb.one{
-    top:-250px;
-    left:-200px;
-    background:var(--blue);
-    opacity:.12;
+.glow.one{
+    top:-150px;
+    left:-150px;
 }
 
-.orb.two{
-    right:-250px;
-    top:35%;
-    background:var(--purple);
-    opacity:.08;
+.glow.two{
+    right:-200px;
+    top:40%;
+    background:rgba(0,255,157,.06);
 }
 
-.orb.three{
-    bottom:-300px;
-    left:30%;
-    background:var(--green);
-    opacity:.08;
-}
-
-
-/* =====================================================
-   PARTICLES
-===================================================== */
-
-.particles{
+#particles{
     position:fixed;
     inset:0;
+    z-index:-3;
     pointer-events:none;
-    z-index:-2;
 }
 
-.particle{
-    position:absolute;
-    width:2px;
-    height:2px;
-    background:white;
-    border-radius:50%;
-    opacity:.4;
-    animation:floatParticle linear infinite;
-}
+/* =========================
+   CURSOR
+========================= */
 
-@keyframes floatParticle{
-    from{
-        transform:translateY(110vh);
-    }
-
-    to{
-        transform:translateY(-10vh);
-    }
-}
-
-
-/* =====================================================
-   SCROLL BAR
-===================================================== */
-
-.scroll-progress{
+.cursor{
     position:fixed;
-    top:0;
-    left:0;
-    height:3px;
-    width:0%;
-    background:linear-gradient(
-        90deg,
-        var(--blue),
-        var(--green)
-    );
-    z-index:2000;
+    width:25px;
+    height:25px;
+    border:1px solid var(--blue);
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:9999;
+    transition:.08s;
 }
 
+.cursor-dot{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:var(--green);
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:10000;
+}
 
-/* =====================================================
-   NAVBAR
-===================================================== */
+/* =========================
+   NAV
+========================= */
 
 nav{
     position:fixed;
-    top:18px;
+    top:20px;
     left:50%;
     transform:translateX(-50%);
-
-    width:min(1180px,92%);
-
+    width:min(1100px,92%);
     padding:14px 20px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    background:rgba(2,5,10,.70);
-    backdrop-filter:blur(22px);
-
-    border:1px solid var(--border);
+    border:1px solid var(--line);
     border-radius:20px;
-
-    z-index:1000;
+    background:rgba(2,5,10,.72);
+    backdrop-filter:blur(20px);
+    z-index:5000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
-    font-size:24px;
     font-weight:900;
+    letter-spacing:2px;
+    color:white;
 }
 
 .logo span{
     color:var(--blue);
 }
 
-nav ul{
+.nav-links{
     display:flex;
-    gap:25px;
-    list-style:none;
+    gap:22px;
 }
 
-nav a{
-    color:var(--muted);
+.nav-links a{
+    text-decoration:none;
+    color:#9caabd;
     font-size:13px;
     transition:.3s;
 }
 
-nav a:hover{
+.nav-links a:hover{
     color:var(--blue);
 }
 
+.nav-btn{
+    border:1px solid var(--line);
+    background:#07111d;
+    color:white;
+    padding:9px 13px;
+    border-radius:12px;
+    cursor:pointer;
+}
 
-/* =====================================================
-   GENERAL
-===================================================== */
+/* =========================
+   SCROLL BAR
+========================= */
+
+.progress{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:3px;
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    z-index:99999;
+}
+
+/* =========================
+   SECTIONS
+========================= */
 
 section{
-    width:min(1180px,92%);
+    width:min(1150px,92%);
     margin:auto;
     padding:120px 0;
 }
 
-.label{
-    color:var(--blue);
-    letter-spacing:3px;
-    font-size:11px;
-    font-weight:bold;
+.section-title{
+    margin-bottom:50px;
+}
+
+.section-title .small{
+    color:var(--green);
+    font-size:12px;
+    letter-spacing:4px;
     margin-bottom:12px;
 }
 
-.section-title{
-    font-size:clamp(38px,6vw,58px);
-    letter-spacing:-2px;
-    margin-bottom:15px;
+.section-title h2{
+    font-size:clamp(32px,6vw,58px);
+    line-height:1;
 }
 
-.section-title span{
-    color:var(--blue);
-}
-
-.subtitle{
-    max-width:760px;
+.section-title p{
+    margin-top:15px;
     color:var(--muted);
-    line-height:1.9;
-    margin-bottom:45px;
+    max-width:650px;
+    line-height:1.7;
 }
 
-
-/* =====================================================
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero{
     min-height:100vh;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     gap:70px;
-    padding-top:130px;
+    padding-top:150px;
 }
 
 .hero-content{
-    max-width:760px;
+    max-width:650px;
 }
 
 .status{
     display:inline-flex;
     align-items:center;
-    gap:10px;
-
-    padding:9px 15px;
-
-    border:1px solid rgba(0,200,255,.3);
-    border-radius:50px;
-
-    color:var(--blue);
-
+    gap:8px;
+    border:1px solid rgba(0,255,157,.2);
+    padding:8px 13px;
+    border-radius:30px;
+    color:var(--green);
     font-size:11px;
-    letter-spacing:3px;
-
-    background:rgba(0,200,255,.04);
-
+    letter-spacing:2px;
+    background:rgba(0,255,157,.04);
     margin-bottom:25px;
 }
 
-.status-dot{
+.status i{
     width:7px;
     height:7px;
     background:var(--green);
     border-radius:50%;
-    box-shadow:0 0 18px var(--green);
+    box-shadow:0 0 15px var(--green);
 }
 
 .hero h1{
-    font-size:clamp(58px,9vw,110px);
-    line-height:.88;
-    letter-spacing:-7px;
-    margin-bottom:30px;
+    font-size:clamp(52px,8vw,105px);
+    line-height:.9;
+    letter-spacing:-5px;
+    margin-bottom:25px;
 }
 
-.gradient{
-    background:linear-gradient(
-        90deg,
-        var(--blue),
-        var(--green)
-    );
-
+.gradient-text{
+    background:linear-gradient(90deg,var(--blue),white,var(--green));
     -webkit-background-clip:text;
     color:transparent;
 }
 
-.hero-text{
-    color:var(--muted);
-    font-size:19px;
-    line-height:1.8;
-    min-height:70px;
+.glitch{
+    position:relative;
 }
 
-.cursor{
+.glitch::before,
+.glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    overflow:hidden;
+    opacity:.5;
+}
+
+.glitch::before{
     color:var(--blue);
-    animation:blink .7s infinite;
+    animation:glitch1 2.5s infinite;
 }
 
-@keyframes blink{
-    50%{
-        opacity:0;
-    }
+.glitch::after{
+    color:var(--green);
+    animation:glitch2 2.5s infinite;
 }
 
-.hero-buttons{
+@keyframes glitch1{
+    0%,90%,100%{clip-path:inset(0 0 100% 0)}
+    92%{clip-path:inset(20% 0 50% 0);transform:translate(-4px)}
+    94%{clip-path:inset(60% 0 10% 0);transform:translate(4px)}
+}
+
+@keyframes glitch2{
+    0%,88%,100%{clip-path:inset(100% 0 0 0)}
+    90%{clip-path:inset(10% 0 60% 0);transform:translate(4px)}
+    93%{clip-path:inset(65% 0 15% 0);transform:translate(-4px)}
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.7;
+    max-width:620px;
+}
+
+.typing{
+    color:var(--blue);
+    margin-top:18px;
+    min-height:25px;
+}
+
+.buttons{
     display:flex;
-    gap:13px;
-    flex-wrap:wrap;
+    gap:15px;
     margin-top:30px;
+    flex-wrap:wrap;
 }
 
 .btn{
-    padding:15px 23px;
+    text-decoration:none;
+    color:white;
+    padding:14px 21px;
     border-radius:13px;
+    border:1px solid var(--line);
+    background:#08121f;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.btn.primary{
+    background:linear-gradient(90deg,#00b8d4,#00b879);
+    color:#00100b;
     font-weight:800;
-    transition:.35s;
-    display:inline-block;
-}
-
-.primary{
-    color:#00120d;
-    background:linear-gradient(
-        90deg,
-        var(--blue),
-        var(--green)
-    );
-
-    box-shadow:0 0 35px rgba(0,200,255,.15);
-}
-
-.secondary{
-    background:rgba(255,255,255,.04);
-    border:1px solid var(--border);
+    border:none;
 }
 
 .btn:hover{
-    transform:translateY(-5px) scale(1.02);
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(0,229,255,.15);
 }
 
-
-/* =====================================================
+/* =========================
    PROFILE
-===================================================== */
+========================= */
 
-.profile-container{
+.profile-wrap{
     position:relative;
-    flex-shrink:0;
-}
-
-.profile-container::before{
-    content:"";
-
-    position:absolute;
-    inset:-35px;
-
-    border-radius:50px;
-
-    background:linear-gradient(
-        135deg,
-        var(--blue),
-        var(--green)
-    );
-
-    filter:blur(50px);
-    opacity:.2;
 }
 
 .profile-frame{
-    position:relative;
-    padding:7px;
-
-    border-radius:40px;
-
-    background:linear-gradient(
-        135deg,
-        var(--blue),
-        transparent 40%,
-        var(--green)
-    );
-
-    animation:profileFloat 5s ease-in-out infinite;
-}
-
-@keyframes profileFloat{
-    0%,100%{
-        transform:translateY(0) rotate(0deg);
-    }
-
-    50%{
-        transform:translateY(-14px) rotate(1deg);
-    }
-}
-
-.profile{
-    display:block;
-
     width:350px;
-    height:450px;
+    height:440px;
+    padding:3px;
+    border-radius:30px;
+    background:linear-gradient(140deg,var(--blue),transparent,var(--green));
+    box-shadow:0 0 70px rgba(0,229,255,.12);
+    transform:rotate(3deg);
+    transition:.5s;
+}
 
+.profile-frame:hover{
+    transform:rotate(0) scale(1.02);
+}
+
+.profile-frame img{
+    width:100%;
+    height:100%;
     object-fit:cover;
-
-    border-radius:35px;
-
-    background:#080c13;
-}
-
-.profile-label{
-    position:absolute;
-    bottom:20px;
-    left:20px;
-
-    padding:11px 15px;
-
-    background:rgba(2,5,10,.85);
-    backdrop-filter:blur(15px);
-
-    border:1px solid var(--border);
-    border-radius:13px;
-
-    font-size:12px;
-}
-
-
-/* =====================================================
-   INFO
-===================================================== */
-
-.info-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.info{
-    padding:25px;
-
-    background:rgba(255,255,255,.025);
-
-    border:1px solid var(--border);
-    border-radius:20px;
-
-    transition:.35s;
-}
-
-.info:hover{
-    transform:translateY(-7px);
-    border-color:rgba(0,200,255,.35);
-}
-
-.info small{
+    border-radius:28px;
     display:block;
-    color:var(--muted);
-    margin-bottom:9px;
+    background:#07111d;
 }
 
-.info strong{
-    font-size:16px;
+.float-card{
+    position:absolute;
+    bottom:-20px;
+    left:-40px;
+    padding:15px 18px;
+    border:1px solid var(--line);
+    background:rgba(5,12,20,.85);
+    backdrop-filter:blur(20px);
+    border-radius:15px;
+    box-shadow:var(--shadow);
 }
 
+.float-card strong{
+    display:block;
+    color:var(--green);
+}
 
-/* =====================================================
+.float-card small{
+    color:#8190a5;
+}
+
+/* =========================
    CARDS
-===================================================== */
+========================= */
 
-.cards{
+.grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:18px;
 }
 
 .card{
-    padding:30px;
-
     background:var(--card);
-
-    border:1px solid var(--border);
-    border-radius:25px;
-
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:28px;
     backdrop-filter:blur(15px);
-
     transition:.4s;
-
     position:relative;
     overflow:hidden;
 }
 
-.card:hover{
-    transform:translateY(-10px);
-
-    border-color:rgba(0,200,255,.35);
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.35);
+.card::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    background:var(--blue);
+    filter:blur(90px);
+    opacity:.06;
+    top:-70px;
+    right:-70px;
 }
 
-.card-icon{
-    font-size:34px;
-    margin-bottom:20px;
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(0,229,255,.3);
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
 }
 
 .card h3{
     margin-bottom:10px;
-    font-size:20px;
 }
 
 .card p{
     color:var(--muted);
-    line-height:1.8;
-    font-size:14px;
+    line-height:1.7;
 }
 
-
-/* =====================================================
+/* =========================
    STATS
-===================================================== */
+========================= */
 
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:16px;
+    gap:15px;
 }
 
 .stat{
-    text-align:center;
-
-    padding:32px 15px;
-
-    background:rgba(255,255,255,.025);
-
-    border:1px solid var(--border);
-    border-radius:22px;
+    padding:25px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:#06101b;
 }
 
-.stat-number{
-    font-size:43px;
-    font-weight:900;
-
-    background:linear-gradient(
-        90deg,
-        var(--blue),
-        var(--green)
-    );
-
+.stat h3{
+    font-size:40px;
+    background:linear-gradient(90deg,var(--blue),var(--green));
     -webkit-background-clip:text;
     color:transparent;
 }
 
 .stat p{
     color:var(--muted);
-    font-size:13px;
     margin-top:5px;
 }
 
-
-/* =====================================================
+/* =========================
    SKILLS
-===================================================== */
-
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
+========================= */
 
 .skill{
-    padding:14px 20px;
-
-    background:rgba(255,255,255,.035);
-
-    border:1px solid var(--border);
-    border-radius:50px;
-
-    transition:.3s;
+    margin-bottom:24px;
 }
 
-.skill:hover{
-    transform:translateY(-5px);
-
-    border-color:var(--blue);
-
-    box-shadow:
-        0 0 25px rgba(0,200,255,.08);
+.skill-head{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
 }
 
+.skill-head span:last-child{
+    color:var(--blue);
+}
 
-/* =====================================================
+.bar{
+    height:7px;
+    border-radius:10px;
+    background:#101b28;
+    overflow:hidden;
+}
+
+.bar span{
+    display:block;
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    transition:1.5s;
+}
+
+/* =========================
    TERMINAL
-===================================================== */
+========================= */
 
 .terminal{
-    background:#05080d;
-
-    border:1px solid var(--border);
-
-    border-radius:25px;
-
+    background:#02070d;
+    border:1px solid #172433;
+    border-radius:20px;
     overflow:hidden;
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.35);
+    box-shadow:0 30px 80px rgba(0,0,0,.4);
 }
 
-.terminal-top{
+.term-top{
+    padding:12px 15px;
+    border-bottom:1px solid #172433;
     display:flex;
-    align-items:center;
-    gap:8px;
-
-    padding:14px 18px;
-
-    border-bottom:1px solid var(--border);
-
-    background:#080d14;
+    gap:7px;
 }
 
-.terminal-dot{
+.dot{
     width:10px;
     height:10px;
     border-radius:50%;
-    background:#5b6574;
+    background:#283746;
 }
 
-.terminal-title{
-    margin-left:8px;
-    color:var(--muted);
-    font-size:12px;
-}
-
-.terminal-body{
-    padding:30px;
-
+.term-body{
+    padding:25px;
+    min-height:260px;
     font-family:monospace;
-
-    line-height:2;
-
-    color:#aab7c8;
+    color:#b5c5d6;
+    line-height:1.9;
 }
 
-.green{
-    color:var(--green);
-}
+.term-green{color:var(--green)}
+.term-blue{color:var(--blue)}
+.term-purple{color:#a78bfa}
 
-.blue{
-    color:var(--blue);
-}
-
-
-/* =====================================================
-   PROJECT
-===================================================== */
+/* =========================
+   SMART ACADEMY
+========================= */
 
 .project{
-    padding:50px;
-
-    border-radius:35px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,200,255,.09),
-            rgba(0,255,157,.04)
-        ),
-        var(--card);
-
-    border:1px solid var(--border);
-
-    position:relative;
-    overflow:hidden;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:30px;
+    align-items:center;
 }
 
-.project::before{
-    content:"SMART ACADEMY";
+.project-box{
+    border:1px solid var(--line);
+    border-radius:28px;
+    padding:35px;
+    background:linear-gradient(145deg,rgba(0,229,255,.04),rgba(0,255,157,.02));
+}
 
-    position:absolute;
-
-    right:-30px;
-    bottom:-20px;
-
-    font-size:90px;
-    font-weight:900;
-
-    color:rgba(255,255,255,.025);
-
-    pointer-events:none;
+.project-label{
+    color:var(--green);
+    letter-spacing:3px;
+    font-size:11px;
 }
 
 .project h3{
-    font-size:43px;
-    margin-bottom:16px;
+    font-size:45px;
+    margin:15px 0;
 }
 
 .project p{
-    max-width:850px;
-    color:var(--muted);
-    line-height:1.9;
-}
-
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
-    margin-top:28px;
-}
-
-.tags span{
-    padding:8px 12px;
-
-    background:rgba(0,0,0,.25);
-
-    color:var(--green);
-
-    border-radius:8px;
-
-    font-size:12px;
-}
-
-
-/* =====================================================
-   PHONE MOCKUP
-===================================================== */
-
-.phone-section{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:80px;
-    flex-wrap:wrap;
-}
-
-.phone{
-    width:270px;
-    height:540px;
-
-    padding:10px;
-
-    border-radius:40px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #101721,
-            #02050a
-        );
-
-    border:2px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 0 70px rgba(0,200,255,.12);
-
-    position:relative;
-}
-
-.phone-screen{
-    height:100%;
-
-    border-radius:32px;
-
-    background:
-        linear-gradient(
-            160deg,
-            #07131c,
-            #031015
-        );
-
-    padding:25px 18px;
-
-    overflow:hidden;
-}
-
-.notch{
-    position:absolute;
-
-    width:90px;
-    height:20px;
-
-    background:#02040a;
-
-    border-radius:0 0 14px 14px;
-
-    top:10px;
-    left:50%;
-
-    transform:translateX(-50%);
-}
-
-.app-logo{
-    margin-top:20px;
-
-    font-size:13px;
-    font-weight:bold;
-
-    color:var(--blue);
-}
-
-.phone h4{
-    font-size:25px;
-    margin-top:20px;
-}
-
-.mini-card{
-    margin-top:15px;
-
-    padding:16px;
-
-    border-radius:16px;
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.mini-card small{
-    color:var(--muted);
-}
-
-.mini-card strong{
-    display:block;
-    margin-top:7px;
-}
-
-.phone-text{
-    max-width:600px;
-}
-
-.phone-text p{
-    color:var(--muted);
-    line-height:1.9;
-}
-
-
-/* =====================================================
-   MINDSET
-===================================================== */
-
-.mind-map{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    align-items:center;
-}
-
-.mind-node{
-    padding:25px;
-
-    text-align:center;
-
-    border:1px solid var(--border);
-
-    background:rgba(255,255,255,.025);
-
-    border-radius:20px;
-
-    transition:.35s;
-}
-
-.mind-node:hover{
-    transform:scale(1.04);
-    border-color:var(--blue);
-}
-
-.mind-center{
-    grid-column:1/-1;
-
-    width:180px;
-    margin:auto;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,200,255,.15),
-            rgba(0,255,157,.08)
-        );
-
-    border-color:rgba(0,200,255,.4);
-}
-
-
-/* =====================================================
-   TIMELINE
-===================================================== */
-
-.timeline{
-    border-left:1px solid rgba(0,200,255,.35);
-    padding-left:32px;
-}
-
-.timeline-item{
-    position:relative;
-    margin-bottom:45px;
-}
-
-.timeline-item::before{
-    content:"";
-
-    position:absolute;
-
-    width:11px;
-    height:11px;
-
-    border-radius:50%;
-
-    background:var(--blue);
-
-    left:-38px;
-    top:5px;
-
-    box-shadow:
-        0 0 20px var(--blue);
-}
-
-.timeline-item h3{
-    margin-bottom:8px;
-}
-
-.timeline-item p{
     color:var(--muted);
     line-height:1.8;
 }
 
+.tags{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
 
-/* =====================================================
+.tag{
+    padding:7px 10px;
+    border-radius:8px;
+    background:#0b1825;
+    color:#91a5ba;
+    font-size:11px;
+}
+
+/* =========================
+   PHONE
+========================= */
+
+.phone{
+    width:250px;
+    height:500px;
+    border:8px solid #182333;
+    border-radius:38px;
+    background:#03070c;
+    margin:auto;
+    position:relative;
+    box-shadow:
+        0 0 0 1px #314156,
+        0 30px 80px rgba(0,0,0,.5);
+    overflow:hidden;
+}
+
+.phone-notch{
+    width:90px;
+    height:20px;
+    background:#182333;
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:0 0 14px 14px;
+    z-index:2;
+}
+
+.phone-screen{
+    padding:45px 15px 15px;
+}
+
+.app-logo{
+    font-weight:900;
+    font-size:18px;
+    color:var(--blue);
+}
+
+.phone-card{
+    margin-top:15px;
+    padding:15px;
+    border-radius:15px;
+    background:#0a1623;
+    border:1px solid #172536;
+}
+
+.phone-card small{
+    color:#718096;
+}
+
+.phone-card strong{
+    display:block;
+    margin-top:5px;
+}
+
+.phone-live{
+    margin-top:15px;
+    height:90px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#07343d,#063124);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--green);
+    font-weight:bold;
+}
+
+/* =========================
+   MINDSET
+========================= */
+
+.mind{
+    min-height:500px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.core{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:linear-gradient(135deg,#052f3a,#073b2b);
+    border:1px solid var(--blue);
+    box-shadow:0 0 50px rgba(0,229,255,.18);
+    font-weight:900;
+}
+
+.node{
+    position:absolute;
+    padding:12px 18px;
+    border:1px solid var(--line);
+    background:#07111d;
+    border-radius:12px;
+    color:#a9b7c8;
+}
+
+.n1{top:20px;left:20%}
+.n2{top:20px;right:20%}
+.n3{top:45%;left:5%}
+.n4{top:45%;right:5%}
+.n5{bottom:20px;left:20%}
+.n6{bottom:20px;right:20%}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+    border-left:1px solid #203040;
+    margin-left:10px;
+}
+
+.timeline-item{
+    position:relative;
+    padding:0 0 45px 35px;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--blue);
+    left:-6px;
+    top:5px;
+    box-shadow:0 0 20px var(--blue);
+}
+
+.timeline-item span{
+    color:var(--green);
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.timeline-item h3{
+    margin:8px 0;
+}
+
+.timeline-item p{
+    color:var(--muted);
+}
+
+/* =========================
    ROADMAP
-===================================================== */
+========================= */
 
 .roadmap{
     display:grid;
@@ -989,262 +818,166 @@ section{
 }
 
 .road{
-    padding:30px;
-
-    min-height:190px;
-
-    border:1px solid var(--border);
-    border-radius:23px;
-
-    background:rgba(255,255,255,.025);
-
-    transition:.35s;
+    min-height:180px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:25px;
+    background:#06101a;
 }
 
-.road:hover{
-    transform:translateY(-8px);
-    border-color:rgba(0,255,157,.4);
-}
-
-.road-number{
-    color:var(--green);
-    font-size:12px;
+.road span{
+    color:var(--blue);
+    font-size:11px;
     letter-spacing:2px;
 }
 
 .road h3{
-    margin:20px 0 10px;
+    margin:15px 0 8px;
 }
 
 .road p{
     color:var(--muted);
-    font-size:14px;
-    line-height:1.7;
+    line-height:1.6;
 }
 
-
-/* =====================================================
+/* =========================
    DEVELOPER MODE
-===================================================== */
+========================= */
 
 .dev-mode{
-    padding:45px;
-
-    border-radius:30px;
-
-    background:
-        radial-gradient(
-            circle at top right,
-            rgba(0,200,255,.1),
-            transparent 50%
-        ),
-        #05080d;
-
-    border:1px solid var(--border);
-
     text-align:center;
-}
-
-.dev-mode h2{
-    font-size:35px;
-    margin-bottom:12px;
-}
-
-.dev-mode p{
-    color:var(--muted);
-    margin-bottom:25px;
-}
-
-.mode-btn{
-    border:0;
-    cursor:pointer;
-
-    padding:15px 24px;
-
-    border-radius:13px;
-
-    font-weight:bold;
-
-    color:#00120d;
-
-    background:linear-gradient(
-        90deg,
-        var(--blue),
-        var(--green)
-    );
 }
 
 #devOutput{
-    margin-top:25px;
-
-    font-family:monospace;
-
-    text-align:left;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    background:#02040a;
-
-    color:var(--green);
-
     display:none;
-
-    line-height:1.9;
+    margin-top:20px;
+    text-align:left;
+    background:#000;
+    border:1px solid #183040;
+    border-radius:18px;
+    padding:25px;
+    font-family:monospace;
+    color:var(--green);
+    line-height:1.8;
 }
 
-
-/* =====================================================
+/* =========================
    SOCIAL
-===================================================== */
-
-.socials{
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-}
+========================= */
 
 .social{
-    padding:17px 22px;
-
-    border-radius:15px;
-
-    border:1px solid var(--border);
-
-    background:rgba(255,255,255,.035);
-
-    transition:.35s;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
 }
 
-.social:hover{
-    transform:translateY(-6px);
+.social a{
+    text-decoration:none;
+    color:white;
+    padding:25px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:#06101a;
+    transition:.3s;
+}
+
+.social a:hover{
+    transform:translateY(-5px);
     border-color:var(--blue);
 }
 
+.social small{
+    display:block;
+    color:#74859a;
+    margin-top:7px;
+}
 
-/* =====================================================
+/* =========================
    CONTACT
-===================================================== */
+========================= */
 
 .contact{
     text-align:center;
-
-    padding:100px 30px;
-
-    border-radius:40px;
-
-    border:1px solid var(--border);
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0,200,255,.1),
-            transparent 65%
-        );
+    padding-bottom:100px;
 }
 
 .contact h2{
-    font-size:clamp(40px,7vw,70px);
-    margin-bottom:15px;
+    font-size:clamp(42px,7vw,80px);
+    line-height:.95;
 }
 
 .contact p{
+    max-width:600px;
+    margin:20px auto;
     color:var(--muted);
-    margin-bottom:30px;
+    line-height:1.7;
 }
 
-
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer{
-    text-align:center;
-
-    padding:50px 20px;
-
-    color:var(--muted);
-
-    border-top:1px solid var(--border);
-
-    font-size:13px;
+    border-top:1px solid var(--line);
+    padding:30px 5%;
+    display:flex;
+    justify-content:space-between;
+    color:#607084;
+    font-size:12px;
 }
 
-footer strong{
-    color:white;
-}
-
-
-/* =====================================================
+/* =========================
    REVEAL
-===================================================== */
+========================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(40px);
-
-    transition:
-        opacity .9s ease,
-        transform .9s ease;
+    transform:translateY(35px);
+    transition:1s;
 }
 
-.reveal.active{
+.reveal.show{
     opacity:1;
     transform:translateY(0);
 }
 
+/* =========================
+   EASTER EGG
+========================= */
 
-/* =====================================================
-   TOP BUTTON
-===================================================== */
-
-.top{
+#secret{
     position:fixed;
-
-    right:25px;
-    bottom:25px;
-
-    width:46px;
-    height:46px;
-
-    display:flex;
+    inset:0;
+    background:rgba(0,0,0,.94);
+    z-index:99998;
+    display:none;
     align-items:center;
     justify-content:center;
-
-    border-radius:50%;
-
-    background:linear-gradient(
-        135deg,
-        var(--blue),
-        var(--green)
-    );
-
-    color:#00120d;
-
-    font-weight:bold;
-
-    opacity:0;
-    pointer-events:none;
-
-    transition:.3s;
-
-    z-index:900;
+    text-align:center;
+    padding:30px;
 }
 
-.top.show{
-    opacity:1;
-    pointer-events:auto;
+.secret-box{
+    max-width:600px;
 }
 
+.secret-box h2{
+    font-size:55px;
+    color:var(--green);
+}
 
-/* =====================================================
-   MOBILE
-===================================================== */
+.secret-box p{
+    color:#8999aa;
+    margin:15px 0 25px;
+}
 
-@media(max-width:950px){
+/* =========================
+   RESPONSIVE
+========================= */
 
-    nav ul{
+@media(max-width:850px){
+
+    .nav-links{
         display:none;
     }
 
@@ -1254,337 +987,259 @@ footer strong{
         padding-top:150px;
     }
 
-    .hero-buttons{
-        justify-content:center;
+    .hero-content{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
     }
 
-    .profile{
-        width:300px;
-        height:390px;
+    .hero h1{
+        letter-spacing:-3px;
     }
 
-    .info-grid{
+    .profile-frame{
+        width:280px;
+        height:360px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .project{
+        grid-template-columns:1fr;
+    }
+
+    .roadmap{
         grid-template-columns:1fr 1fr;
+    }
+
+    .mind{
+        min-height:430px;
+    }
+
+    .n1{left:3%}
+    .n2{right:3%}
+    .n3{left:0}
+    .n4{right:0}
+    .n5{left:3%}
+    .n6{right:3%}
+}
+
+@media(max-width:550px){
+
+    section{
+        padding:85px 0;
+    }
+
+    nav{
+        top:10px;
+    }
+
+    .hero h1{
+        font-size:52px;
     }
 
     .stats{
         grid-template-columns:1fr 1fr;
     }
 
-    .cards{
-        grid-template-columns:1fr;
+    .stat h3{
+        font-size:30px;
     }
 
-    .roadmap{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .project{
-        padding:32px;
-    }
-
-    .project h3{
-        font-size:34px;
-    }
-}
-
-
-@media(max-width:600px){
-
-    section{
-        padding:90px 0;
-    }
-
-    .hero h1{
-        font-size:57px;
-        letter-spacing:-4px;
-    }
-
-    .hero-text{
-        font-size:16px;
-    }
-
-    .profile{
-        width:270px;
-        height:350px;
-    }
-
-    .info-grid,
-    .stats,
-    .roadmap{
-        grid-template-columns:1fr;
-    }
-
-    .mind-map{
-        grid-template-columns:1fr;
-    }
-
-    .mind-center{
-        grid-column:auto;
-    }
-
-    .phone{
-        width:250px;
-        height:500px;
-    }
-
-    .project{
+    .project-box{
         padding:25px;
     }
 
     .project h3{
-        font-size:29px;
+        font-size:36px;
+    }
+
+    .roadmap{
+        grid-template-columns:1fr;
+    }
+
+    .social{
+        grid-template-columns:1fr;
+    }
+
+    .node{
+        font-size:11px;
+        padding:8px 10px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:8px;
+        text-align:center;
+    }
+
+    .cursor,
+    .cursor-dot{
+        display:none;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-<!-- BACKGROUND -->
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-logo">NORIZKANDAR</div>
+    <div class="loader-line"><span></span></div>
+    <div class="loader-text">INITIALIZING PORTFOLIO...</div>
+</div>
 
-<div class="grid"></div>
+<div class="progress"></div>
 
-<div class="orb one"></div>
-<div class="orb two"></div>
-<div class="orb three"></div>
+<div class="bg-grid"></div>
+<div class="glow one"></div>
+<div class="glow two"></div>
+<canvas id="particles"></canvas>
 
-<div class="particles" id="particles"></div>
-
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<div class="scroll-progress" id="progress"></div>
-
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
 
 <!-- NAV -->
-
 <nav>
+    <div class="logo">NORI<span>.</span></div>
 
-    <div class="logo">
-        N<span>.</span>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#project">Project</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact">Contact</a>
     </div>
 
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#project">Project</a></li>
-        <li><a href="#journey">Journey</a></li>
-        <li><a href="#connect">Connect</a></li>
-    </ul>
-
+    <button class="nav-btn" onclick="toggleDev()">DEV MODE</button>
 </nav>
 
-
 <!-- HERO -->
-
 <section class="hero">
 
     <div class="hero-content reveal">
 
         <div class="status">
-            <span class="status-dot"></span>
-            CREATIVE APP DEVELOPER
+            <i></i>
+            ONLINE — BUILDING SOMETHING NEW
         </div>
 
         <h1>
-            Mohamad<br>
-            <span class="gradient">Norizkandar.</span>
+            <span class="gradient-text glitch"
+            data-text="Mohamad">
+                Mohamad
+            </span>
+            <br>
+            Norizkandar.
         </h1>
 
-        <div class="hero-text">
+        <p>
+            I turn creative ideas into modern mobile applications,
+            interactive experiences and digital products.
+        </p>
 
+        <div class="typing">
             <span id="typing"></span>
-            <span class="cursor">|</span>
-
         </div>
 
-        <div class="hero-buttons">
-
-            <a href="#project"
-               class="btn primary">
+        <div class="buttons">
+            <a class="btn primary" href="#project">
                 Explore My Work →
             </a>
 
-            <a href="https://github.com/norizkandar"
-               target="_blank"
-               class="btn secondary">
+            <a class="btn" href="https://github.com/norizkandar" target="_blank">
                 GitHub ↗
             </a>
-
         </div>
 
     </div>
 
-
-    <div class="profile-container reveal">
+    <div class="profile-wrap reveal">
 
         <div class="profile-frame">
+            <img src="profile.jpg" alt="Mohamad Norizkandar">
+        </div>
 
-            <img
-                src="profile.jpg"
-                alt="Mohamad Norizkandar"
-                class="profile"
-            >
-
-            <div class="profile-label">
-                ⚡ Building ideas
-            </div>
-
+        <div class="float-card">
+            <strong>14 YEARS OLD</strong>
+            <small>Creative App Developer</small>
         </div>
 
     </div>
 
 </section>
-
 
 <!-- ABOUT -->
+<section id="about">
 
-<section id="about" class="reveal">
-
-    <div class="label">
-        01 — ABOUT ME
+    <div class="section-title reveal">
+        <div class="small">01 — ABOUT</div>
+        <h2>Building before<br>being ready.</h2>
+        <p>
+            I'm Mohamad Norizkandar, a young developer from Taiping,
+            Perak, Malaysia. I started learning coding and turned
+            my ideas into real digital projects.
+        </p>
     </div>
 
-    <h2 class="section-title">
-        More Than Just <span>Code.</span>
-    </h2>
+    <div class="grid">
 
-    <p class="subtitle">
-
-        I'm Mohamad Norizkandar, a young creative developer
-        from Taiping, Perak. I enjoy programming, designing
-        digital experiences and turning ideas into real projects.
-
-    </p>
-
-
-    <div class="info-grid">
-
-        <div class="info">
-            <small>Name</small>
-            <strong>Mohamad Norizkandar</strong>
+        <div class="card reveal">
+            <h3>👨‍💻 Who I Am</h3>
+            <p>
+                A student developer who enjoys experimenting with
+                code, UI design and new technology.
+            </p>
         </div>
 
-        <div class="info">
-            <small>Age</small>
-            <strong>14 Years Old</strong>
+        <div class="card reveal">
+            <h3>🚀 What I Build</h3>
+            <p>
+                Mobile applications, educational products,
+                interactive interfaces and creative prototypes.
+            </p>
         </div>
 
-        <div class="info">
-            <small>Location</small>
-            <strong>Taiping, Perak</strong>
-        </div>
-
-        <div class="info">
-            <small>Focus</small>
-            <strong>App Development</strong>
+        <div class="card reveal">
+            <h3>🧠 My Mindset</h3>
+            <p>
+                Learn → Build → Break → Fix → Improve → Repeat.
+            </p>
         </div>
 
     </div>
 
 </section>
-
-
-<!-- WHAT I DO -->
-
-<section class="reveal">
-
-    <div class="label">
-        02 — WHAT I DO
-    </div>
-
-    <h2 class="section-title">
-        Turning <span>Ideas</span> Into Experiences.
-    </h2>
-
-    <p class="subtitle">
-        I like experimenting with technology and building
-        interfaces that feel modern, interactive and useful.
-    </p>
-
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="card-icon">📱</div>
-
-            <h3>App Development</h3>
-
-            <p>
-                Building mobile application concepts with
-                React Native, JavaScript and Expo.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">🎨</div>
-
-            <h3>Creative UI</h3>
-
-            <p>
-                Designing modern interfaces with a focus
-                on simplicity, interaction and visual impact.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">💡</div>
-
-            <h3>Problem Solving</h3>
-
-            <p>
-                Taking an idea, breaking it into smaller
-                problems and turning those problems into features.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
 
 <!-- STATS -->
-
-<section class="reveal">
-
-    <div class="label">
-        03 — DEVELOPER STATS
-    </div>
-
-    <h2 class="section-title">
-        A Few <span>Numbers.</span>
-    </h2>
-
+<section>
 
     <div class="stats">
 
-        <div class="stat">
-            <div class="stat-number">14</div>
+        <div class="stat reveal">
+            <h3>14</h3>
             <p>Years Old</p>
         </div>
 
-        <div class="stat">
-            <div class="stat-number">5+</div>
+        <div class="stat reveal">
+            <h3>5+</h3>
             <p>Technologies</p>
         </div>
 
-        <div class="stat">
-            <div class="stat-number">1+</div>
-            <p>Major Project</p>
+        <div class="stat reveal">
+            <h3>1+</h3>
+            <p>Major App</p>
         </div>
 
-        <div class="stat">
-            <div class="stat-number">∞</div>
+        <div class="stat reveal">
+            <h3>∞</h3>
             <p>Ideas</p>
         </div>
 
@@ -1592,100 +1247,115 @@ footer strong{
 
 </section>
 
-
 <!-- SKILLS -->
+<section id="skills">
 
-<section id="skills" class="reveal">
-
-    <div class="label">
-        04 — TECH STACK
+    <div class="section-title reveal">
+        <div class="small">02 — TECH STACK</div>
+        <h2>Tools I use.</h2>
+        <p>
+            The technologies I currently use to turn ideas into
+            working applications.
+        </p>
     </div>
 
-    <h2 class="section-title">
-        Tools I <span>Build With.</span>
-    </h2>
+    <div class="card reveal">
 
-    <p class="subtitle">
-        Technologies and tools that are part of my current
-        development journey.
-    </p>
+        <div class="skill">
+            <div class="skill-head">
+                <span>JavaScript</span>
+                <span>90%</span>
+            </div>
+            <div class="bar"><span data-width="90%"></span></div>
+        </div>
 
+        <div class="skill">
+            <div class="skill-head">
+                <span>React Native</span>
+                <span>85%</span>
+            </div>
+            <div class="bar"><span data-width="85%"></span></div>
+        </div>
 
-    <div class="skills">
+        <div class="skill">
+            <div class="skill-head">
+                <span>Expo</span>
+                <span>85%</span>
+            </div>
+            <div class="bar"><span data-width="85%"></span></div>
+        </div>
 
-        <div class="skill">JavaScript</div>
-        <div class="skill">React Native</div>
-        <div class="skill">Expo</div>
-        <div class="skill">Supabase</div>
-        <div class="skill">VS Code</div>
-        <div class="skill">GitHub</div>
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
+        <div class="skill">
+            <div class="skill-head">
+                <span>Supabase</span>
+                <span>75%</span>
+            </div>
+            <div class="bar"><span data-width="75%"></span></div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-head">
+                <span>HTML / CSS</span>
+                <span>85%</span>
+            </div>
+            <div class="bar"><span data-width="85%"></span></div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-head">
+                <span>GitHub</span>
+                <span>75%</span>
+            </div>
+            <div class="bar"><span data-width="75%"></span></div>
+        </div>
 
     </div>
 
 </section>
 
-
 <!-- TERMINAL -->
+<section>
 
-<section class="reveal">
-
-    <div class="label">
-        05 — DEVELOPER LAB
+    <div class="section-title reveal">
+        <div class="small">03 — SYSTEM</div>
+        <h2>Inside my terminal.</h2>
     </div>
 
-    <h2 class="section-title">
-        Inside My <span>Workspace.</span>
-    </h2>
+    <div class="terminal reveal">
 
-    <p class="subtitle">
-        A little look at the mindset behind the projects.
-    </p>
-
-
-    <div class="terminal">
-
-        <div class="terminal-top">
-
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-
-            <span class="terminal-title">
-                norizkandar@developer ~
-            </span>
-
+        <div class="term-top">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
 
-
-        <div class="terminal-body">
+        <div class="term-body">
 
             <div>
-                <span class="green">norizkandar@dev</span>:
-                <span class="blue">~</span>$ whoami
+                <span class="term-green">norizkandar@portfolio</span>:~$
+                whoami
             </div>
 
-            <div>
+            <div class="term-blue">
                 Mohamad Norizkandar
             </div>
 
             <br>
 
             <div>
-                <span class="green">norizkandar@dev</span>:
-                <span class="blue">~</span>$ current_project
+                <span class="term-green">norizkandar@portfolio</span>:~$
+                current_project
             </div>
 
-            <div>
+            <div class="term-purple">
                 Smart Academy
             </div>
 
             <br>
 
             <div>
-                <span class="green">norizkandar@dev</span>:
-                <span class="blue">~</span>$ stack
+                <span class="term-green">norizkandar@portfolio</span>:~$
+                stack
             </div>
 
             <div>
@@ -1695,12 +1365,12 @@ footer strong{
             <br>
 
             <div>
-                <span class="green">norizkandar@dev</span>:
-                <span class="blue">~</span>$ status
+                <span class="term-green">norizkandar@portfolio</span>:~$
+                status
             </div>
 
-            <div class="green">
-                ● ONLINE — BUILDING SOMETHING NEW
+            <div class="term-green">
+                ONLINE — BUILDING SOMETHING NEW █
             </div>
 
         </div>
@@ -1709,384 +1379,91 @@ footer strong{
 
 </section>
 
+<!-- PROJECT -->
+<section id="project">
 
-<!-- SMART ACADEMY -->
-
-<section id="project" class="reveal">
-
-    <div class="label">
-        06 — FEATURED PROJECT
+    <div class="section-title reveal">
+        <div class="small">04 — FEATURED PROJECT</div>
+        <h2>Smart Academy.</h2>
+        <p>
+            A modern tuition app concept designed to make learning
+            more interactive, accessible and engaging.
+        </p>
     </div>
-
-    <h2 class="section-title">
-        My Main <span>Build.</span>
-    </h2>
-
 
     <div class="project">
 
-        <h3>Smart Academy 📱</h3>
+        <div class="project-box reveal">
 
-        <p>
-
-            Smart Academy is a modern tuition platform concept
-            designed to create a more interactive learning
-            experience for students and teachers.
-
-            The project explores live learning, achievements,
-            teacher ratings, whiteboard tools and AI-assisted
-            learning concepts.
-
-        </p>
-
-
-        <div class="tags">
-
-            <span>AI Assistant</span>
-            <span>Whiteboard</span>
-            <span>Student Live</span>
-            <span>Achievement</span>
-            <span>Teacher Rating</span>
-            <span>React Native</span>
-            <span>Expo</span>
-            <span>Supabase</span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PHONE SHOWCASE -->
-
-<section class="reveal">
-
-    <div class="phone-section">
-
-
-        <div class="phone">
-
-            <div class="notch"></div>
-
-            <div class="phone-screen">
-
-                <div class="app-logo">
-                    SMART ACADEMY
-                </div>
-
-                <h4>
-                    Learn Smart.
-                </h4>
-
-                <div class="mini-card">
-
-                    <small>
-                        Today's Class
-                    </small>
-
-                    <strong>
-                        Mathematics
-                    </strong>
-
-                </div>
-
-
-                <div class="mini-card">
-
-                    <small>
-                        Achievement
-                    </small>
-
-                    <strong>
-                        🏆 New Badge
-                    </strong>
-
-                </div>
-
-
-                <div class="mini-card">
-
-                    <small>
-                        Live Session
-                    </small>
-
-                    <strong>
-                        🎥 Join Class
-                    </strong>
-
-                </div>
-
-
-                <div class="mini-card">
-
-                    <small>
-                        AI Assistant
-                    </small>
-
-                    <strong>
-                        🤖 Ask AI
-                    </strong>
-
-                </div>
-
+            <div class="project-label">
+                EDUCATION • MOBILE APP
             </div>
-
-        </div>
-
-
-        <div class="phone-text">
-
-            <div class="label">
-                PRODUCT SHOWCASE
-            </div>
-
-            <h2 class="section-title">
-                Designed To Make
-                <span>Learning Better.</span>
-            </h2>
-
-            <p>
-
-                Smart Academy combines education and technology
-                into one modern experience.
-
-                The goal is to make learning more interactive,
-                engaging and accessible through digital tools.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FEATURES -->
-
-<section class="reveal">
-
-    <div class="label">
-        07 — FEATURES
-    </div>
-
-    <h2 class="section-title">
-        Inside Smart <span>Academy.</span>
-    </h2>
-
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="card-icon">🤖</div>
-
-            <h3>AI Assistant</h3>
-
-            <p>
-                A smart learning concept designed to assist
-                students during their learning journey.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">🎥</div>
-
-            <h3>Student Live</h3>
-
-            <p>
-                Interactive live video experiences where
-                students can present and communicate.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">🏆</div>
-
-            <h3>Achievement</h3>
-
-            <p>
-                A progress system designed to make learning
-                milestones more visible.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">📝</div>
-
-            <h3>Whiteboard</h3>
-
-            <p>
-                An interactive space for explaining and
-                sharing ideas during lessons.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">⭐</div>
-
-            <h3>Teacher Rating</h3>
-
-            <p>
-                A feature designed to allow students to
-                provide feedback about teachers.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">👥</div>
-
-            <h3>Student & Teacher</h3>
-
-            <p>
-                Separate experiences designed around
-                different learning roles.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MINDSET -->
-
-<section class="reveal">
-
-    <div class="label">
-        08 — MY MINDSET
-    </div>
-
-    <h2 class="section-title">
-        How An Idea <span>Becomes Code.</span>
-    </h2>
-
-    <p class="subtitle">
-        My development process starts with an idea and keeps
-        evolving through experimentation.
-    </p>
-
-
-    <div class="mind-map">
-
-        <div class="mind-node">
-            💡<br>
-            Idea
-        </div>
-
-        <div class="mind-node">
-            🎨<br>
-            Design
-        </div>
-
-        <div class="mind-node">
-            🧠<br>
-            Problem
-        </div>
-
-
-        <div class="mind-node mind-center">
-            🚀<br>
-            BUILD
-        </div>
-
-
-        <div class="mind-node">
-            💻<br>
-            Code
-        </div>
-
-        <div class="mind-node">
-            🧪<br>
-            Test
-        </div>
-
-        <div class="mind-node">
-            🔥<br>
-            Improve
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- JOURNEY -->
-
-<section id="journey" class="reveal">
-
-    <div class="label">
-        09 — CODING JOURNEY
-    </div>
-
-    <h2 class="section-title">
-        Learning. Building. <span>Growing.</span>
-    </h2>
-
-
-    <div class="timeline">
-
-        <div class="timeline-item">
-
-            <h3>Started Learning Code</h3>
-
-            <p>
-                Started exploring programming and understanding
-                how digital applications are built.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <h3>JavaScript & App Development</h3>
-
-            <p>
-                Started learning JavaScript, React Native and
-                Expo while experimenting with mobile apps.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
 
             <h3>Smart Academy</h3>
 
             <p>
-                Turned a tuition platform idea into a major
-                application project with multiple features.
+                Smart Academy combines online classes, student
+                interaction, achievements, whiteboard tools,
+                teacher ratings and an AI Assistant concept.
             </p>
+
+            <div class="tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">React Native</span>
+                <span class="tag">Expo</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">AI Concept</span>
+            </div>
+
+            <div class="buttons">
+                <a href="#features" class="btn primary">
+                    View Features →
+                </a>
+            </div>
 
         </div>
 
+        <div class="reveal">
 
-        <div class="timeline-item">
+            <div class="phone">
 
-            <h3>Building The Future</h3>
+                <div class="phone-notch"></div>
 
-            <p>
-                Continuing to learn, experiment and build
-                new digital ideas.
-            </p>
+                <div class="phone-screen">
+
+                    <div class="app-logo">
+                        SMART ACADEMY
+                    </div>
+
+                    <div style="color:#78899d;font-size:11px;margin-top:5px;">
+                        Learn Smart. Achieve More.
+                    </div>
+
+                    <div class="phone-card">
+                        <small>Today's Class</small>
+                        <strong>Mathematics</strong>
+                        <div style="color:#00e5ff;margin-top:7px;font-size:12px;">
+                            8:00 PM
+                        </div>
+                    </div>
+
+                    <div class="phone-card">
+                        <small>Achievement</small>
+                        <strong>🏆 New Badge</strong>
+                    </div>
+
+                    <div class="phone-live">
+                        LIVE SESSION
+                    </div>
+
+                    <div class="phone-card">
+                        <small>AI Assistant</small>
+                        <strong>Ask AI →</strong>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -2094,249 +1471,291 @@ footer strong{
 
 </section>
 
+<!-- FEATURES -->
+<section id="features">
+
+    <div class="section-title reveal">
+        <div class="small">05 — FEATURES</div>
+        <h2>More than<br>a tuition app.</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card reveal">
+            <h3>🤖 AI Assistant</h3>
+            <p>
+                An AI learning assistant concept designed to
+                help students interact with educational content.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <h3>🎥 Student Live</h3>
+            <p>
+                Students can present using video in a live-style
+                learning experience.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <h3>🏆 Achievement</h3>
+            <p>
+                Gamified achievements that encourage students
+                to keep learning.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <h3>📝 Whiteboard</h3>
+            <p>
+                A digital space for explaining ideas,
+                solving problems and learning visually.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <h3>⭐ Teacher Rating</h3>
+            <p>
+                Students can rate teachers and share their
+                learning experience.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <h3>👨‍🏫 Student & Teacher</h3>
+            <p>
+                Different experiences designed for students
+                and teachers.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MINDSET -->
+<section>
+
+    <div class="section-title reveal">
+        <div class="small">06 — DEVELOPER MINDSET</div>
+        <h2>How ideas<br>become products.</h2>
+    </div>
+
+    <div class="mind reveal">
+
+        <div class="core">
+            BUILD<br>MORE
+        </div>
+
+        <div class="node n1">IDEA</div>
+        <div class="node n2">DESIGN</div>
+        <div class="node n3">PROBLEM</div>
+        <div class="node n4">CODE</div>
+        <div class="node n5">TEST</div>
+        <div class="node n6">IMPROVE</div>
+
+    </div>
+
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+
+    <div class="section-title reveal">
+        <div class="small">07 — JOURNEY</div>
+        <h2>The journey<br>so far.</h2>
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item reveal">
+            <span>START</span>
+            <h3>Started Learning Code</h3>
+            <p>
+                Began exploring programming and discovering
+                how software is created.
+            </p>
+        </div>
+
+        <div class="timeline-item reveal">
+            <span>LEARN</span>
+            <h3>JavaScript & App Development</h3>
+            <p>
+                Started working with JavaScript, React Native,
+                Expo and modern development tools.
+            </p>
+        </div>
+
+        <div class="timeline-item reveal">
+            <span>BUILD</span>
+            <h3>Smart Academy</h3>
+            <p>
+                Turned a tuition app idea into a real mobile
+                application project.
+            </p>
+        </div>
+
+        <div class="timeline-item reveal">
+            <span>NEXT</span>
+            <h3>Building The Future</h3>
+            <p>
+                Continuing to learn, experiment and create
+                bigger ideas.
+            </p>
+        </div>
+
+    </div>
+
+</section>
 
 <!-- ACHIEVEMENTS -->
+<section>
 
-<section class="reveal">
-
-    <div class="label">
-        10 — ACHIEVEMENTS
+    <div class="section-title reveal">
+        <div class="small">08 — ACHIEVEMENTS</div>
+        <h2>Small wins.<br>Big motivation.</h2>
     </div>
 
-    <h2 class="section-title">
-        Small Wins. <span>Big Motivation.</span>
-    </h2>
+    <div class="grid">
 
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="card-icon">
-                🚀
-            </div>
-
-            <h3>
-                First Mobile App
-            </h3>
-
+        <div class="card reveal">
+            <h3>📱 First Mobile App</h3>
             <p>
                 Built my first major mobile application project
-                from an idea into a working prototype.
+                after learning to code.
             </p>
-
         </div>
 
-
-        <div class="card">
-
-            <div class="card-icon">
-                💻
-            </div>
-
-            <h3>
-                Multiple Features
-            </h3>
-
+        <div class="card reveal">
+            <h3>⚡ Multiple Features</h3>
             <p>
-                Added interactive features including AI Assistant,
-                Whiteboard, Student Live and Achievement.
+                Added AI Assistant, Whiteboard, Student Live
+                and Achievement features.
             </p>
-
         </div>
 
-
-        <div class="card">
-
-            <div class="card-icon">
-                🔥
-            </div>
-
-            <h3>
-                Keep Building
-            </h3>
-
+        <div class="card reveal">
+            <h3>🔥 Keep Building</h3>
             <p>
-                Every project becomes another opportunity to
-                learn something new.
+                Every project becomes another reason to learn
+                something new.
             </p>
-
         </div>
 
     </div>
 
 </section>
 
-
 <!-- ROADMAP -->
+<section>
 
-<section class="reveal">
-
-    <div class="label">
-        11 — ROADMAP
+    <div class="section-title reveal">
+        <div class="small">09 — ROADMAP</div>
+        <h2>What's next?</h2>
     </div>
-
-    <h2 class="section-title">
-        What's <span>Next?</span>
-    </h2>
-
-    <p class="subtitle">
-        The current project is only one chapter of the journey.
-    </p>
-
 
     <div class="roadmap">
 
-        <div class="road">
-
-            <div class="road-number">
-                01 — NOW
-            </div>
-
-            <h3>
-                Keep Learning
-            </h3>
-
+        <div class="road reveal">
+            <span>NOW</span>
+            <h3>Keep Learning</h3>
             <p>
-                Improve programming and development skills.
+                Improve programming, UI and app development skills.
             </p>
-
         </div>
 
-
-        <div class="road">
-
-            <div class="road-number">
-                02 — NEXT
-            </div>
-
-            <h3>
-                Build More
-            </h3>
-
+        <div class="road reveal">
+            <span>NEXT</span>
+            <h3>Build More</h3>
             <p>
-                Create more applications and experiments.
+                Create new applications and experiment with ideas.
             </p>
-
         </div>
 
-
-        <div class="road">
-
-            <div class="road-number">
-                03 — FUTURE
-            </div>
-
-            <h3>
-                Bigger Ideas
-            </h3>
-
+        <div class="road reveal">
+            <span>FUTURE</span>
+            <h3>Bigger Ideas</h3>
             <p>
-                Turn bigger concepts into real digital products.
+                Turn ambitious concepts into real products.
             </p>
-
         </div>
 
-
-        <div class="road">
-
-            <div class="road-number">
-                04 — UNKNOWN
-            </div>
-
-            <h3>
-                ??? 🚀
-            </h3>
-
+        <div class="road reveal">
+            <span>UNKNOWN</span>
+            <h3>???</h3>
             <p>
-                Something new is always waiting to be built.
+                The most interesting part hasn't been built yet.
             </p>
-
         </div>
 
     </div>
 
 </section>
 
+<!-- DEV MODE -->
+<section>
 
-<!-- DEVELOPER MODE -->
+    <div class="dev-mode reveal">
 
-<section class="reveal">
-
-    <div class="dev-mode">
-
-        <div class="label">
-            SECRET FEATURE
+        <div class="section-title">
+            <div class="small">10 — SECRET SYSTEM</div>
+            <h2>Developer Mode.</h2>
+            <p>
+                There's something hidden inside this website.
+            </p>
         </div>
 
-        <h2>
-            Developer Mode
-        </h2>
-
-        <p>
-            Curious? Activate the developer console.
-        </p>
-
-        <button
-            class="mode-btn"
-            onclick="activateDeveloperMode()">
-
-            ⚡ ACTIVATE DEVELOPER MODE
-
+        <button class="btn primary" onclick="toggleDev()">
+            ⚡ Activate Developer Mode
         </button>
 
-
         <div id="devOutput">
+            > booting developer_mode...<br>
+            > access granted ✓<br><br>
 
-            > Initializing developer mode...<br>
-            > Loading Norizkandar.exe...<br>
-            > Loading projects...<br>
-            > Loading ideas...<br>
-            > System status: ONLINE<br>
-            > Current mission: BUILD SOMETHING GREAT 🚀
+            USER: Mohamad Norizkandar<br>
+            ROLE: Creative App Developer<br>
+            AGE: 14<br>
+            LOCATION: Taiping, Perak, Malaysia<br><br>
 
+            CURRENT PROJECT: Smart Academy<br>
+            STATUS: BUILDING<br>
+            MOTIVATION: 100%<br>
+            IDEAS: UNLIMITED<br><br>
+
+            > system message:<br>
+            > "The journey has just begun."
         </div>
 
     </div>
 
 </section>
 
-
 <!-- SOCIAL -->
+<section>
 
-<section id="connect" class="reveal">
-
-    <div class="label">
-        12 — CONNECT
+    <div class="section-title reveal">
+        <div class="small">11 — CONNECT</div>
+        <h2>Find me<br>online.</h2>
     </div>
 
-    <h2 class="section-title">
-        Find Me <span>Online.</span>
-    </h2>
+    <div class="social">
 
-    <p class="subtitle">
-        Follow my coding journey, projects and future builds.
-    </p>
+        <a href="https://github.com/norizkandar"
+           target="_blank"
+           class="reveal">
 
-
-    <div class="socials">
-
-        <a
-            class="social"
-            href="https://github.com/norizkandar"
-            target="_blank">
-
-            💻 GitHub · @norizkandar
+            <strong>GitHub</strong>
+            <small>@norizkandar</small>
 
         </a>
 
+        <a href="https://www.tiktok.com/@iz_andar"
+           target="_blank"
+           class="reveal">
 
-        <a
-            class="social"
-            href="https://www.tiktok.com/@iz_andar"
-            target="_blank">
-
-            🎵 TikTok · @iz_andar
+            <strong>TikTok</strong>
+            <small>@iz_andar</small>
 
         </a>
 
@@ -2344,258 +1763,325 @@ footer strong{
 
 </section>
 
-
 <!-- CONTACT -->
+<section id="contact">
 
-<section class="reveal">
+    <div class="contact reveal">
 
-    <div class="contact">
-
-        <div class="label">
-            13 — FINAL SECTION
+        <div class="section-title">
+            <div class="small">12 — FINAL MESSAGE</div>
         </div>
 
         <h2>
-            This Is Only
-            <span class="gradient">Version 1.</span>
+            This is only<br>
+            <span class="gradient-text">Version 1.</span>
         </h2>
 
         <p>
             More projects. More ideas. More things to build.
+            This portfolio is only the beginning.
         </p>
 
-        <a
-            href="https://github.com/norizkandar"
-            target="_blank"
-            class="btn primary">
+        <div class="buttons" style="justify-content:center;">
 
-            Visit My GitHub ↗
+            <a class="btn primary"
+               href="https://github.com/norizkandar"
+               target="_blank">
+                Visit GitHub →
+            </a>
 
-        </a>
+            <a class="btn"
+               href="https://www.tiktok.com/@iz_andar"
+               target="_blank">
+                TikTok ↗
+            </a>
+
+        </div>
 
     </div>
 
 </section>
 
+<!-- SECRET -->
+<div id="secret">
 
-<!-- TOP -->
+    <div class="secret-box">
 
-<a href="#" class="top" id="top">
-    ↑
-</a>
+        <h2>YOU FOUND IT.</h2>
 
+        <p>
+            Not every developer discovers the hidden layer.
+            Keep building. 🚀
+        </p>
 
-<!-- FOOTER -->
+        <button class="btn primary" onclick="closeSecret()">
+            Return
+        </button>
+
+    </div>
+
+</div>
 
 <footer>
-
-    © 2026
-    <strong>Mohamad Norizkandar</strong>
-
-    · Creative App Developer
-
-    <br><br>
-
-    Built with curiosity, code & lots of ideas. 🚀
-
+    <span>© 2026 Mohamad Norizkandar</span>
+    <span>Creative App Developer · Built with curiosity.</span>
 </footer>
-
 
 <script>
 
-/* =====================================================
-   TYPING EFFECT
-===================================================== */
+/* =========================
+   LOADER
+========================= */
 
-const text =
-"I turn creative ideas into modern mobile applications and digital experiences.";
+window.addEventListener("load",()=>{
 
-const typing =
-document.getElementById("typing");
+    setTimeout(()=>{
 
-let index = 0;
+        document.getElementById("loader").style.opacity="0";
 
-function typeWriter(){
+        setTimeout(()=>{
+            document.getElementById("loader").style.display="none";
+        },1000);
 
-    if(index < text.length){
+    },2200);
 
-        typing.textContent +=
-            text.charAt(index);
+});
 
-        index++;
+/* =========================
+   TYPING
+========================= */
 
-        setTimeout(
-            typeWriter,
-            28
-        );
+const phrases=[
+    "Building ideas into digital experiences.",
+    "Learning. Coding. Creating.",
+    "Turning problems into products.",
+    "The next project is already loading..."
+];
 
+let phraseIndex=0;
+let charIndex=0;
+let deleting=false;
+
+function typeEffect(){
+
+    const el=document.getElementById("typing");
+    const phrase=phrases[phraseIndex];
+
+    if(!deleting){
+        el.textContent=phrase.substring(0,charIndex++);
+        if(charIndex>phrase.length){
+            deleting=true;
+            setTimeout(typeEffect,1300);
+            return;
+        }
+    }else{
+        el.textContent=phrase.substring(0,charIndex--);
+        if(charIndex<0){
+            deleting=false;
+            phraseIndex=(phraseIndex+1)%phrases.length;
+        }
     }
 
+    setTimeout(typeEffect,deleting?35:60);
 }
 
-typeWriter();
+typeEffect();
 
+/* =========================
+   CURSOR
+========================= */
 
-/* =====================================================
-   PARTICLES
-===================================================== */
+const cursor=document.querySelector(".cursor");
+const dot=document.querySelector(".cursor-dot");
 
-const particles =
-document.getElementById("particles");
+document.addEventListener("mousemove",(e)=>{
 
-for(let i=0;i<55;i++){
+    cursor.style.left=e.clientX+"px";
+    cursor.style.top=e.clientY+"px";
 
-    const p =
-    document.createElement("div");
+    dot.style.left=e.clientX+"px";
+    dot.style.top=e.clientY+"px";
 
-    p.className =
-        "particle";
+});
 
-    p.style.left =
-        Math.random()*100 + "%";
-
-    p.style.animationDuration =
-        (8 + Math.random()*15) + "s";
-
-    p.style.animationDelay =
-        Math.random()*10 + "s";
-
-    p.style.opacity =
-        .15 + Math.random()*.5;
-
-    particles.appendChild(p);
-
-}
-
-
-/* =====================================================
-   CURSOR GLOW
-===================================================== */
-
-const glow =
-document.getElementById("cursorGlow");
-
-document.addEventListener(
-    "mousemove",
-    function(e){
-
-        glow.style.left =
-            e.clientX + "px";
-
-        glow.style.top =
-            e.clientY + "px";
-
-    }
-);
-
-
-/* =====================================================
+/* =========================
    SCROLL PROGRESS
-===================================================== */
+========================= */
 
-const progress =
-document.getElementById("progress");
+window.addEventListener("scroll",()=>{
 
-window.addEventListener(
-    "scroll",
-    function(){
+    const scrollTop=window.scrollY;
+    const height=document.body.scrollHeight-window.innerHeight;
 
-        const scrollTop =
-            window.scrollY;
+    const progress=(scrollTop/height)*100;
 
-        const height =
-            document.documentElement.scrollHeight -
-            document.documentElement.clientHeight;
+    document.querySelector(".progress").style.width=progress+"%";
 
-        const percentage =
-            (scrollTop / height) * 100;
+});
 
-        progress.style.width =
-            percentage + "%";
+/* =========================
+   REVEAL
+========================= */
 
-    }
-);
+const observer=new IntersectionObserver((entries)=>{
 
+    entries.forEach(entry=>{
 
-/* =====================================================
-   REVEAL ANIMATION
-===================================================== */
+        if(entry.isIntersecting){
 
-const reveals =
-document.querySelectorAll(".reveal");
+            entry.target.classList.add("show");
 
-function revealElements(){
+            const bars=entry.target.querySelectorAll(".bar span");
 
-    reveals.forEach(
-        function(element){
-
-            const position =
-                element.getBoundingClientRect().top;
-
-            if(position <
-                window.innerHeight - 80){
-
-                element.classList.add(
-                    "active"
-                );
-
-            }
-
-        }
-    );
-
-}
-
-window.addEventListener(
-    "scroll",
-    revealElements
-);
-
-revealElements();
-
-
-/* =====================================================
-   DEVELOPER MODE
-===================================================== */
-
-function activateDeveloperMode(){
-
-    const output =
-        document.getElementById("devOutput");
-
-    output.style.display =
-        "block";
-
-}
-
-
-/* =====================================================
-   TOP BUTTON
-===================================================== */
-
-const topButton =
-document.getElementById("top");
-
-window.addEventListener(
-    "scroll",
-    function(){
-
-        if(window.scrollY > 600){
-
-            topButton.classList.add(
-                "show"
-            );
-
-        }else{
-
-            topButton.classList.remove(
-                "show"
-            );
+            bars.forEach(bar=>{
+                bar.style.width=bar.dataset.width;
+            });
 
         }
 
+    });
+
+},{threshold:.12});
+
+document.querySelectorAll(".reveal")
+.forEach(el=>observer.observe(el));
+
+/* =========================
+   DEV MODE
+========================= */
+
+function toggleDev(){
+
+    const output=document.getElementById("devOutput");
+
+    if(output.style.display==="block"){
+        output.style.display="none";
+    }else{
+        output.style.display="block";
+        output.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
     }
-);
+
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+function resizeCanvas(){
+
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize",resizeCanvas);
+
+const particles=[];
+
+for(let i=0;i<80;i++){
+
+    particles.push({
+
+        x:Math.random()*window.innerWidth,
+        y:Math.random()*window.innerHeight,
+        r:Math.random()*1.5+.3,
+        dx:(Math.random()-.5)*.3,
+        dy:(Math.random()-.5)*.3
+
+    });
+
+}
+
+function animateParticles(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach(p=>{
+
+        p.x+=p.dx;
+        p.y+=p.dy;
+
+        if(p.x<0)p.x=canvas.width;
+        if(p.x>canvas.width)p.x=0;
+
+        if(p.y<0)p.y=canvas.height;
+        if(p.y>canvas.height)p.y=0;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle="rgba(0,229,255,.5)";
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(animateParticles);
+
+}
+
+animateParticles();
+
+/* =========================
+   EASTER EGG
+========================= */
+
+let secretCode="";
+
+document.addEventListener("keydown",(e)=>{
+
+    secretCode+=e.key.toLowerCase();
+
+    if(secretCode.length>20){
+        secretCode=secretCode.slice(-20);
+    }
+
+    if(secretCode.includes("nori")){
+
+        document.getElementById("secret").style.display="flex";
+        secretCode="";
+
+    }
+
+});
+
+function closeSecret(){
+
+    document.getElementById("secret").style.display="none";
+
+}
+
+/* =========================
+   MAGNETIC BUTTON EFFECT
+========================= */
+
+document.querySelectorAll(".btn").forEach(btn=>{
+
+    btn.addEventListener("mousemove",(e)=>{
+
+        const rect=btn.getBoundingClientRect();
+
+        const x=e.clientX-rect.left-rect.width/2;
+        const y=e.clientY-rect.top-rect.height/2;
+
+        btn.style.transform=
+        `translate(${x*.08}px,${y*.08}px)`;
+
+    });
+
+    btn.addEventListener("mouseleave",()=>{
+
+        btn.style.transform="translate(0,0)";
+
+    });
+
+});
 
 </script>
 

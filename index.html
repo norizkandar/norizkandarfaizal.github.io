@@ -6,7 +6,7 @@
 
 <meta name="google-site-verification" content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A">
 
-<title>Mohamad Norizkandar | App Developer</title>
+<title>Mohamad Norizkandar | Digital Universe</title>
 
 <style>
 *{
@@ -18,204 +18,108 @@
 
 :root{
     --bg:#02030a;
-    --panel:rgba(7,10,22,.68);
     --blue:#00e5ff;
     --green:#00ff9d;
-    --white:#f5f7fa;
-    --muted:#8d96a8;
-}
-
-html{
-    background:#02030a;
+    --purple:#7657ff;
+    --white:#f5f7ff;
+    --muted:#8c96aa;
+    --glass:rgba(7,11,25,.58);
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:
-        radial-gradient(circle at 20% 20%,rgba(0,100,255,.08),transparent 28%),
-        radial-gradient(circle at 80% 70%,rgba(0,255,157,.06),transparent 30%),
-        #02030a;
+    background:#02030a;
     color:var(--white);
+    font-family:Arial,Helvetica,sans-serif;
     overflow-x:hidden;
 }
 
-/* =================================================
-   GALAXY BACKGROUND
-================================================= */
+/* =====================================================
+   GALAXY CANVAS
+===================================================== */
 
-#galaxy{
+#spaceCanvas{
     position:fixed;
     inset:0;
     width:100%;
     height:100%;
-    z-index:-10;
+    z-index:-20;
     pointer-events:none;
 }
 
-.space{
+.space-overlay{
     position:fixed;
     inset:0;
-    z-index:-9;
-    overflow:hidden;
+    z-index:-19;
     pointer-events:none;
+    background:
+        radial-gradient(circle at 50% 50%,transparent 0%,rgba(2,3,10,.1) 45%,rgba(2,3,10,.72) 100%);
 }
-
-/* stars */
-
-.stars,
-.stars2,
-.stars3{
-    position:absolute;
-    inset:-100%;
-    width:300%;
-    height:300%;
-    background-repeat:repeat;
-    opacity:.7;
-}
-
-.stars{
-    background-image:
-        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(0,229,255,.7) 1px,transparent 1.5px);
-    background-size:120px 120px,190px 190px;
-    animation:starsMove 100s linear infinite;
-}
-
-.stars2{
-    background-image:
-        radial-gradient(circle,rgba(255,255,255,.65) 1px,transparent 2px),
-        radial-gradient(circle,rgba(0,255,157,.55) 1px,transparent 2px);
-    background-size:230px 230px,310px 310px;
-    animation:starsMove2 160s linear infinite;
-    opacity:.5;
-}
-
-.stars3{
-    background-image:
-        radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 2px);
-    background-size:370px 370px;
-    animation:starsMove3 220s linear infinite;
-    opacity:.4;
-}
-
-@keyframes starsMove{
-    from{
-        transform:translate(0,0);
-    }
-    to{
-        transform:translate(-300px,-500px);
-    }
-}
-
-@keyframes starsMove2{
-    from{
-        transform:translate(0,0);
-    }
-    to{
-        transform:translate(400px,-350px);
-    }
-}
-
-@keyframes starsMove3{
-    from{
-        transform:translate(0,0);
-    }
-    to{
-        transform:translate(-200px,300px);
-    }
-}
-
-/* nebula */
 
 .nebula{
-    position:absolute;
+    position:fixed;
     border-radius:50%;
     filter:blur(100px);
-    opacity:.17;
+    opacity:.15;
+    z-index:-18;
+    pointer-events:none;
     mix-blend-mode:screen;
 }
 
-.nebula.one{
-    width:650px;
-    height:400px;
+.nebula.a{
+    width:600px;
+    height:300px;
     background:#004cff;
-    top:-150px;
+    top:-100px;
     left:-200px;
     transform:rotate(-25deg);
-    animation:nebulaFloat 15s ease-in-out infinite alternate;
+    animation:nebulaA 14s ease-in-out infinite alternate;
 }
 
-.nebula.two{
-    width:600px;
-    height:420px;
+.nebula.b{
+    width:650px;
+    height:350px;
     background:#00e5ff;
     right:-250px;
-    top:25%;
-    transform:rotate(30deg);
-    animation:nebulaFloat2 18s ease-in-out infinite alternate;
+    top:30%;
+    transform:rotate(25deg);
+    animation:nebulaB 17s ease-in-out infinite alternate;
 }
 
-.nebula.three{
+.nebula.c{
     width:700px;
-    height:400px;
+    height:300px;
     background:#00ff9d;
-    bottom:-220px;
+    bottom:-180px;
     left:25%;
-    animation:nebulaFloat3 20s ease-in-out infinite alternate;
+    animation:nebulaC 20s ease-in-out infinite alternate;
 }
 
-@keyframes nebulaFloat{
-    from{transform:translate(0,0) rotate(-25deg)}
-    to{transform:translate(80px,50px) rotate(-10deg)}
+@keyframes nebulaA{
+    to{transform:translate(90px,60px) rotate(-10deg)}
 }
 
-@keyframes nebulaFloat2{
-    from{transform:translate(0,0) rotate(30deg)}
-    to{transform:translate(-80px,40px) rotate(15deg)}
+@keyframes nebulaB{
+    to{transform:translate(-80px,50px) rotate(10deg)}
 }
 
-@keyframes nebulaFloat3{
-    from{transform:translate(0,0)}
-    to{transform:translate(50px,-60px)}
+@keyframes nebulaC{
+    to{transform:translate(60px,-50px)}
 }
 
-/* galaxy glow */
-
-.galaxy-core{
-    position:absolute;
-    width:800px;
-    height:260px;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%) rotate(-20deg);
-    border-radius:50%;
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(255,255,255,.12) 0%,
-            rgba(0,229,255,.08) 25%,
-            rgba(0,100,255,.04) 45%,
-            transparent 70%
-        );
-    filter:blur(35px);
-    opacity:.5;
-}
-
-/* =================================================
-   LOADER
-================================================= */
+/* =====================================================
+   LOADING
+===================================================== */
 
 #loader{
     position:fixed;
     inset:0;
-    background:#010208;
     z-index:99999;
+    background:#010208;
     display:flex;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
+    text-align:center;
     transition:opacity 1s ease,visibility 1s ease;
-    overflow:hidden;
 }
 
 #loader.hide{
@@ -223,128 +127,121 @@ body{
     visibility:hidden;
 }
 
-.loader-space{
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle at 50% 50%,rgba(0,229,255,.08),transparent 35%),
-        #010208;
-}
-
 .loader-stars{
     position:absolute;
-    inset:-50%;
+    inset:-100%;
     background-image:
         radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 2px),
         radial-gradient(circle,rgba(0,229,255,.6) 1px,transparent 2px);
-    background-size:100px 100px,170px 170px;
-    animation:loaderStars 50s linear infinite;
+    background-size:100px 100px,180px 180px;
+    animation:loaderStarMove 45s linear infinite;
 }
 
-@keyframes loaderStars{
+@keyframes loaderStarMove{
     to{
-        transform:translate(-250px,-400px);
+        transform:translate(-300px,-450px);
     }
 }
 
 .loader-content{
+    width:min(560px,86%);
     position:relative;
-    text-align:center;
-    width:min(520px,85%);
 }
 
-.loader-logo{
+.loader-small{
+    color:var(--blue);
+    font-family:monospace;
     font-size:11px;
     letter-spacing:5px;
-    color:var(--blue);
-    margin-bottom:25px;
+    margin-bottom:22px;
 }
 
 .loader-title{
-    font-size:clamp(40px,8vw,78px);
+    font-size:clamp(45px,10vw,90px);
     font-weight:900;
-    letter-spacing:-4px;
-    text-shadow:0 0 35px rgba(0,229,255,.25);
+    letter-spacing:-5px;
+    text-shadow:
+        0 0 20px rgba(0,229,255,.2),
+        0 0 60px rgba(0,229,255,.08);
 }
 
 .loader-status{
-    margin-top:18px;
     color:var(--muted);
+    margin-top:15px;
+    font-family:monospace;
     font-size:11px;
-    letter-spacing:3px;
+    letter-spacing:2px;
 }
 
 .loader-bar{
-    width:100%;
     height:4px;
-    background:#111725;
+    background:#101522;
+    border-radius:10px;
     margin-top:35px;
     overflow:hidden;
-    border-radius:20px;
 }
 
 .loader-fill{
-    width:0;
+    width:0%;
     height:100%;
     background:linear-gradient(90deg,var(--blue),var(--green));
     box-shadow:0 0 25px var(--blue);
 }
 
 .loader-percent{
-    margin-top:15px;
+    color:var(--green);
+    margin-top:13px;
+    font-family:monospace;
     font-size:12px;
-    color:var(--blue);
-    letter-spacing:3px;
 }
 
-/* =================================================
+/* =====================================================
    CURSOR
-================================================= */
+===================================================== */
 
 .cursor{
-    position:fixed;
-    width:22px;
-    height:22px;
+    width:24px;
+    height:24px;
     border:1px solid var(--blue);
     border-radius:50%;
+    position:fixed;
     pointer-events:none;
-    z-index:10000;
+    z-index:9998;
     transform:translate(-50%,-50%);
     box-shadow:0 0 20px rgba(0,229,255,.45);
 }
 
 .cursor-dot{
-    position:fixed;
     width:4px;
     height:4px;
-    background:var(--green);
     border-radius:50%;
+    background:var(--green);
+    position:fixed;
     pointer-events:none;
-    z-index:10001;
+    z-index:9999;
     transform:translate(-50%,-50%);
-    box-shadow:0 0 10px var(--green);
+    box-shadow:0 0 12px var(--green);
 }
 
-/* =================================================
+/* =====================================================
    NAV
-================================================= */
+===================================================== */
 
 nav{
     position:fixed;
-    top:20px;
+    top:18px;
     left:50%;
     transform:translateX(-50%);
-    width:min(1100px,92%);
-    padding:14px 20px;
+    width:min(1120px,92%);
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    background:rgba(3,6,14,.65);
-    border:1px solid rgba(255,255,255,.09);
+    justify-content:space-between;
+    padding:14px 20px;
+    background:rgba(2,5,14,.62);
+    border:1px solid rgba(255,255,255,.08);
     backdrop-filter:blur(20px);
     border-radius:18px;
-    z-index:1000;
-    box-shadow:0 10px 40px rgba(0,0,0,.2);
+    z-index:2000;
 }
 
 .logo{
@@ -358,14 +255,14 @@ nav{
 
 nav ul{
     display:flex;
+    gap:24px;
     list-style:none;
-    gap:25px;
 }
 
 nav a{
-    color:#9ca3af;
     text-decoration:none;
-    font-size:11px;
+    color:#8993a7;
+    font-size:10px;
     transition:.3s;
 }
 
@@ -374,58 +271,59 @@ nav a:hover{
 }
 
 .dev-btn{
-    border:1px solid var(--blue);
-    padding:8px 12px;
-    border-radius:10px;
     color:var(--blue);
+    border:1px solid rgba(0,229,255,.5);
+    border-radius:9px;
+    padding:8px 12px;
+    font-size:9px;
     cursor:pointer;
-    font-size:10px;
     transition:.3s;
 }
 
 .dev-btn:hover{
     background:rgba(0,229,255,.08);
-    box-shadow:0 0 20px rgba(0,229,255,.15);
+    box-shadow:0 0 20px rgba(0,229,255,.2);
 }
 
-/* =================================================
+/* =====================================================
    GENERAL
-================================================= */
+===================================================== */
 
 section{
     width:min(1150px,90%);
     margin:auto;
-    padding:110px 0;
+    padding:120px 0;
 }
 
 .section-label{
     color:var(--blue);
+    font-family:monospace;
     font-size:10px;
     letter-spacing:4px;
     margin-bottom:15px;
 }
 
 .section-title{
-    font-size:clamp(32px,6vw,65px);
-    letter-spacing:-3px;
-    margin-bottom:35px;
+    font-size:clamp(35px,6vw,68px);
+    letter-spacing:-4px;
+    margin-bottom:40px;
 }
 
 .glass{
-    background:rgba(6,10,22,.58);
+    background:var(--glass);
     border:1px solid rgba(255,255,255,.08);
     backdrop-filter:blur(18px);
     border-radius:25px;
 }
 
-/* =================================================
+/* =====================================================
    HERO
-================================================= */
+===================================================== */
 
 .hero{
     min-height:100vh;
     display:grid;
-    grid-template-columns:1.2fr .8fr;
+    grid-template-columns:1.15fr .85fr;
     align-items:center;
     gap:70px;
     padding-top:130px;
@@ -434,22 +332,22 @@ section{
 .status{
     display:inline-flex;
     align-items:center;
-    gap:10px;
+    gap:9px;
     padding:9px 14px;
     border:1px solid rgba(0,255,157,.25);
-    background:rgba(0,255,157,.04);
+    background:rgba(0,255,157,.035);
     border-radius:30px;
-    font-size:10px;
     color:var(--green);
+    font-size:10px;
     margin-bottom:25px;
 }
 
 .status-dot{
     width:7px;
     height:7px;
-    border-radius:50%;
     background:var(--green);
-    box-shadow:0 0 12px var(--green);
+    border-radius:50%;
+    box-shadow:0 0 15px var(--green);
     animation:pulse 1.5s infinite;
 }
 
@@ -458,94 +356,161 @@ section{
 }
 
 .hero h1{
-    font-size:clamp(45px,7vw,90px);
-    line-height:.95;
-    letter-spacing:-5px;
+    font-size:clamp(48px,7vw,92px);
+    line-height:.9;
+    letter-spacing:-6px;
 }
 
 .hero h1 span{
     color:transparent;
     -webkit-text-stroke:1px var(--blue);
-    text-shadow:0 0 35px rgba(0,229,255,.12);
+    text-shadow:0 0 35px rgba(0,229,255,.15);
 }
 
-.hero-sub{
-    margin-top:25px;
+.hero-description{
     max-width:600px;
+    margin-top:25px;
     color:var(--muted);
     line-height:1.8;
     font-size:16px;
 }
 
 .typing{
-    color:var(--green);
     margin-top:20px;
+    color:var(--green);
     font-family:monospace;
     font-size:13px;
 }
 
 .hero-buttons{
     display:flex;
-    gap:15px;
-    margin-top:35px;
+    gap:13px;
     flex-wrap:wrap;
+    margin-top:35px;
 }
 
 .btn{
+    color:white;
     text-decoration:none;
     padding:14px 22px;
     border-radius:12px;
     border:1px solid rgba(255,255,255,.12);
-    color:white;
+    font-size:11px;
     transition:.3s;
-    font-size:12px;
 }
 
 .btn.primary{
-    background:linear-gradient(90deg,#00bcd4,#00d98b);
-    color:#00110b;
+    color:#00120c;
     font-weight:bold;
+    background:linear-gradient(90deg,var(--blue),var(--green));
 }
 
 .btn:hover{
     transform:translateY(-5px);
-    box-shadow:0 10px 30px rgba(0,229,255,.18);
+    box-shadow:0 12px 35px rgba(0,229,255,.18);
 }
 
-.profile-wrap{
+/* =====================================================
+   ORBIT PROFILE
+===================================================== */
+
+.universe{
+    position:relative;
+    width:440px;
+    height:440px;
+    margin:auto;
     display:flex;
+    align-items:center;
     justify-content:center;
-    perspective:1000px;
+}
+
+.universe::before,
+.universe::after{
+    content:"";
+    position:absolute;
+    border:1px solid rgba(0,229,255,.14);
+    border-radius:50%;
+}
+
+.universe::before{
+    width:440px;
+    height:180px;
+    transform:rotate(-25deg);
+}
+
+.universe::after{
+    width:360px;
+    height:150px;
+    transform:rotate(55deg);
 }
 
 .profile-card{
-    padding:12px;
-    border-radius:30px;
-    background:linear-gradient(135deg,var(--blue),transparent,var(--green));
-    transform:rotateY(-8deg) rotateX(4deg);
+    width:270px;
+    height:355px;
+    padding:9px;
+    border-radius:28px;
+    background:linear-gradient(135deg,var(--blue),var(--purple),var(--green));
     box-shadow:
-        0 0 60px rgba(0,229,255,.16),
-        0 0 100px rgba(0,255,157,.05);
-    animation:profileFloat 5s ease-in-out infinite;
-}
-
-@keyframes profileFloat{
-    50%{
-        transform:rotateY(5deg) rotateX(-3deg) translateY(-10px);
-    }
+        0 0 60px rgba(0,229,255,.2),
+        0 0 100px rgba(118,87,255,.1);
+    position:relative;
+    z-index:3;
+    animation:floatProfile 5s ease-in-out infinite;
 }
 
 .profile-card img{
-    display:block;
-    width:320px;
-    height:420px;
+    width:100%;
+    height:100%;
     object-fit:cover;
-    border-radius:22px;
+    border-radius:20px;
+    display:block;
 }
 
-/* =================================================
+@keyframes floatProfile{
+    50%{
+        transform:translateY(-12px) rotateY(5deg);
+    }
+}
+
+.orbit{
+    position:absolute;
+    border:1px solid rgba(0,229,255,.2);
+    border-radius:50%;
+    animation:orbitSpin 10s linear infinite;
+}
+
+.orbit.one{
+    width:390px;
+    height:160px;
+    transform:rotate(-25deg);
+}
+
+.orbit.two{
+    width:340px;
+    height:130px;
+    transform:rotate(55deg);
+    animation-duration:14s;
+    animation-direction:reverse;
+}
+
+.orbit-dot{
+    width:10px;
+    height:10px;
+    background:var(--blue);
+    border-radius:50%;
+    position:absolute;
+    top:50%;
+    right:-5px;
+    box-shadow:0 0 20px var(--blue);
+}
+
+@keyframes orbitSpin{
+    to{transform:rotate(335deg)}
+}
+
+/* =====================================================
    STATS
-================================================= */
+===================================================== */
 
 .stats{
     display:grid;
@@ -556,24 +521,29 @@ section{
 .stat{
     padding:30px;
     text-align:center;
+    transition:.4s;
+}
+
+.stat:hover{
+    transform:translateY(-8px);
+    border-color:rgba(0,229,255,.3);
 }
 
 .stat h3{
-    font-size:38px;
     color:var(--blue);
-    text-shadow:0 0 20px rgba(0,229,255,.2);
+    font-size:38px;
 }
 
 .stat p{
-    color:var(--muted);
-    font-size:10px;
     margin-top:8px;
+    color:var(--muted);
+    font-size:9px;
     letter-spacing:2px;
 }
 
-/* =================================================
+/* =====================================================
    ABOUT
-================================================= */
+===================================================== */
 
 .about-grid{
     display:grid;
@@ -601,14 +571,14 @@ section{
     font-size:14px;
 }
 
-/* =================================================
+/* =====================================================
    SKILLS
-================================================= */
+===================================================== */
 
 .skills{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:20px;
+    gap:15px;
 }
 
 .skill{
@@ -618,8 +588,8 @@ section{
 .skill-top{
     display:flex;
     justify-content:space-between;
+    font-size:12px;
     margin-bottom:12px;
-    font-size:13px;
 }
 
 .skill-top span:last-child{
@@ -629,28 +599,87 @@ section{
 .skill-bar{
     height:7px;
     background:#101722;
-    border-radius:20px;
+    border-radius:10px;
     overflow:hidden;
 }
 
 .skill-fill{
-    height:100%;
     width:0;
+    height:100%;
     background:linear-gradient(90deg,var(--blue),var(--green));
-    box-shadow:0 0 12px rgba(0,229,255,.25);
     transition:2s ease;
 }
 
-/* =================================================
+/* =====================================================
+   COMMAND CENTER
+===================================================== */
+
+.command{
+    padding:30px;
+    position:relative;
+    overflow:hidden;
+}
+
+.command::before{
+    content:"COMMAND CENTER";
+    position:absolute;
+    right:20px;
+    top:20px;
+    color:rgba(0,229,255,.08);
+    font-size:35px;
+    font-weight:900;
+}
+
+.command-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    padding-bottom:15px;
+    margin-bottom:20px;
+}
+
+.command-status{
+    color:var(--green);
+    font-family:monospace;
+    font-size:11px;
+}
+
+.command-body{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:12px;
+}
+
+.system-box{
+    padding:18px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;
+}
+
+.system-box small{
+    display:block;
+    color:var(--muted);
+    font-size:9px;
+    margin-bottom:8px;
+}
+
+.system-box strong{
+    color:var(--blue);
+    font-family:monospace;
+}
+
+/* =====================================================
    TERMINAL
-================================================= */
+===================================================== */
 
 .terminal{
+    background:rgba(0,2,8,.82);
     padding:25px;
-    font-family:monospace;
-    background:rgba(0,3,9,.82);
-    border:1px solid rgba(0,229,255,.15);
     border-radius:20px;
+    border:1px solid rgba(0,229,255,.15);
+    font-family:monospace;
     box-shadow:0 0 50px rgba(0,229,255,.05);
 }
 
@@ -663,14 +692,14 @@ section{
 .terminal-head i{
     width:10px;
     height:10px;
-    border-radius:50%;
     background:#273244;
+    border-radius:50%;
 }
 
 .terminal-line{
-    color:#8be9fd;
     line-height:2;
-    font-size:13px;
+    color:#8be9fd;
+    font-size:12px;
 }
 
 .green{
@@ -678,24 +707,24 @@ section{
 }
 
 .muted{
-    color:#657084;
+    color:#687286;
 }
 
-/* =================================================
+/* =====================================================
    PROJECT
-================================================= */
+===================================================== */
 
 .project{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:30px;
-    padding:30px;
+    gap:35px;
+    padding:32px;
     align-items:center;
-    transition:.2s;
+    transition:.25s;
 }
 
 .project-info h3{
-    font-size:35px;
+    font-size:38px;
     margin-bottom:15px;
 }
 
@@ -707,18 +736,17 @@ section{
 
 .tags{
     display:flex;
-    flex-wrap:wrap;
     gap:8px;
+    flex-wrap:wrap;
     margin-top:20px;
 }
 
 .tag{
-    border:1px solid rgba(0,229,255,.2);
     color:var(--blue);
-    padding:7px 10px;
+    border:1px solid rgba(0,229,255,.2);
     border-radius:8px;
+    padding:7px 10px;
     font-size:9px;
-    background:rgba(0,229,255,.025);
 }
 
 .phone{
@@ -726,25 +754,22 @@ section{
     height:480px;
     margin:auto;
     border:7px solid #151b25;
-    border-radius:35px;
+    border-radius:36px;
     padding:10px;
-    background:#050a12;
-    box-shadow:
-        0 0 50px rgba(0,229,255,.15),
-        inset 0 0 20px rgba(0,229,255,.05);
-    overflow:hidden;
-    transform:rotateY(-5deg);
+    background:#040810;
+    box-shadow:0 0 60px rgba(0,229,255,.15);
+    transform:rotateY(-7deg);
     transition:.5s;
 }
 
 .project:hover .phone{
-    transform:rotateY(5deg) translateY(-8px);
+    transform:rotateY(8deg) translateY(-8px);
 }
 
 .phone-screen{
     height:100%;
-    border-radius:25px;
     padding:20px 14px;
+    border-radius:25px;
     background:
         radial-gradient(circle at top right,rgba(0,229,255,.2),transparent 40%),
         #070c14;
@@ -763,29 +788,27 @@ section{
 }
 
 .fake-card{
-    margin-top:18px;
     padding:15px;
+    margin-top:18px;
     border-radius:15px;
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.07);
 }
 
 .fake-card strong{
-    display:block;
-    margin-bottom:8px;
     font-size:12px;
 }
 
 .fake-line{
     height:7px;
     background:#1b2634;
-    margin-top:8px;
     border-radius:10px;
+    margin-top:9px;
 }
 
-/* =================================================
+/* =====================================================
    FEATURES
-================================================= */
+===================================================== */
 
 .features{
     display:grid;
@@ -820,12 +843,78 @@ section{
     line-height:1.7;
 }
 
-/* =================================================
+/* =====================================================
+   NEURAL NETWORK
+===================================================== */
+
+.neural{
+    position:relative;
+    height:360px;
+    border-radius:25px;
+    overflow:hidden;
+    background:rgba(2,5,13,.5);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.node{
+    position:absolute;
+    width:12px;
+    height:12px;
+    background:var(--blue);
+    border-radius:50%;
+    box-shadow:0 0 20px var(--blue);
+    animation:nodePulse 2s infinite alternate;
+}
+
+.node::after{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:1px;
+    background:linear-gradient(90deg,var(--blue),transparent);
+    transform-origin:left;
+    opacity:.35;
+}
+
+.node:nth-child(1){left:15%;top:25%}
+.node:nth-child(2){left:40%;top:45%}
+.node:nth-child(3){left:70%;top:22%}
+.node:nth-child(4){left:82%;top:65%}
+.node:nth-child(5){left:30%;top:78%}
+.node:nth-child(6){left:58%;top:72%}
+
+@keyframes nodePulse{
+    to{
+        transform:scale(1.6);
+        opacity:.5;
+    }
+}
+
+.neural-title{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    pointer-events:none;
+}
+
+.neural-title h3{
+    font-size:35px;
+}
+
+.neural-title p{
+    color:var(--muted);
+    margin-top:8px;
+    font-size:12px;
+}
+
+/* =====================================================
    JOURNEY
-================================================= */
+===================================================== */
 
 .timeline{
-    position:relative;
     border-left:1px solid rgba(0,229,255,.25);
     margin-left:15px;
 }
@@ -842,15 +931,15 @@ section{
     top:5px;
     width:9px;
     height:9px;
-    background:var(--blue);
     border-radius:50%;
+    background:var(--blue);
     box-shadow:0 0 15px var(--blue);
 }
 
 .timeline-item span{
-    font-size:10px;
     color:var(--green);
-    letter-spacing:2px;
+    font-family:monospace;
+    font-size:10px;
 }
 
 .timeline-item h3{
@@ -863,9 +952,9 @@ section{
     line-height:1.7;
 }
 
-/* =================================================
+/* =====================================================
    LAB
-================================================= */
+===================================================== */
 
 .lab{
     display:grid;
@@ -874,21 +963,10 @@ section{
 }
 
 .lab-card{
-    min-height:180px;
+    min-height:190px;
     padding:25px;
     position:relative;
     overflow:hidden;
-}
-
-.lab-card::after{
-    content:"EXPERIMENTAL";
-    position:absolute;
-    right:-25px;
-    bottom:15px;
-    transform:rotate(-20deg);
-    font-size:35px;
-    color:rgba(255,255,255,.025);
-    font-weight:900;
 }
 
 .lab-card h3{
@@ -898,13 +976,24 @@ section{
 
 .lab-card p{
     color:var(--muted);
-    font-size:13px;
     line-height:1.7;
+    font-size:13px;
 }
 
-/* =================================================
+.lab-card::after{
+    content:"EXPERIMENT";
+    position:absolute;
+    right:-30px;
+    bottom:15px;
+    transform:rotate(-20deg);
+    color:rgba(255,255,255,.025);
+    font-size:34px;
+    font-weight:900;
+}
+
+/* =====================================================
    ROADMAP
-================================================= */
+===================================================== */
 
 .roadmap{
     display:grid;
@@ -922,8 +1011,8 @@ section{
 }
 
 .road-number{
+    color:rgba(0,229,255,.22);
     font-size:45px;
-    color:rgba(0,229,255,.25);
     font-weight:900;
 }
 
@@ -937,9 +1026,9 @@ section{
     font-size:13px;
 }
 
-/* =================================================
+/* =====================================================
    SOCIAL
-================================================= */
+===================================================== */
 
 .social{
     display:grid;
@@ -949,9 +1038,9 @@ section{
 
 .social-card{
     padding:30px;
-    text-decoration:none;
     color:white;
-    transition:.3s;
+    text-decoration:none;
+    transition:.4s;
 }
 
 .social-card:hover{
@@ -961,6 +1050,7 @@ section{
 
 .social-card span{
     color:var(--blue);
+    font-family:monospace;
     font-size:10px;
     letter-spacing:3px;
 }
@@ -969,28 +1059,28 @@ section{
     margin-top:10px;
 }
 
-/* =================================================
+/* =====================================================
    FINAL
-================================================= */
+===================================================== */
 
 .final{
-    min-height:70vh;
+    min-height:80vh;
     display:flex;
-    flex-direction:column;
+    align-items:center;
     justify-content:center;
     text-align:center;
-    align-items:center;
+    flex-direction:column;
 }
 
 .final h2{
-    font-size:clamp(45px,9vw,110px);
-    line-height:.9;
-    letter-spacing:-6px;
+    font-size:clamp(50px,10vw,115px);
+    line-height:.85;
+    letter-spacing:-7px;
 }
 
 .final h2 span{
     color:var(--blue);
-    text-shadow:0 0 35px rgba(0,229,255,.2);
+    text-shadow:0 0 40px rgba(0,229,255,.25);
 }
 
 .final p{
@@ -1002,23 +1092,23 @@ footer{
     text-align:center;
     padding:30px;
     color:#4f5a6d;
-    font-size:11px;
     border-top:1px solid rgba(255,255,255,.05);
+    font-size:11px;
 }
 
-/* =================================================
+/* =====================================================
    DEV MODE
-================================================= */
+===================================================== */
 
 #devPanel{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.97);
-    z-index:5000;
+    z-index:9000;
     display:none;
     padding:100px 8%;
-    font-family:monospace;
     color:var(--green);
+    font-family:monospace;
 }
 
 #devPanel.active{
@@ -1027,19 +1117,19 @@ footer{
 
 .close-dev{
     position:absolute;
-    top:30px;
     right:40px;
-    cursor:pointer;
+    top:30px;
     color:var(--blue);
+    cursor:pointer;
 }
 
-/* =================================================
+/* =====================================================
    REVEAL
-================================================= */
+===================================================== */
 
 .reveal{
     opacity:0;
-    transform:translateY(40px);
+    transform:translateY(45px);
     transition:1s ease;
 }
 
@@ -1048,9 +1138,9 @@ footer{
     transform:none;
 }
 
-/* =================================================
+/* =====================================================
    RESPONSIVE
-================================================= */
+===================================================== */
 
 @media(max-width:850px){
 
@@ -1058,23 +1148,48 @@ footer{
         display:none;
     }
 
+    section{
+        padding:90px 0;
+    }
+
     .hero{
         grid-template-columns:1fr;
         text-align:center;
+    }
+
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
     }
 
     .hero-buttons{
         justify-content:center;
     }
 
-    .hero-sub{
-        margin-left:auto;
-        margin-right:auto;
+    .universe{
+        width:330px;
+        height:380px;
     }
 
-    .profile-card img{
+    .universe::before{
+        width:330px;
+    }
+
+    .universe::after{
+        width:280px;
+    }
+
+    .orbit.one{
+        width:300px;
+    }
+
+    .orbit.two{
         width:260px;
-        height:350px;
+    }
+
+    .profile-card{
+        width:235px;
+        height:315px;
     }
 
     .stats{
@@ -1094,8 +1209,8 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .section-title{
-        font-size:40px;
+    .command-body{
+        grid-template-columns:1fr;
     }
 
     .cursor,
@@ -1103,12 +1218,12 @@ footer{
         display:none;
     }
 
-    .galaxy-core{
-        width:500px;
+    .neural{
+        height:280px;
     }
 
-    .nebula{
-        opacity:.1;
+    .final h2{
+        letter-spacing:-4px;
     }
 }
 </style>
@@ -1116,18 +1231,17 @@ footer{
 
 <body>
 
-<!-- =================================================
-     AUTO LOADING SCREEN
-================================================= -->
+<!-- =====================================================
+     AUTO LOADER
+===================================================== -->
 
 <div id="loader">
 
-    <div class="loader-space"></div>
     <div class="loader-stars"></div>
 
     <div class="loader-content">
 
-        <div class="loader-logo">
+        <div class="loader-small">
             NORIZKANDAR // DIGITAL UNIVERSE
         </div>
 
@@ -1136,7 +1250,7 @@ footer{
         </div>
 
         <div class="loader-status" id="loaderStatus">
-            INITIALIZING DIGITAL UNIVERSE...
+            INITIALIZING SYSTEM...
         </div>
 
         <div class="loader-bar">
@@ -1151,30 +1265,28 @@ footer{
 
 </div>
 
-<!-- =================================================
+<!-- =====================================================
      GALAXY
-================================================= -->
+===================================================== -->
 
-<div class="space">
+<canvas id="spaceCanvas"></canvas>
 
-    <div class="stars"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
+<div class="space-overlay"></div>
 
-    <div class="nebula one"></div>
-    <div class="nebula two"></div>
-    <div class="nebula three"></div>
+<div class="nebula a"></div>
+<div class="nebula b"></div>
+<div class="nebula c"></div>
 
-    <div class="galaxy-core"></div>
-
-</div>
+<!-- =====================================================
+     CURSOR
+===================================================== -->
 
 <div class="cursor"></div>
 <div class="cursor-dot"></div>
 
-<!-- =================================================
+<!-- =====================================================
      NAV
-================================================= -->
+===================================================== -->
 
 <nav>
 
@@ -1196,17 +1308,17 @@ footer{
 
 </nav>
 
-<!-- =================================================
+<!-- =====================================================
      HERO
-================================================= -->
+===================================================== -->
 
 <section class="hero">
 
-    <div class="hero-content reveal">
+    <div class="reveal">
 
         <div class="status">
             <span class="status-dot"></span>
-            AVAILABLE • BUILDING IDEAS
+            ONLINE • BUILDING IDEAS
         </div>
 
         <h1>
@@ -1214,7 +1326,7 @@ footer{
             <span>NORIZKANDAR</span>
         </h1>
 
-        <p class="hero-sub">
+        <p class="hero-description">
             I turn creative ideas into modern mobile applications,
             digital experiences and futuristic interfaces.
         </p>
@@ -1226,7 +1338,7 @@ footer{
         <div class="hero-buttons">
 
             <a href="#project" class="btn primary">
-                EXPLORE PROJECT
+                EXPLORE UNIVERSE
             </a>
 
             <a href="https://github.com/norizkandar"
@@ -1239,22 +1351,28 @@ footer{
 
     </div>
 
-    <div class="profile-wrap reveal">
+    <div class="universe reveal">
+
+        <div class="orbit one">
+            <div class="orbit-dot"></div>
+        </div>
+
+        <div class="orbit two">
+            <div class="orbit-dot"></div>
+        </div>
 
         <div class="profile-card">
-
             <img src="profile.jpg"
                  alt="Mohamad Norizkandar">
-
         </div>
 
     </div>
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
      STATS
-================================================= -->
+===================================================== -->
 
 <section>
 
@@ -1284,9 +1402,9 @@ footer{
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
      ABOUT
-================================================= -->
+===================================================== -->
 
 <section id="about">
 
@@ -1331,9 +1449,9 @@ footer{
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
      SKILLS
-================================================= -->
+===================================================== -->
 
 <section id="skills">
 
@@ -1355,11 +1473,8 @@ footer{
                 <span>JavaScript</span>
                 <span>90%</span>
             </div>
-
             <div class="skill-bar">
-                <div class="skill-fill"
-                     data-width="90%">
-                </div>
+                <div class="skill-fill" data-width="90%"></div>
             </div>
         </div>
 
@@ -1368,11 +1483,8 @@ footer{
                 <span>React Native</span>
                 <span>85%</span>
             </div>
-
             <div class="skill-bar">
-                <div class="skill-fill"
-                     data-width="85%">
-                </div>
+                <div class="skill-fill" data-width="85%"></div>
             </div>
         </div>
 
@@ -1381,11 +1493,8 @@ footer{
                 <span>Expo</span>
                 <span>85%</span>
             </div>
-
             <div class="skill-bar">
-                <div class="skill-fill"
-                     data-width="85%">
-                </div>
+                <div class="skill-fill" data-width="85%"></div>
             </div>
         </div>
 
@@ -1394,11 +1503,8 @@ footer{
                 <span>Supabase</span>
                 <span>75%</span>
             </div>
-
             <div class="skill-bar">
-                <div class="skill-fill"
-                     data-width="75%">
-                </div>
+                <div class="skill-fill" data-width="75%"></div>
             </div>
         </div>
 
@@ -1407,11 +1513,8 @@ footer{
                 <span>VS Code</span>
                 <span>95%</span>
             </div>
-
             <div class="skill-bar">
-                <div class="skill-fill"
-                     data-width="95%">
-                </div>
+                <div class="skill-fill" data-width="95%"></div>
             </div>
         </div>
 
@@ -1420,11 +1523,8 @@ footer{
                 <span>Creative UI</span>
                 <span>90%</span>
             </div>
-
             <div class="skill-bar">
-                <div class="skill-fill"
-                     data-width="90%">
-                </div>
+                <div class="skill-fill" data-width="90%"></div>
             </div>
         </div>
 
@@ -1432,20 +1532,89 @@ footer{
 
 </section>
 
-<!-- =================================================
-     TERMINAL
-================================================= -->
+<!-- =====================================================
+     COMMAND CENTER
+===================================================== -->
 
 <section>
 
     <div class="section-label reveal">
-        03 // SYSTEM
+        03 // COMMAND CENTER
+    </div>
+
+    <h2 class="section-title reveal">
+        System
+        <span style="color:var(--blue)">
+            control.
+        </span>
+    </h2>
+
+    <div class="command glass reveal">
+
+        <div class="command-head">
+
+            <strong>
+                NORIZKANDAR OS
+            </strong>
+
+            <div class="command-status">
+                ● ALL SYSTEMS ONLINE
+            </div>
+
+        </div>
+
+        <div class="command-body">
+
+            <div class="system-box">
+                <small>CORE</small>
+                <strong>ACTIVE</strong>
+            </div>
+
+            <div class="system-box">
+                <small>PROJECT</small>
+                <strong>SMART_ACADEMY</strong>
+            </div>
+
+            <div class="system-box">
+                <small>MODE</small>
+                <strong>BUILDING</strong>
+            </div>
+
+            <div class="system-box">
+                <small>ENGINE</small>
+                <strong>JAVASCRIPT</strong>
+            </div>
+
+            <div class="system-box">
+                <small>INTERFACE</small>
+                <strong>FUTURISTIC</strong>
+            </div>
+
+            <div class="system-box">
+                <small>STATUS</small>
+                <strong>READY ✓</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     TERMINAL
+===================================================== -->
+
+<section>
+
+    <div class="section-label reveal">
+        04 // TERMINAL
     </div>
 
     <h2 class="section-title reveal">
         Developer
-        <span style="color:var(--blue)">
-            terminal.
+        <span style="color:var(--green)">
+            console.
         </span>
     </h2>
 
@@ -1459,7 +1628,7 @@ footer{
 
         <div class="terminal-line">
             <span class="green">
-                norizkandar@dev
+                norizkandar@universe
             </span>:~$ whoami
         </div>
 
@@ -1469,36 +1638,36 @@ footer{
 
         <div class="terminal-line">
             <span class="green">
-                norizkandar@dev
-            </span>:~$ load project
+                norizkandar@universe
+            </span>:~$ scan projects
         </div>
 
         <div class="terminal-line muted">
-            Smart Academy
+            Smart Academy detected...
         </div>
 
         <div class="terminal-line">
             <span class="green">
-                norizkandar@dev
-            </span>:~$ status
+                norizkandar@universe
+            </span>:~$ system status
         </div>
 
         <div class="terminal-line green">
-            SYSTEM READY ✓
+            ALL SYSTEMS OPERATIONAL ✓
         </div>
 
     </div>
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
      SMART ACADEMY
-================================================= -->
+===================================================== -->
 
 <section id="project">
 
     <div class="section-label reveal">
-        04 // FEATURED PROJECT
+        05 // FEATURED PROJECT
     </div>
 
     <h2 class="section-title reveal">
@@ -1549,7 +1718,6 @@ footer{
                     <strong>
                         Welcome back 👋
                     </strong>
-
                     <div class="fake-line"></div>
                     <div class="fake-line"></div>
                 </div>
@@ -1558,7 +1726,6 @@ footer{
                     <strong>
                         Live Class
                     </strong>
-
                     <div class="fake-line"></div>
                     <div class="fake-line"></div>
                     <div class="fake-line"></div>
@@ -1568,7 +1735,6 @@ footer{
                     <strong>
                         Achievement 🏆
                     </strong>
-
                     <div class="fake-line"></div>
                 </div>
 
@@ -1580,14 +1746,14 @@ footer{
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
      FEATURES
-================================================= -->
+===================================================== -->
 
 <section>
 
     <div class="section-label reveal">
-        05 // FEATURES
+        06 // FEATURES
     </div>
 
     <h2 class="section-title reveal">
@@ -1657,19 +1823,58 @@ footer{
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
+     NEURAL NETWORK
+===================================================== -->
+
+<section>
+
+    <div class="section-label reveal">
+        07 // DEVELOPER MINDSET
+    </div>
+
+    <h2 class="section-title reveal">
+        Connected
+        <span style="color:var(--green)">
+            ideas.
+        </span>
+    </h2>
+
+    <div class="neural reveal">
+
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+        <div class="node"></div>
+
+        <div class="neural-title">
+            <div>
+                <h3>CREATE → BUILD → IMPROVE</h3>
+                <p>
+                    Every idea is another connection.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
      JOURNEY
-================================================= -->
+===================================================== -->
 
 <section id="journey">
 
     <div class="section-label reveal">
-        06 // JOURNEY
+        08 // CODING JOURNEY
     </div>
 
     <h2 class="section-title reveal">
         From learning to
-        <span style="color:var(--green)">
+        <span style="color:var(--blue)">
             building.
         </span>
     </h2>
@@ -1677,82 +1882,58 @@ footer{
     <div class="timeline">
 
         <div class="timeline-item reveal">
-
             <span>START</span>
-
-            <h3>
-                Started Learning Code
-            </h3>
-
+            <h3>Started Learning Code</h3>
             <p>
                 Began exploring programming and discovering
                 how software is built.
             </p>
-
         </div>
 
         <div class="timeline-item reveal">
-
             <span>BUILD</span>
-
-            <h3>
-                Started Building Apps
-            </h3>
-
+            <h3>Started Building Apps</h3>
             <p>
                 Started experimenting with JavaScript,
                 React Native and Expo.
             </p>
-
         </div>
 
         <div class="timeline-item reveal">
-
             <span>CREATE</span>
-
-            <h3>
-                Smart Academy
-            </h3>
-
+            <h3>Smart Academy</h3>
             <p>
                 Turned a tuition app idea into a working
                 project concept.
             </p>
-
         </div>
 
         <div class="timeline-item reveal">
-
             <span>NEXT</span>
-
-            <h3>
-                Keep Building
-            </h3>
-
+            <h3>Keep Building</h3>
             <p>
                 Continue learning, experimenting and
                 creating better digital experiences.
             </p>
-
         </div>
 
     </div>
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
      EXPERIMENTAL LAB
-================================================= -->
+===================================================== -->
 
 <section id="lab">
 
     <div class="section-label reveal">
-        07 // EXPERIMENTAL LAB
+        09 // EXPERIMENTAL LAB
     </div>
 
     <h2 class="section-title reveal">
         Ideas under
-        <span style="color:var(--blue)">
+        <span style="color:var(--green)">
             construction.
         </span>
     </h2>
@@ -1760,61 +1941,46 @@ footer{
     <div class="lab">
 
         <div class="lab-card glass reveal">
-
-            <h3>
-                AI Experiments
-            </h3>
-
+            <h3>AI Experiments</h3>
             <p>
                 Exploring how AI can become part of future
                 applications and learning experiences.
             </p>
-
         </div>
 
         <div class="lab-card glass reveal">
-
-            <h3>
-                UI Experiments
-            </h3>
-
+            <h3>UI Experiments</h3>
             <p>
                 Creating futuristic interfaces, animations
                 and interactive experiences.
             </p>
-
         </div>
 
         <div class="lab-card glass reveal">
-
-            <h3>
-                Future Apps
-            </h3>
-
+            <h3>Future Apps</h3>
             <p>
                 New application ideas waiting to be turned
                 into real prototypes.
             </p>
-
         </div>
 
     </div>
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
      ROADMAP
-================================================= -->
+===================================================== -->
 
 <section>
 
     <div class="section-label reveal">
-        08 // ROADMAP
+        10 // ROADMAP
     </div>
 
     <h2 class="section-title reveal">
         What's
-        <span style="color:var(--green)">
+        <span style="color:var(--blue)">
             next?
         </span>
     </h2>
@@ -1822,73 +1988,49 @@ footer{
     <div class="roadmap">
 
         <div class="road glass reveal">
-
-            <div class="road-number">
-                01
-            </div>
-
-            <h3>
-                Learn
-            </h3>
-
+            <div class="road-number">01</div>
+            <h3>Learn</h3>
             <p>
                 Improve programming knowledge and explore
                 new technologies.
             </p>
-
         </div>
 
         <div class="road glass reveal">
-
-            <div class="road-number">
-                02
-            </div>
-
-            <h3>
-                Build
-            </h3>
-
+            <div class="road-number">02</div>
+            <h3>Build</h3>
             <p>
                 Turn more ideas into functional applications
                 and prototypes.
             </p>
-
         </div>
 
         <div class="road glass reveal">
-
-            <div class="road-number">
-                03
-            </div>
-
-            <h3>
-                Launch
-            </h3>
-
+            <div class="road-number">03</div>
+            <h3>Launch</h3>
             <p>
                 Share projects with more people and continue
                 improving them.
             </p>
-
         </div>
 
     </div>
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
      SOCIAL
-================================================= -->
+===================================================== -->
 
 <section>
 
     <div class="section-label reveal">
-        09 // CONNECT
+        11 // TRANSMISSION
     </div>
 
     <h2 class="section-title reveal">
         Find me
-        <span style="color:var(--blue)">
+        <span style="color:var(--green)">
             online.
         </span>
     </h2>
@@ -1899,9 +2041,7 @@ footer{
            href="https://github.com/norizkandar"
            target="_blank">
 
-            <span>
-                GITHUB
-            </span>
+            <span>GITHUB</span>
 
             <h3>
                 @norizkandar ↗
@@ -1913,9 +2053,7 @@ footer{
            href="https://www.tiktok.com/@iz_andar"
            target="_blank">
 
-            <span>
-                TIKTOK
-            </span>
+            <span>TIKTOK</span>
 
             <h3>
                 @iz_andar ↗
@@ -1927,21 +2065,19 @@ footer{
 
 </section>
 
-<!-- =================================================
+<!-- =====================================================
      FINAL
-================================================= -->
+===================================================== -->
 
 <section class="final">
 
     <div class="section-label reveal">
-        10 // END OF TRANSMISSION
+        12 // END OF TRANSMISSION
     </div>
 
     <h2 class="reveal">
         KEEP<br>
-        <span>
-            BUILDING.
-        </span>
+        <span>BUILDING.</span>
     </h2>
 
     <p class="reveal">
@@ -1954,9 +2090,9 @@ footer{
     © 2026 Mohamad Norizkandar • Built with code & curiosity.
 </footer>
 
-<!-- =================================================
-     DEV MODE
-================================================= -->
+<!-- =====================================================
+     DEV PANEL
+===================================================== -->
 
 <div id="devPanel">
 
@@ -1965,36 +2101,17 @@ footer{
         [ CLOSE ]
     </div>
 
-    <h2>
-        NORIZKANDAR // DEV MODE
-    </h2>
+    <h2>NORIZKANDAR // DEV MODE</h2>
 
     <br>
 
-    <p>
-        > booting developer interface...
-    </p>
-
-    <p>
-        > loading JavaScript...
-    </p>
-
-    <p>
-        > loading React Native...
-    </p>
-
-    <p>
-        > loading Expo...
-    </p>
-
-    <p>
-        > loading Supabase...
-    </p>
-
-    <p>
-        > checking Smart Academy...
-    </p>
-
+    <p>> booting developer interface...</p>
+    <p>> loading JavaScript...</p>
+    <p>> loading React Native...</p>
+    <p>> loading Expo...</p>
+    <p>> loading Supabase...</p>
+    <p>> scanning Smart Academy...</p>
+    <p>> connecting digital universe...</p>
     <p class="green">
         > ALL SYSTEMS OPERATIONAL ✓
     </p>
@@ -2003,9 +2120,9 @@ footer{
 
 <script>
 
-/* =================================================
+/* =====================================================
    AUTO LOADING
-================================================= */
+===================================================== */
 
 let progress = 0;
 
@@ -2015,21 +2132,22 @@ const fill =
 const percent =
     document.getElementById("loaderPercent");
 
-const status =
+const loaderStatus =
     document.getElementById("loaderStatus");
 
-const statuses = [
+const loaderMessages = [
 
-    "INITIALIZING DIGITAL UNIVERSE...",
-    "LOADING CORE SYSTEM...",
-    "CONNECTING PROJECT DATABASE...",
+    "INITIALIZING SYSTEM...",
+    "LOADING DIGITAL CORE...",
+    "SCANNING PROJECTS...",
     "LOADING SMART ACADEMY...",
-    "CALIBRATING GALAXY INTERFACE...",
+    "CALIBRATING GALAXY...",
+    "CONNECTING INTERFACE...",
     "SYSTEM READY..."
 
 ];
 
-const loaderInterval =
+const loading =
 setInterval(() => {
 
     progress++;
@@ -2040,58 +2158,55 @@ setInterval(() => {
     percent.textContent =
         progress + "%";
 
-    if(progress < 20){
+    if(progress < 15)
+        loaderStatus.textContent =
+            loaderMessages[0];
 
-        status.textContent =
-            statuses[0];
+    else if(progress < 30)
+        loaderStatus.textContent =
+            loaderMessages[1];
 
-    }else if(progress < 40){
+    else if(progress < 45)
+        loaderStatus.textContent =
+            loaderMessages[2];
 
-        status.textContent =
-            statuses[1];
+    else if(progress < 60)
+        loaderStatus.textContent =
+            loaderMessages[3];
 
-    }else if(progress < 60){
+    else if(progress < 75)
+        loaderStatus.textContent =
+            loaderMessages[4];
 
-        status.textContent =
-            statuses[2];
+    else if(progress < 95)
+        loaderStatus.textContent =
+            loaderMessages[5];
 
-    }else if(progress < 75){
-
-        status.textContent =
-            statuses[3];
-
-    }else if(progress < 95){
-
-        status.textContent =
-            statuses[4];
-
-    }else{
-
-        status.textContent =
-            statuses[5];
-
-    }
+    else
+        loaderStatus.textContent =
+            loaderMessages[6];
 
     if(progress >= 100){
 
-        clearInterval(loaderInterval);
+        clearInterval(loading);
 
         setTimeout(() => {
 
             document
                 .getElementById("loader")
-                .classList.add("hide");
+                .classList
+                .add("hide");
 
         },700);
 
     }
 
-},35);
+},32);
 
 
-/* =================================================
-   TYPING EFFECT
-================================================= */
+/* =====================================================
+   TYPING
+===================================================== */
 
 const phrases = [
 
@@ -2103,14 +2218,14 @@ const phrases = [
 
 ];
 
-let phraseIndex = 0;
-let charIndex = 0;
+let p = 0;
+let c = 0;
 let deleting = false;
 
-function type(){
+function typing(){
 
-    const text =
-        phrases[phraseIndex];
+    const current =
+        phrases[p];
 
     const element =
         document.getElementById("typingText");
@@ -2118,54 +2233,44 @@ function type(){
     if(!deleting){
 
         element.textContent =
-            text.substring(0,charIndex++);
+            current.substring(0,c++);
 
     }else{
 
         element.textContent =
-            text.substring(0,charIndex--);
+            current.substring(0,c--);
 
     }
 
-    if(
-        !deleting &&
-        charIndex > text.length
-    ){
+    if(!deleting && c > current.length){
 
         deleting = true;
 
-        setTimeout(type,1200);
+        setTimeout(typing,1200);
 
         return;
     }
 
-    if(
-        deleting &&
-        charIndex < 0
-    ){
+    if(deleting && c < 0){
 
         deleting = false;
-
-        phraseIndex =
-            (phraseIndex + 1)
-            % phrases.length;
-
-        charIndex = 0;
+        p = (p + 1) % phrases.length;
+        c = 0;
 
     }
 
     setTimeout(
-        type,
+        typing,
         deleting ? 35 : 70
     );
 }
 
-type();
+typing();
 
 
-/* =================================================
-   CURSOR
-================================================= */
+/* =====================================================
+   CURSOR + GALAXY PARALLAX
+===================================================== */
 
 const cursor =
     document.querySelector(".cursor");
@@ -2189,32 +2294,21 @@ document.addEventListener(
         dot.style.top =
             e.clientY + "px";
 
-        /* galaxy parallax */
+        mouseX =
+            e.clientX;
 
-        const x =
-            (e.clientX / window.innerWidth - .5);
-
-        const y =
-            (e.clientY / window.innerHeight - .5);
-
-        document.querySelector(".stars").style.transform =
-            `translate(${x * -25}px,${y * -25}px)`;
-
-        document.querySelector(".stars2").style.transform =
-            `translate(${x * 45}px,${y * 45}px)`;
-
-        document.querySelector(".stars3").style.transform =
-            `translate(${x * -70}px,${y * -70}px)`;
+        mouseY =
+            e.clientY;
 
     }
 );
 
 
-/* =================================================
+/* =====================================================
    REVEAL
-================================================= */
+===================================================== */
 
-const observer =
+const revealObserver =
 new IntersectionObserver(
     entries => {
 
@@ -2226,14 +2320,14 @@ new IntersectionObserver(
                     .classList
                     .add("show");
 
-                const bar =
+                const fill =
                     entry.target
                     .querySelector(".skill-fill");
 
-                if(bar){
+                if(fill){
 
-                    bar.style.width =
-                        bar.dataset.width;
+                    fill.style.width =
+                        fill.dataset.width;
 
                 }
 
@@ -2249,16 +2343,14 @@ new IntersectionObserver(
 
 document
     .querySelectorAll(".reveal")
-    .forEach(el => {
-
-        observer.observe(el);
-
-    });
+    .forEach(el =>
+        revealObserver.observe(el)
+    );
 
 
-/* =================================================
+/* =====================================================
    COUNTERS
-================================================= */
+===================================================== */
 
 const counterObserver =
 new IntersectionObserver(
@@ -2266,40 +2358,32 @@ new IntersectionObserver(
 
         entries.forEach(entry => {
 
-            if(entry.isIntersecting){
+            if(!entry.isIntersecting)
+                return;
 
-                const counter =
-                    entry.target;
+            const counter =
+                entry.target;
 
-                const target =
-                    Number(
-                        counter.dataset.count
-                    );
+            const target =
+                Number(counter.dataset.count);
 
-                if(!target) return;
+            let value = 0;
 
-                let current = 0;
-
-                const timer =
+            const timer =
                 setInterval(() => {
 
-                    current++;
+                    value++;
 
                     counter.textContent =
-                        current;
+                        value;
 
-                    if(current >= target){
-
+                    if(value >= target)
                         clearInterval(timer);
-
-                    }
 
                 },70);
 
-                counterObserver
-                    .unobserve(counter);
-
-            }
+            counterObserver
+                .unobserve(counter);
 
         });
 
@@ -2311,16 +2395,14 @@ new IntersectionObserver(
 
 document
     .querySelectorAll("[data-count]")
-    .forEach(el => {
-
-        counterObserver.observe(el);
-
-    });
+    .forEach(el =>
+        counterObserver.observe(el)
+    );
 
 
-/* =================================================
+/* =====================================================
    DEV MODE
-================================================= */
+===================================================== */
 
 function openDev(){
 
@@ -2341,9 +2423,53 @@ function closeDev(){
 }
 
 
-/* =================================================
-   MAGNETIC BUTTON
-================================================= */
+/* =====================================================
+   PROJECT 3D
+===================================================== */
+
+const project =
+    document.querySelector(".project");
+
+if(project){
+
+    project.addEventListener(
+        "mousemove",
+        e => {
+
+            const rect =
+                project.getBoundingClientRect();
+
+            const x =
+                (e.clientX - rect.left)
+                / rect.width - .5;
+
+            const y =
+                (e.clientY - rect.top)
+                / rect.height - .5;
+
+            project.style.transform =
+                `perspective(1000px)
+                 rotateY(${x*5}deg)
+                 rotateX(${-y*4}deg)`;
+
+        }
+    );
+
+    project.addEventListener(
+        "mouseleave",
+        () => {
+
+            project.style.transform = "";
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   MAGNETIC BUTTONS
+===================================================== */
 
 document
 .querySelectorAll(
@@ -2361,12 +2487,12 @@ document
             const x =
                 e.clientX -
                 rect.left -
-                rect.width / 2;
+                rect.width/2;
 
             const y =
                 e.clientY -
                 rect.top -
-                rect.height / 2;
+                rect.height/2;
 
             button.style.transform =
                 `translate(${x*.08}px,${y*.08}px)`;
@@ -2386,55 +2512,144 @@ document
 });
 
 
-/* =================================================
-   SMART ACADEMY 3D
-================================================= */
+/* =====================================================
+   GALAXY PARTICLE ENGINE
+===================================================== */
 
-const project =
-    document.querySelector(".project");
+const canvas =
+    document.getElementById("spaceCanvas");
 
-if(project){
+const ctx =
+    canvas.getContext("2d");
 
-    project.addEventListener(
-        "mousemove",
-        e => {
+let width;
+let height;
 
-            const rect =
-                project.getBoundingClientRect();
+let mouseX = 0;
+let mouseY = 0;
 
-            const x =
-                (e.clientX -
-                rect.left) /
-                rect.width - .5;
+let stars = [];
 
-            const y =
-                (e.clientY -
-                rect.top) /
-                rect.height - .5;
+function resize(){
 
-            project.style.transform =
-                `perspective(1000px)
-                 rotateY(${x*4}deg)
-                 rotateX(${-y*3}deg)`;
+    width =
+        canvas.width =
+        window.innerWidth;
 
-        }
+    height =
+        canvas.height =
+        window.innerHeight;
+
+    stars = [];
+
+    const amount =
+        Math.min(
+            700,
+            Math.floor(
+                width * height / 1500
+            )
+        );
+
+    for(let i=0;i<amount;i++){
+
+        stars.push({
+
+            x:Math.random()*width,
+            y:Math.random()*height,
+
+            z:Math.random(),
+
+            size:
+                Math.random()*1.5+.2,
+
+            speed:
+                Math.random()*.35+.05,
+
+            twinkle:
+                Math.random()*Math.PI*2
+
+        });
+
+    }
+
+}
+
+resize();
+
+window.addEventListener(
+    "resize",
+    resize
+);
+
+
+function animateGalaxy(){
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
     );
 
-    project.addEventListener(
-        "mouseleave",
-        () => {
+    const px =
+        (mouseX / width - .5);
 
-            project.style.transform = "";
+    const py =
+        (mouseY / height - .5);
 
-        }
+    for(const star of stars){
+
+        star.y -= star.speed;
+
+        if(star.y < -10)
+            star.y = height + 10;
+
+        star.twinkle += .02;
+
+        const opacity =
+            .35 +
+            Math.sin(star.twinkle)*.3;
+
+        const depth =
+            star.z * 18;
+
+        const x =
+            star.x +
+            px * depth;
+
+        const y =
+            star.y +
+            py * depth;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            star.size * (0.5 + star.z),
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle =
+            `rgba(190,235,255,${opacity})`;
+
+        ctx.fill();
+
+    }
+
+    requestAnimationFrame(
+        animateGalaxy
     );
 
 }
 
+animateGalaxy();
 
-/* =================================================
-   EASTER EGG
-================================================= */
+
+/* =====================================================
+   SECRET EASTER EGGS
+===================================================== */
 
 let secret = "";
 
@@ -2445,23 +2660,50 @@ document.addEventListener(
         secret +=
             e.key.toLowerCase();
 
-        if(secret.length > 4){
-
+        if(secret.length > 8)
             secret =
-                secret.slice(-4);
+                secret.slice(-8);
 
-        }
+        /* nori */
 
         if(secret === "nori"){
 
-            document.body.style.filter =
-                "hue-rotate(130deg)";
+            document.body.style
+                .transform =
+                "scale(1.015)";
+
+            document.body.style
+                .filter =
+                "hue-rotate(100deg)";
 
             setTimeout(() => {
 
-                document.body.style.filter = "";
+                document.body.style
+                    .transform = "";
 
-            },2000);
+                document.body.style
+                    .filter = "";
+
+            },1800);
+
+            secret = "";
+
+        }
+
+        /* galaxy */
+
+        if(secret === "galaxy"){
+
+            document.body.style
+                .filter =
+                "hue-rotate(180deg)";
+
+            setTimeout(() => {
+
+                document.body.style
+                    .filter = "";
+
+            },3000);
 
             secret = "";
 

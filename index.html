@@ -55,6 +55,7 @@
   }
   </script>
 
+  
   <style>
     /* =====================================================
        01. DESIGN SYSTEM
@@ -2115,6 +2116,39 @@
         opacity: 1;
         transform: none;
       }
+      
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Developer Profile Picture */
+    .developer-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile-image {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 2px solid var(--red);
+      box-shadow: 0 0 14px rgba(255, 36, 72, 0.4);
     }
   </style>
 </head>
@@ -3279,14 +3313,23 @@
                   <span>↗</span>
                 </a>
 
-                <a
-                  href="https://github.com/norizkandar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Developer Profile</span>
-                  <span>↗</span>
-                </a>
+                
+                   <a
+                      href="https://github.com/norizkandar"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="developer-profile"
+                   >
+                     <img
+                       src="profile.jpg"
+                       alt="Mohamad Norizkandar"
+                       class="profile-image"
+                      />
+
+                     <span>Developer Profile</span>
+                     <span>↗</span>
+                  </a>
+
 
               </div>
             </aside>

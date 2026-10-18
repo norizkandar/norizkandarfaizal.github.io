@@ -5,36 +5,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Mohamad Norizkandar | Developer & Digital Creator</title>
-
-  <meta name="description" content="Explore the projects, programming journey, technology interests and digital work of Mohamad Norizkandar, a young developer and digital creator.">
+  <title>Mohamad Norizkandar bin Mohamad Faizal | Developer & Digital Creator</title>
+  <meta name="description" content="The personal portfolio of Mohamad Norizkandar bin Mohamad Faizal, an aspiring app developer and digital creator exploring software development, applications and digital experiences.">
   <meta name="author" content="Mohamad Norizkandar bin Mohamad Faizal">
-  <meta name="theme-color" content="#050505">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#080808">
+  <meta name="color-scheme" content="dark">
 
   <link rel="canonical" href="https://norizkandar.github.io/norizkandarfaizal.github.io/">
+  <link rel="icon" href="profile.jpg" type="image/jpeg">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mohamad Norizkandar | Developer & Digital Creator">
-  <meta property="og:description" content="Projects, technology, creativity and the journey of Mohamad Norizkandar.">
+  <meta property="og:description" content="Explore the story, projects and technology journey of Mohamad Norizkandar.">
   <meta property="og:url" content="https://norizkandar.github.io/norizkandarfaizal.github.io/">
   <meta property="og:image" content="https://norizkandar.github.io/norizkandarfaizal.github.io/profile.jpg">
   <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Mohamad Norizkandar bin Mohamad Faizal",
-    "alternateName": ["Mohamad Norizkandar", "Norizkandar"],
+    "alternateName": "Mohamad Norizkandar",
     "url": "https://norizkandar.github.io/norizkandarfaizal.github.io/",
     "image": "https://norizkandar.github.io/norizkandarfaizal.github.io/profile.jpg",
-    "jobTitle": "Developer and Digital Creator",
-    "description": "A young developer exploring application development, web projects and digital creativity.",
+    "jobTitle": "Aspiring App Developer and Digital Creator",
+    "description": "An aspiring developer exploring application development, web experiences and digital projects.",
     "sameAs": [
       "https://github.com/norizkandar",
       "https://www.tiktok.com/@iz_andar",
@@ -55,40 +52,39 @@
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #050505;
-      --bg-soft: #090909;
-      --panel: #101010;
-      --panel-hover: #171717;
+      --bg: #080808;
+      --bg-2: #0d0d0d;
+      --panel: #111111;
+      --panel-hover: #181818;
       --white: #f5f5f5;
+      --silver: #d0d0d0;
       --muted: #a0a0a0;
       --dim: #707070;
-      --red: #e11d48;
-      --red-light: #ff315b;
-      --red-dark: #68152b;
-      --border: rgba(255,255,255,.12);
-      --red-border: rgba(225,29,72,.38);
-      --max: 1160px;
+      --border: rgba(255,255,255,.13);
+      --border-strong: rgba(255,255,255,.3);
+      --max: 1180px;
       --radius: 18px;
+      --ease: 240ms ease;
     }
 
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-      background: var(--bg);
+      scroll-padding-top: 100px;
     }
 
     body {
-      margin: 0;
       background: var(--bg);
       color: var(--white);
-      font-family: Inter, Arial, sans-serif;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
     body::before {
@@ -98,18 +94,18 @@
       pointer-events: none;
       z-index: -1;
       background:
-        radial-gradient(ellipse at 80% 0%, rgba(225,29,72,.09), transparent 38%),
-        radial-gradient(ellipse at 0% 48%, rgba(225,29,72,.035), transparent 35%);
+        radial-gradient(ellipse at 15% 10%, rgba(255,255,255,.055), transparent 38%),
+        radial-gradient(ellipse at 90% 45%, rgba(255,255,255,.025), transparent 34%);
+    }
+
+    ::selection {
+      background: var(--white);
+      color: #000;
     }
 
     a {
       color: inherit;
       text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     button, input {
@@ -120,24 +116,48 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--red-light);
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--white);
       outline-offset: 4px;
     }
 
-    ::selection {
-      background: var(--red);
-      color: white;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     .container {
-      width: min(var(--max), calc(100% - 40px));
+      width: min(var(--max), calc(100% - 48px));
       margin-inline: auto;
     }
 
     .section {
-      padding: 105px 0;
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-border {
       border-top: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--silver);
+      font-size: .72rem;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--white);
     }
 
     .section-heading {
@@ -145,47 +165,22 @@
       margin-bottom: 42px;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--red-light);
-      font-family: "DM Mono", monospace;
-      font-size: .76rem;
-      letter-spacing: .13em;
-      text-transform: uppercase;
+    .section-heading h2 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -.055em;
+      margin: 18px 0;
+      font-weight: 750;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 24px;
-      height: 1px;
-      background: var(--red);
-    }
-
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
-
-    h1, h2, h3 {
-      line-height: 1.15;
-      letter-spacing: -.035em;
-    }
-
-    h2 {
-      margin: 15px 0;
-      font-size: clamp(2rem, 5vw, 3.3rem);
-      font-weight: 800;
-    }
-
-    .section-description {
+    .section-heading p {
       color: var(--muted);
       max-width: 680px;
       font-size: 1rem;
     }
 
     .accent {
-      color: var(--red-light);
+      color: var(--white);
     }
 
     .muted {
@@ -193,26 +188,26 @@
     }
 
     .small {
-      font-size: .86rem;
-      color: var(--muted);
-    }
-
-    .mono {
-      font-family: "DM Mono", monospace;
+      font-size: .85rem;
     }
 
     .topline {
-      height: 3px;
-      background: linear-gradient(90deg, var(--red), #5e1025, transparent);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, #fff, #777, transparent);
+      opacity: .7;
     }
 
-    /* NAVIGATION */
+    /* Navigation */
 
     .header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(5,5,5,.91);
+      background: rgba(8,8,8,.88);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(18px);
     }
@@ -222,7 +217,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 25px;
+      gap: 28px;
     }
 
     .brand {
@@ -235,142 +230,90 @@
     .brand-mark {
       width: 39px;
       height: 39px;
+      border: 1px solid var(--white);
       display: grid;
       place-items: center;
-      background: var(--red);
-      color: white;
+      background: var(--white);
+      color: #000;
+      font-size: .9rem;
       font-weight: 900;
-      font-size: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 25px rgba(225,29,72,.18);
+      letter-spacing: -.06em;
     }
 
-    .brand-name {
-      font-size: .91rem;
-      font-weight: 800;
-      letter-spacing: -.02em;
+    .brand-copy strong {
+      display: block;
+      font-size: .9rem;
+      letter-spacing: -.025em;
     }
 
-    .brand-sub {
+    .brand-copy span {
       display: block;
       color: var(--dim);
-      font-size: .65rem;
-      letter-spacing: .1em;
+      font-size: .66rem;
+      letter-spacing: .12em;
       text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 23px;
+      list-style: none;
     }
 
     .nav-links a {
-      color: #bcbcbc;
-      font-size: .82rem;
-      transition: color .2s;
+      color: var(--muted);
+      font-size: .79rem;
+      transition: color var(--ease);
     }
 
-    .nav-links a:hover {
-      color: white;
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
     }
 
-    .nav-links .nav-cta {
-      padding: 10px 15px;
-      background: var(--red);
-      border-radius: 8px;
-      color: white;
-      font-weight: 700;
+    .nav-cta {
+      border: 1px solid var(--border-strong);
+      padding: 9px 15px;
+      font-size: .78rem;
+      transition: background var(--ease), color var(--ease);
     }
 
-    .menu-button {
+    .nav-cta:hover {
+      background: var(--white);
+      color: #000;
+    }
+
+    .menu-toggle {
       display: none;
-      padding: 9px 12px;
       border: 1px solid var(--border);
-      background: var(--panel);
-      color: white;
-      border-radius: 8px;
+      background: transparent;
+      color: var(--white);
+      padding: 8px 12px;
       cursor: pointer;
     }
 
-    /* HERO */
-
-    .hero {
-      min-height: 690px;
-      display: flex;
-      align-items: center;
-      padding: 85px 0 95px;
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr .75fr;
-      align-items: center;
-      gap: 65px;
-    }
-
-    .availability {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.025);
-      padding: 8px 12px;
-      border-radius: 30px;
-      font-size: .77rem;
-      color: #d2d2d2;
-      margin-bottom: 26px;
-    }
-
-    .availability-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--red-light);
-      border-radius: 50%;
-      box-shadow: 0 0 12px var(--red);
-    }
-
-    .hero h1 {
-      font-size: clamp(3rem, 7.5vw, 6.3rem);
-      font-weight: 900;
-      letter-spacing: -.075em;
-      line-height: .99;
-      margin: 0 0 25px;
-    }
-
-    .hero h1 .line-two {
-      display: block;
-      color: var(--red-light);
-    }
-
-    .hero-copy {
-      max-width: 620px;
-      color: #b5b5b5;
-      font-size: clamp(1rem, 2vw, 1.12rem);
-      margin-bottom: 30px;
-    }
+    /* Buttons */
 
     .button-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 26px;
+      margin-top: 30px;
     }
 
     .button {
+      min-height: 47px;
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      min-height: 46px;
-      padding: 12px 18px;
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      font-size: .87rem;
-      font-weight: 700;
-      transition: transform .2s, background .2s, border-color .2s;
+      padding: 12px 19px;
+      border: 1px solid var(--border-strong);
+      font-size: .83rem;
+      font-weight: 650;
       cursor: pointer;
+      transition: transform var(--ease), background var(--ease), color var(--ease);
     }
 
     .button:hover {
@@ -378,455 +321,376 @@
     }
 
     .button-primary {
-      background: var(--red);
-      color: white;
-      border-color: var(--red);
+      background: var(--white);
+      color: #000;
+      border-color: var(--white);
     }
 
     .button-primary:hover {
-      background: var(--red-light);
+      background: #d8d8d8;
     }
 
     .button-secondary {
-      background: #101010;
-      color: #f2f2f2;
+      background: transparent;
+      color: var(--white);
     }
 
     .button-secondary:hover {
-      background: #1a1a1a;
-      border-color: rgba(255,255,255,.28);
+      background: var(--white);
+      color: #000;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 690px;
+      display: flex;
+      align-items: center;
+      padding: 90px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      color: var(--silver);
+      font-size: .72rem;
+      letter-spacing: .08em;
+      margin-bottom: 27px;
+    }
+
+    .availability-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--white);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255,255,255,.45);
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 7.3vw, 6.5rem);
+      line-height: .98;
+      letter-spacing: -.075em;
+      font-weight: 800;
+      margin-bottom: 26px;
+    }
+
+    .hero h1 .line-two {
+      display: block;
+      color: var(--silver);
+    }
+
+    .hero-description {
+      max-width: 590px;
+      color: var(--muted);
+      font-size: 1.02rem;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 19px;
-      margin-top: 35px;
+      margin-top: 32px;
       color: var(--dim);
-      font-family: "DM Mono", monospace;
-      font-size: .72rem;
+      font-size: .75rem;
     }
 
     .hero-meta span::before {
-      content: "/";
-      color: var(--red);
-      margin-right: 8px;
+      content: "— ";
+      color: var(--silver);
     }
 
-    .profile-card {
+    .hero-visual {
       position: relative;
-      padding: 14px;
-      background: linear-gradient(145deg, #191919, #080808 70%);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: 0 25px 90px rgba(0,0,0,.5);
+      max-width: 420px;
+      width: 100%;
+      justify-self: end;
     }
 
-    .profile-image-wrap {
+    .portrait-frame {
+      aspect-ratio: 4 / 5;
+      background:
+        linear-gradient(145deg, #242424, #090909 65%);
+      border: 1px solid var(--border-strong);
+      padding: 12px;
       position: relative;
       overflow: hidden;
-      aspect-ratio: 4 / 4.7;
-      border-radius: 15px;
-      background:
-        radial-gradient(circle at 50% 25%, rgba(225,29,72,.22), transparent 45%),
-        #111;
-      display: grid;
-      place-items: center;
     }
 
-    .profile-image-wrap img {
+    .portrait-frame::before {
+      content: "";
+      position: absolute;
+      inset: 25px;
+      border: 1px solid rgba(255,255,255,.14);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .portrait-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: grayscale(100%);
+      background: #111;
     }
 
-    .profile-placeholder {
+    .portrait-placeholder {
+      height: 100%;
+      min-height: 340px;
+      display: grid;
+      place-items: center;
       text-align: center;
-      padding: 25px;
+      color: var(--muted);
+      background:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 28px 28px;
     }
 
-    .profile-placeholder strong {
+    .portrait-placeholder strong {
       display: block;
-      font-size: 4rem;
-      line-height: 1.2;
-      color: var(--red-light);
-      letter-spacing: -.08em;
+      color: var(--white);
+      font-size: 5rem;
+      line-height: 1;
+      letter-spacing: -.1em;
     }
 
-    .profile-placeholder span {
-      color: #aaa;
-      font-size: .78rem;
+    .portrait-placeholder span {
+      font-size: .72rem;
+      letter-spacing: .18em;
     }
 
-    .profile-caption {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 17px 5px 4px;
+    .portrait-caption {
+      position: absolute;
+      bottom: -20px;
+      left: -34px;
+      max-width: 230px;
+      padding: 17px 20px;
+      background: #111;
+      border: 1px solid var(--border-strong);
+      box-shadow: 0 20px 55px rgba(0,0,0,.4);
     }
 
-    .profile-caption strong {
+    .portrait-caption strong {
       display: block;
-      font-size: .92rem;
+      font-size: .9rem;
     }
 
-    .profile-caption span {
-      display: block;
+    .portrait-caption span {
       color: var(--muted);
       font-size: .75rem;
     }
 
-    .profile-index {
-      color: var(--red-light);
-      font-family: "DM Mono", monospace;
-      font-size: .78rem;
+    .hero-index {
+      position: absolute;
+      right: 0;
+      top: -27px;
+      color: var(--dim);
+      font-size: .7rem;
+      letter-spacing: .15em;
     }
 
-    /* SHARED PANELS */
-
-    .panel {
-      padding: 25px;
-      border: 1px solid var(--border);
-      background: linear-gradient(145deg, #111, #090909);
-      border-radius: var(--radius);
+    .scroll-cue {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--dim);
+      font-size: .67rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
     }
 
-    .panel h3 {
-      font-size: 1.12rem;
-      margin-bottom: 12px;
+    /* Intro strip */
+
+    .intro-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #0b0b0b;
     }
 
-    .panel p:last-child {
-      margin-bottom: 0;
-    }
-
-    .grid-2 {
+    .intro-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+    .intro-item {
+      padding: 27px 25px;
+      border-right: 1px solid var(--border);
     }
 
-    .icon-box {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--red-border);
-      background: rgba(225,29,72,.08);
-      color: var(--red-light);
-      border-radius: 12px;
-      margin-bottom: 19px;
-      font-family: "DM Mono", monospace;
-      font-size: .83rem;
-      font-weight: 500;
+    .intro-item:first-child {
+      border-left: 1px solid var(--border);
     }
 
-    /* ABOUT */
+    .intro-item strong {
+      display: block;
+      font-size: .95rem;
+    }
+
+    .intro-item span {
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    /* About */
 
     .about-grid {
       display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 60px;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 75px;
       align-items: start;
     }
 
-    .about-lead {
-      font-size: 1.25rem;
-      color: #e5e5e5;
-      line-height: 1.65;
+    .about-side {
+      position: sticky;
+      top: 115px;
     }
 
-    .about-copy {
+    .about-side h3 {
+      font-size: 2rem;
+      line-height: 1.2;
+      margin: 18px 0;
+      letter-spacing: -.05em;
+    }
+
+    .about-copy p {
       color: var(--muted);
+      margin-bottom: 19px;
     }
 
-    .fact-list {
-      list-style: none;
-      margin: 26px 0 0;
-      padding: 0;
+    .about-copy strong {
+      color: var(--white);
+      font-weight: 650;
     }
 
-    .fact-list li {
-      display: flex;
-      gap: 14px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: .9rem;
-    }
-
-    .fact-list li span:first-child {
-      width: 110px;
-      flex-shrink: 0;
-      color: var(--dim);
-    }
-
-    .fact-list li span:last-child {
-      color: #e4e4e4;
-    }
-
-    /* STORY */
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .story-card {
-      padding: 28px;
-      background: #0b0b0b;
+    .about-note {
+      margin-top: 28px;
+      padding: 22px;
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      background: var(--bg-2);
+    }
+
+    .about-note strong {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .about-note p {
+      margin: 0;
+      font-size: .86rem;
+    }
+
+    /* Story */
+
+    .story-intro {
+      max-width: 820px;
+      margin-bottom: 55px;
+    }
+
+    .story-intro h3 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -.06em;
+      line-height: 1.1;
+      margin: 20px 0;
+    }
+
+    .story-intro p {
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .story-list {
+      border-top: 1px solid var(--border);
+    }
+
+    .story-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 25px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
     }
 
     .story-number {
-      color: var(--red-light);
-      font-family: "DM Mono", monospace;
-      font-size: .8rem;
-      margin-bottom: 23px;
+      color: var(--silver);
+      font-size: .9rem;
+      letter-spacing: .08em;
     }
 
-    .story-card h3 {
-      font-size: 1.35rem;
-    }
-
-    .story-card p {
-      color: var(--muted);
-      font-size: .93rem;
-    }
-
-    .story-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .notice {
-      margin-top: 22px;
-      padding: 17px 20px;
-      border-left: 3px solid var(--red);
-      background: rgba(225,29,72,.055);
-      color: #c5c5c5;
-      font-size: .88rem;
-    }
-
-    /* PROJECTS */
-
-    .filter-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-bottom: 28px;
-    }
-
-    .filter-button {
-      background: #101010;
-      border: 1px solid var(--border);
-      color: #bdbdbd;
-      border-radius: 8px;
-      padding: 9px 14px;
-      cursor: pointer;
-      font-size: .8rem;
-    }
-
-    .filter-button.active,
-    .filter-button:hover {
-      color: white;
-      border-color: var(--red);
-      background: rgba(225,29,72,.12);
-    }
-
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 330px;
-      padding: 24px;
-      background: linear-gradient(150deg, #121212, #080808);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: transform .22s, border-color .22s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--red-border);
-    }
-
-    .project-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 22px;
-    }
-
-    .project-symbol {
-      width: 45px;
-      height: 45px;
-      display: grid;
-      place-items: center;
-      background: #1a1013;
-      border: 1px solid var(--red-border);
-      border-radius: 12px;
-      color: var(--red-light);
-      font-weight: 900;
-      font-family: "DM Mono", monospace;
-    }
-
-    .project-type {
-      font-family: "DM Mono", monospace;
-      font-size: .68rem;
-      color: var(--dim);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
-    .project-card h3 {
+    .story-row h3 {
       font-size: 1.3rem;
-      margin-bottom: 12px;
+      margin-bottom: 11px;
     }
 
-    .project-card p {
+    .story-row p {
       color: var(--muted);
-      font-size: .88rem;
+      max-width: 790px;
     }
 
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin: 4px 0 22px;
+    .story-row p + p {
+      margin-top: 13px;
     }
 
-    .tag {
-      padding: 5px 8px;
+    .quote-panel {
+      margin-top: 55px;
+      padding: 35px;
       border: 1px solid var(--border);
-      border-radius: 6px;
-      color: #b9b9b9;
-      font-size: .7rem;
+      background: linear-gradient(120deg, #171717, #0b0b0b);
     }
 
-    .project-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: auto;
-      padding-top: 8px;
+    .quote-panel blockquote {
+      max-width: 820px;
+      font-size: clamp(1.4rem, 3vw, 2.3rem);
+      line-height: 1.35;
+      letter-spacing: -.04em;
     }
 
-    .project-actions .button {
-      min-height: 39px;
-      padding: 9px 12px;
-      font-size: .77rem;
-    }
-
-    .project-note {
-      color: var(--dim);
-      font-size: .77rem;
-      margin-top: 15px;
-    }
-
-    /* TECH STACK */
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 13px;
-    }
-
-    .tech-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-height: 85px;
-      padding: 17px;
-      border: 1px solid var(--border);
-      background: #0b0b0b;
-      border-radius: 12px;
-    }
-
-    .tech-initial {
-      width: 38px;
-      height: 38px;
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      background: #191010;
-      color: var(--red-light);
-      border-radius: 9px;
-      font-family: "DM Mono", monospace;
+    .quote-panel p {
+      color: var(--muted);
+      margin-top: 18px;
       font-size: .8rem;
     }
 
-    .tech-item strong {
-      display: block;
-      font-size: .87rem;
-    }
+    /* School journey */
 
-    .tech-item span {
-      display: block;
-      color: var(--dim);
-      font-size: .73rem;
-    }
-
-    .skill-note {
-      margin-top: 24px;
+    .school-intro {
+      max-width: 700px;
       color: var(--muted);
-      font-size: .87rem;
+      margin-top: -20px;
+      margin-bottom: 44px;
     }
-
-    /* APPROACH */
-
-    .approach-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .approach-item {
-      padding: 22px;
-      border: 1px solid var(--border);
-      background: #0b0b0b;
-      border-radius: 13px;
-    }
-
-    .approach-item h3 {
-      font-size: 1rem;
-      margin-bottom: 9px;
-    }
-
-    .approach-item p {
-      color: var(--muted);
-      font-size: .85rem;
-      margin: 0;
-    }
-
-    /* JOURNEY TIMELINE */
 
     .timeline {
       position: relative;
-      max-width: 850px;
-      margin-left: 7px;
+      max-width: 900px;
+      margin-left: 8px;
     }
 
     .timeline::before {
       content: "";
       position: absolute;
-      top: 10px;
+      top: 9px;
       bottom: 12px;
       left: 7px;
       width: 1px;
-      background: linear-gradient(var(--red), rgba(225,29,72,.1));
+      background: linear-gradient(var(--white), #444, transparent);
     }
 
     .timeline-item {
       position: relative;
-      padding: 0 0 35px 34px;
+      padding: 0 0 44px 40px;
     }
 
     .timeline-item:last-child {
@@ -835,171 +699,513 @@
 
     .timeline-dot {
       position: absolute;
-      left: 2px;
-      top: 5px;
-      width: 11px;
-      height: 11px;
-      background: var(--red);
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 0 1px var(--red);
+      left: 0;
+      top: 7px;
+      width: 15px;
+      height: 15px;
+      border: 3px solid var(--bg);
+      background: var(--white);
+      outline: 1px solid var(--border-strong);
       border-radius: 50%;
     }
 
     .timeline-date {
-      color: var(--red-light);
-      font-family: "DM Mono", monospace;
+      display: inline-block;
+      color: var(--silver);
       font-size: .75rem;
-      margin-bottom: 7px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 9px;
     }
 
     .timeline-item h3 {
-      font-size: 1.12rem;
-      margin-bottom: 8px;
+      font-size: 1.4rem;
+      margin-bottom: 9px;
     }
 
     .timeline-item p {
       color: var(--muted);
-      font-size: .9rem;
-      margin-bottom: 0;
+      max-width: 650px;
     }
 
-    /* SCHOOL / SPORTS PRIVACY */
-
-    .privacy-panel {
-      margin-top: 25px;
-      padding: 25px;
-      background: #0b0b0b;
+    .timeline-tag {
+      display: inline-block;
+      margin-top: 13px;
+      padding: 4px 9px;
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      color: var(--silver);
+      font-size: .68rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
     }
 
-    .privacy-panel h3 {
-      font-size: 1.1rem;
+    /* Coolest Projects story */
+
+    .notice {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--white);
+      background: #111;
+      padding: 25px;
+      margin-bottom: 32px;
     }
 
-    .privacy-panel p {
-      color: var(--muted);
-      font-size: .88rem;
-    }
-
-    .privacy-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border: 1px solid var(--red-border);
-      color: #fff;
-      background: #170b0f;
-      padding: 10px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: .83rem;
-      font-weight: 700;
-    }
-
-    .privacy-content {
-      display: none;
-      margin-top: 24px;
-    }
-
-    .privacy-content.visible {
+    .notice strong {
       display: block;
+      margin-bottom: 7px;
     }
 
-    .privacy-content .panel {
-      margin-bottom: 12px;
-    }
-
-    .privacy-warning {
-      color: #e7a3b1 !important;
-      font-size: .78rem !important;
-    }
-
-    /* BEYOND TECHNOLOGY */
-
-    .interest-card {
-      padding: 25px;
-      background: #0c0c0c;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-    }
-
-    .interest-card h3 {
-      margin-bottom: 12px;
-      font-size: 1.15rem;
-    }
-
-    .interest-card p {
+    .notice p {
       color: var(--muted);
-      font-size: .89rem;
+      font-size: .9rem;
     }
 
-    .interest-card p:last-child {
-      margin-bottom: 0;
+    .coolest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
 
-    /* JOURNAL */
+    .info-card {
+      border: 1px solid var(--border);
+      padding: 28px;
+      background: var(--panel);
+    }
 
-    .journal-card {
+    .info-card .card-index {
+      color: var(--dim);
+      font-size: .73rem;
+      letter-spacing: .14em;
+    }
+
+    .info-card h3 {
+      font-size: 1.25rem;
+      margin: 15px 0 10px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* Projects */
+
+    .project-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .project-count {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .filter-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-button {
+      padding: 8px 13px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: .76rem;
+      transition: all var(--ease);
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      color: #000;
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 19px;
+    }
+
+    .project-card {
       display: flex;
       flex-direction: column;
-      padding: 25px;
-      background: #0c0c0c;
+      min-width: 0;
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      min-height: 230px;
+      background: var(--panel);
+      padding: 26px;
+      transition: transform var(--ease), border-color var(--ease), background var(--ease);
     }
 
-    .journal-label {
-      color: var(--red-light);
-      font-family: "DM Mono", monospace;
-      font-size: .7rem;
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+      background: var(--panel-hover);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 24px;
+    }
+
+    .project-symbol {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border-strong);
+      background: #1b1b1b;
+      color: var(--white);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .project-category {
+      color: var(--muted);
+      font-size: .68rem;
+      letter-spacing: .12em;
       text-transform: uppercase;
+      text-align: right;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--silver);
+      font-size: .7rem;
+      margin-top: 7px;
+    }
+
+    .status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: #aaa;
+      border-radius: 50%;
+    }
+
+    .project-card h3 {
+      font-size: 1.45rem;
+      letter-spacing: -.04em;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: .88rem;
       margin-bottom: 18px;
     }
 
-    .journal-card h3 {
-      font-size: 1.18rem;
-      margin-bottom: 12px;
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 25px;
     }
 
-    .journal-card p {
-      color: var(--muted);
-      font-size: .86rem;
-      margin-bottom: 0;
+    .project-tags span {
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      color: var(--silver);
+      font-size: .67rem;
     }
 
-    /* DIGITAL PRESENCE */
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
 
-    .social-list {
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .78rem;
+      color: var(--white);
+    }
+
+    .text-link span {
+      transition: transform var(--ease);
+    }
+
+    .text-link:hover span {
+      transform: translate(3px, -2px);
+    }
+
+    .project-card[hidden] {
+      display: none;
+    }
+
+    .project-footnote {
+      margin-top: 24px;
+      color: var(--dim);
+      font-size: .78rem;
+    }
+
+    /* Tech stack */
+
+    .tech-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .tech-card {
+      min-height: 150px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 22px;
+      transition: background var(--ease), border-color var(--ease);
+    }
+
+    .tech-card:hover {
+      background: var(--panel-hover);
+      border-color: var(--border-strong);
+    }
+
+    .tech-initial {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      background: #202020;
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-size: .8rem;
+      font-weight: 800;
+      margin-bottom: 17px;
+    }
+
+    .tech-card h3 {
+      font-size: .98rem;
+      margin-bottom: 5px;
+    }
+
+    .tech-card p {
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    .skills-note {
+      border-top: 1px solid var(--border);
+      margin-top: 25px;
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    /* Principles */
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .principle {
+      border-top: 1px solid var(--border-strong);
+      padding: 22px 5px 0;
+    }
+
+    .principle span {
+      color: var(--dim);
+      font-size: .73rem;
+      letter-spacing: .1em;
+    }
+
+    .principle h3 {
+      margin: 12px 0 8px;
+      font-size: 1.12rem;
+    }
+
+    .principle p {
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    /* Sports and activities */
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+    }
+
+    .activity-card {
+      border: 1px solid var(--border);
+      padding: 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--panel);
+    }
+
+    .activity-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border-strong);
+      font-size: .75rem;
+      color: var(--white);
+    }
+
+    .activity-card h3 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .activity-card p {
+      font-size: .81rem;
+      color: var(--muted);
+    }
+
+    /* Beyond technology */
+
+    .beyond-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .beyond-card {
+      min-height: 265px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.045), transparent 65%),
+        var(--panel);
+    }
+
+    .beyond-card .beyond-label {
+      color: var(--dim);
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .beyond-card h3 {
+      font-size: 1.65rem;
+      letter-spacing: -.045em;
+      margin: 25px 0 10px;
+    }
+
+    .beyond-card p {
+      color: var(--muted);
+      font-size: .87rem;
+    }
+
+    .motorsport-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .motorsport-list span {
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      color: var(--silver);
+      font-size: .75rem;
+    }
+
+    /* Journal */
+
+    .journal-list {
+      border-top: 1px solid var(--border);
+    }
+
+    .journal-item {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .journal-number {
+      color: var(--dim);
+      font-size: .8rem;
+    }
+
+    .journal-item h3 {
+      font-size: 1.06rem;
+      margin-bottom: 5px;
+    }
+
+    .journal-item p {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .journal-label {
+      display: inline-block;
+      color: var(--silver);
+      border: 1px solid var(--border);
+      padding: 5px 9px;
+      font-size: .67rem;
+      white-space: nowrap;
+    }
+
+    /* Digital presence */
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
     }
 
     .social-card {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 20px;
-      background: #0c0c0c;
+      gap: 17px;
+      padding: 22px;
       border: 1px solid var(--border);
-      border-radius: 13px;
-      transition: border-color .2s, background .2s;
+      background: var(--panel);
+      transition: background var(--ease), border-color var(--ease);
     }
 
     .social-card:hover {
-      border-color: var(--red-border);
-      background: #111;
+      background: var(--panel-hover);
+      border-color: var(--border-strong);
     }
 
-    .social-card strong {
+    .social-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border-strong);
+      color: var(--white);
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .social-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .social-copy strong {
       display: block;
-      font-size: .9rem;
+      font-size: .94rem;
     }
 
-    .social-card span {
+    .social-copy span {
       display: block;
       color: var(--muted);
       font-size: .76rem;
@@ -1007,110 +1213,130 @@
     }
 
     .social-arrow {
-      color: var(--red-light);
-      font-size: 1.2rem;
+      color: var(--silver);
+      font-size: 1.1rem;
     }
 
-    /* CONTACT */
+    /* Contact */
 
     .contact-box {
       position: relative;
       overflow: hidden;
-      padding: clamp(30px, 6vw, 65px);
-      border: 1px solid var(--red-border);
-      border-radius: 23px;
+      border: 1px solid var(--border-strong);
+      padding: clamp(30px, 6vw, 70px);
       background:
-        radial-gradient(ellipse at 100% 0%, rgba(225,29,72,.13), transparent 48%),
-        linear-gradient(135deg, #111, #080808);
+        radial-gradient(ellipse at 100% 0%, rgba(255,255,255,.09), transparent 45%),
+        #101010;
     }
 
     .contact-box h2 {
-      max-width: 720px;
-      margin-top: 15px;
+      max-width: 800px;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -.065em;
+      margin: 20px 0;
     }
 
     .contact-box p {
-      max-width: 600px;
+      max-width: 580px;
       color: var(--muted);
     }
 
     .contact-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       margin-top: 27px;
     }
 
-    /* FOOTER */
+    /* Footer */
 
     .footer {
-      border-top: 1px solid var(--border);
       padding: 32px 0;
-      background: #030303;
+      border-top: 1px solid var(--border);
     }
 
     .footer-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 20px;
     }
 
-    .footer p {
-      margin: 0;
-      color: var(--dim);
-      font-size: .77rem;
+    .footer-copy {
+      color: var(--muted);
+      font-size: .75rem;
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 17px;
     }
 
     .footer-links a {
-      color: #aaa;
-      font-size: .77rem;
+      color: var(--muted);
+      font-size: .75rem;
     }
 
     .footer-links a:hover {
-      color: white;
+      color: var(--white);
     }
 
     .back-top {
       position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 50;
-      width: 44px;
-      height: 44px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 80;
+      width: 43px;
+      height: 43px;
       display: grid;
       place-items: center;
-      background: var(--red);
-      color: white;
-      border-radius: 11px;
-      box-shadow: 0 5px 25px rgba(0,0,0,.4);
+      border: 1px solid var(--white);
+      background: var(--white);
+      color: #000;
+      cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(8px);
-      transition: .2s;
+      transform: translateY(10px);
+      transition: all var(--ease);
     }
 
-    .back-top.show {
+    .back-top.visible {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
 
-    .no-results {
-      display: none;
-      color: var(--muted);
-      padding: 25px;
-      border: 1px dashed var(--border);
-      border-radius: 12px;
+    /* Entrance animations */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms ease, transform 600ms ease;
     }
 
-    /* RESPONSIVE */
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Responsive layout */
 
     @media (max-width: 1000px) {
       .nav-links {
@@ -1118,118 +1344,128 @@
       }
 
       .nav-links a {
-        font-size: .75rem;
+        font-size: .74rem;
       }
 
       .hero-grid {
         gap: 35px;
       }
 
-      .grid-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .about-grid {
+        gap: 40px;
       }
 
-      .tech-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .hero h1 {
+        font-size: clamp(3.2rem, 7vw, 5.2rem);
       }
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 820px) {
       .section {
-        padding: 75px 0;
+        padding: 80px 0;
       }
 
-      .menu-button {
-        display: block;
+      .menu-toggle {
+        display: inline-flex;
       }
 
-      .nav {
-        min-height: 68px;
+      .nav-cta {
+        display: none;
       }
 
       .nav-links {
-        display: none;
         position: absolute;
-        top: 68px;
         left: 0;
         right: 0;
-        padding: 18px 20px 24px;
-        background: #080808;
-        border-bottom: 1px solid var(--border);
+        top: 100%;
+        display: none;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
+        padding: 10px 24px 20px;
+        background: rgba(8,8,8,.98);
+        border-bottom: 1px solid var(--border);
       }
 
       .nav-links.open {
         display: flex;
       }
 
-      .nav-links a {
-        padding: 12px 5px;
+      .nav-links li a {
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
         font-size: .9rem;
-        border-bottom: 1px solid rgba(255,255,255,.06);
-      }
-
-      .nav-links .nav-cta {
-        margin-top: 12px;
-        text-align: center;
       }
 
       .hero {
         min-height: auto;
-        padding: 65px 0 75px;
-      }
-
-      .hero-grid,
-      .about-grid {
-        grid-template-columns: 1fr;
+        padding: 75px 0 85px;
       }
 
       .hero-grid {
-        gap: 38px;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        justify-self: start;
+        max-width: 360px;
+        margin: 15px auto 15px 0;
       }
 
       .hero h1 {
-        font-size: clamp(3.1rem, 13vw, 5rem);
-      }
-
-      .profile-card {
-        max-width: 430px;
-      }
-
-      .profile-image-wrap {
-        aspect-ratio: 4 / 3.7;
+        font-size: clamp(3.4rem, 10vw, 5.8rem);
       }
 
       .about-grid {
-        gap: 25px;
-      }
-
-      .story-grid,
-      .approach-list {
         grid-template-columns: 1fr;
+        gap: 30px;
       }
 
-      .social-list {
-        grid-template-columns: 1fr;
+      .about-side {
+        position: static;
       }
 
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
+      .tech-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .principles-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 580px) {
       .container {
-        width: calc(100% - 30px);
+        width: min(100% - 32px, var(--max));
       }
 
-      .grid-2,
-      .grid-3,
-      .tech-grid {
-        grid-template-columns: 1fr;
+      .section {
+        padding: 67px 0;
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .brand-copy strong {
+        font-size: .79rem;
+      }
+
+      .brand-copy span {
+        font-size: .58rem;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 13vw, 4.5rem);
+      }
+
+      .hero-description {
+        font-size: .94rem;
       }
 
       .hero-meta {
@@ -1237,1059 +1473,1067 @@
         flex-direction: column;
       }
 
-      .hero h1 {
-        font-size: 3.15rem;
+      .portrait-caption {
+        left: -8px;
       }
 
-      .panel,
-      .project-card,
-      .story-card,
-      .interest-card,
-      .journal-card {
-        padding: 20px;
+      .intro-grid {
+        grid-template-columns: 1fr;
       }
 
-      .button-row .button {
-        flex: 1 1 auto;
+      .intro-item,
+      .intro-item:first-child {
+        border: 0;
+        border-bottom: 1px solid var(--border);
+        padding: 18px 5px;
       }
 
-      .fact-list li {
+      .section-heading h2 {
+        font-size: 2.45rem;
+      }
+
+      .story-row {
+        grid-template-columns: 42px 1fr;
+        gap: 14px;
+        padding: 25px 0;
+      }
+
+      .story-row h3 {
+        font-size: 1.12rem;
+      }
+
+      .quote-panel {
+        padding: 23px;
+      }
+
+      .coolest-grid,
+      .projects-grid,
+      .beyond-grid,
+      .social-grid,
+      .activity-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        padding: 21px;
+      }
+
+      .project-toolbar {
+        align-items: flex-start;
+      }
+
+      .filter-list {
+        gap: 6px;
+      }
+
+      .filter-button {
+        padding: 7px 10px;
+        font-size: .72rem;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr 1fr;
         gap: 9px;
       }
 
-      .fact-list li span:first-child {
-        width: 88px;
+      .tech-card {
+        min-height: 135px;
+        padding: 15px;
       }
 
-      .contact-links .button {
-        width: 100%;
+      .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
       }
-    }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
+      .journal-item {
+        grid-template-columns: 35px 1fr;
+        gap: 12px;
+      }
+
+      .journal-label {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      .contact-box {
+        padding: 27px 21px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .button {
+        padding: 11px 14px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="topline"></div>
-
   <header class="header">
     <nav class="nav container" aria-label="Main navigation">
       <a class="brand" href="#home" aria-label="Norizkandar home">
         <span class="brand-mark">N.</span>
-        <span class="brand-name">
-          NORIZKANDAR
-          <span class="brand-sub">Developer & Digital Creator</span>
+        <span class="brand-copy">
+          <strong>MOHAMAD NORIZKANDAR</strong>
+          <span>Developer in progress</span>
         </span>
       </a>
 
-      <button
-        class="menu-button"
-        id="menuButton"
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation menu"
         aria-expanded="false"
-        aria-controls="navLinks"
-        type="button"
-      >
-        Menu
+        aria-controls="navLinks">
+        Menu ☰
       </button>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#story">My Story</a>
-        <a href="#projects">Projects</a>
-        <a href="#technology">Technology</a>
-        <a href="#journey">Journey</a>
-        <a href="#journal">Journal</a>
-        <a class="nav-cta" href="#contact">Get in touch ↗</a>
-      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#story">My Story</a></li>
+        <li><a href="#school">School</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#tech">Tech Stack</a></li>
+        <li><a href="#journal">Journal</a></li>
+      </ul>
+
+      <a class="nav-cta" href="#contact">Get in touch ↗</a>
     </nav>
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- 01: HERO -->
     <section class="hero" id="home">
       <div class="container hero-grid">
-        <div>
-          <div class="availability">
+        <div class="reveal">
+          <div class="hero-label">
             <span class="availability-dot"></span>
-            Learning, building and improving
+            PERSONAL PORTFOLIO / 2026
           </div>
-
-          <p class="eyebrow">Personal portfolio / 2026</p>
 
           <h1>
             Mohamad
             <span class="line-two">Norizkandar.</span>
           </h1>
 
-          <p class="hero-copy">
-            A young developer exploring application development,
-            web experiences and digital creativity — turning ideas
-            into projects, learning through experimentation and
-            improving one step at a time.
+          <p class="hero-description">
+            An aspiring app developer and digital creator exploring how
+            ideas become websites, applications and meaningful digital
+            experiences. Learning, building and improving — one project
+            at a time.
           </p>
 
           <div class="button-row">
             <a class="button button-primary" href="#projects">
-              Explore my projects <span aria-hidden="true">↗</span>
+              Explore my projects <span>↗</span>
             </a>
-            <a class="button button-secondary" href="#about">
+            <a class="button button-secondary" href="#story">
               Discover my story
             </a>
           </div>
 
           <div class="hero-meta">
-            <span>Application Development</span>
-            <span>Web Projects</span>
-            <span>Digital Creativity</span>
+            <span>Application development</span>
+            <span>Web experiences</span>
+            <span>Independent learning</span>
           </div>
         </div>
 
-        <div class="profile-card">
-          <div class="profile-image-wrap">
+        <div class="hero-visual reveal">
+          <span class="hero-index">PROFILE / 001</span>
+
+          <div class="portrait-frame">
             <img
               src="profile.jpg"
               alt="Portrait of Mohamad Norizkandar"
               id="profileImage"
+              onerror="this.style.display='none';document.getElementById('portraitFallback').hidden=false;"
             >
 
-            <div class="profile-placeholder" id="profilePlaceholder" hidden>
-              <strong>N.</strong>
-              <span>Add your profile photo as profile.jpg</span>
+            <div class="portrait-placeholder" id="portraitFallback" hidden>
+              <div>
+                <strong>N.</strong>
+                <span>NORIZKANDAR</span>
+              </div>
             </div>
           </div>
 
-          <div class="profile-caption">
+          <div class="portrait-caption">
+            <strong>Mohamad Norizkandar</strong>
+            <span>Learning to build what comes next.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-cue">Scroll to explore ↓</div>
+    </section>
+
+    <div class="intro-strip">
+      <div class="container intro-grid">
+        <div class="intro-item">
+          <strong>Learn by building.</strong>
+          <span>Turning curiosity into practical experiments.</span>
+        </div>
+        <div class="intro-item">
+          <strong>Progress over perfection.</strong>
+          <span>Improving through iteration and problem-solving.</span>
+        </div>
+        <div class="intro-item">
+          <strong>Ideas into experiences.</strong>
+          <span>Exploring applications and the web.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02: ABOUT ME -->
+    <section class="section section-border" id="about">
+      <div class="container about-grid">
+        <div class="about-side reveal">
+          <span class="eyebrow">01 / About me</span>
+          <h3>A curious mind with an interest in building digital things.</h3>
+          <p class="muted">
+            I am still learning, experimenting and discovering where
+            technology can take me.
+          </p>
+        </div>
+
+        <div class="about-copy reveal">
+          <p>
+            My name is <strong>Mohamad Norizkandar bin Mohamad Faizal</strong>.
+            I use the name Mohamad Norizkandar across my personal
+            digital presence.
+          </p>
+
+          <p>
+            I am interested in application development, websites and
+            the process of transforming an idea into something people
+            can explore and use. I enjoy learning how digital products
+            are structured, how interfaces work and how different
+            technologies connect.
+          </p>
+
+          <p>
+            My learning journey includes experimenting with JavaScript,
+            React Native, Expo and Supabase, alongside web technologies
+            such as HTML and CSS. My projects are opportunities to
+            practise these skills and understand what it takes to
+            develop a more complete product.
+          </p>
+
+          <p>
+            I do not see a portfolio as a claim that I already know
+            everything. I see it as a record of what I have explored,
+            what I am building and how I am progressing.
+          </p>
+
+          <div class="about-note">
+            <strong>My approach</strong>
+            <p>
+              Stay curious. Learn the fundamentals. Build real projects.
+              Be honest about what works and keep improving what does not.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03: MY STORY -->
+    <section class="section section-border" id="story">
+      <div class="container">
+        <div class="story-intro reveal">
+          <span class="eyebrow">02 / My story</span>
+          <h3>From curiosity to creating digital experiences.</h3>
+          <p>
+            Every developer starts somewhere. My story is not about
+            having everything figured out — it is about discovering
+            technology, learning through experimentation and finding
+            the motivation to keep creating.
+          </p>
+        </div>
+
+        <div class="story-list">
+          <article class="story-row reveal">
+            <div class="story-number">01</div>
             <div>
-              <strong>Mohamad Norizkandar</strong>
-              <span>Developer · Student · Digital Creator</span>
+              <h3>The beginning: curiosity</h3>
+              <p>
+                My journey began with learning and exploring the digital
+                world around me. Over time, I became interested in more
+                than simply using websites and applications. I wanted
+                to understand how they were made and how I could learn
+                to create my own.
+              </p>
             </div>
-            <span class="profile-index">MN / 01</span>
-          </div>
+          </article>
+
+          <article class="story-row reveal">
+            <div class="story-number">02</div>
+            <div>
+              <h3>A suggestion that made me think bigger</h3>
+              <p>
+                During my time at school, my English teacher suggested
+                that I consider joining Coolest Projects. I did not
+                end up participating, but the suggestion stayed with
+                me as an idea worth thinking about: technology could
+                be a way to turn personal ideas into something tangible.
+              </p>
+              <p>
+                That moment became part of the inspiration behind my
+                interest in making projects and exploring software
+                development further.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-row reveal">
+            <div class="story-number">03</div>
+            <div>
+              <h3>Learning through building</h3>
+              <p>
+                Rather than waiting until I knew everything, I began
+                exploring technologies and building projects as a way
+                to learn. I experimented with websites, application
+                concepts, user interfaces and the tools used to develop
+                digital products.
+              </p>
+              <p>
+                Projects such as Eonix Tech Studio, Smart Academy and
+                Smart Car Hub became part of that process. Each project
+                brought different questions, challenges and opportunities
+                to practise.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-row reveal">
+            <div class="story-number">04</div>
+            <div>
+              <h3>Understanding that development takes time</h3>
+              <p>
+                Building software has taught me that an idea and a
+                finished product are not the same thing. A design can
+                look promising while features still need work. A
+                prototype can help explain an idea without being
+                production-ready.
+              </p>
+              <p>
+                I want my portfolio to reflect that honestly. Some
+                projects are experiments or works in progress, and
+                there is still plenty for me to learn.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-row reveal">
+            <div class="story-number">05</div>
+            <div>
+              <h3>Building the next chapter</h3>
+              <p>
+                Today, I continue developing my skills, documenting
+                my work and improving my online portfolio. My goal
+                is to build a stronger foundation in software
+                development, create more useful digital experiences
+                and keep learning from every project I take on.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="quote-panel reveal">
+          <blockquote>
+            “I am not trying to pretend that I know everything.
+            I am building, learning and becoming better with every step.”
+          </blockquote>
+          <p>— Mohamad Norizkandar</p>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
+    <!-- 04: SCHOOL JOURNEY -->
+    <section class="section section-border" id="school">
       <div class="container">
-        <div class="about-grid">
-          <div>
-            <p class="eyebrow">01 / About me</p>
-            <h2>Curiosity first.<br><span class="accent">Build with purpose.</span></h2>
-
-            <p class="about-lead">
-              I am interested in how technology can turn an idea
-              into something people can explore and use.
-            </p>
-          </div>
-
-          <div>
-            <p class="about-copy">
-              My work focuses on learning software development,
-              experimenting with application concepts and building
-              web projects. I enjoy exploring how interfaces,
-              features and connected services fit together.
-            </p>
-
-            <p class="about-copy">
-              I do not see every project as a finished product.
-              Some are prototypes, some are ongoing experiments,
-              and others are opportunities to understand what
-              works, what breaks and what can be improved.
-            </p>
-
-            <p class="about-copy">
-              This portfolio documents that process honestly.
-              It is a growing record of projects, learning,
-              interests and future ideas.
-            </p>
-
-            <ul class="fact-list">
-              <li>
-                <span>Full name</span>
-                <span>Mohamad Norizkandar bin Mohamad Faizal</span>
-              </li>
-              <li>
-                <span>Professional name</span>
-                <span>Mohamad Norizkandar</span>
-              </li>
-              <li>
-                <span>Focus</span>
-                <span>Application and web development</span>
-              </li>
-              <li>
-                <span>Approach</span>
-                <span>Learn, experiment, improve</span>
-              </li>
-              <li>
-                <span>Studio</span>
-                <span>Eonix Tech Studio — personal technology brand</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MY STORY -->
-    <section class="section" id="story">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">02 / My story</p>
-          <h2>From curiosity to <span class="accent">creation.</span></h2>
-          <p class="section-description">
-            A personal learning journey shaped by experimentation,
-            problem-solving and the motivation to make ideas real.
+        <div class="section-heading reveal">
+          <span class="eyebrow">03 / School journey</span>
+          <h2>Every chapter is part of the journey.</h2>
+          <p>
+            My education is an important part of my personal development.
+            Each stage represents a new chapter in learning, growing
+            and exploring my interests.
           </p>
         </div>
 
-        <div class="story-grid">
-          <article class="story-card">
-            <div class="story-number">CHAPTER 01 — THE BEGINNING</div>
-            <h3>Learning by doing</h3>
+        <p class="school-intro reveal">
+          This timeline records the schools and years that form part
+          of my educational journey.
+        </p>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <span class="timeline-date">2019 — 2024</span>
+            <h3>SK Jalan Matang Buluh</h3>
             <p>
-              My interest in technology grew as I explored how
-              websites and applications are designed and built.
-              Instead of only looking at the finished interface,
-              I became curious about the code and logic behind it.
+              My primary school years and the beginning of my formal
+              educational journey.
             </p>
-            <p>
-              Every new experiment gives me a chance to learn
-              something different, whether it is structuring a page,
-              connecting a service or improving a user interface.
-            </p>
+            <span class="timeline-tag">Primary school</span>
           </article>
 
-          <article class="story-card">
-            <div class="story-number">CHAPTER 02 — THE PROCESS</div>
-            <h3>Building through challenges</h3>
+          <article class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <span class="timeline-date">2025 — 2026</span>
+            <h3>SMK Alang Iskandar</h3>
             <p>
-              Working on personal projects has introduced me to
-              the practical side of development: debugging,
-              understanding errors, testing changes and learning
-              how different technologies work together.
+              A stage of secondary education during which my interests
+              and learning journey continued to develop.
             </p>
-            <p>
-              Progress does not always happen in a straight line.
-              I treat mistakes as part of the process and keep
-              refining my approach as my knowledge grows.
-            </p>
+            <span class="timeline-tag">Secondary school</span>
           </article>
 
-          <article class="story-card">
-            <div class="story-number">CHAPTER 03 — THE MOTIVATION</div>
-            <h3>An idea worth exploring</h3>
+          <article class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <span class="timeline-date">Current chapter</span>
+            <h3>SMK Abu Bakar Al-Baqir</h3>
             <p>
-              My English teacher once suggested that I consider
-              joining Coolest Projects. Although I did not end up
-              participating, the suggestion became one of the
-              experiences I associate with taking my interest
-              in technology more seriously.
+              My current school chapter, alongside continuing to learn,
+              explore technology and develop personal projects.
             </p>
-            <p>
-              It remains a reminder that an idea can be a starting
-              point for learning, even when the original opportunity
-              does not become a completed event.
-            </p>
+            <span class="timeline-tag">Current school</span>
           </article>
-
-          <article class="story-card">
-            <div class="story-number">CHAPTER 04 — WHAT COMES NEXT</div>
-            <h3>Keep moving forward</h3>
-            <p>
-              I want to continue developing my skills, understanding
-              software architecture and building projects that are
-              more reliable, useful and thoughtfully designed.
-            </p>
-            <p>
-              My long-term direction is to grow through consistent
-              practice, meaningful projects and a willingness to
-              keep learning.
-            </p>
-          </article>
-        </div>
-
-        <div class="notice">
-          <strong>Coolest Projects note:</strong>
-          This portfolio records the teacher's suggestion only.
-          It does not claim that I registered, participated,
-          presented a project or received an award.
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
+    <!-- 05: COOLEST PROJECTS STORY -->
+    <section class="section section-border" id="coolest-projects">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">03 / Selected work</p>
-          <h2>Projects built from <span class="accent">ideas.</span></h2>
-          <p class="section-description">
-            A collection of web projects and application concepts.
-            Project links and implementation status should be checked
-            before treating any project as production-ready.
+        <div class="section-heading reveal">
+          <span class="eyebrow">04 / An important inspiration</span>
+          <h2>The Coolest Projects story.</h2>
+          <p>
+            Sometimes an opportunity matters even when you do not
+            end up taking part. This is one of the moments that
+            encouraged me to think about what I could create.
           </p>
         </div>
 
-        <div class="filter-row" aria-label="Filter projects">
-          <button class="filter-button active" data-filter="all" type="button">All projects</button>
-          <button class="filter-button" data-filter="web" type="button">Web</button>
-          <button class="filter-button" data-filter="app" type="button">Applications</button>
-          <button class="filter-button" data-filter="brand" type="button">Digital brands</button>
+        <div class="notice reveal">
+          <strong>An honest note</strong>
+          <p>
+            I was encouraged by my English teacher to consider joining
+            Coolest Projects. I did not participate in the event.
+            This section describes the inspiration behind my journey,
+            not participation or an award.
+          </p>
         </div>
 
-        <div class="grid-3" id="projectGrid">
+        <div class="coolest-grid">
+          <article class="info-card reveal">
+            <span class="card-index">01 / THE SUGGESTION</span>
+            <h3>A reason to think beyond the classroom</h3>
+            <p>
+              The suggestion introduced the idea of presenting a
+              technology project. It encouraged me to think about
+              how learning to code could lead to creating something
+              of my own.
+            </p>
+          </article>
 
-          <article class="project-card" data-category="web">
+          <article class="info-card reveal">
+            <span class="card-index">02 / THE CONTINUING INSPIRATION</span>
+            <h3>Creating at my own pace</h3>
+            <p>
+              Although I did not take part, I continued exploring
+              software development through personal projects.
+              My progress comes from learning, practising and
+              improving — not from claiming an achievement I did
+              not receive.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06: PROJECTS -->
+    <section class="section section-border" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">05 / Selected projects</span>
+          <h2>Ideas, experiments and things I am building.</h2>
+          <p>
+            A collection of personal projects and digital experiences.
+            Their status varies: some have live pages, while others
+            are prototypes or continuing experiments.
+          </p>
+        </div>
+
+        <div class="project-toolbar reveal">
+          <div class="project-count" id="projectCount" aria-live="polite">
+            Showing all projects
+          </div>
+
+          <div class="filter-list" aria-label="Filter projects">
+            <button class="filter-button active" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-button" data-filter="web" aria-pressed="false">Web</button>
+            <button class="filter-button" data-filter="app" aria-pressed="false">Applications</button>
+            <button class="filter-button" data-filter="brand" aria-pressed="false">Digital identity</button>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+
+          <article class="project-card reveal" data-category="web brand">
             <div class="project-top">
-              <span class="project-symbol">N.</span>
-              <span class="project-type">Personal / Web</span>
+              <div class="project-symbol">N.</div>
+              <div class="project-category">
+                Personal portfolio
+                <div class="status">Live website</div>
+              </div>
             </div>
             <h3>Personal Portfolio</h3>
             <p>
-              My personal website for presenting projects, technology
-              interests, learning experiences and digital presence.
+              My personal website, created to document my story,
+              development journey, projects and digital presence
+              in one place.
             </p>
-            <div class="tag-list">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">GitHub Pages</span>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>SEO</span>
             </div>
-            <div class="project-actions">
-              <a class="button button-primary" href="https://norizkandar.github.io/norizkandarfaizal.github.io/" target="_blank" rel="noopener noreferrer">Open website ↗</a>
-              <a class="button button-secondary" href="https://github.com/norizkandar/norizkandarfaizal.github.io" target="_blank" rel="noopener noreferrer">Source code</a>
+            <div class="project-links">
+              <a class="text-link" href="https://norizkandar.github.io/norizkandarfaizal.github.io/" target="_blank" rel="noopener noreferrer">Visit website <span>↗</span></a>
+              <a class="text-link" href="https://github.com/norizkandar/norizkandarfaizal.github.io" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
             </div>
           </article>
 
-          <article class="project-card" data-category="brand">
+          <article class="project-card reveal" data-category="web brand">
             <div class="project-top">
-              <span class="project-symbol">EX</span>
-              <span class="project-type">Technology / Brand</span>
+              <div class="project-symbol">E.</div>
+              <div class="project-category">
+                Technology brand
+                <div class="status">Live website</div>
+              </div>
             </div>
             <h3>Eonix Tech Studio</h3>
             <p>
-              A personal technology brand used to organise and present
-              digital projects, experiments and development ideas.
-              It is not represented here as a registered company.
+              A personal technology brand and project hub for exploring
+              digital products, software concepts and development ideas.
+              It is a personal project, not a claim of registered-company status.
             </p>
-            <div class="tag-list">
-              <span class="tag">Web Development</span>
-              <span class="tag">Digital Projects</span>
-              <span class="tag">GitHub Pages</span>
+            <div class="project-tags">
+              <span>Web development</span><span>Digital products</span><span>GitHub Pages</span>
             </div>
-            <div class="project-actions">
-              <a class="button button-primary" href="https://norizkandar.github.io/eonix-tech-studio/" target="_blank" rel="noopener noreferrer">Open website ↗</a>
-              <a class="button button-secondary" href="https://github.com/norizkandar/eonix-tech-studio" target="_blank" rel="noopener noreferrer">Source code</a>
+            <div class="project-links">
+              <a class="text-link" href="https://norizkandar.github.io/eonix-tech-studio/" target="_blank" rel="noopener noreferrer">Visit website <span>↗</span></a>
+              <a class="text-link" href="https://github.com/norizkandar/eonix-tech-studio" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
             </div>
           </article>
 
-          <article class="project-card" data-category="app">
+          <article class="project-card reveal" data-category="app">
             <div class="project-top">
-              <span class="project-symbol">SA</span>
-              <span class="project-type">Education / App</span>
+              <div class="project-symbol">SA</div>
+              <div class="project-category">
+                Education application
+                <div class="status">Prototype / development</div>
+              </div>
             </div>
-            <h3>Smart Academy</h3>
+            <h3>Smart Academy / Smart Tuisyen</h3>
             <p>
-              An educational application concept for students and
-              teachers. Planned and developed areas include classes,
-              learning resources, homework, quizzes and progress.
-              Feature availability may vary.
+              An educational application concept exploring student
+              and teacher experiences, classes, learning tools and
+              online tuition features. Not every proposed feature
+              should be considered fully functional.
             </p>
-            <div class="tag-list">
-              <span class="tag">JavaScript</span>
-              <span class="tag">Supabase</span>
-              <span class="tag">LiveKit</span>
-              <span class="tag">Education</span>
+            <div class="project-tags">
+              <span>Application UI</span><span>Supabase</span><span>LiveKit exploration</span>
             </div>
-            <div class="project-actions">
-              <a class="button button-primary" href="https://norizkandar.github.io/eonix-tech-studio/" target="_blank" rel="noopener noreferrer">View deployment ↗</a>
-              <a class="button button-secondary" href="https://github.com/norizkandar/eonix-tech-studio" target="_blank" rel="noopener noreferrer">Source code</a>
+            <div class="project-links">
+              <a class="text-link" href="https://norizkandar.github.io/eonix-tech-studio/" target="_blank" rel="noopener noreferrer">Project website <span>↗</span></a>
+              <a class="text-link" href="https://github.com/norizkandar/eonix-tech-studio" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
             </div>
-            <p class="project-note">
-              Uses the Eonix Tech Studio deployment; a separate
-              Smart Academy deployment has not been verified.
-            </p>
           </article>
 
-          <article class="project-card" data-category="web">
+          <article class="project-card reveal" data-category="web">
             <div class="project-top">
-              <span class="project-symbol">SC</span>
-              <span class="project-type">Automotive / Web</span>
+              <div class="project-symbol">SC</div>
+              <div class="project-category">
+                Automotive platform
+                <div class="status">Project website</div>
+              </div>
             </div>
             <h3>Smart Car Hub</h3>
             <p>
-              An automotive platform concept exploring a structured
-              digital experience for car-related information and
-              features, with a luxury-inspired visual direction.
+              An automotive web project exploring an all-in-one
+              platform concept with a luxury-inspired visual identity.
             </p>
-            <div class="tag-list">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Automotive</span>
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Automotive</span>
             </div>
-            <div class="project-actions">
-              <a class="button button-primary" href="https://norizkandar.github.io/smart-car-hub/" target="_blank" rel="noopener noreferrer">Open website ↗</a>
-              <a class="button button-secondary" href="https://github.com/norizkandar/smart-car-hub" target="_blank" rel="noopener noreferrer">Source code</a>
+            <div class="project-links">
+              <a class="text-link" href="https://norizkandar.github.io/smart-car-hub/" target="_blank" rel="noopener noreferrer">Visit website <span>↗</span></a>
+              <a class="text-link" href="https://github.com/norizkandar/smart-car-hub" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
             </div>
           </article>
 
-          <article class="project-card" data-category="web">
+          <article class="project-card reveal" data-category="web">
             <div class="project-top">
-              <span class="project-symbol">SF</span>
-              <span class="project-type">Web / Project</span>
+              <div class="project-symbol">S</div>
+              <div class="project-category">
+                Website project
+                <div class="status">Project link</div>
+              </div>
             </div>
-            <h3>Safwan Project</h3>
+            <h3>Safwan</h3>
             <p>
-              A separate project link maintained in my wider
-              collection of web development work.
+              A separate website project created as part of my
+              growing collection of web development work.
             </p>
-            <div class="tag-list">
-              <span class="tag">Web</span>
-              <span class="tag">GitHub Pages</span>
+            <div class="project-tags">
+              <span>Web development</span><span>GitHub Pages</span>
             </div>
-            <div class="project-actions">
-              <a class="button button-primary" href="https://norizkandar.github.io/safwan/" target="_blank" rel="noopener noreferrer">Open website ↗</a>
-              <a class="button button-secondary" href="https://github.com/norizkandar/safwan" target="_blank" rel="noopener noreferrer">Source code</a>
+            <div class="project-links">
+              <a class="text-link" href="https://norizkandar.github.io/safwan/" target="_blank" rel="noopener noreferrer">Visit website <span>↗</span></a>
+              <a class="text-link" href="https://github.com/norizkandar/safwan" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
             </div>
           </article>
 
-          <article class="project-card" data-category="web">
+          <article class="project-card reveal" data-category="web">
             <div class="project-top">
-              <span class="project-symbol">SS</span>
-              <span class="project-type">Web / Project</span>
+              <div class="project-symbol">SS</div>
+              <div class="project-category">
+                Website project
+                <div class="status">Project link</div>
+              </div>
             </div>
-            <h3>Shahrul Syazwan Project</h3>
+            <h3>Shahrul Syazwan</h3>
             <p>
-              A separate project entry included in my web portfolio.
-              Its current content and functionality should be reviewed
-              directly through the live website and source repository.
+              Another individual website project in my portfolio
+              of experiments and digital work.
             </p>
-            <div class="tag-list">
-              <span class="tag">Web</span>
-              <span class="tag">GitHub Pages</span>
+            <div class="project-tags">
+              <span>Web development</span><span>GitHub Pages</span>
             </div>
-            <div class="project-actions">
-              <a class="button button-primary" href="https://norizkandar.github.io/shahrul-syazwan/" target="_blank" rel="noopener noreferrer">Open website ↗</a>
-              <a class="button button-secondary" href="https://github.com/norizkandar/shahrul-syazwan" target="_blank" rel="noopener noreferrer">Source code</a>
+            <div class="project-links">
+              <a class="text-link" href="https://norizkandar.github.io/shahrul-syazwan/" target="_blank" rel="noopener noreferrer">Visit website <span>↗</span></a>
+              <a class="text-link" href="https://github.com/norizkandar/shahrul-syazwan" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
             </div>
           </article>
 
-          <article class="project-card" data-category="web">
+          <article class="project-card reveal" data-category="web brand">
             <div class="project-top">
-              <span class="project-symbol">IZ</span>
-              <span class="project-type">Web / Project</span>
+              <div class="project-symbol">I.</div>
+              <div class="project-category">
+                Website project
+                <div class="status">Project link</div>
+              </div>
             </div>
-            <h3>Izkandar Project</h3>
+            <h3>Izkandar</h3>
             <p>
-              An additional project link in my digital work collection.
-              The live URL is supplied here, while the corresponding
-              source repository still needs confirmation.
+              A separate website project associated with the
+              Izkandar name and my web development experiments.
             </p>
-            <div class="tag-list">
-              <span class="tag">Web</span>
-              <span class="tag">Project Showcase</span>
+            <div class="project-tags">
+              <span>Web development</span><span>GitHub Pages</span>
             </div>
-            <div class="project-actions">
-              <a class="button button-primary" href="https://norizkandar.github.io/izkandar/" target="_blank" rel="noopener noreferrer">Open website ↗</a>
+            <div class="project-links">
+              <a class="text-link" href="https://norizkandar.github.io/izkandar/" target="_blank" rel="noopener noreferrer">Visit website <span>↗</span></a>
+              <a class="text-link" href="https://github.com/norizkandar" target="_blank" rel="noopener noreferrer">GitHub profile <span>↗</span></a>
             </div>
-            <p class="project-note">Repository link not confirmed.</p>
           </article>
 
-          <article class="project-card" data-category="brand">
+          <article class="project-card reveal" data-category="web brand">
             <div class="project-top">
-              <span class="project-symbol">NJ</span>
-              <span class="project-type">Writing / Planned</span>
+              <div class="project-symbol">NJ</div>
+              <div class="project-category">
+                Writing and experiments
+                <div class="status">Planned</div>
+              </div>
             </div>
             <h3>Norizkandar Journal</h3>
             <p>
-              A planned publication space for development notes,
-              project write-ups, lessons learned and reflections
-              about building digital experiences.
+              A planned space for development notes, project
+              documentation, learning reflections and demonstrations.
+              A separate live website is not claimed here.
             </p>
-            <div class="tag-list">
-              <span class="tag">Articles</span>
-              <span class="tag">Learning</span>
-              <span class="tag">Planned</span>
+            <div class="project-tags">
+              <span>Writing</span><span>Documentation</span><span>Future project</span>
             </div>
-            <div class="project-actions">
-              <a class="button button-secondary" href="#journal">Explore article ideas ↓</a>
+            <div class="project-links">
+              <a class="text-link" href="#journal">Explore journal plans <span>↓</span></a>
             </div>
-            <p class="project-note">A live website has not been supplied.</p>
           </article>
 
         </div>
 
-        <div class="no-results" id="noResults">
-          No projects match this filter.
-        </div>
-
-        <div class="notice">
-          <strong>Project transparency:</strong>
-          A website link does not guarantee that every feature works.
-          Some entries are concepts or works in progress. Review each
-          live deployment and repository for its current state.
-        </div>
-      </div>
-    </section>
-
-    <!-- TECHNOLOGY -->
-    <section class="section" id="technology">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">04 / Technology</p>
-          <h2>The tools behind <span class="accent">the ideas.</span></h2>
-          <p class="section-description">
-            Technologies I use or explore while learning to create
-            web experiences and application prototypes.
-          </p>
-        </div>
-
-        <div class="tech-grid">
-          <div class="tech-item">
-            <div class="tech-initial">JS</div>
-            <div>
-              <strong>JavaScript</strong>
-              <span>Programming language</span>
-            </div>
-          </div>
-
-          <div class="tech-item">
-            <div class="tech-initial">RN</div>
-            <div>
-              <strong>React Native</strong>
-              <span>Mobile application development</span>
-            </div>
-          </div>
-
-          <div class="tech-item">
-            <div class="tech-initial">EX</div>
-            <div>
-              <strong>Expo</strong>
-              <span>React Native development tools</span>
-            </div>
-          </div>
-
-          <div class="tech-item">
-            <div class="tech-initial">VS</div>
-            <div>
-              <strong>Visual Studio Code</strong>
-              <span>Code editor</span>
-            </div>
-          </div>
-
-          <div class="tech-item">
-            <div class="tech-initial">SB</div>
-            <div>
-              <strong>Supabase</strong>
-              <span>Backend and database services</span>
-            </div>
-          </div>
-
-          <div class="tech-item">
-            <div class="tech-initial">HT</div>
-            <div>
-              <strong>HTML & CSS</strong>
-              <span>Web structure and styling</span>
-            </div>
-          </div>
-
-          <div class="tech-item">
-            <div class="tech-initial">GH</div>
-            <div>
-              <strong>GitHub</strong>
-              <span>Source code and version history</span>
-            </div>
-          </div>
-
-          <div class="tech-item">
-            <div class="tech-initial">GP</div>
-            <div>
-              <strong>GitHub Pages</strong>
-              <span>Static website hosting</span>
-            </div>
-          </div>
-
-          <div class="tech-item">
-            <div class="tech-initial">LK</div>
-            <div>
-              <strong>LiveKit</strong>
-              <span>Real-time communication exploration</span>
-            </div>
-          </div>
-        </div>
-
-        <p class="skill-note">
-          These are technologies I use or explore in my projects.
-          This list does not represent professional certification
-          or equal proficiency across every tool.
+        <p class="project-footnote">
+          Project descriptions reflect their intended purpose. Features,
+          deployment status and functionality can change as development
+          continues. Check each linked project for its current state.
         </p>
       </div>
     </section>
 
-    <!-- DEVELOPMENT APPROACH -->
-    <section class="section" id="approach">
+    <!-- 07: TECH STACK -->
+    <section class="section section-border" id="tech">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">05 / Working principles</p>
-          <h2>How I approach <span class="accent">development.</span></h2>
-          <p class="section-description">
-            The principles I want to keep improving as I build
-            and learn.
-          </p>
-        </div>
-
-        <div class="approach-list">
-          <article class="approach-item">
-            <h3>01. Understand the problem</h3>
-            <p>
-              Start with the purpose of a feature before adding
-              complexity to the interface.
-            </p>
-          </article>
-
-          <article class="approach-item">
-            <h3>02. Build in steps</h3>
-            <p>
-              Break a large idea into smaller tasks that are
-              easier to implement, test and understand.
-            </p>
-          </article>
-
-          <article class="approach-item">
-            <h3>03. Test honestly</h3>
-            <p>
-              Distinguish between a working feature, a prototype
-              and something that still needs development.
-            </p>
-          </article>
-
-          <article class="approach-item">
-            <h3>04. Keep learning</h3>
-            <p>
-              Use errors and feedback as opportunities to
-              understand the technology more deeply.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- JOURNEY -->
-    <section class="section" id="journey">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">06 / Development journey</p>
-          <h2>A journey still <span class="accent">in progress.</span></h2>
-          <p class="section-description">
-            A general overview of my development journey.
-            Dates and milestones are only included where known;
-            no awards or achievements are assumed.
-          </p>
-        </div>
-
-        <div class="timeline">
-          <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div class="timeline-date">FOUNDATIONS</div>
-            <h3>Exploring technology</h3>
-            <p>
-              Began exploring programming and the way websites
-              and applications are made, building understanding
-              through practice and experimentation.
-            </p>
-          </article>
-
-          <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div class="timeline-date">PROJECT DEVELOPMENT</div>
-            <h3>Building personal projects</h3>
-            <p>
-              Started developing website ideas and application
-              prototypes, learning about interface design,
-              code structure and debugging.
-            </p>
-          </article>
-
-          <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div class="timeline-date">APPLICATION EXPLORATION</div>
-            <h3>Smart Academy</h3>
-            <p>
-              Explored an educational application concept involving
-              students, teachers, learning resources and class-related
-              features. Some areas may remain prototypes or incomplete.
-            </p>
-          </article>
-
-          <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div class="timeline-date">CURRENT DIRECTION</div>
-            <h3>Improving the portfolio and project ecosystem</h3>
-            <p>
-              Continuing to refine personal websites, organise
-              project links, improve technical understanding and
-              develop a more consistent digital identity.
-            </p>
-          </article>
-        </div>
-
-        <div class="notice">
-          This timeline describes the general learning journey.
-          It is not a record of awards, official competition entries
-          or independently verified milestones.
-        </div>
-      </div>
-    </section>
-
-    <!-- SCHOOL JOURNEY: HIDDEN BY DEFAULT -->
-    <section class="section" id="school">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">07 / Education</p>
-          <h2>Learning beyond <span class="accent">the screen.</span></h2>
-          <p class="section-description">
-            Education is part of my wider learning journey.
-            Detailed school information is hidden by default
-            to help protect personal privacy.
-          </p>
-        </div>
-
-        <div class="privacy-panel">
-          <h3>School journey</h3>
+        <div class="section-heading reveal">
+          <span class="eyebrow">06 / Tech stack</span>
+          <h2>The tools behind my learning journey.</h2>
           <p>
-            The detailed school timeline is optional. Consider
-            whether you want school names and years visible on a
-            public website before enabling this section.
+            Technologies I have explored or used while learning
+            to develop applications and websites. This list represents
+            my learning journey, not a claim of expert-level proficiency.
           </p>
-          <button
-            class="privacy-toggle"
-            type="button"
-            data-toggle="schoolDetails"
-            aria-expanded="false"
-          >
-            Show school details
-          </button>
+        </div>
 
-          <div class="privacy-content" id="schoolDetails">
-            <article class="panel">
-              <h3>SK Jalan Matang Buluh</h3>
-              <p class="small">2019–2024</p>
-              <p class="muted">Primary school timeline.</p>
-            </article>
+        <div class="tech-grid">
+          <article class="tech-card reveal">
+            <div class="tech-initial">JS</div>
+            <h3>JavaScript</h3>
+            <p>The programming language I use to explore interactive experiences.</p>
+          </article>
 
-            <article class="panel">
-              <h3>SMK Alang Iskandar</h3>
-              <p class="small">2025–2026</p>
-              <p class="muted">Secondary school timeline.</p>
-            </article>
+          <article class="tech-card reveal">
+            <div class="tech-initial">RN</div>
+            <h3>React Native</h3>
+            <p>Exploring mobile application development.</p>
+          </article>
 
-            <article class="panel">
-              <h3>SMK Abu Bakar Al-Baqir</h3>
-              <p class="small">Current school information supplied for 2026</p>
-              <p class="muted">
-                The exact start date has not been confirmed here.
-              </p>
-            </article>
+          <article class="tech-card reveal">
+            <div class="tech-initial">EX</div>
+            <h3>Expo</h3>
+            <p>A development platform used in my React Native learning.</p>
+          </article>
 
-            <p class="privacy-warning">
-              Privacy reminder: hidden sections remain in the HTML
-              source and can still be found by someone inspecting
-              the page. Remove details from the code entirely if
-              you do not want them published.
+          <article class="tech-card reveal">
+            <div class="tech-initial">SB</div>
+            <h3>Supabase</h3>
+            <p>Exploring backend services and database-connected features.</p>
+          </article>
+
+          <article class="tech-card reveal">
+            <div class="tech-initial">HT</div>
+            <h3>HTML</h3>
+            <p>Structuring web pages and content.</p>
+          </article>
+
+          <article class="tech-card reveal">
+            <div class="tech-initial">CS</div>
+            <h3>CSS</h3>
+            <p>Styling responsive layouts and visual interfaces.</p>
+          </article>
+
+          <article class="tech-card reveal">
+            <div class="tech-initial">VS</div>
+            <h3>Visual Studio Code</h3>
+            <p>My code editor for working on development projects.</p>
+          </article>
+
+          <article class="tech-card reveal">
+            <div class="tech-initial">GH</div>
+            <h3>GitHub</h3>
+            <p>Hosting repositories and publishing websites with GitHub Pages.</p>
+          </article>
+
+          <article class="tech-card reveal">
+            <div class="tech-initial">LK</div>
+            <h3>LiveKit</h3>
+            <p>Technology explored for real-time communication features.</p>
+          </article>
+        </div>
+
+        <p class="skills-note reveal">
+          My technology stack may change as I learn new tools and
+          gain more experience. I aim to describe my skills accurately
+          and keep improving through practical work.
+        </p>
+      </div>
+    </section>
+
+    <!-- 08: DEVELOPMENT PRINCIPLES -->
+    <section class="section section-border" id="principles">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">07 / How I work</span>
+          <h2>Principles behind the process.</h2>
+        </div>
+
+        <div class="principles-grid">
+          <article class="principle reveal">
+            <span>01 / CURIOSITY</span>
+            <h3>Ask how things work.</h3>
+            <p>
+              Understand the problem before deciding how to build
+              a solution.
             </p>
-          </div>
+          </article>
+
+          <article class="principle reveal">
+            <span>02 / EXPERIMENTATION</span>
+            <h3>Learn by doing.</h3>
+            <p>
+              Use projects to practise ideas, discover mistakes
+              and build understanding.
+            </p>
+          </article>
+
+          <article class="principle reveal">
+            <span>03 / HONESTY</span>
+            <h3>Show the real progress.</h3>
+            <p>
+              Distinguish working features from prototypes and
+              ideas that still need development.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- SPORTS: HIDDEN BY DEFAULT -->
-    <section class="section" id="sports">
+    <!-- 09: SPORTS AND ACTIVITIES -->
+    <section class="section section-border" id="activities">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">08 / Sports & activities</p>
-          <h2>Beyond <span class="accent">technology.</span></h2>
-          <p class="section-description">
-            Interests outside coding can also be part of a
-            personal journey. Specific competition results are
-            not claimed without confirmed information.
-          </p>
-        </div>
-
-        <div class="privacy-panel">
-          <h3>Sports and co-curricular interests</h3>
+        <div class="section-heading reveal">
+          <span class="eyebrow">08 / Sports & activities</span>
+          <h2>Interests beyond the screen.</h2>
           <p>
-            This section is hidden by default. You can choose
-            to display it, but review the personal details first.
-          </p>
-
-          <button
-            class="privacy-toggle"
-            type="button"
-            data-toggle="sportsDetails"
-            aria-expanded="false"
-          >
-            Show sports and activities
-          </button>
-
-          <div class="privacy-content" id="sportsDetails">
-            <div class="grid-2">
-              <article class="panel">
-                <div class="icon-box">AR</div>
-                <h3>Archery</h3>
-                <p class="muted">
-                  A sports interest associated with focus,
-                  patience and consistent practice.
-                </p>
-              </article>
-
-              <article class="panel">
-                <div class="icon-box">FB</div>
-                <h3>Football</h3>
-                <p class="muted">
-                  A team sport that values cooperation,
-                  communication and discipline.
-                </p>
-              </article>
-
-              <article class="panel">
-                <div class="icon-box">TB</div>
-                <h3>Ten-pin bowling</h3>
-                <p class="muted">
-                  A sport that combines concentration,
-                  technique and consistency.
-                </p>
-              </article>
-
-              <article class="panel">
-                <div class="icon-box">AT</div>
-                <h3>Athletics</h3>
-                <p class="muted">
-                  An area of sporting interest and physical activity.
-                </p>
-              </article>
-
-              <article class="panel">
-                <div class="icon-box">YK</div>
-                <h3>Rumah Kuning</h3>
-                <p class="muted">
-                  A school house affiliation supplied for this
-                  portfolio; specific participation and results
-                  have not been listed.
-                </p>
-              </article>
-            </div>
-
-            <p class="privacy-warning">
-              No medals, official team representation, competition
-              placements or sports records are claimed here.
-              Add confirmed achievements only if you choose to
-              publish them.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid-2" style="margin-top:20px">
-          <article class="interest-card">
-            <div class="icon-box">DR</div>
-            <h3>Drone photography</h3>
-            <p>
-              I am interested in capturing places and night-time
-              scenes through drone footage. This is a creative
-              interest, not a claim of professional photography work.
-            </p>
-          </article>
-
-          <article class="interest-card">
-            <div class="icon-box">MS</div>
-            <h3>Motorsport</h3>
-            <p>
-              Motorsport is another interest: Mercedes in Formula 1,
-              Red Bull in GT3 and Ferrari in WEC.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- JOURNAL -->
-    <section class="section" id="journal">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">09 / Journal</p>
-          <h2>Ideas worth <span class="accent">documenting.</span></h2>
-          <p class="section-description">
-            Future article topics for Norizkandar Journal.
-            These are planned topics, not published articles.
+            Technology is one part of my life. Sports and other
+            activities are also part of my interests and experiences.
           </p>
         </div>
 
-        <div class="grid-3">
-          <article class="journal-card">
-            <div class="journal-label">Planned article / 01</div>
-            <h3>My Programming Journey</h3>
-            <p>
-              Notes about learning to code, overcoming development
-              challenges and making progress through practice.
-            </p>
-          </article>
-
-          <article class="journal-card">
-            <div class="journal-label">Planned article / 02</div>
-            <h3>Building Smart Academy</h3>
-            <p>
-              A development diary about an educational app concept,
-              its goals, experiments and unfinished features.
-            </p>
-          </article>
-
-          <article class="journal-card">
-            <div class="journal-label">Planned article / 03</div>
-            <h3>Learning React Native and Expo</h3>
-            <p>
-              Reflections on mobile application development
-              and the tools used while learning.
-            </p>
-          </article>
-
-          <article class="journal-card">
-            <div class="journal-label">Planned article / 04</div>
-            <h3>Publishing with GitHub Pages</h3>
-            <p>
-              A practical account of organising a repository,
-              publishing a static site and resolving deployment issues.
-            </p>
-          </article>
-
-          <article class="journal-card">
-            <div class="journal-label">Planned article / 05</div>
-            <h3>Learning Through Debugging</h3>
-            <p>
-              Why understanding errors, testing changes and
-              reading code are part of becoming a better developer.
-            </p>
-          </article>
-
-          <article class="journal-card">
-            <div class="journal-label">Planned article / 06</div>
-            <h3>Designing Smart Car Hub</h3>
-            <p>
-              Thoughts about automotive interfaces, visual direction
-              and the process of building a web project.
-            </p>
-          </article>
-        </div>
-
-        <div class="notice">
-          Norizkandar Journal is a planned publication project.
-          Add links to individual articles only after they are
-          published at a confirmed URL.
-        </div>
-      </div>
-    </section>
-
-    <!-- DIGITAL PRESENCE -->
-    <section class="section" id="digital">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">10 / Digital presence</p>
-          <h2>Find me <span class="accent">online.</span></h2>
-          <p class="section-description">
-            The main places connected to my digital identity,
-            projects and professional profile.
-          </p>
-        </div>
-
-        <div class="social-list">
-          <a
-            class="social-card"
-            href="https://github.com/norizkandar"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <div class="activity-grid">
+          <article class="activity-card reveal">
+            <div class="activity-icon">AR</div>
             <div>
-              <strong>GitHub</strong>
-              <span>Projects and source code</span>
+              <h3>Archery</h3>
+              <p>An activity that involves focus, patience and practice.</p>
             </div>
-            <span class="social-arrow" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="activity-card reveal">
+            <div class="activity-icon">FB</div>
+            <div>
+              <h3>Football</h3>
+              <p>A sport I enjoy as part of my wider interests.</p>
+            </div>
+          </article>
+
+          <article class="activity-card reveal">
+            <div class="activity-icon">TP</div>
+            <div>
+              <h3>Ten-pin bowling</h3>
+              <p>Another sport included in my interests.</p>
+            </div>
+          </article>
+
+          <article class="activity-card reveal">
+            <div class="activity-icon">AT</div>
+            <div>
+              <h3>Athletics</h3>
+              <p>A part of my interest in school sports and activities.</p>
+            </div>
+          </article>
+
+          <article class="activity-card reveal">
+            <div class="activity-icon">YK</div>
+            <div>
+              <h3>Rumah Kuning</h3>
+              <p>My school house involvement and activities.</p>
+            </div>
+          </article>
+
+          <article class="activity-card reveal">
+            <div class="activity-icon">+</div>
+            <div>
+              <h3>Personal growth</h3>
+              <p>Continuing to learn, participate and explore new interests.</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="skills-note reveal">
+          This section records interests, not official rankings,
+          medals or sporting achievements.
+        </p>
+      </div>
+    </section>
+
+    <!-- 10: BEYOND TECHNOLOGY -->
+    <section class="section section-border" id="beyond">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">09 / Beyond technology</span>
+          <h2>Other interests that shape my perspective.</h2>
+          <p>
+            Creative exploration and motorsport are part of what
+            I enjoy outside application and web development.
+          </p>
+        </div>
+
+        <div class="beyond-grid">
+          <article class="beyond-card reveal">
+            <span class="beyond-label">Creative exploration</span>
+            <h3>Drone photography & videography</h3>
+            <p>
+              I enjoy exploring aerial perspectives and creating
+              visual content. Drone photography combines technology,
+              planning and creativity in a different way from coding.
+            </p>
+          </article>
+
+          <article class="beyond-card reveal">
+            <span class="beyond-label">Motorsport interests</span>
+            <h3>Different series, different favourites.</h3>
+            <p>
+              Motorsport is another interest I follow, with different
+              favourites across several racing categories.
+            </p>
+            <div class="motorsport-list">
+              <span>F1 · Mercedes</span>
+              <span>GT3 · Red Bull</span>
+              <span>WEC · Ferrari</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11: JOURNAL -->
+    <section class="section section-border" id="journal">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">10 / Norizkandar Journal</span>
+          <h2>A place for ideas, notes and experiments.</h2>
+          <p>
+            Norizkandar Journal is a planned extension of my digital
+            presence. The topics below are ideas for future writing,
+            not published articles.
+          </p>
+        </div>
+
+        <div class="journal-list">
+          <article class="journal-item reveal">
+            <span class="journal-number">01</span>
+            <div>
+              <h3>My journey into application development</h3>
+              <p>Learning experiences, early experiments and lessons along the way.</p>
+            </div>
+            <span class="journal-label">Planned</span>
+          </article>
+
+          <article class="journal-item reveal">
+            <span class="journal-number">02</span>
+            <div>
+              <h3>Building Smart Academy</h3>
+              <p>Documenting the concept, interface and challenges of an education project.</p>
+            </div>
+            <span class="journal-label">Planned</span>
+          </article>
+
+          <article class="journal-item reveal">
+            <span class="journal-number">03</span>
+            <div>
+              <h3>What I learn from building websites</h3>
+              <p>Notes on layouts, responsive design, deployment and iteration.</p>
+            </div>
+            <span class="journal-label">Planned</span>
+          </article>
+
+          <article class="journal-item reveal">
+            <span class="journal-number">04</span>
+            <div>
+              <h3>From an idea to a working prototype</h3>
+              <p>Exploring the difference between a concept, a prototype and a finished product.</p>
+            </div>
+            <span class="journal-label">Planned</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12: DIGITAL PRESENCE -->
+    <section class="section section-border" id="presence">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">11 / Digital presence</span>
+          <h2>Find me across the web.</h2>
+          <p>
+            These links connect my portfolio to my existing public
+            profiles and development work.
+          </p>
+        </div>
+
+        <div class="social-grid">
+          <a class="social-card reveal"
+             href="https://github.com/norizkandar"
+             target="_blank" rel="noopener noreferrer">
+            <span class="social-icon">GH</span>
+            <span class="social-copy">
+              <strong>GitHub</strong>
+              <span>github.com/norizkandar</span>
+            </span>
+            <span class="social-arrow">↗</span>
           </a>
 
-          <a
-            class="social-card"
-            href="https://www.linkedin.com/in/mohamad-norizkandar-bin-mohamad-faizal-undefined-1a5748444/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div>
+          <a class="social-card reveal"
+             href="https://www.linkedin.com/in/mohamad-norizkandar-bin-mohamad-faizal-undefined-1a5748444/"
+             target="_blank" rel="noopener noreferrer">
+            <span class="social-icon">in</span>
+            <span class="social-copy">
               <strong>LinkedIn</strong>
               <span>Professional profile</span>
-            </div>
-            <span class="social-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="social-arrow">↗</span>
           </a>
 
-          <a
-            class="social-card"
-            href="https://www.tiktok.com/@iz_andar"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div>
+          <a class="social-card reveal"
+             href="https://www.tiktok.com/@iz_andar"
+             target="_blank" rel="noopener noreferrer">
+            <span class="social-icon">TK</span>
+            <span class="social-copy">
               <strong>TikTok</strong>
               <span>@iz_andar</span>
-            </div>
-            <span class="social-arrow" aria-hidden="true">↗</span>
+            </span>
+            <span class="social-arrow">↗</span>
+          </a>
+
+          <a class="social-card reveal"
+             href="https://norizkandar.github.io/eonix-tech-studio/"
+             target="_blank" rel="noopener noreferrer">
+            <span class="social-icon">E.</span>
+            <span class="social-copy">
+              <strong>Eonix Tech Studio</strong>
+              <span>Technology projects and experiments</span>
+            </span>
+            <span class="social-arrow">↗</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
+    <!-- 13: CONTACT -->
+    <section class="section section-border" id="contact">
       <div class="container">
-        <div class="contact-box">
-          <p class="eyebrow">11 / Contact & collaboration</p>
-          <h2>Every good idea starts with <span class="accent">a conversation.</span></h2>
+        <div class="contact-box reveal">
+          <span class="eyebrow">12 / Contact</span>
+          <h2>Every good idea starts somewhere.</h2>
           <p>
-            Interested in my projects or want to explore a technology
-            idea? You can find my work and public profiles through
-            the links below.
+            Interested in my projects or want to explore my work?
+            Visit my GitHub profile or connect through my public
+            digital profiles.
           </p>
 
           <div class="contact-links">
-            <a
-              class="button button-primary"
-              href="https://github.com/norizkandar"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Explore GitHub ↗
+            <a class="button button-primary"
+               href="https://github.com/norizkandar"
+               target="_blank" rel="noopener noreferrer">
+              Explore my GitHub ↗
             </a>
-
-            <a
-              class="button button-secondary"
-              href="https://www.linkedin.com/in/mohamad-norizkandar-bin-mohamad-faizal-undefined-1a5748444/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View LinkedIn ↗
-            </a>
-
-            <a
-              class="button button-secondary"
-              href="https://www.tiktok.com/@iz_andar"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit TikTok ↗
+            <a class="button button-secondary"
+               href="https://www.linkedin.com/in/mohamad-norizkandar-bin-mohamad-faizal-undefined-1a5748444/"
+               target="_blank" rel="noopener noreferrer">
+              Connect on LinkedIn ↗
             </a>
           </div>
         </div>
@@ -2300,129 +2544,163 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
-      <div>
-        <p><strong style="color:#eee">MOHAMAD NORIZKANDAR</strong></p>
-        <p>Developer & Digital Creator</p>
-      </div>
+      <p class="footer-copy">
+        © <span id="currentYear"></span>
+        Mohamad Norizkandar bin Mohamad Faizal.
+        Built with curiosity.
+      </p>
 
       <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#digital">Digital presence</a>
-        <a href="#contact">Contact</a>
+        <a href="#home">Back to top ↑</a>
+        <a href="https://github.com/norizkandar" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.tiktok.com/@iz_andar" target="_blank" rel="noopener noreferrer">TikTok</a>
       </div>
-
-      <p>© <span id="currentYear">2026</span> Mohamad Norizkandar.</p>
     </div>
   </footer>
 
-  <a href="#home" class="back-top" id="backTop" aria-label="Back to top">↑</a>
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 
   <script>
     "use strict";
-
-    // Mobile navigation
-    const menuButton = document.getElementById("menuButton");
-    const navLinks = document.getElementById("navLinks");
-
-    menuButton.addEventListener("click", function () {
-      const isOpen = navLinks.classList.toggle("open");
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.textContent = isOpen ? "Close" : "Menu";
-    });
-
-    navLinks.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navLinks.classList.remove("open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.textContent = "Menu";
-      });
-    });
-
-    // Profile photo fallback
-    const profileImage = document.getElementById("profileImage");
-    const profilePlaceholder = document.getElementById("profilePlaceholder");
-
-    function showProfileFallback() {
-      profileImage.hidden = true;
-      profilePlaceholder.hidden = false;
-    }
-
-    profileImage.addEventListener("error", showProfileFallback);
-
-    if (profileImage.complete && profileImage.naturalWidth === 0) {
-      showProfileFallback();
-    }
-
-    // Project category filtering
-    const filterButtons = document.querySelectorAll("[data-filter]");
-    const projectCards = document.querySelectorAll(".project-card");
-    const noResults = document.getElementById("noResults");
-
-    filterButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        const filter = button.dataset.filter;
-        let visibleCount = 0;
-
-        filterButtons.forEach(function (item) {
-          item.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        projectCards.forEach(function (card) {
-          const matches =
-            filter === "all" || card.dataset.category === filter;
-
-          card.hidden = !matches;
-
-          if (matches) {
-            visibleCount += 1;
-          }
-        });
-
-        noResults.style.display = visibleCount ? "none" : "block";
-      });
-    });
-
-    // Optional school and sports sections
-    // These details are hidden by default. Hiding with JavaScript
-    // does not remove the information from the page source.
-    document.querySelectorAll("[data-toggle]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        const targetId = button.dataset.toggle;
-        const target = document.getElementById(targetId);
-
-        if (!target) return;
-
-        const isVisible = target.classList.toggle("visible");
-
-        button.setAttribute("aria-expanded", String(isVisible));
-
-        if (targetId === "schoolDetails") {
-          button.textContent = isVisible
-            ? "Hide school details"
-            : "Show school details";
-        }
-
-        if (targetId === "sportsDetails") {
-          button.textContent = isVisible
-            ? "Hide sports and activities"
-            : "Show sports and activities";
-        }
-      });
-    });
 
     // Current year
     document.getElementById("currentYear").textContent =
       new Date().getFullYear();
 
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuToggle.textContent = isOpen ? "Close ✕" : "Menu ☰";
+    });
+
+    // Close mobile menu after choosing a section
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "Menu ☰";
+      });
+    });
+
+    // Project category filters
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const projectCards = document.querySelectorAll(".project-card");
+    const projectCount = document.getElementById("projectCount");
+
+    function filterProjects(filter) {
+      let visibleCount = 0;
+
+      projectCards.forEach((card) => {
+        const categories = (card.dataset.category || "").split(/\s+/);
+        const visible = filter === "all" || categories.includes(filter);
+
+        card.hidden = !visible;
+
+        if (visible) {
+          visibleCount += 1;
+        }
+      });
+
+      projectCount.textContent =
+        `Showing ${visibleCount} project${visibleCount === 1 ? "" : "s"}`;
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach((item) => {
+          item.classList.remove("active");
+          item.setAttribute("aria-pressed", "false");
+        });
+
+        button.classList.add("active");
+        button.setAttribute("aria-pressed", "true");
+
+        filterProjects(button.dataset.filter);
+      });
+    });
+
+    filterProjects("all");
+
+    // Reveal sections as they enter the viewport
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+
+      revealElements.forEach((element) => {
+        revealObserver.observe(element);
+      });
+    } else {
+      revealElements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+    }
+
     // Back-to-top button
     const backTop = document.getElementById("backTop");
 
-    window.addEventListener("scroll", function () {
-      backTop.classList.toggle("show", window.scrollY > 450);
-    }, { passive: true });
+    function updateBackTop() {
+      backTop.classList.toggle("visible", window.scrollY > 500);
+    }
+
+    window.addEventListener("scroll", updateBackTop, { passive: true });
+    updateBackTop();
+
+    backTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth"
+      });
+    });
+
+    // Highlight the current navigation section
+    const sections = document.querySelectorAll("main section[id]");
+    const sectionLinks = navLinks.querySelectorAll("a[href^='#']");
+
+    if ("IntersectionObserver" in window) {
+      const activeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            sectionLinks.forEach((link) => {
+              const matches = link.getAttribute("href") ===
+                `#${entry.target.id}`;
+
+              link.classList.toggle("active", matches);
+            });
+          });
+        },
+        {
+          rootMargin: "-25% 0px -60% 0px",
+          threshold: 0
+        }
+      );
+
+      sections.forEach((section) => activeObserver.observe(section));
+    }
   </script>
 </body>
 </html>

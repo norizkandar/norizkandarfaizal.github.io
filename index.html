@@ -1,2732 +1,2675 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="google-site-verification" content="v5mDBIUS65HTOal5Eomv26ZHuoqDJNgRkTEBId_ix-A">
-
-<title>Mohamad Norizkandar | Owner of eonix tech studio</title>
-
-<meta name="description"
-content="Norizkandar-creative App developer and programmer building modern digital experiences.">
-
-<h1>Norizkandar</h1>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
-
-:root{
-    --bg:#02030a;
-    --blue:#00e5ff;
-    --green:#00ff9d;
-    --purple:#7657ff;
-    --white:#f5f7ff;
-    --muted:#8c96aa;
-    --glass:rgba(7,11,25,.58);
-}
-
-body{
-    background:#02030a;
-    color:var(--white);
-    font-family:Arial,Helvetica,sans-serif;
-    overflow-x:hidden;
-}
-
-/* =====================================================
-   GALAXY CANVAS
-===================================================== */
-
-#spaceCanvas{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    z-index:-20;
-    pointer-events:none;
-}
-
-.space-overlay{
-    position:fixed;
-    inset:0;
-    z-index:-19;
-    pointer-events:none;
-    background:
-        radial-gradient(circle at 50% 50%,transparent 0%,rgba(2,3,10,.1) 45%,rgba(2,3,10,.72) 100%);
-}
-
-.nebula{
-    position:fixed;
-    border-radius:50%;
-    filter:blur(100px);
-    opacity:.15;
-    z-index:-18;
-    pointer-events:none;
-    mix-blend-mode:screen;
-}
-
-.nebula.a{
-    width:600px;
-    height:300px;
-    background:#004cff;
-    top:-100px;
-    left:-200px;
-    transform:rotate(-25deg);
-    animation:nebulaA 14s ease-in-out infinite alternate;
-}
-
-.nebula.b{
-    width:650px;
-    height:350px;
-    background:#00e5ff;
-    right:-250px;
-    top:30%;
-    transform:rotate(25deg);
-    animation:nebulaB 17s ease-in-out infinite alternate;
-}
-
-.nebula.c{
-    width:700px;
-    height:300px;
-    background:#00ff9d;
-    bottom:-180px;
-    left:25%;
-    animation:nebulaC 20s ease-in-out infinite alternate;
-}
-
-@keyframes nebulaA{
-    to{transform:translate(90px,60px) rotate(-10deg)}
-}
-
-@keyframes nebulaB{
-    to{transform:translate(-80px,50px) rotate(10deg)}
-}
-
-@keyframes nebulaC{
-    to{transform:translate(60px,-50px)}
-}
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-#loader{
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    background:#010208;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    transition:opacity 1s ease,visibility 1s ease;
-}
-
-#loader.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.loader-stars{
-    position:absolute;
-    inset:-100%;
-    background-image:
-        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 2px),
-        radial-gradient(circle,rgba(0,229,255,.6) 1px,transparent 2px);
-    background-size:100px 100px,180px 180px;
-    animation:loaderStarMove 45s linear infinite;
-}
-
-@keyframes loaderStarMove{
-    to{
-        transform:translate(-300px,-450px);
-    }
-}
-
-.loader-content{
-    width:min(560px,86%);
-    position:relative;
-}
-
-.loader-small{
-    color:var(--blue);
-    font-family:monospace;
-    font-size:11px;
-    letter-spacing:5px;
-    margin-bottom:22px;
-}
-
-.loader-title{
-    font-size:clamp(45px,10vw,90px);
-    font-weight:900;
-    letter-spacing:-5px;
-    text-shadow:
-        0 0 20px rgba(0,229,255,.2),
-        0 0 60px rgba(0,229,255,.08);
-}
-
-.loader-status{
-    color:var(--muted);
-    margin-top:15px;
-    font-family:monospace;
-    font-size:11px;
-    letter-spacing:2px;
-}
-
-.loader-bar{
-    height:4px;
-    background:#101522;
-    border-radius:10px;
-    margin-top:35px;
-    overflow:hidden;
-}
-
-.loader-fill{
-    width:0%;
-    height:100%;
-    background:linear-gradient(90deg,var(--blue),var(--green));
-    box-shadow:0 0 25px var(--blue);
-}
-
-.loader-percent{
-    color:var(--green);
-    margin-top:13px;
-    font-family:monospace;
-    font-size:12px;
-}
-
-/* =====================================================
-   CURSOR
-===================================================== */
-
-.cursor{
-    width:24px;
-    height:24px;
-    border:1px solid var(--blue);
-    border-radius:50%;
-    position:fixed;
-    pointer-events:none;
-    z-index:9998;
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 20px rgba(0,229,255,.45);
-}
-
-.cursor-dot{
-    width:4px;
-    height:4px;
-    border-radius:50%;
-    background:var(--green);
-    position:fixed;
-    pointer-events:none;
-    z-index:9999;
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 12px var(--green);
-}
-
-/* =====================================================
-   NAV
-===================================================== */
-
-nav{
-    position:fixed;
-    top:18px;
-    left:50%;
-    transform:translateX(-50%);
-    width:min(1120px,92%);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:14px 20px;
-    background:rgba(2,5,14,.62);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
-    border-radius:18px;
-    z-index:2000;
-}
-
-.logo{
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-.logo span{
-    color:var(--blue);
-}
-
-nav ul{
-    display:flex;
-    gap:24px;
-    list-style:none;
-}
-
-nav a{
-    text-decoration:none;
-    color:#8993a7;
-    font-size:10px;
-    transition:.3s;
-}
-
-nav a:hover{
-    color:var(--blue);
-}
-
-.dev-btn{
-    color:var(--blue);
-    border:1px solid rgba(0,229,255,.5);
-    border-radius:9px;
-    padding:8px 12px;
-    font-size:9px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.dev-btn:hover{
-    background:rgba(0,229,255,.08);
-    box-shadow:0 0 20px rgba(0,229,255,.2);
-}
-
-/* =====================================================
-   GENERAL
-===================================================== */
-
-section{
-    width:min(1150px,90%);
-    margin:auto;
-    padding:120px 0;
-}
-
-.section-label{
-    color:var(--blue);
-    font-family:monospace;
-    font-size:10px;
-    letter-spacing:4px;
-    margin-bottom:15px;
-}
-
-.section-title{
-    font-size:clamp(35px,6vw,68px);
-    letter-spacing:-4px;
-    margin-bottom:40px;
-}
-
-.glass{
-    background:var(--glass);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(18px);
-    border-radius:25px;
-}
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-    min-height:100vh;
-    display:grid;
-    grid-template-columns:1.15fr .85fr;
-    align-items:center;
-    gap:70px;
-    padding-top:130px;
-}
-
-.status{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-    padding:9px 14px;
-    border:1px solid rgba(0,255,157,.25);
-    background:rgba(0,255,157,.035);
-    border-radius:30px;
-    color:var(--green);
-    font-size:10px;
-    margin-bottom:25px;
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-    background:var(--green);
-    border-radius:50%;
-    box-shadow:0 0 15px var(--green);
-    animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-    50%{opacity:.3}
-}
-
-.hero h1{
-    font-size:clamp(48px,7vw,92px);
-    line-height:.9;
-    letter-spacing:-6px;
-}
-
-.hero h1 span{
-    color:transparent;
-    -webkit-text-stroke:1px var(--blue);
-    text-shadow:0 0 35px rgba(0,229,255,.15);
-}
-
-.hero-description{
-    max-width:600px;
-    margin-top:25px;
-    color:var(--muted);
-    line-height:1.8;
-    font-size:16px;
-}
-
-.typing{
-    margin-top:20px;
-    color:var(--green);
-    font-family:monospace;
-    font-size:13px;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:13px;
-    flex-wrap:wrap;
-    margin-top:35px;
-}
-
-.btn{
-    color:white;
-    text-decoration:none;
-    padding:14px 22px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.12);
-    font-size:11px;
-    transition:.3s;
-}
-
-.btn.primary{
-    color:#00120c;
-    font-weight:bold;
-    background:linear-gradient(90deg,var(--blue),var(--green));
-}
-
-.btn:hover{
-    transform:translateY(-5px);
-    box-shadow:0 12px 35px rgba(0,229,255,.18);
-}
-
-/* =====================================================
-   ORBIT PROFILE
-===================================================== */
-
-.universe{
-    position:relative;
-    width:440px;
-    height:440px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.universe::before,
-.universe::after{
-    content:"";
-    position:absolute;
-    border:1px solid rgba(0,229,255,.14);
-    border-radius:50%;
-}
-
-.universe::before{
-    width:440px;
-    height:180px;
-    transform:rotate(-25deg);
-}
-
-.universe::after{
-    width:360px;
-    height:150px;
-    transform:rotate(55deg);
-}
-
-.profile-card{
-    width:270px;
-    height:355px;
-    padding:9px;
-    border-radius:28px;
-    background:linear-gradient(135deg,var(--blue),var(--purple),var(--green));
-    box-shadow:
-        0 0 60px rgba(0,229,255,.2),
-        0 0 100px rgba(118,87,255,.1);
-    position:relative;
-    z-index:3;
-    animation:floatProfile 5s ease-in-out infinite;
-}
-
-.profile-card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:20px;
-    display:block;
-}
-
-@keyframes floatProfile{
-    50%{
-        transform:translateY(-12px) rotateY(5deg);
-    }
-}
-
-.orbit{
-    position:absolute;
-    border:1px solid rgba(0,229,255,.2);
-    border-radius:50%;
-    animation:orbitSpin 10s linear infinite;
-}
-
-.orbit.one{
-    width:390px;
-    height:160px;
-    transform:rotate(-25deg);
-}
-
-.orbit.two{
-    width:340px;
-    height:130px;
-    transform:rotate(55deg);
-    animation-duration:14s;
-    animation-direction:reverse;
-}
-
-.orbit-dot{
-    width:10px;
-    height:10px;
-    background:var(--blue);
-    border-radius:50%;
-    position:absolute;
-    top:50%;
-    right:-5px;
-    box-shadow:0 0 20px var(--blue);
-}
-
-@keyframes orbitSpin{
-    to{transform:rotate(335deg)}
-}
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.stat{
-    padding:30px;
-    text-align:center;
-    transition:.4s;
-}
-
-.stat:hover{
-    transform:translateY(-8px);
-    border-color:rgba(0,229,255,.3);
-}
-
-.stat h3{
-    color:var(--blue);
-    font-size:38px;
-}
-
-.stat p{
-    margin-top:8px;
-    color:var(--muted);
-    font-size:9px;
-    letter-spacing:2px;
-}
-
-/* =====================================================
-   ABOUT
-===================================================== */
-
-.about-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-.about-card{
-    padding:30px;
-    transition:.4s;
-}
-
-.about-card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(0,229,255,.25);
-}
-
-.about-card h3{
-    margin-bottom:15px;
-}
-
-.about-card p{
-    color:var(--muted);
-    line-height:1.8;
-    font-size:14px;
-}
-
-/* =====================================================
-   SKILLS
-===================================================== */
-
-.skills{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-.skill{
-    padding:25px;
-}
-
-.skill-top{
-    display:flex;
-    justify-content:space-between;
-    font-size:12px;
-    margin-bottom:12px;
-}
-
-.skill-top span:last-child{
-    color:var(--blue);
-}
-
-.skill-bar{
-    height:7px;
-    background:#101722;
-    border-radius:10px;
-    overflow:hidden;
-}
-
-.skill-fill{
-    width:0;
-    height:100%;
-    background:linear-gradient(90deg,var(--blue),var(--green));
-    transition:2s ease;
-}
-
-/* =====================================================
-   COMMAND CENTER
-===================================================== */
-
-.command{
-    padding:30px;
-    position:relative;
-    overflow:hidden;
-}
-
-.command::before{
-    content:"COMMAND CENTER";
-    position:absolute;
-    right:20px;
-    top:20px;
-    color:rgba(0,229,255,.08);
-    font-size:35px;
-    font-weight:900;
-}
-
-.command-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid rgba(255,255,255,.07);
-    padding-bottom:15px;
-    margin-bottom:20px;
-}
-
-.command-status{
-    color:var(--green);
-    font-family:monospace;
-    font-size:11px;
-}
-
-.command-body{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:12px;
-}
-
-.system-box{
-    padding:18px;
-    background:rgba(255,255,255,.025);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:14px;
-}
-
-.system-box small{
-    display:block;
-    color:var(--muted);
-    font-size:9px;
-    margin-bottom:8px;
-}
-
-.system-box strong{
-    color:var(--blue);
-    font-family:monospace;
-}
-
-/* =====================================================
-   TERMINAL
-===================================================== */
-
-.terminal{
-    background:rgba(0,2,8,.82);
-    padding:25px;
-    border-radius:20px;
-    border:1px solid rgba(0,229,255,.15);
-    font-family:monospace;
-    box-shadow:0 0 50px rgba(0,229,255,.05);
-}
-
-.terminal-head{
-    display:flex;
-    gap:7px;
-    margin-bottom:20px;
-}
-
-.terminal-head i{
-    width:10px;
-    height:10px;
-    background:#273244;
-    border-radius:50%;
-}
-
-.terminal-line{
-    line-height:2;
-    color:#8be9fd;
-    font-size:12px;
-}
-
-.green{
-    color:var(--green);
-}
-
-.muted{
-    color:#687286;
-}
-
-/* =====================================================
-   PROJECT
-===================================================== */
-
-.project{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:35px;
-    padding:32px;
-    align-items:center;
-    transition:.25s;
-}
-
-.project-info h3{
-    font-size:38px;
-    margin-bottom:15px;
-}
-
-.project-info p{
-    color:var(--muted);
-    line-height:1.8;
-    font-size:14px;
-}
-
-.tags{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-top:20px;
-}
-
-.tag{
-    color:var(--blue);
-    border:1px solid rgba(0,229,255,.2);
-    border-radius:8px;
-    padding:7px 10px;
-    font-size:9px;
-}
-
-.phone{
-    width:250px;
-    height:480px;
-    margin:auto;
-    border:7px solid #151b25;
-    border-radius:36px;
-    padding:10px;
-    background:#040810;
-    box-shadow:0 0 60px rgba(0,229,255,.15);
-    transform:rotateY(-7deg);
-    transition:.5s;
-}
-
-.project:hover .phone{
-    transform:rotateY(8deg) translateY(-8px);
-}
-
-.phone-screen{
-    height:100%;
-    padding:20px 14px;
-    border-radius:25px;
-    background:
-        radial-gradient(circle at top right,rgba(0,229,255,.2),transparent 40%),
-        #070c14;
-}
-
-.phone-logo{
-    color:var(--blue);
-    font-weight:bold;
-    font-size:18px;
-}
-
-.phone-small{
-    color:#758094;
-    font-size:9px;
-    margin-top:5px;
-}
-
-.fake-card{
-    padding:15px;
-    margin-top:18px;
-    border-radius:15px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.07);
-}
-
-.fake-card strong{
-    font-size:12px;
-}
-
-.fake-line{
-    height:7px;
-    background:#1b2634;
-    border-radius:10px;
-    margin-top:9px;
-}
-
-/* =====================================================
-   FEATURES
-===================================================== */
-
-.features{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.feature{
-    padding:25px;
-    transition:.4s;
-}
-
-.feature:hover{
-    transform:translateY(-10px) rotateX(3deg);
-    border-color:rgba(0,229,255,.35);
-    box-shadow:0 20px 50px rgba(0,229,255,.08);
-}
-
-.feature-number{
-    color:var(--blue);
-    font-family:monospace;
-    margin-bottom:20px;
-}
-
-.feature h3{
-    margin-bottom:10px;
-}
-
-.feature p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.7;
-}
-
-/* =====================================================
-   NEURAL NETWORK
-===================================================== */
-
-.neural{
-    position:relative;
-    height:360px;
-    border-radius:25px;
-    overflow:hidden;
-    background:rgba(2,5,13,.5);
-    border:1px solid rgba(255,255,255,.07);
-}
-
-.node{
-    position:absolute;
-    width:12px;
-    height:12px;
-    background:var(--blue);
-    border-radius:50%;
-    box-shadow:0 0 20px var(--blue);
-    animation:nodePulse 2s infinite alternate;
-}
-
-.node::after{
-    content:"";
-    position:absolute;
-    width:100px;
-    height:1px;
-    background:linear-gradient(90deg,var(--blue),transparent);
-    transform-origin:left;
-    opacity:.35;
-}
-
-.node:nth-child(1){left:15%;top:25%}
-.node:nth-child(2){left:40%;top:45%}
-.node:nth-child(3){left:70%;top:22%}
-.node:nth-child(4){left:82%;top:65%}
-.node:nth-child(5){left:30%;top:78%}
-.node:nth-child(6){left:58%;top:72%}
-
-@keyframes nodePulse{
-    to{
-        transform:scale(1.6);
-        opacity:.5;
-    }
-}
-
-.neural-title{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    pointer-events:none;
-}
-
-.neural-title h3{
-    font-size:35px;
-}
-
-.neural-title p{
-    color:var(--muted);
-    margin-top:8px;
-    font-size:12px;
-}
-
-/* =====================================================
-   JOURNEY
-===================================================== */
-
-.timeline{
-    border-left:1px solid rgba(0,229,255,.25);
-    margin-left:15px;
-}
-
-.timeline-item{
-    position:relative;
-    padding:0 0 45px 35px;
-}
-
-.timeline-item::before{
-    content:"";
-    position:absolute;
-    left:-5px;
-    top:5px;
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    background:var(--blue);
-    box-shadow:0 0 15px var(--blue);
-}
-
-.timeline-item span{
-    color:var(--green);
-    font-family:monospace;
-    font-size:10px;
-}
-
-.timeline-item h3{
-    margin:8px 0;
-}
-
-.timeline-item p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.7;
-}
-
-/* =====================================================
-   LAB
-===================================================== */
-
-.lab{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.lab-card{
-    min-height:190px;
-    padding:25px;
-    position:relative;
-    overflow:hidden;
-}
-
-.lab-card h3{
-    color:var(--green);
-    margin-bottom:12px;
-}
-
-.lab-card p{
-    color:var(--muted);
-    line-height:1.7;
-    font-size:13px;
-}
-
-.lab-card::after{
-    content:"EXPERIMENT";
-    position:absolute;
-    right:-30px;
-    bottom:15px;
-    transform:rotate(-20deg);
-    color:rgba(255,255,255,.025);
-    font-size:34px;
-    font-weight:900;
-}
-
-/* =====================================================
-   ROADMAP
-===================================================== */
-
-.roadmap{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.road{
-    padding:30px;
-    transition:.4s;
-}
-
-.road:hover{
-    transform:translateY(-8px);
-}
-
-.road-number{
-    color:rgba(0,229,255,.22);
-    font-size:45px;
-    font-weight:900;
-}
-
-.road h3{
-    margin:15px 0;
-}
-
-.road p{
-    color:var(--muted);
-    line-height:1.7;
-    font-size:13px;
-}
-
-/* =====================================================
-   SOCIAL
-===================================================== */
-
-.social{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-.social-card{
-    padding:30px;
-    color:white;
-    text-decoration:none;
-    transition:.4s;
-}
-
-.social-card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(0,229,255,.4);
-}
-
-.social-card span{
-    color:var(--blue);
-    font-family:monospace;
-    font-size:10px;
-    letter-spacing:3px;
-}
-
-.social-card h3{
-    margin-top:10px;
-}
-
-/* =====================================================
-   FINAL
-===================================================== */
-
-.final{
-    min-height:80vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    flex-direction:column;
-}
-
-.final h2{
-    font-size:clamp(50px,10vw,115px);
-    line-height:.85;
-    letter-spacing:-7px;
-}
-
-.final h2 span{
-    color:var(--blue);
-    text-shadow:0 0 40px rgba(0,229,255,.25);
-}
-
-.final p{
-    color:var(--muted);
-    margin-top:25px;
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#4f5a6d;
-    border-top:1px solid rgba(255,255,255,.05);
-    font-size:11px;
-}
-
-/* =====================================================
-   DEV MODE
-===================================================== */
-
-#devPanel{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.97);
-    z-index:9000;
-    display:none;
-    padding:100px 8%;
-    color:var(--green);
-    font-family:monospace;
-}
-
-#devPanel.active{
-    display:block;
-}
-
-.close-dev{
-    position:absolute;
-    right:40px;
-    top:30px;
-    color:var(--blue);
-    cursor:pointer;
-}
-
-/* =====================================================
-   REVEAL
-===================================================== */
-
-.reveal{
-    opacity:0;
-    transform:translateY(45px);
-    transition:1s ease;
-}
-
-.reveal.show{
-    opacity:1;
-    transform:none;
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media(max-width:850px){
-
-    nav ul{
-        display:none;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mohamad Norizkandar bin Mohamad Faizal | Creative App Developer</title>
+  <meta name="description" content="Explore the portfolio, digital projects, app development journey, technology interests and creative work of Mohamad Norizkandar bin Mohamad Faizal.">
+  <meta name="author" content="Mohamad Norizkandar bin Mohamad Faizal">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050812">
+  <link rel="canonical" href="https://norizkandar.github.io/norizkandarfaizal.github.io/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mohamad Norizkandar | Creative App Developer">
+  <meta property="og:description" content="Building ideas into digital experiences. Explore projects, technology and the journey behind them.">
+  <meta property="og:url" content="https://norizkandar.github.io/norizkandarfaizal.github.io/">
+  <meta property="og:site_name" content="Norizkandar Portfolio">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mohamad Norizkandar | Creative App Developer">
+  <meta name="twitter:description" content="A personal portfolio exploring software, digital products and creative technology.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohamad Norizkandar bin Mohamad Faizal",
+    "alternateName": "Norizkandar",
+    "url": "https://norizkandar.github.io/norizkandarfaizal.github.io/",
+    "sameAs": [
+      "https://github.com/norizkandar",
+      "https://www.tiktok.com/@iz_andar"
+    ],
+    "jobTitle": "Creative App Developer",
+    "knowsAbout": [
+      "JavaScript",
+      "React Native",
+      "Expo",
+      "HTML",
+      "CSS",
+      "Supabase",
+      "Application Development",
+      "Web Development",
+      "Digital Product Design"
+    ]
+  }
+  </script>
+
+  <style>
+    /* =====================================================
+       GALAXY REACTOR — PORTFOLIO DESIGN SYSTEM
+       Colours: space black, electric blue, neon green
+       ===================================================== */
+
+    :root {
+      --space: #050812;
+      --space-light: #0a1022;
+      --panel: rgba(11, 20, 42, .72);
+      --panel-strong: rgba(8, 15, 31, .94);
+      --blue: #35a7ff;
+      --blue-bright: #67d5ff;
+      --green: #65ff9a;
+      --green-dark: #13bd75;
+      --white: #f2f7ff;
+      --muted: #a4b2cc;
+      --line: rgba(115, 176, 255, .2);
+      --radius: 22px;
+      --max-width: 1200px;
+      --shadow-blue: 0 0 35px rgba(53, 167, 255, .14);
+      --shadow-green: 0 0 35px rgba(101, 255, 154, .1);
     }
 
-    section{
-        padding:90px 0;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .hero{
-        grid-template-columns:1fr;
-        text-align:center;
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
-    .hero-description{
-        margin-left:auto;
-        margin-right:auto;
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--white);
+      background: var(--space);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
     }
 
-    .hero-buttons{
-        justify-content:center;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 15% 15%, rgba(0, 92, 255, .20), transparent 38%),
+        radial-gradient(ellipse at 83% 28%, rgba(0, 255, 153, .10), transparent 32%),
+        radial-gradient(ellipse at 50% 75%, rgba(68, 35, 190, .17), transparent 42%),
+        linear-gradient(180deg, #030611, #070d1c 45%, #030711);
     }
 
-    .universe{
-        width:330px;
-        height:380px;
+    #galaxy {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -4;
+      pointer-events: none;
     }
 
-    .universe::before{
-        width:330px;
+    .nebula {
+      position: fixed;
+      width: 55vw;
+      height: 55vw;
+      min-width: 350px;
+      min-height: 350px;
+      border-radius: 50%;
+      filter: blur(95px);
+      opacity: .13;
+      z-index: -3;
+      pointer-events: none;
+      animation: nebulaFloat 24s ease-in-out infinite alternate;
     }
 
-    .universe::after{
-        width:280px;
+    .nebula.one {
+      top: -20%;
+      left: -15%;
+      background: #076bff;
     }
 
-    .orbit.one{
-        width:300px;
+    .nebula.two {
+      right: -25%;
+      top: 25%;
+      background: #00ff9d;
+      animation-delay: -9s;
     }
 
-    .orbit.two{
-        width:260px;
+    .nebula.three {
+      bottom: -35%;
+      left: 30%;
+      background: #5b35ff;
+      animation-delay: -15s;
     }
 
-    .profile-card{
-        width:235px;
-        height:315px;
+    @keyframes nebulaFloat {
+      from { transform: translate3d(-2%, 0, 0) scale(1); }
+      to { transform: translate3d(5%, 6%, 0) scale(1.16); }
     }
 
-    .stats{
-        grid-template-columns:1fr 1fr;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .about-grid,
-    .skills,
-    .project,
-    .social{
-        grid-template-columns:1fr;
+    button, input, textarea {
+      font: inherit;
     }
 
-    .features,
-    .lab,
-    .roadmap{
-        grid-template-columns:1fr;
+    button, a {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .command-body{
-        grid-template-columns:1fr;
+    button {
+      color: inherit;
     }
 
-    .cursor,
-    .cursor-dot{
-        display:none;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    .neural{
-        height:280px;
+    ::selection {
+      color: #00150b;
+      background: var(--green);
     }
 
-    .final h2{
-        letter-spacing:-4px;
+    :focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 5px;
     }
-}
-</style>
+
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 15px;
+      z-index: 9999;
+      padding: 12px 18px;
+      color: #00150b;
+      background: var(--green);
+      border-radius: 10px;
+    }
+
+    .skip-link:focus {
+      top: 15px;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 42px));
+      margin-inline: auto;
+    }
+
+    .section {
+      position: relative;
+      padding: 110px 0;
+    }
+
+    .section-heading {
+      max-width: 750px;
+      margin-bottom: 45px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      font-size: .77rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.2;
+      letter-spacing: -.035em;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 7.4vw, 6rem);
+      font-weight: 900;
+    }
+
+    h2 {
+      margin-top: 15px;
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      font-weight: 850;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    .gradient-text {
+      color: var(--blue-bright);
+      background: linear-gradient(100deg, var(--blue-bright), #7d9dff 45%, var(--green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-description {
+      max-width: 690px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .small {
+      font-size: .88rem;
+    }
+
+    .mono {
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    /* HEADER */
+
+    .header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      border-bottom: 1px solid transparent;
+      transition: background .25s, border-color .25s;
+    }
+
+    .header.scrolled {
+      background: rgba(4, 8, 19, .84);
+      border-color: var(--line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: var(--green);
+      font-family: Consolas, monospace;
+      font-size: 1rem;
+      font-weight: 900;
+      border: 1px solid rgba(101, 255, 154, .5);
+      border-radius: 13px;
+      background: rgba(101, 255, 154, .06);
+      box-shadow: var(--shadow-green);
+    }
+
+    .brand-name {
+      display: block;
+      font-size: .96rem;
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+
+    .brand-caption {
+      display: block;
+      color: var(--muted);
+      font-size: .69rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #c4d0e5;
+      font-size: .83rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      color: var(--green) !important;
+      border: 1px solid rgba(101, 255, 154, .45);
+      border-radius: 10px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    /* BUTTONS */
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 13px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255,255,255,.035);
+      color: var(--white);
+      font-weight: 750;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: transform .22s, box-shadow .22s, border-color .22s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--blue);
+      box-shadow: var(--shadow-blue);
+    }
+
+    .btn-primary {
+      color: #00150b;
+      border-color: transparent;
+      background: linear-gradient(100deg, var(--green), #4dd7ff);
+      box-shadow: 0 0 25px rgba(101,255,154,.12);
+    }
+
+    .btn-primary:hover {
+      border-color: transparent;
+      box-shadow: 0 0 35px rgba(101,255,154,.25);
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--blue-bright);
+      font-weight: 750;
+      font-size: .9rem;
+    }
+
+    .text-link:hover {
+      color: var(--green);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 145px 0 90px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      margin-bottom: 24px;
+      color: #c6ffe0;
+      background: rgba(101,255,154,.055);
+      border: 1px solid rgba(101,255,154,.23);
+      border-radius: 100px;
+      font-size: .78rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    .hero h1 {
+      max-width: 790px;
+    }
+
+    .hero-copy {
+      max-width: 630px;
+      margin-top: 23px;
+      color: #b2c0d9;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+    }
+
+    .hero-copy strong {
+      color: var(--white);
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .hero-note-line {
+      width: 42px;
+      height: 1px;
+      background: var(--blue);
+    }
+
+    .orbit-wrap {
+      display: grid;
+      place-items: center;
+      position: relative;
+      min-height: 410px;
+    }
+
+    .orbit {
+      position: absolute;
+      width: min(340px, 80vw);
+      aspect-ratio: 1;
+      border: 1px solid rgba(87,170,255,.22);
+      border-radius: 50%;
+      animation: orbitSpin 35s linear infinite;
+    }
+
+    .orbit::before,
+    .orbit::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(101,255,154,.18);
+      border-radius: 50%;
+    }
+
+    .orbit::before {
+      inset: 26px;
+    }
+
+    .orbit::after {
+      inset: 54px;
+      border-color: rgba(87,170,255,.16);
+    }
+
+    .orbit-dot {
+      position: absolute;
+      top: 16%;
+      right: 17%;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 20px var(--green);
+    }
+
+    @keyframes orbitSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .profile-card {
+      position: relative;
+      z-index: 1;
+      width: min(270px, 72vw);
+      aspect-ratio: .84;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 26px;
+      text-align: center;
+      border: 1px solid rgba(98,180,255,.35);
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(13,29,59,.9), rgba(4,9,23,.9));
+      box-shadow: 0 0 70px rgba(23,114,255,.14), inset 0 0 35px rgba(64,140,255,.05);
+      backdrop-filter: blur(15px);
+    }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 142px;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 2px solid rgba(101,255,154,.65);
+      background: radial-gradient(circle at 30% 20%, #1b5f9a, #071020 72%);
+      color: var(--green);
+      font-family: Consolas, monospace;
+      font-size: 3rem;
+      font-weight: 900;
+      box-shadow: 0 0 35px rgba(101,255,154,.12);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-card h2 {
+      margin: 0;
+      font-size: 1.18rem;
+      letter-spacing: -.02em;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .orbit-label {
+      position: absolute;
+      z-index: 2;
+      padding: 8px 12px;
+      color: var(--blue-bright);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: rgba(5,8,18,.88);
+      font: .72rem Consolas, monospace;
+    }
+
+    .orbit-label.top {
+      top: 28px;
+      right: 0;
+    }
+
+    .orbit-label.bottom {
+      bottom: 28px;
+      left: 0;
+      color: var(--green);
+    }
+
+    /* GLASS PANELS */
+
+    .glass {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(14,27,53,.72), rgba(6,12,27,.73));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+    }
+
+    .about-panel,
+    .principles-panel {
+      padding: 30px;
+    }
+
+    .about-panel p + p {
+      margin-top: 17px;
+    }
+
+    .principle-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .principle {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+    }
+
+    .principle-icon {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 39px;
+      height: 39px;
+      color: var(--green);
+      border: 1px solid rgba(101,255,154,.22);
+      border-radius: 12px;
+      background: rgba(101,255,154,.06);
+      font-size: 1.05rem;
+    }
+
+    .principle p {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* JOURNEY */
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      max-width: 900px;
+      margin-left: 8px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 11px;
+      width: 1px;
+      background: linear-gradient(var(--blue), var(--green), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 43px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 25px;
+      left: 5px;
+      width: 13px;
+      height: 13px;
+      border: 2px solid var(--green);
+      border-radius: 50%;
+      background: var(--space);
+      box-shadow: 0 0 14px rgba(101,255,154,.3);
+    }
+
+    .timeline-card {
+      padding: 23px 25px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(9,17,36,.72);
+    }
+
+    .timeline-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .timeline-date {
+      color: var(--green);
+      font: .79rem Consolas, monospace;
+    }
+
+    .timeline-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    /* EDUCATION */
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .education-card {
+      position: relative;
+      min-height: 225px;
+      overflow: hidden;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(14,29,58,.8), rgba(6,12,26,.85));
+      transition: transform .25s, border-color .25s;
+    }
+
+    .education-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(101,255,154,.45);
+    }
+
+    .education-card::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -45px;
+      width: 125px;
+      height: 125px;
+      border: 1px solid rgba(53,167,255,.18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 18px rgba(53,167,255,.025), 0 0 0 36px rgba(53,167,255,.02);
+    }
+
+    .education-number {
+      color: var(--blue-bright);
+      font: 1rem Consolas, monospace;
+    }
+
+    .education-card h3 {
+      margin-top: 25px;
+      max-width: 260px;
+    }
+
+    .education-year {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 5px 10px;
+      color: var(--green);
+      border: 1px solid rgba(101,255,154,.22);
+      border-radius: 8px;
+      background: rgba(101,255,154,.045);
+      font: .8rem Consolas, monospace;
+    }
+
+    .education-card p {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    /* PROJECTS */
+
+    .project-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 28px;
+    }
+
+    .filter-btn {
+      padding: 9px 15px;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      font-size: .82rem;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: var(--green);
+      border-color: rgba(101,255,154,.48);
+      background: rgba(101,255,154,.07);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(7,14,30,.83);
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(53,167,255,.48);
+      box-shadow: var(--shadow-blue);
+    }
+
+    .project-cover {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 175px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 120%, rgba(101,255,154,.2), transparent 55%),
+        radial-gradient(ellipse at 25% 10%, rgba(53,167,255,.22), transparent 55%),
+        #081126;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-cover::before,
+    .project-cover::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(89,174,255,.19);
+      border-radius: 50%;
+    }
+
+    .project-cover::after {
+      width: 125px;
+      height: 125px;
+      border-color: rgba(101,255,154,.19);
+    }
+
+    .project-symbol {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      border: 1px solid rgba(101,255,154,.38);
+      border-radius: 22px;
+      background: rgba(6,14,29,.78);
+      color: var(--green);
+      font: 800 1.6rem Consolas, monospace;
+      box-shadow: 0 0 28px rgba(101,255,154,.09);
+    }
+
+    .project-content {
+      padding: 22px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 13px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 5px 9px;
+      color: var(--blue-bright);
+      border: 1px solid rgba(53,167,255,.22);
+      border-radius: 7px;
+      background: rgba(53,167,255,.055);
+      font-size: .7rem;
+      font-weight: 750;
+    }
+
+    .project-status {
+      color: var(--muted);
+      font-size: .7rem;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-content > p {
+      min-height: 86px;
+      color: var(--muted);
+      font-size: .87rem;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 16px;
+    }
+
+    .tech-chip {
+      padding: 4px 8px;
+      color: #d1ddf1;
+      border-radius: 6px;
+      background: rgba(255,255,255,.055);
+      font-size: .7rem;
+    }
+
+    .project-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 21px;
+      padding-top: 17px;
+      border-top: 1px solid rgba(115,176,255,.12);
+    }
+
+    .project-actions .text-link {
+      font-size: .82rem;
+    }
+
+    .project-actions .disabled-link {
+      color: #8190a9;
+      font-size: .82rem;
+    }
+
+    .project-card[hidden] {
+      display: none;
+    }
+
+    .project-note {
+      margin-top: 22px;
+      padding: 17px 20px;
+      border-left: 2px solid var(--blue);
+      background: rgba(53,167,255,.045);
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    /* SKILLS */
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .skill-panel {
+      padding: 28px;
+    }
+
+    .skill-panel h3 {
+      margin-bottom: 22px;
+    }
+
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 13px;
+      color: #dce9ff;
+      border: 1px solid rgba(100,158,255,.2);
+      border-radius: 10px;
+      background: rgba(40,85,155,.09);
+      font-size: .85rem;
+      transition: .2s;
+    }
+
+    .skill::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px rgba(101,255,154,.4);
+    }
+
+    .skill:hover {
+      border-color: rgba(101,255,154,.45);
+      transform: translateY(-2px);
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .workflow-step {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(9,17,35,.64);
+    }
+
+    .workflow-step span {
+      color: var(--green);
+      font: .82rem Consolas, monospace;
+    }
+
+    .workflow-step h4 {
+      margin-top: 14px;
+      font-size: .98rem;
+    }
+
+    .workflow-step p {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: .81rem;
+    }
+
+    /* SPORTS */
+
+    .sports-intro {
+      display: grid;
+      grid-template-columns: 1fr .7fr;
+      gap: 22px;
+      margin-bottom: 25px;
+    }
+
+    .sports-intro-card {
+      padding: 26px;
+    }
+
+    .sports-intro-card p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .sports-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .sport-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(12,24,47,.8), rgba(5,11,24,.83));
+      transition: .25s;
+    }
+
+    .sport-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(101,255,154,.4);
+    }
+
+    .sport-icon {
+      display: grid;
+      place-items: center;
+      width: 49px;
+      height: 49px;
+      margin-bottom: 19px;
+      border: 1px solid rgba(101,255,154,.25);
+      border-radius: 15px;
+      background: rgba(101,255,154,.055);
+      color: var(--green);
+      font-size: 1.25rem;
+    }
+
+    .sport-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .sport-label {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--blue-bright);
+      font: .73rem Consolas, monospace;
+    }
+
+    .evidence-panel {
+      margin-top: 23px;
+      padding: 24px;
+    }
+
+    .evidence-panel p {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: .87rem;
+    }
+
+    .evidence-statuses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 17px;
+    }
+
+    .evidence-statuses span {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: #c5d5ec;
+      font-size: .75rem;
+    }
+
+    /* CREATIVE INTERESTS */
+
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .interest-card {
+      padding: 26px;
+    }
+
+    .interest-card .sport-icon {
+      margin-bottom: 16px;
+    }
+
+    .interest-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* JOURNAL */
+
+    .journal-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 25px;
+      padding: 35px;
+    }
+
+    .journal-panel p {
+      max-width: 680px;
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .journal-mark {
+      display: grid;
+      place-items: center;
+      width: 95px;
+      height: 95px;
+      border: 1px solid rgba(53,167,255,.3);
+      border-radius: 25px;
+      background: rgba(53,167,255,.06);
+      color: var(--blue-bright);
+      font: 800 1.8rem Consolas, monospace;
+    }
+
+    /* PRESENCE */
+
+    .presence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .presence-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(10,19,39,.7);
+      transition: .2s;
+    }
+
+    .presence-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(101,255,154,.4);
+    }
+
+    .presence-icon {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      color: var(--green);
+      background: rgba(101,255,154,.07);
+      border: 1px solid rgba(101,255,154,.2);
+      font-weight: 900;
+    }
+
+    .presence-card h3 {
+      font-size: .98rem;
+    }
+
+    .presence-card p {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .76rem;
+      overflow-wrap: anywhere;
+    }
+
+    /* ACHIEVEMENTS */
+
+    .honesty-panel {
+      padding: 28px;
+      border: 1px dashed rgba(115,176,255,.28);
+      border-radius: 18px;
+      background: rgba(9,17,35,.55);
+    }
+
+    .honesty-panel p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* CONTACT */
+
+    .contact-panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(26px, 5vw, 55px);
+      border: 1px solid rgba(101,255,154,.23);
+      border-radius: 27px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(0,255,153,.09), transparent 45%),
+        radial-gradient(ellipse at 0% 100%, rgba(53,167,255,.12), transparent 45%),
+        rgba(6,13,29,.82);
+    }
+
+    .contact-panel h2 {
+      max-width: 750px;
+    }
+
+    .contact-panel > p {
+      max-width: 650px;
+      margin-top: 18px;
+      color: var(--muted);
+    }
+
+    .contact-meta {
+      margin-top: 23px;
+      color: #8fa3c3;
+      font-size: .8rem;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+      background: rgba(3,6,15,.52);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .footer p {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+    }
+
+    .footer-links a {
+      color: #bdcbe0;
+      font-size: .8rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--green);
+    }
+
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 800;
+      display: grid;
+      place-items: center;
+      width: 45px;
+      height: 45px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      border: 1px solid rgba(101,255,154,.4);
+      border-radius: 14px;
+      color: var(--green);
+      background: rgba(5,10,23,.88);
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .back-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* REVEAL ANIMATIONS */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .divider-glow {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(53,167,255,.45), rgba(101,255,154,.35), transparent);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1050px) {
+      .nav-links {
+        gap: 13px;
+      }
+
+      .nav-links a {
+        font-size: .77rem;
+      }
+
+      .hero-grid {
+        gap: 28px;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .education-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .sports-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 800px) {
+      .section {
+        padding: 82px 0;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 16px;
+        right: 16px;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(4,9,22,.97);
+        box-shadow: 0 20px 55px rgba(0,0,0,.35);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: 12px;
+        font-size: .91rem;
+      }
+
+      .nav-cta {
+        margin-top: 5px;
+      }
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .skills-layout,
+      .sports-intro {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 22px;
+      }
+
+      .orbit-wrap {
+        min-height: 350px;
+      }
+
+      .orbit {
+        width: 290px;
+      }
+
+      .workflow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .interest-grid,
+      .presence-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .journal-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .journal-mark {
+        display: none;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .container {
+        width: calc(100% - 30px);
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .brand-caption {
+        font-size: .61rem;
+      }
+
+      .hero {
+        padding-top: 112px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.65rem, 13vw, 4rem);
+      }
+
+      .hero-copy {
+        font-size: .97rem;
+      }
+
+      .orbit-wrap {
+        min-height: 325px;
+      }
+
+      .orbit {
+        width: 265px;
+      }
+
+      .profile-card {
+        width: 235px;
+      }
+
+      .avatar {
+        width: 115px;
+      }
+
+      .orbit-label.top {
+        right: -2px;
+      }
+
+      .orbit-label.bottom {
+        left: -2px;
+      }
+
+      .projects-grid,
+      .education-grid,
+      .sports-grid,
+      .interest-grid,
+      .presence-grid,
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      .project-content > p {
+        min-height: 0;
+      }
+
+      .about-panel,
+      .principles-panel,
+      .skill-panel {
+        padding: 22px;
+      }
+
+      .timeline-item {
+        padding-left: 32px;
+      }
+
+      .timeline-card {
+        padding: 20px;
+      }
+
+      .journal-panel {
+        padding: 24px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .button-row .btn {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- =====================================================
-     AUTO LOADER
-===================================================== -->
+  <canvas id="galaxy" aria-hidden="true"></canvas>
+  <div class="nebula one" aria-hidden="true"></div>
+  <div class="nebula two" aria-hidden="true"></div>
+  <div class="nebula three" aria-hidden="true"></div>
 
-<div id="loader">
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Norizkandar home">
+        <span class="brand-mark">N/</span>
+        <span>
+          <span class="brand-name">NORIZKANDAR</span>
+          <span class="brand-caption">Creative App Developer</span>
+        </span>
+      </a>
 
-    <div class="loader-stars"></div>
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks">
+        <span id="menuIcon" aria-hidden="true">☰</span>
+      </button>
 
-    <div class="loader-content">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Tech Stack</a></li>
+        <li><a href="#sports">Sports</a></li>
+        <li><a href="#journal">Journal</a></li>
+        <li><a class="nav-cta" href="#contact">Let's Connect ↗</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <div class="loader-small">
-            NORIZKANDAR // DIGITAL UNIVERSE
-        </div>
-
-        <div class="loader-title">
-            LOADING
-        </div>
-
-        <div class="loader-status" id="loaderStatus">
-            INITIALIZING SYSTEM...
-        </div>
-
-        <div class="loader-bar">
-            <div class="loader-fill" id="loaderFill"></div>
-        </div>
-
-        <div class="loader-percent" id="loaderPercent">
-            0%
-        </div>
-
-    </div>
-
-</div>
-
-<!-- =====================================================
-     GALAXY
-===================================================== -->
-
-<canvas id="spaceCanvas"></canvas>
-
-<div class="space-overlay"></div>
-
-<div class="nebula a"></div>
-<div class="nebula b"></div>
-<div class="nebula c"></div>
-
-<!-- =====================================================
-     CURSOR
-===================================================== -->
-
-<div class="cursor"></div>
-<div class="cursor-dot"></div>
-
-<!-- =====================================================
-     NAV
-===================================================== -->
-
-<nav>
-
-    <div class="logo">
-        NORI<span>.</span>DEV
-    </div>
-
-    <ul>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#skills">SKILLS</a></li>
-        <li><a href="#project">PROJECT</a></li>
-        <li><a href="#journey">JOURNEY</a></li>
-        <li><a href="#lab">LAB</a></li>
-    </ul>
-
-    <div class="dev-btn" onclick="openDev()">
-        DEV MODE
-    </div>
-
-</nav>
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero">
-
-    <div class="reveal">
-
-        <div class="status">
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="status-pill">
             <span class="status-dot"></span>
-            ONLINE • BUILDING IDEAS
+            Exploring. Building. Improving.
+          </div>
+
+          <p class="eyebrow">Welcome to my digital universe</p>
+
+          <h1>
+            Building Ideas Into
+            <span class="gradient-text">Digital Experiences.</span>
+          </h1>
+
+          <p class="hero-copy">
+            I'm <strong>Mohamad Norizkandar bin Mohamad Faizal</strong>,
+            a creative app developer exploring mobile applications,
+            web development and digital product experiences.
+            I enjoy turning ideas into projects, learning through experimentation
+            and discovering what technology can make possible.
+          </p>
+
+          <div class="button-row">
+            <a class="btn btn-primary" href="#projects">Explore My Projects ↗</a>
+            <a class="btn" href="#about">Discover My Story</a>
+            <a class="btn" href="https://github.com/norizkandar"
+              target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+
+          <div class="hero-note">
+            <span class="hero-note-line"></span>
+            <span>Curiosity is the beginning of every build.</span>
+          </div>
         </div>
 
-        <h1>
-            MOHAMAD<br>
-            <span>NORIZKANDAR</span>
-        </h1>
+        <div class="orbit-wrap reveal" aria-label="Developer profile graphic">
+          <div class="orbit" aria-hidden="true">
+            <span class="orbit-dot"></span>
+          </div>
 
-        <p class="hero-description">
-            I turn creative ideas into modern mobile applications,
-            digital experiences and futuristic interfaces.
-        </p>
+          <span class="orbit-label top">SYSTEM ONLINE</span>
+          <span class="orbit-label bottom">CREATIVE MODE: ON</span>
 
-        <div class="typing">
-            > <span id="typingText"></span>
-        </div>
-
-        <div class="hero-buttons">
-
-            <a href="#project" class="btn primary">
-                EXPLORE UNIVERSE
-            </a>
-
-            <a href="https://github.com/norizkandar"
-               target="_blank"
-               class="btn">
-                GITHUB ↗
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="universe reveal">
-
-        <div class="orbit one">
-            <div class="orbit-dot"></div>
-        </div>
-
-        <div class="orbit two">
-            <div class="orbit-dot"></div>
-        </div>
-
-        <div class="profile-card">
-            <img src="profile.jpg"
-                 alt="Mohamad Norizkandar">
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     STATS
-===================================================== -->
-
-<section>
-
-    <div class="stats">
-
-        <div class="stat glass reveal">
-            <h3 data-count="14">0</h3>
-            <p>AGE</p>
-        </div>
-
-        <div class="stat glass reveal">
-            <h3 data-count="5">0</h3>
-            <p>TECH STACK</p>
-        </div>
-
-        <div class="stat glass reveal">
-            <h3 data-count="1">0</h3>
-            <p>MAIN PROJECT</p>
-        </div>
-
-        <div class="stat glass reveal">
-            <h3>∞</h3>
-            <p>IDEAS</p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section id="about">
-
-    <div class="section-label reveal">
-        01 // ABOUT
-    </div>
-
-    <h2 class="section-title reveal">
-        Building from
-        <span style="color:var(--blue)">
-            curiosity.
-        </span>
-    </h2>
-
-    <div class="about-grid">
-
-        <div class="about-card glass reveal">
-
-            <h3>Who I Am</h3>
-
-            <p>
-                I'm Mohamad Norizkandar Bin Mohamad Faizal, a young app developer from
-                Taiping, Perak, Malaysia. I enjoy learning how
-                technology works and turning ideas into real projects.
-            </p>
-
-        </div>
-
-        <div class="about-card glass reveal">
-
-            <h3>My Focus</h3>
-
-            <p>
-                My current focus is mobile app development,
-                UI design, programming and experimenting with
-                new digital ideas.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     SKILLS
-===================================================== -->
-
-<section id="skills">
-
-    <div class="section-label reveal">
-        02 // TECH STACK
-    </div>
-
-    <h2 class="section-title reveal">
-        Tools I
-        <span style="color:var(--green)">
-            build with.
-        </span>
-    </h2>
-
-    <div class="skills">
-
-        <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>JavaScript</span>
-                <span>90%</span>
+          <div class="profile-card">
+            <div class="avatar" id="profileAvatar">
+              <!-- Add your own image at assets/images/profile.jpg -->
+              <img
+                src="assets/images/profile.jpg"
+                alt="Portrait of Mohamad Norizkandar"
+                onerror="this.remove(); document.getElementById('profileAvatar').textContent='N/';">
             </div>
-            <div class="skill-bar">
-                <div class="skill-fill" data-width="90%"></div>
-            </div>
-        </div>
-
-        <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>React Native</span>
-                <span>85%</span>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-fill" data-width="85%"></div>
-            </div>
-        </div>
-
-        <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>Expo</span>
-                <span>85%</span>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-fill" data-width="85%"></div>
-            </div>
-        </div>
-
-        <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>Supabase</span>
-                <span>75%</span>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-fill" data-width="75%"></div>
-            </div>
-        </div>
-
-        <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>VS Code</span>
-                <span>95%</span>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-fill" data-width="95%"></div>
-            </div>
-        </div>
-
-        <div class="skill glass reveal">
-            <div class="skill-top">
-                <span>Creative UI</span>
-                <span>90%</span>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-fill" data-width="90%"></div>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     COMMAND CENTER
-===================================================== -->
-
-<section>
-
-    <div class="section-label reveal">
-        03 // COMMAND CENTER
-    </div>
-
-    <h2 class="section-title reveal">
-        System
-        <span style="color:var(--blue)">
-            control.
-        </span>
-    </h2>
-
-    <div class="command glass reveal">
-
-        <div class="command-head">
-
-            <strong>
-                NORIZKANDAR OS
-            </strong>
-
-            <div class="command-status">
-                ● ALL SYSTEMS ONLINE
-            </div>
-
-        </div>
-
-        <div class="command-body">
-
-            <div class="system-box">
-                <small>CORE</small>
-                <strong>ACTIVE</strong>
-            </div>
-
-            <div class="system-box">
-                <small>PROJECT</small>
-                <strong>SMART_ACADEMY</strong>
-            </div>
-
-            <div class="system-box">
-                <small>MODE</small>
-                <strong>BUILDING</strong>
-            </div>
-
-            <div class="system-box">
-                <small>ENGINE</small>
-                <strong>JAVASCRIPT</strong>
-            </div>
-
-            <div class="system-box">
-                <small>INTERFACE</small>
-                <strong>FUTURISTIC</strong>
-            </div>
-
-            <div class="system-box">
-                <small>STATUS</small>
-                <strong>READY ✓</strong>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     TERMINAL
-===================================================== -->
-
-<section>
-
-    <div class="section-label reveal">
-        04 // TERMINAL
-    </div>
-
-    <h2 class="section-title reveal">
-        Developer
-        <span style="color:var(--green)">
-            console.
-        </span>
-    </h2>
-
-    <div class="terminal reveal">
-
-        <div class="terminal-head">
-            <i></i>
-            <i></i>
-            <i></i>
-        </div>
-
-        <div class="terminal-line">
-            <span class="green">
-                norizkandar@universe
-            </span>:~$ whoami
-        </div>
-
-        <div class="terminal-line muted">
-            Mohamad Norizkandar — App Developer
-        </div>
-
-        <div class="terminal-line">
-            <span class="green">
-                norizkandar@universe
-            </span>:~$ scan projects
-        </div>
-
-        <div class="terminal-line muted">
-            Smart Academy detected...
-        </div>
-
-        <div class="terminal-line">
-            <span class="green">
-                norizkandar@universe
-            </span>:~$ system status
-        </div>
-
-        <div class="terminal-line green">
-            ALL SYSTEMS OPERATIONAL ✓
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     SMART ACADEMY
-===================================================== -->
-
-<section id="project">
-
-    <div class="section-label reveal">
-        05 // FEATURED PROJECT
-    </div>
-
-    <h2 class="section-title reveal">
-        Smart
-        <span style="color:var(--green)">
-            Academy.
-        </span>
-    </h2>
-
-    <div class="project glass reveal">
-
-        <div class="project-info">
-
-            <h3>Smart Academy</h3>
-
-            <p>
-                A modern tuition platform concept designed to
-                connect students and teachers through interactive
-                digital learning experiences.
-            </p>
-
-            <div class="tags">
-
-                <div class="tag">AI ASSISTANT</div>
-                <div class="tag">WHITEBOARD</div>
-                <div class="tag">STUDENT LIVE</div>
-                <div class="tag">ACHIEVEMENT</div>
-                <div class="tag">TEACHER RATING</div>
-                <div class="tag">STUDENT & TEACHER</div>
-
-            </div>
-
-            <div class="hero-buttons" style="margin-top:25px;">
-                <a href="https://norizkandar.github.io/eonix-tech-studio/"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="btn primary">
-                    🚀 OPEN SMART ACADEMY
-                </a>
-            </div>
-
-        </div>
-
-        <div class="phone">
-
-            <div class="phone-screen">
-
-                <div class="phone-logo">
-                    Smart Academy
-                </div>
-
-                <div class="phone-small">
-                    created by norizkandar
-                </div>
-
-                <div class="fake-card">
-                    <strong>
-                        Welcome back 👋
-                    </strong>
-                    <div class="fake-line"></div>
-                    <div class="fake-line"></div>
-                </div>
-
-                <div class="fake-card">
-                    <strong>
-                        Live Class
-                    </strong>
-                    <div class="fake-line"></div>
-                    <div class="fake-line"></div>
-                    <div class="fake-line"></div>
-                </div>
-
-                <div class="fake-card">
-                    <strong>
-                        Achievement 🏆
-                    </strong>
-                    <div class="fake-line"></div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     FEATURES
-===================================================== -->
-
-<section>
-
-    <div class="section-label reveal">
-        06 // FEATURES
-    </div>
-
-    <h2 class="section-title reveal">
-        Inside the
-        <span style="color:var(--blue)">
-            system.
-        </span>
-    </h2>
-
-    <div class="features">
-
-        <div class="feature glass reveal">
-            <div class="feature-number">01</div>
-            <h3>AI Assistant</h3>
-            <p>
-                A dedicated AI concept designed to support
-                students while learning.
-            </p>
-        </div>
-
-        <div class="feature glass reveal">
-            <div class="feature-number">02</div>
-            <h3>Whiteboard</h3>
-            <p>
-                Interactive digital space for explaining
-                and presenting ideas.
-            </p>
-        </div>
-
-        <div class="feature glass reveal">
-            <div class="feature-number">03</div>
-            <h3>Student Live</h3>
-            <p>
-                Students can present using video in an
-                interactive live experience.
-            </p>
-        </div>
-
-        <div class="feature glass reveal">
-            <div class="feature-number">04</div>
-            <h3>Achievement</h3>
-            <p>
-                A system concept for tracking student
-                achievements and progress.
-            </p>
-        </div>
-
-        <div class="feature glass reveal">
-            <div class="feature-number">05</div>
-            <h3>Teacher Rating</h3>
-            <p>
-                Students can provide ratings for teachers
-                and learning experiences.
-            </p>
-        </div>
-
-        <div class="feature glass reveal">
-            <div class="feature-number">06</div>
-            <h3>Student & Teacher</h3>
-            <p>
-                Separate experiences designed for both
-                students and teachers.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     NEURAL NETWORK
-===================================================== -->
-
-<section>
-
-    <div class="section-label reveal">
-        07 // DEVELOPER MINDSET
-    </div>
-
-    <h2 class="section-title reveal">
-        Connected
-        <span style="color:var(--green)">
-            ideas.
-        </span>
-    </h2>
-
-    <div class="neural reveal">
-
-        <div class="node"></div>
-        <div class="node"></div>
-        <div class="node"></div>
-        <div class="node"></div>
-        <div class="node"></div>
-        <div class="node"></div>
-
-        <div class="neural-title">
             <div>
-                <h3>CREATE → BUILD → IMPROVE</h3>
-                <p>
-                    Every idea is another connection.
-                </p>
+              <h2>Mohamad Norizkandar</h2>
+              <p>Developer · Builder · Learner</p>
             </div>
+            <span class="tag">DIGITAL EXPLORER</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider-glow"></div>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">01 / About me</p>
+          <h2>More Than Code.<br><span class="gradient-text">A Journey of Ideas.</span></h2>
+          <p class="section-description">
+            Technology is not just about writing code. It is about understanding
+            problems, exploring possibilities and creating experiences that are
+            useful to real people.
+          </p>
         </div>
 
-    </div>
-
-</section>
-
-<!-- =====================================================
-     JOURNEY
-===================================================== -->
-
-<section id="journey">
-
-    <div class="section-label reveal">
-        08 // CODING JOURNEY
-    </div>
-
-    <h2 class="section-title reveal">
-        From learning to
-        <span style="color:var(--blue)">
-            building.
-        </span>
-    </h2>
-
-    <div class="timeline">
-
-        <div class="timeline-item reveal">
-            <span>START</span>
-            <h3>Started Learning Code</h3>
-            <p>
-                Began exploring programming and discovering
-                how software is built.
+        <div class="about-grid">
+          <article class="glass about-panel reveal">
+            <h3>My introduction</h3>
+            <p class="muted">
+              My name is Mohamad Norizkandar bin Mohamad Faizal, also known as
+              Norizkandar. I am exploring the world of application development,
+              web experiences and digital products.
             </p>
-        </div>
-
-        <div class="timeline-item reveal">
-            <span>BUILD</span>
-            <h3>Started Building Apps</h3>
-            <p>
-                Started experimenting with JavaScript,
-                React Native and Expo.
+            <p class="muted">
+              I enjoy experimenting with JavaScript, React Native, Expo and
+              Supabase while building projects that help me learn how software
+              works in practice.
             </p>
-        </div>
-
-        <div class="timeline-item reveal">
-            <span>CREATE</span>
-            <h3>Smart Academy</h3>
-            <p>
-                Turned a tuition app idea into a working
-                project concept.
+            <p class="muted">
+              My portfolio documents my learning process, project ideas,
+              technical interests and the things I hope to improve over time.
+              It is a work in progress, just like the person behind it.
             </p>
+          </article>
+
+          <article class="glass principles-panel reveal">
+            <h3>What drives me</h3>
+            <div class="principle-list">
+              <div class="principle">
+                <span class="principle-icon">⌘</span>
+                <div>
+                  <h4>Build with purpose</h4>
+                  <p>Explore ideas and turn them into practical digital projects.</p>
+                </div>
+              </div>
+              <div class="principle">
+                <span class="principle-icon">◇</span>
+                <div>
+                  <h4>Learn by experimenting</h4>
+                  <p>Understand tools by using them, testing ideas and improving.</p>
+                </div>
+              </div>
+              <div class="principle">
+                <span class="principle-icon">↗</span>
+                <div>
+                  <h4>Improve continuously</h4>
+                  <p>Use each project as an opportunity to learn something new.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MY JOURNEY -->
+    <section class="section" id="journey">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">02 / My journey</p>
+          <h2>Every Project Starts<br><span class="gradient-text">Somewhere.</span></h2>
+          <p class="section-description">
+            A developing journey shaped by curiosity, experimentation
+            and the willingness to keep learning.
+          </p>
         </div>
 
-        <div class="timeline-item reveal">
-            <span>NEXT</span>
-            <h3>Keep Building</h3>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-card">
+              <div class="timeline-top">
+                <h3>Discovering Technology</h3>
+                <span class="timeline-date">EARLY EXPLORATION</span>
+              </div>
+              <p>
+                Developing an interest in technology and discovering how websites,
+                applications and digital experiences are created.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-card">
+              <div class="timeline-top">
+                <h3>Finding Inspiration to Build</h3>
+                <span class="timeline-date">IDEA STAGE</span>
+              </div>
+              <p>
+                A suggestion from an English teacher introduced me to the idea
+                of Coolest Projects. Although I did not participate, the idea
+                inspired me to explore building my own technology projects.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-card">
+              <div class="timeline-top">
+                <h3>Exploring Application Development</h3>
+                <span class="timeline-date">BUILDING PHASE</span>
+              </div>
+              <p>
+                Exploring JavaScript, React Native, Expo and Supabase while
+                developing application concepts and working prototypes.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-card">
+              <div class="timeline-top">
+                <h3>Building a Digital Presence</h3>
+                <span class="timeline-date">ONGOING</span>
+              </div>
+              <p>
+                Creating a personal portfolio, documenting projects and
+                learning how to present digital work clearly on the web.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-card">
+              <div class="timeline-top">
+                <h3>The Next Chapter</h3>
+                <span class="timeline-date">IN PROGRESS</span>
+              </div>
+              <p>
+                Continuing to refine existing projects, explore new ideas,
+                improve development skills and document progress honestly.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">03 / Education</p>
+          <h2>My Education<br><span class="gradient-text">Journey.</span></h2>
+          <p class="section-description">
+            The schools that form part of my educational journey.
+          </p>
+        </div>
+
+        <div class="education-grid">
+          <article class="education-card reveal">
+            <span class="education-number">EDU / 01</span>
+            <h3>SK Jalan Matang Buluh</h3>
+            <span class="education-year">2019 — 2024</span>
+            <p>Primary school education.</p>
+          </article>
+
+          <article class="education-card reveal">
+            <span class="education-number">EDU / 02</span>
+            <h3>SMK Alang Iskandar</h3>
+            <span class="education-year">2025 — 2026</span>
+            <p>Secondary school education.</p>
+          </article>
+
+          <article class="education-card reveal">
+            <span class="education-number">EDU / 03</span>
+            <h3>SMK Abu Bakar Al-Baqir</h3>
+            <span class="education-year">2026 — Present</span>
+            <p>Continuing my secondary school journey.</p>
+          </article>
+        </div>
+
+        <p class="small muted" style="margin-top:20px">
+          Education details are provided for this personal portfolio. Review
+          the information and consider whether you want school names visible
+          on a public website before publishing.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">04 / Selected work</p>
+          <h2>Ideas in the<br><span class="gradient-text">Digital Universe.</span></h2>
+          <p class="section-description">
+            A collection of personal websites, application concepts and
+            development experiments. Select a project to open its website.
+          </p>
+        </div>
+
+        <div class="project-toolbar reveal" role="group" aria-label="Filter projects">
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">All Projects</button>
+          <button class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+          <button class="filter-btn" data-filter="app" aria-pressed="false">Apps & Education</button>
+          <button class="filter-btn" data-filter="auto" aria-pressed="false">Automotive</button>
+          <button class="filter-btn" data-filter="lab" aria-pressed="false">Experiments</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Project 1 -->
+          <article class="project-card reveal" data-category="web">
+            <div class="project-cover">
+              <span class="project-symbol">N/</span>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="tag">PERSONAL BRAND</span>
+                <span class="project-status">Portfolio</span>
+              </div>
+              <h3>Personal Portfolio</h3>
+              <p>
+                My central digital profile for presenting my development
+                interests, projects, learning journey and online presence.
+              </p>
+              <div class="tech-list">
+                <span class="tech-chip">HTML</span>
+                <span class="tech-chip">CSS</span>
+                <span class="tech-chip">JavaScript</span>
+                <span class="tech-chip">GitHub Pages</span>
+              </div>
+              <div class="project-actions">
+                <a class="text-link" href="https://norizkandar.github.io/norizkandarfaizal.github.io/"
+                  target="_blank" rel="noopener noreferrer">Open Website ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card reveal" data-category="web lab">
+            <div class="project-cover">
+              <span class="project-symbol">EX</span>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="tag">DIGITAL STUDIO</span>
+                <span class="project-status">Project</span>
+              </div>
+              <h3>Eonix Tech Studio</h3>
+              <p>
+                A digital studio identity for presenting technology projects
+                and experimenting with futuristic web design.
+              </p>
+              <div class="tech-list">
+                <span class="tech-chip">Web</span>
+                <span class="tech-chip">UI Design</span>
+                <span class="tech-chip">GitHub Pages</span>
+              </div>
+              <div class="project-actions">
+                <a class="text-link" href="https://norizkandar.github.io/eonix-tech-studio/"
+                  target="_blank" rel="noopener noreferrer">Open Website ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card reveal" data-category="app">
+            <div class="project-cover">
+              <span class="project-symbol">SA</span>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="tag">EDUCATION</span>
+                <span class="project-status">App project</span>
+              </div>
+              <h3>Smart Academy / Smart Tuisyen</h3>
+              <p>
+                An educational application project exploring student and teacher
+                experiences, classes, learning tools and online learning features.
+              </p>
+              <div class="tech-list">
+                <span class="tech-chip">JavaScript</span>
+                <span class="tech-chip">Supabase</span>
+                <span class="tech-chip">LiveKit</span>
+              </div>
+              <div class="project-actions">
+                <a class="text-link" href="https://norizkandar.github.io/eonix-tech-studio/"
+                  target="_blank" rel="noopener noreferrer">Open Project ↗</a>
+              </div>
+              <p class="small muted" style="margin-top:12px;min-height:0">
+                Uses the current Eonix Tech Studio deployment URL.
+              </p>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card reveal" data-category="auto web">
+            <div class="project-cover">
+              <span class="project-symbol">SC</span>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="tag">AUTOMOTIVE</span>
+                <span class="project-status">Project</span>
+              </div>
+              <h3>Smart Car Hub</h3>
+              <p>
+                An automotive-focused web project exploring a digital platform
+                for car-related information and experiences.
+              </p>
+              <div class="tech-list">
+                <span class="tech-chip">HTML</span>
+                <span class="tech-chip">CSS</span>
+                <span class="tech-chip">JavaScript</span>
+              </div>
+              <div class="project-actions">
+                <a class="text-link" href="https://norizkandar.github.io/smart-car-hub/"
+                  target="_blank" rel="noopener noreferrer">Open Website ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="project-card reveal" data-category="web lab">
+            <div class="project-cover">
+              <span class="project-symbol">SF</span>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="tag">WEB PROJECT</span>
+                <span class="project-status">Project</span>
+              </div>
+              <h3>Safwan Project</h3>
+              <p>
+                A dedicated website project created as part of my broader
+                exploration of web development and digital presentation.
+              </p>
+              <div class="tech-list">
+                <span class="tech-chip">Web Development</span>
+                <span class="tech-chip">UI Design</span>
+              </div>
+              <div class="project-actions">
+                <a class="text-link" href="https://norizkandar.github.io/safwan/"
+                  target="_blank" rel="noopener noreferrer">Open Website ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="project-card reveal" data-category="web lab">
+            <div class="project-cover">
+              <span class="project-symbol">SZ</span>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="tag">WEB PROJECT</span>
+                <span class="project-status">Project</span>
+              </div>
+              <h3>Shahrul Syazwan Project</h3>
+              <p>
+                A separate website project that contributes to my experience
+                in creating and presenting digital work.
+              </p>
+              <div class="tech-list">
+                <span class="tech-chip">Web Development</span>
+                <span class="tech-chip">GitHub Pages</span>
+              </div>
+              <div class="project-actions">
+                <a class="text-link" href="https://norizkandar.github.io/shahrul-syazwan/"
+                  target="_blank" rel="noopener noreferrer">Open Website ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 7 -->
+          <article class="project-card reveal" data-category="web lab">
+            <div class="project-cover">
+              <span class="project-symbol">NJ</span>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="tag">WRITING & IDEAS</span>
+                <span class="project-status">In development</span>
+              </div>
+              <h3>Norizkandar Journal</h3>
+              <p>
+                A planned home for articles, development notes, lessons learned
+                and the thinking behind selected projects.
+              </p>
+              <div class="tech-list">
+                <span class="tech-chip">Writing</span>
+                <span class="tech-chip">Documentation</span>
+              </div>
+              <div class="project-actions">
+                <span class="disabled-link">Website not published yet</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-note reveal">
+          <strong>Project transparency:</strong>
+          these cards describe projects and prototypes, not a guarantee that
+          every feature is complete or operational. Project links are included
+          as provided and should be checked after publishing.
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">05 / Technology</p>
+          <h2>The Tools Behind<br><span class="gradient-text">The Ideas.</span></h2>
+          <p class="section-description">
+            Technologies and tools I use or explore while developing
+            applications and web projects.
+          </p>
+        </div>
+
+        <div class="skills-layout">
+          <article class="glass skill-panel reveal">
+            <h3>Development</h3>
+            <div class="skill-cloud">
+              <span class="skill">JavaScript</span>
+              <span class="skill">HTML</span>
+              <span class="skill">CSS</span>
+              <span class="skill">React Native</span>
+              <span class="skill">Expo</span>
+              <span class="skill">Supabase</span>
+              <span class="skill">LiveKit</span>
+            </div>
+          </article>
+
+          <article class="glass skill-panel reveal">
+            <h3>Tools & Platforms</h3>
+            <div class="skill-cloud">
+              <span class="skill">Visual Studio Code</span>
+              <span class="skill">GitHub</span>
+              <span class="skill">GitHub Pages</span>
+              <span class="skill">Browser DevTools</span>
+              <span class="skill">Responsive Design</span>
+              <span class="skill">SEO Fundamentals</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="workflow reveal">
+          <article class="workflow-step">
+            <span>STEP 01</span>
+            <h4>Discover</h4>
+            <p>Understand the idea and the problem to explore.</p>
+          </article>
+          <article class="workflow-step">
+            <span>STEP 02</span>
+            <h4>Design</h4>
+            <p>Plan the structure, layout and user experience.</p>
+          </article>
+          <article class="workflow-step">
+            <span>STEP 03</span>
+            <h4>Develop</h4>
+            <p>Build, test and improve the implementation.</p>
+          </article>
+          <article class="workflow-step">
+            <span>STEP 04</span>
+            <h4>Refine</h4>
+            <p>Review the result and identify improvements.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPORTS & ACTIVITIES -->
+    <section class="section" id="sports">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">06 / Beyond technology</p>
+          <h2>Sports, Activities<br><span class="gradient-text">& Interests.</span></h2>
+          <p class="section-description">
+            Technology is one part of my interests. Sports, motorsport,
+            creativity and exploring new experiences are part of the bigger picture.
+          </p>
+        </div>
+
+        <div class="sports-intro">
+          <article class="glass sports-intro-card reveal">
+            <h3>School Sports & Co-Curricular Journey</h3>
             <p>
-                Continue learning, experimenting and
-                creating better digital experiences.
+              This section is designed to document school sports, activities,
+              participation and personal interests over time. Verified results
+              and certificates can be added when supporting evidence is available.
             </p>
-        </div>
+          </article>
 
-    </div>
-
-</section>
-
-<!-- =====================================================
-     EXPERIMENTAL LAB
-===================================================== -->
-
-<section id="lab">
-
-    <div class="section-label reveal">
-        09 // EXPERIMENTAL LAB
-    </div>
-
-    <h2 class="section-title reveal">
-        Ideas under
-        <span style="color:var(--green)">
-            construction.
-        </span>
-    </h2>
-
-    <div class="lab">
-
-        <div class="lab-card glass reveal">
-            <h3>AI Experiments</h3>
+          <article class="glass sports-intro-card reveal">
+            <h3>Keep it authentic</h3>
             <p>
-                Exploring how AI can become part of future
-                applications and learning experiences.
+              The activities below describe interests, not confirmed competition
+              participation. No school-team selection, award, medal or competition
+              result is claimed without evidence.
             </p>
+          </article>
         </div>
 
-        <div class="lab-card glass reveal">
-            <h3>UI Experiments</h3>
+        <div class="sports-grid">
+          <article class="sport-card reveal">
+            <div class="sport-icon" aria-hidden="true">◎</div>
+            <h3>Archery</h3>
             <p>
-                Creating futuristic interfaces, animations
-                and interactive experiences.
+              An interest in focus, precision, technique and the discipline
+              associated with archery.
             </p>
-        </div>
+            <span class="sport-label">PERSONAL INTEREST</span>
+          </article>
 
-        <div class="lab-card glass reveal">
-            <h3>Future Apps</h3>
+          <article class="sport-card reveal">
+            <div class="sport-icon" aria-hidden="true">⚽</div>
+            <h3>Football</h3>
             <p>
-                New application ideas waiting to be turned
-                into real prototypes.
+              An interest in football, teamwork, tactical thinking and the
+              excitement of the game.
             </p>
-        </div>
+            <span class="sport-label">PERSONAL INTEREST</span>
+          </article>
 
-    </div>
-
-</section>
-
-<!-- =====================================================
-     ROADMAP
-===================================================== -->
-
-<section>
-
-    <div class="section-label reveal">
-        10 // ROADMAP
-    </div>
-
-    <h2 class="section-title reveal">
-        What's
-        <span style="color:var(--blue)">
-            next?
-        </span>
-    </h2>
-
-    <div class="roadmap">
-
-        <div class="road glass reveal">
-            <div class="road-number">01</div>
-            <h3>Learn</h3>
+          <article class="sport-card reveal">
+            <div class="sport-icon" aria-hidden="true">↗</div>
+            <h3>Athletics</h3>
             <p>
-                Improve programming knowledge and explore
-                new technologies.
+              A place to document athletics, sports-day participation and
+              sports-house activities when details are confirmed.
             </p>
-        </div>
+            <span class="sport-label">DETAILS TO BE CONFIRMED</span>
+          </article>
 
-        <div class="road glass reveal">
-            <div class="road-number">02</div>
-            <h3>Build</h3>
+          <article class="sport-card reveal">
+            <div class="sport-icon" aria-hidden="true">◉</div>
+            <h3>Ten-Pin Bowling</h3>
             <p>
-                Turn more ideas into functional applications
-                and prototypes.
+              An interest in accuracy, consistency, technique and the challenge
+              of improving from one attempt to the next.
             </p>
-        </div>
+            <span class="sport-label">PERSONAL INTEREST</span>
+          </article>
 
-        <div class="road glass reveal">
-            <div class="road-number">03</div>
-            <h3>Launch</h3>
+          <article class="sport-card reveal">
+            <div class="sport-icon" aria-hidden="true">🏁</div>
+            <h3>Motorsport</h3>
             <p>
-                Share projects with more people and continue
-                improving them.
+              Following motorsport, racing technology, engineering and the
+              strategy behind competitive racing.
             </p>
+            <span class="sport-label">FAN & PERSONAL INTEREST</span>
+          </article>
+
+          <article class="sport-card reveal">
+            <div class="sport-icon" aria-hidden="true">✦</div>
+            <h3>Drone Photography</h3>
+            <p>
+              Exploring aerial perspectives, visual storytelling and creative
+              ways to capture places and scenes.
+            </p>
+            <span class="sport-label">CREATIVE INTEREST</span>
+          </article>
         </div>
 
-    </div>
+        <div class="glass evidence-panel reveal">
+          <h3>Sports records & evidence</h3>
+          <p>
+            This portfolio can be expanded with verified participation records,
+            certificates, results, sports-house details and photographs that
+            you have permission to publish. Add the event name, date, category
+            and evidence before describing an activity as an achievement.
+          </p>
+          <div class="evidence-statuses">
+            <span>Verified achievement</span>
+            <span>Verified participation</span>
+            <span>Personal interest</span>
+            <span>Awaiting verification</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <!-- OTHER INTERESTS -->
+    <section class="section" id="interests">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">07 / Outside the screen</p>
+          <h2>Different Interests.<br><span class="gradient-text">One Curious Mind.</span></h2>
+        </div>
 
-<!-- =====================================================
-     SOCIAL
-===================================================== -->
+        <div class="interest-grid">
+          <article class="glass interest-card reveal">
+            <div class="sport-icon" aria-hidden="true">◈</div>
+            <h3>Automotive Technology</h3>
+            <p>
+              Exploring vehicle design, automotive technology and how digital
+              tools can shape the automotive experience.
+            </p>
+          </article>
 
-<section>
+          <article class="glass interest-card reveal">
+            <div class="sport-icon" aria-hidden="true">◌</div>
+            <h3>Photography & Video</h3>
+            <p>
+              Learning about framing, composition, lighting and creating
+              visual stories through photos and video.
+            </p>
+          </article>
 
-    <div class="section-label reveal">
-        11 // TRANSMISSION
-    </div>
+          <article class="glass interest-card reveal">
+            <div class="sport-icon" aria-hidden="true">⌘</div>
+            <h3>Creative Experiments</h3>
+            <p>
+              Testing new visual concepts, interface ideas and digital
+              experiences that combine design with technology.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <h2 class="section-title reveal">
-        Find me
-        <span style="color:var(--green)">
-            online.
-        </span>
-    </h2>
+    <!-- JOURNAL -->
+    <section class="section" id="journal">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">08 / Ideas & writing</p>
+          <h2>Norizkandar<br><span class="gradient-text">Journal.</span></h2>
+          <p class="section-description">
+            A planned space for project breakdowns, development notes,
+            lessons learned and ideas worth exploring.
+          </p>
+        </div>
 
-    <div class="social">
+        <div class="glass journal-panel reveal">
+          <div>
+            <span class="tag">IN DEVELOPMENT</span>
+            <h3 style="margin-top:17px">Document the process, not just the result.</h3>
+            <p>
+              Future articles may cover how projects are built, tools explored,
+              design decisions, challenges encountered and improvements made.
+              Articles will be added when they are ready to publish.
+            </p>
+            <div class="button-row">
+              <a class="btn" href="https://github.com/norizkandar"
+                target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a>
+            </div>
+          </div>
+          <div class="journal-mark" aria-hidden="true">NJ/</div>
+        </div>
+      </div>
+    </section>
 
-        <a class="social-card glass reveal"
-           href="https://github.com/norizkandar"
-           target="_blank">
+    <!-- DIGITAL PRESENCE -->
+    <section class="section" id="presence">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">09 / Digital presence</p>
+          <h2>Find Me<br><span class="gradient-text">Across the Web.</span></h2>
+          <p class="section-description">
+            Follow my work and explore the projects I share online.
+          </p>
+        </div>
 
-            <span>GITHUB</span>
+        <div class="presence-grid">
+          <a class="presence-card reveal" href="https://github.com/norizkandar"
+            target="_blank" rel="noopener noreferrer">
+            <span class="presence-icon">GH</span>
+            <span>
+              <h3>GitHub</h3>
+              <p>Code & repositories ↗</p>
+            </span>
+          </a>
 
-            <h3>
-                @norizkandar ↗
-            </h3>
+          <a class="presence-card reveal" href="https://www.tiktok.com/@iz_andar"
+            target="_blank" rel="noopener noreferrer">
+            <span class="presence-icon">TT</span>
+            <span>
+              <h3>TikTok</h3>
+              <p>@iz_andar ↗</p>
+            </span>
+          </a>
 
+          <!-- Confirm the LinkedIn URL before publishing.
+               The currently supplied profile slug contains "undefined". -->
+          <a class="presence-card reveal"
+            href="https://www.linkedin.com/in/mohamad-norizkandar-bin-mohamad-faizal-undefined-1a5748444/"
+            target="_blank" rel="noopener noreferrer">
+            <span class="presence-icon">in</span>
+            <span>
+              <h3>LinkedIn</h3>
+              <p>Professional profile ↗</p>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="section" id="achievements">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">10 / Achievements & evidence</p>
+          <h2>Progress With<br><span class="gradient-text">Proof.</span></h2>
+          <p class="section-description">
+            A place for meaningful milestones supported by real evidence.
+          </p>
+        </div>
+
+        <div class="honesty-panel reveal">
+          <h3>Built on authenticity</h3>
+          <p>
+            No unverified awards, competition results, certifications or
+            performance statistics are displayed here. Verified milestones
+            can be added as they happen, with accurate dates and supporting evidence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <p class="eyebrow">11 / Get in touch</p>
+          <h2>Have an idea?<br><span class="gradient-text">Let's Explore It.</span></h2>
+          <p>
+            Interested in my projects or want to follow my development journey?
+            Explore my work on GitHub or connect through my public digital profiles.
+          </p>
+
+          <div class="button-row">
+            <a class="btn btn-primary" href="https://github.com/norizkandar"
+              target="_blank" rel="noopener noreferrer">Connect on GitHub ↗</a>
+            <a class="btn" href="https://www.tiktok.com/@iz_andar"
+              target="_blank" rel="noopener noreferrer">Find Me on TikTok ↗</a>
+          </div>
+
+          <p class="contact-meta">
+            For privacy, this portfolio does not publish a personal phone number
+            or private home address.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="#home">
+          <span class="brand-mark">N/</span>
+          <span>
+            <span class="brand-name">NORIZKANDAR</span>
+            <span class="brand-caption">Building ideas into digital experiences</span>
+          </span>
         </a>
+        <p style="margin-top:12px">
+          © <span id="year"></span> Mohamad Norizkandar bin Mohamad Faizal.
+          A personal portfolio.
+        </p>
+      </div>
 
-        <a class="social-card glass reveal"
-           href="https://www.tiktok.com/@izzr_75"
-           target="_blank">
-
-            <span>TIKTOK</span>
-
-            <h3>
-                @iz_andar ↗
-            </h3>
-
-        </a>
-
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#sports">Sports</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/norizkandar"
+          target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
     </div>
+  </footer>
 
-</section>
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 
-<!-- =====================================================
-     FINAL
-===================================================== -->
+  <script>
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
 
-<section class="final">
+    const header = document.getElementById("header");
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const menuIcon = document.getElementById("menuIcon");
+    const backTop = document.getElementById("backTop");
 
-    <div class="section-label reveal">
-        12 // END OF TRANSMISSION
-    </div>
-
-    <h2 class="reveal">
-        KEEP<br>
-        <span>BUILDING.</span>
-    </h2>
-
-    <p class="reveal">
-        The journey has just begun.
-    </p>
-
-</section>
-
-<footer>
-    © 2026 Mohamad Norizkandar • Built with code & curiosity.
-</footer>
-
-<!-- =====================================================
-     DEV PANEL
-===================================================== -->
-
-<div id="devPanel">
-
-    <div class="close-dev"
-         onclick="closeDev()">
-        [ CLOSE ]
-    </div>
-
-    <h2>NORIZKANDAR // DEV MODE</h2>
-
-    <br>
-
-    <p>> booting developer interface...</p>
-    <p>> loading JavaScript...</p>
-    <p>> loading React Native...</p>
-    <p>> loading Expo...</p>
-    <p>> loading Supabase...</p>
-    <p>> scanning Smart Academy...</p>
-    <p>> connecting digital universe...</p>
-    <p class="green">
-        > ALL SYSTEMS OPERATIONAL ✓
-    </p>
-
-</div>
-
-<script>
-
-/* =====================================================
-   AUTO LOADING
-===================================================== */
-
-let progress = 0;
-
-const fill =
-    document.getElementById("loaderFill");
-
-const percent =
-    document.getElementById("loaderPercent");
-
-const loaderStatus =
-    document.getElementById("loaderStatus");
-
-const loaderMessages = [
-
-    "INITIALIZING SYSTEM...",
-    "LOADING DIGITAL CORE...",
-    "SCANNING PROJECTS...",
-    "LOADING SMART ACADEMY...",
-    "CALIBRATING GALAXY...",
-    "CONNECTING INTERFACE...",
-    "SYSTEM READY..."
-
-];
-
-const loading =
-setInterval(() => {
-
-    progress++;
-
-    fill.style.width =
-        progress + "%";
-
-    percent.textContent =
-        progress + "%";
-
-    if(progress < 15)
-        loaderStatus.textContent =
-            loaderMessages[0];
-
-    else if(progress < 30)
-        loaderStatus.textContent =
-            loaderMessages[1];
-
-    else if(progress < 45)
-        loaderStatus.textContent =
-            loaderMessages[2];
-
-    else if(progress < 60)
-        loaderStatus.textContent =
-            loaderMessages[3];
-
-    else if(progress < 75)
-        loaderStatus.textContent =
-            loaderMessages[4];
-
-    else if(progress < 95)
-        loaderStatus.textContent =
-            loaderMessages[5];
-
-    else
-        loaderStatus.textContent =
-            loaderMessages[6];
-
-    if(progress >= 100){
-
-        clearInterval(loading);
-
-        setTimeout(() => {
-
-            document
-                .getElementById("loader")
-                .classList
-                .add("hide");
-
-        },700);
-
+    function closeMenu() {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+      menuIcon.textContent = "☰";
     }
 
-},32);
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuIcon.textContent = isOpen ? "✕" : "☰";
+    });
 
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
 
-/* =====================================================
-   TYPING
-===================================================== */
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeMenu();
+    });
 
-const phrases = [
-
-    "building mobile apps...",
-    "designing digital experiences...",
-    "experimenting with AI...",
-    "turning ideas into code...",
-    "exploring the digital universe..."
-
-];
-
-let p = 0;
-let c = 0;
-let deleting = false;
-
-function typing(){
-
-    const current =
-        phrases[p];
-
-    const element =
-        document.getElementById("typingText");
-
-    if(!deleting){
-
-        element.textContent =
-            current.substring(0,c++);
-
-    }else{
-
-        element.textContent =
-            current.substring(0,c--);
-
+    function updateScrollUI() {
+      const y = window.scrollY;
+      header.classList.toggle("scrolled", y > 30);
+      backTop.classList.toggle("visible", y > 500);
     }
 
-    if(!deleting && c > current.length){
+    window.addEventListener("scroll", updateScrollUI, { passive: true });
+    updateScrollUI();
 
-        deleting = true;
+    backTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 
-        setTimeout(typing,1200);
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-        return;
-    }
+    /* =====================================================
+       PROJECT FILTERS
+       ===================================================== */
 
-    if(deleting && c < 0){
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
 
-        deleting = false;
-        p = (p + 1) % phrases.length;
-        c = 0;
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
 
-    }
+        filterButtons.forEach(item => {
+          const active = item === button;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
 
-    setTimeout(
-        typing,
-        deleting ? 35 : 70
-    );
-}
+        projectCards.forEach(card => {
+          const categories = (card.dataset.category || "").split(" ");
+          const matches = filter === "all" || categories.includes(filter);
+          card.hidden = !matches;
+        });
+      });
+    });
 
-typing();
+    /* =====================================================
+       SCROLL REVEAL
+       ===================================================== */
 
+    const revealElements = document.querySelectorAll(".reveal");
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-/* =====================================================
-   CURSOR + GALAXY PARALLAX
-===================================================== */
-
-const cursor =
-    document.querySelector(".cursor");
-
-const dot =
-    document.querySelector(".cursor-dot");
-
-document.addEventListener(
-    "mousemove",
-    e => {
-
-        cursor.style.left =
-            e.clientX + "px";
-
-        cursor.style.top =
-            e.clientY + "px";
-
-        dot.style.left =
-            e.clientX + "px";
-
-        dot.style.top =
-            e.clientY + "px";
-
-        mouseX =
-            e.clientX;
-
-        mouseY =
-            e.clientY;
-
-    }
-);
-
-
-/* =====================================================
-   REVEAL
-===================================================== */
-
-const revealObserver =
-new IntersectionObserver(
-    entries => {
-
+    if ("IntersectionObserver" in window && !reducedMotion) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-                entry.target
-                    .classList
-                    .add("show");
-
-                const fill =
-                    entry.target
-                    .querySelector(".skill-fill");
-
-                if(fill){
-
-                    fill.style.width =
-                        fill.dataset.width;
-
-                }
-
-            }
-
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
         });
-
-    },
-    {
-        threshold:.15
-    }
-);
-
-document
-    .querySelectorAll(".reveal")
-    .forEach(el =>
-        revealObserver.observe(el)
-    );
-
-
-/* =====================================================
-   COUNTERS
-===================================================== */
-
-const counterObserver =
-new IntersectionObserver(
-    entries => {
-
-        entries.forEach(entry => {
-
-            if(!entry.isIntersecting)
-                return;
-
-            const counter =
-                entry.target;
-
-            const target =
-                Number(counter.dataset.count);
-
-            let value = 0;
-
-            const timer =
-                setInterval(() => {
-
-                    value++;
-
-                    counter.textContent =
-                        value;
-
-                    if(value >= target)
-                        clearInterval(timer);
-
-                },70);
-
-            counterObserver
-                .unobserve(counter);
-
-        });
-
-    },
-    {
-        threshold:.7
-    }
-);
-
-document
-    .querySelectorAll("[data-count]")
-    .forEach(el =>
-        counterObserver.observe(el)
-    );
-
-
-/* =====================================================
-   DEV MODE
-===================================================== */
-
-function openDev(){
-
-    document
-        .getElementById("devPanel")
-        .classList
-        .add("active");
-
-}
-
-function closeDev(){
-
-    document
-        .getElementById("devPanel")
-        .classList
-        .remove("active");
-
-}
-
-
-/* =====================================================
-   PROJECT 3D
-===================================================== */
-
-const project =
-    document.querySelector(".project");
-
-if(project){
-
-    project.addEventListener(
-        "mousemove",
-        e => {
-
-            const rect =
-                project.getBoundingClientRect();
-
-            const x =
-                (e.clientX - rect.left)
-                / rect.width - .5;
-
-            const y =
-                (e.clientY - rect.top)
-                / rect.height - .5;
-
-            project.style.transform =
-                `perspective(1000px)
-                 rotateY(${x*5}deg)
-                 rotateX(${-y*4}deg)`;
-
-        }
-    );
-
-    project.addEventListener(
-        "mouseleave",
-        () => {
-
-            project.style.transform = "";
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   MAGNETIC BUTTONS
-===================================================== */
-
-document
-.querySelectorAll(
-    ".btn,.dev-btn,.social-card"
-)
-.forEach(button => {
-
-    button.addEventListener(
-        "mousemove",
-        e => {
-
-            const rect =
-                button.getBoundingClientRect();
-
-            const x =
-                e.clientX -
-                rect.left -
-                rect.width/2;
-
-            const y =
-                e.clientY -
-                rect.top -
-                rect.height/2;
-
-            button.style.transform =
-                `translate(${x*.08}px,${y*.08}px)`;
-
-        }
-    );
-
-    button.addEventListener(
-        "mouseleave",
-        () => {
-
-            button.style.transform = "";
-
-        }
-    );
-
-});
-
-
-/* =====================================================
-   GALAXY PARTICLE ENGINE
-===================================================== */
-
-const canvas =
-    document.getElementById("spaceCanvas");
-
-const ctx =
-    canvas.getContext("2d");
-
-let width;
-let height;
-
-let mouseX = 0;
-let mouseY = 0;
-
-let stars = [];
-
-function resize(){
-
-    width =
-        canvas.width =
-        window.innerWidth;
-
-    height =
-        canvas.height =
-        window.innerHeight;
-
-    stars = [];
-
-    const amount =
-        Math.min(
-            700,
-            Math.floor(
-                width * height / 1500
-            )
-        );
-
-    for(let i=0;i<amount;i++){
-
-        stars.push({
-
-            x:Math.random()*width,
-            y:Math.random()*height,
-
-            z:Math.random(),
-
-            size:
-                Math.random()*1.5+.2,
-
-            speed:
-                Math.random()*.35+.05,
-
-            twinkle:
-                Math.random()*Math.PI*2
-
-        });
-
+      }, { threshold: 0.08 });
+
+      revealElements.forEach(element => revealObserver.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add("in-view"));
     }
 
-}
+    /* =====================================================
+       GALAXY STARFIELD
+       Canvas draws decorative stars locally.
+       No external libraries or image requests required.
+       ===================================================== */
 
-resize();
+    const canvas = document.getElementById("galaxy");
+    const ctx = canvas.getContext("2d");
 
-window.addEventListener(
-    "resize",
-    resize
-);
+    let stars = [];
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    let animationFrame = null;
 
+    function createStars() {
+      const area = canvasWidth * canvasHeight;
+      const count = Math.min(230, Math.max(75, Math.floor(area / 6500)));
 
-function animateGalaxy(){
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * canvasWidth,
+        y: Math.random() * canvasHeight,
+        radius: Math.random() * 1.35 + 0.2,
+        alpha: Math.random() * 0.65 + 0.2,
+        speed: Math.random() * 0.15 + 0.025,
+        phase: Math.random() * Math.PI * 2,
+        tint: Math.random() > 0.78 ? "green" : "blue"
+      }));
+    }
 
-    ctx.clearRect(
-        0,
-        0,
-        width,
-        height
-    );
+    function resizeGalaxy() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const px =
-        (mouseX / width - .5);
+      canvasWidth = window.innerWidth;
+      canvasHeight = window.innerHeight;
 
-    const py =
-        (mouseY / height - .5);
+      canvas.width = Math.floor(canvasWidth * dpr);
+      canvas.height = Math.floor(canvasHeight * dpr);
+      canvas.style.width = canvasWidth + "px";
+      canvas.style.height = canvasHeight + "px";
 
-    for(const star of stars){
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      createStars();
+      drawGalaxy(0);
+    }
 
-        star.y -= star.speed;
+    function drawGalaxy(time) {
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-        if(star.y < -10)
-            star.y = height + 10;
+      for (const star of stars) {
+        const shimmer = reducedMotion
+          ? 1
+          : 0.72 + Math.sin(time * 0.0007 + star.phase) * 0.24;
 
-        star.twinkle += .02;
-
-        const opacity =
-            .35 +
-            Math.sin(star.twinkle)*.3;
-
-        const depth =
-            star.z * 18;
-
-        const x =
-            star.x +
-            px * depth;
-
-        const y =
-            star.y +
-            py * depth;
+        const color = star.tint === "green"
+          ? `rgba(101,255,154,${star.alpha * shimmer})`
+          : `rgba(155,205,255,${star.alpha * shimmer})`;
 
         ctx.beginPath();
-
-        ctx.arc(
-            x,
-            y,
-            star.size * (0.5 + star.z),
-            0,
-            Math.PI*2
-        );
-
-        ctx.fillStyle =
-            `rgba(190,235,255,${opacity})`;
-
+        ctx.fillStyle = color;
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fill();
 
+        if (!reducedMotion) {
+          star.y -= star.speed * 0.12;
+          if (star.y < -2) {
+            star.y = canvasHeight + 2;
+            star.x = Math.random() * canvasWidth;
+          }
+        }
+      }
+
+      if (!reducedMotion) {
+        animationFrame = requestAnimationFrame(drawGalaxy);
+      }
     }
 
-    requestAnimationFrame(
-        animateGalaxy
-    );
+    resizeGalaxy();
 
-}
-
-animateGalaxy();
-
-
-/* =====================================================
-   SECRET EASTER EGGS
-===================================================== */
-
-let secret = "";
-
-document.addEventListener(
-    "keydown",
-    e => {
-
-        secret +=
-            e.key.toLowerCase();
-
-        if(secret.length > 8)
-            secret =
-                secret.slice(-8);
-
-        /* nori */
-
-        if(secret === "nori"){
-
-            document.body.style
-                .transform =
-                "scale(1.015)";
-
-            document.body.style
-                .filter =
-                "hue-rotate(100deg)";
-
-            setTimeout(() => {
-
-                document.body.style
-                    .transform = "";
-
-                document.body.style
-                    .filter = "";
-
-            },1800);
-
-            secret = "";
-
-        }
-
-        /* galaxy */
-
-        if(secret === "galaxy"){
-
-            document.body.style
-                .filter =
-                "hue-rotate(180deg)";
-
-            setTimeout(() => {
-
-                document.body.style
-                    .filter = "";
-
-            },3000);
-
-            secret = "";
-
-        }
-
+    if (!reducedMotion) {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(drawGalaxy);
     }
-);
 
-</script>
+    let resizeTimeout;
 
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resizeGalaxy, 120);
+    }, { passive: true });
+  </script>
 </body>
 </html>
